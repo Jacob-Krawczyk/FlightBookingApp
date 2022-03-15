@@ -20,7 +20,10 @@ import java.util.ArrayList;
     protected String arrivalTime;
     protected String departureTime;
 
-    public Flight(){
-        return;
+    public Flight(numofpassenger, departureTime, arrivalTime, airlineCompany, flightNumber){
+        numofpassengers = this.numofpassengers;
+        departureTime = this.departureTime;
+        arrivalTime = this.arrivalTime;
+        airlineCompany = this.flightNumber;
     }
-}
+ }
