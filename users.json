@@ -1,0 +1,19 @@
+[{
+    "id": "2",
+    "user-id":  "bill_smith",
+    "password": "00000000",
+    "firstname": "Bill",
+    "lastname": "Smith",
+    "d.o.b": "May 15, 1973",
+    "discount": "veteran discount",
+    "Friends": [{
+            "id": "3",
+            "firstname": "Joe",
+            "lastname": "Bryant",
+            "d.o.b": "April 25, 1975",
+            "discount": "none"
+    }]
+    }]
+    
+    
+    
