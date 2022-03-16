@@ -1,3 +1,7 @@
+/**
+ * Users 
+ * @author JavaFine
+ */
 public class User {
     public User() {
 
