@@ -3,8 +3,7 @@
     "destination": "Chicago",
     "departure date": "Sat Aug 12 2022",
     "departure time": "12:00 PM",
-    "seats available": "260",
-    "Airline": "American Airlines",
-    "price": "$100.00"
+    "arrival time": "3:00 PM",
+    "seats": [{"name": "1a", "available": "true"},{"name": "1b", "available": "false"}],
+    "Airline": "American Airlines"
     }]
-    
