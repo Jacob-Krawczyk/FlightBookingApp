@@ -3,25 +3,28 @@
  */
 
 import java.util.ArrayList;
+import java.util.UUID;
 
  public class Flight {
+    private UUID id; 
     private String departLocation;
-    private String arrivalLocation;
-    private int numofTicketsAvailable;
-    private int totalTravelTime;
-    private String airlineCompany;
-    private String flightNumber;
-    private String flightClass;
+    private String destination;
+    private String departDate;
+    private String departTime;
+    private String arrivalTime;
     private ArrayList<Seat> flightSeats;
-    private boolean lapChild;
-    private boolean pets;
-    protected String arrivalTime;
-    protected String departureTime;
+    private String airline;
 
-    public Flight(numofpassenger, departureTime, arrivalTime, airlineCompany, flightNumber){
-        numofpassengers = this.numofpassengers;
-        departureTime = this.departureTime;
-        arrivalTime = this.arrivalTime;
-        airlineCompany = this.flightNumber;
+
+    public Flight(UUID id, String departLocation, String destination, String departDate, String departTime,
+            String arrivalTime, ArrayList<Seat> flightSeats, String airline) {
+        this.id = id;
+        this.departLocation = departLocation;
+        this.destination = destination;
+        this.departDate = departDate;
+        this.departTime = departTime;
+        this.arrivalTime = arrivalTime;
+        this.flightSeats = flightSeats;
+        this.airline = airline;
     }
  }
