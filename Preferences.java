@@ -1,16 +1,13 @@
 public class Preferences {
-    private double lowerPriceRange;
-    private double upperPriceRange;
     private String airline;
     private String flightClass;
     private String typeOfFlight;
-    private Arrayist<String> airportsToExclude;
+    private Arrayist<String> airportsToExclude = new ArrayList<String>();
     private String ratings;
-    private ArrayList<String> preferredAirports;
+    private ArrayList<String> preferredAirports = new ArrayList<String>();
 
-    public Preferences(String airline, String class, String type, String ratings) {
-        this.lowerPriceRange = 0.0;
-        this.upperPriceRange = 500000.0;
+    public Preferences(String airline, String flight, String type, String ratings) {
+
     }
     public void addAirportToExclude() {
 
