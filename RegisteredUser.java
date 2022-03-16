@@ -1,8 +1,12 @@
+/**
+ * Registered Users
+ * @author JavaFine
+ */
 public class RegisteredUser {
     private Profile userProfile;
-    private ArrayList<FlightBooking> flightBookings;
-    private ArrayList<HotelBooking> hotelBookings;
-    private ArrayList<Profile> friendList;
+    private ArrayList<FlightBooking> flightBookings = new ArrayList<FightBooking>();
+    private ArrayList<HotelBooking> hotelBookings = new ArrayList<HotelBooking>();
+    private ArrayList<Profile> friendList = new ArrayList<Profile>();
 
     public RegisteredUser(Profile user) {
         user = userProfile;
