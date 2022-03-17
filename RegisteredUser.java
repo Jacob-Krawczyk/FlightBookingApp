@@ -18,6 +18,7 @@ public class RegisteredUser {
 
     }
     private boolean ofAge() {
+        return true;
 
     }
     public void addFlyer(ArrayList<Profile>) {
@@ -25,11 +26,14 @@ public class RegisteredUser {
     }
     public void addNonUserFriend(Profile friend) {
 
+
     }
     public void addUserFriend() {
+        System.out.println("Added friend");
 
     }
     public void removeFriend() {
+        System.out.println("Removed friend");
 
     }
     public void accessItinerary(ArrayList<FlightBooking> flightBookings, ArrayList<HotelBooking> hotelBookings) {
