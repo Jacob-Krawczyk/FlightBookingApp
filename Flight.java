@@ -1,5 +1,6 @@
 /**
- * Written by JavaFIne
+ * Flight Application
+ * @author JavaFine
  */
 
 import java.util.ArrayList;
