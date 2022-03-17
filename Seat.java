@@ -4,11 +4,11 @@
  */
 
  public class Seat {
-    private bool occupied;
+    private boolean occupied;
     private String seatNumber;
 
-    public seat(bool occupied, String seatNumber) [
-        occupied = this.occupied;
-        seatNumber = this.seatNumber;
-    ]
+    public Seat(boolean occupied, String seatNumber) {
+        this.occupied = occupied;
+        this.seatNumber = seatNumber;
+    }
  } 
