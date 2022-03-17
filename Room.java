@@ -3,6 +3,7 @@
  * @author JavaFine
  */
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Room {
     private ArrayList<Date> occupiedDates;
