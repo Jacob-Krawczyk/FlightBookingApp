@@ -15,7 +15,7 @@ public class RegisteredUser {
 
     }
     public void accessTicketInfo() {
-
+        
     }
     private boolean ofAge() {
         return true;
@@ -25,7 +25,6 @@ public class RegisteredUser {
 
     }
     public void addNonUserFriend(Profile friend) {
-
 
     }
     public void addUserFriend() {
@@ -37,6 +36,7 @@ public class RegisteredUser {
 
     }
     public void accessItinerary(ArrayList<FlightBooking> flightBookings, ArrayList<HotelBooking> hotelBookings) {
+        
 
     }
 }
