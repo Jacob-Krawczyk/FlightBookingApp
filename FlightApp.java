@@ -54,48 +54,15 @@ public class FlightApp {
    }
 
    /**
-    * Creates and checks validity of password
-    */
-   public String createPassword() {
-       System.out.println("Password: ");
-       String password = keyboard.nextLine();
-       System.out.println("Retype Password: ");
-       String passwordCheck = keyboard.nextLine();
-       if (!password.equals(passwordCheck)) {
-           System.out.println("These passwords don't match! Try again.");
-           createPassword();
-       }
-       return password;
-   }
-   /**
     * Adds RegisteredUser to User.json file 
     */
    public User addUser(Profile newUser) {
-       String username = createUsername();
-       String password = createPassword();
        userDatabaseWriter.addUser(newUser);
        }
    }
 
-   public Preferences addPreferences() {
-       System.out.println("Please choose airlines you wish to travel with from the following list. Separate the airlines with commas.");
-       for(String airline: EnumSet.allOf(AirlineCompany.class)) {
-           System.out.println(airline.toString());
-       }
-       String prefAirline = keyboard.nextLine();
-       ArrayList<String> prefAirlines = prefAirline.split("[,]", 0);
-       System.out.print("Please choose your preferred flight class from the following list. Separate the flight classes with commas.");
-       for(String class: EnumSet.allOf(FlightClass.class)) {
-           System.out.println(class.toString());
-       }
-       String prefClass = keyboard.nextLine();
-       ArrayList<String> prefClasses = prefClass.split("[,]", 0);
-       System.out.print("Preferred Airports: ");
-       ArrayList<String> preferredAirports = keyboard.nextLine();
-       System.out.print("Airports to Exclude: ");
-       ArrayList<String> excludedAirports = keyboard.nextLine();
+   // public Preferences addPreferences
 
-   }
    /**
     * Returns list of all flights 
     */
