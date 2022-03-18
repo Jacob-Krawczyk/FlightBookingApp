@@ -15,12 +15,8 @@ public class FlightApp {
    /**
     * Searches for RegisteredUser based on information inputted by user
     */
-   public User login() {
+   public User login(String username, String password) {
        try {
-           System.out.print("Enter your username: ");
-           String username = keyboard.nextLine();
-           System.out.print("Enter your password: ");
-           String password = keyboard.nextLine();
            return UserDatabase.getUser(username, password);
        } catch (Exception e) {
            System.out.println(e);
@@ -32,32 +28,6 @@ public class FlightApp {
     */
    public Profile createAccount() {
        try {
-           System.out.print("First Name: ");
-           String firstName = keyboard.nextLine();
-           System.out.print("Last Name: ");
-           String lastName = keyboard.nextLine();
-           System.out.print("Address: ");
-           String address = keyboard.nextLine();
-           System.out.print("City: ");
-           String city = keyboard.nextLine();
-           System.out.print("State: ");
-           String state = keyboard.nextLine();
-           System.out.print("Zip: ");
-           String zip = keyboard.nextLine();
-           System.out.print("Date of Birth: ");
-           String dob = keyboard.nextLine();
-           System.out.print("Email Address: ");
-           String email = keyboard.nextLine();
-           System.out.print("Phone Number: ");
-           String phone = keyboard.nextLine();
-           System.out.print("Mobile Number: ");
-           String mobile = keyboard.nextLine();
-           System.out.print("Disability: ");
-           String disability = keyboard.nextLine();
-           System.out.print("Visa: ");
-           String visa = keyboard.nextLine();
-           System.out.print("Occupation: ");
-           String occupaton = keyboard.nextLine();
            Profile newUser = new Profile(firstName, lastName, address, city, state, zip, dob, email, phone, mobile, disability, visa, occupation);
        } catch (Exception e) {
            System.out.println(e);
@@ -81,19 +51,6 @@ public class FlightApp {
        } catch (Exception e) {
            System.out.println(e);
        }
-   }
-
-   /**
-    * Creates username
-    */
-   public String createUsername() {
-       System.out.println("Username: ");
-       String username = keyboard.nextLine();
-       if (!checkValidityOfUsername(username)) {
-           System.out.println("Sorry! This username is taken. Try again.");
-           createUsername(newUser);
-       }
-       return username;
    }
 
    /**
