@@ -18,7 +18,7 @@ public class RegisteredUser {
         
     }
     private boolean ofAge() {
-        return true;
+        return age;
 
     }
     public void addFlyer(ArrayList<Profile>) {
