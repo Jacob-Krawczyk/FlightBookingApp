@@ -2,6 +2,8 @@
  * Hotel Class
  * @author JavaFine
  */
+import java.util.ArrayList;
+
 public class Hotel{
     private String name;
     private String location;
@@ -9,6 +11,10 @@ public class Hotel{
 
     private ArrayList<Amenities> amenities;
     private ArrayList<Accessibility> accessibility;
+    private String roomType;
+    private int numberOfBeds;
+    private String checkOutDay;
+    private String checkInDay;
 
     public Hotel (String name, String checkInDay, String checkOutDay, String location, int numberOfBeds, String roomType){
         this.name = name;
@@ -27,8 +33,9 @@ public class Hotel{
     public void addAccessibility(){
 
     }
-    public void removeAccessibility(){
+    public void removeAccessibility() {
 
     }
 
+    
 }
