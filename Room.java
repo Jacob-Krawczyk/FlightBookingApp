@@ -1,5 +1,5 @@
 /**
- * Flight Application
+ * Room class
  * @author JavaFine
  */
 import java.util.ArrayList;
