@@ -1,7 +1,6 @@
 public class Preferences {
     private String airline;
     private String flightClass;
-    private String typeOfFlight;
     private Arrayist<String> airportsToExclude = new ArrayList<String>();
     private String ratings;
     private ArrayList<String> preferredAirports = new ArrayList<String>();

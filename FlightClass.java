@@ -3,8 +3,18 @@
  * @author JavaFine
  */
 public enum FlightClass {
-   ECONOMY,
-   PREMIUM_ECONOMY,
-   FIRST_CLASS,
-   BUSINESS 
+   ECONOMY("Economy"),
+   PREMIUM_ECONOMY("Premium Economy"),
+   FIRST_CLASS("First Class"),
+   BUSINESS("Business");
+   
+   private final String textForm;
+
+   private FlightClass(String textForm) {
+        this.textForm = textForm;
+    }
+
+   public String toString() {
+      return textForm;
+   }
 }
