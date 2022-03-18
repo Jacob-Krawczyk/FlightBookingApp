@@ -18,29 +18,17 @@ public class Hotel{
         this.numberOfBeds = numberOfBeds;
         this.roomType = roomType;
     }
-    public void addAmenities{
+    public void addAmenities(){
 
     }
-    public void removeAmenities{
+    public void removeAmenities(){
 
     }
-    public void addAccessibility{
+    public void addAccessibility(){
 
     }
-    public void removeAccessibility{
+    public void removeAccessibility(){
 
     }
-
-    
-
-
-
-
-
-
-
-
-
-
 
 }
