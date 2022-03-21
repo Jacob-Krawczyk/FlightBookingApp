@@ -3,26 +3,31 @@
  * @author JavaFine
  */
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Hotel{
+    private UUID id; 
     private String name;
-    private String location;
+    private String city;
     private ArrayList<Room> rooms;
 
     private ArrayList<Amenities> amenities;
     private ArrayList<Accessibility> accessibility;
     private String roomType;
-    private int numberOfBeds;
+    private String numberOfBeds;
     private String checkOutDay;
     private String checkInDay;
+    private String checkInTime;
+    private String checkOutTime;
+    private String pricePerNight;
+    private String totalPrice;
 
-    public Hotel (String name, String checkInDay, String checkOutDay, String location, int numberOfBeds, String roomType){
-        this.name = name;
-        this.checkInDay = checkInDay;
-        this.checkOutDay = checkOutDay;
-        this.location = location;
-        this.numberOfBeds = numberOfBeds;
-        this.roomType = roomType;
+    public Hotel (UUID id, String city, String hotel_name,  ArrayList rooms ){
+        this.id =id;
+        this.city=city;
+        this.name=hotel_name;
+        this.rooms=rooms;
+        
     }
     public void addAmenities(){
 
