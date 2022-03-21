@@ -115,7 +115,7 @@ public class FlightUI {
             String visa = keyboard.nextLine();
             System.out.print("Occupation: ");
             String occupaton = keyboard.nextLine();
-            Profile newUser = app.createAccount();
+            Profile newUser = new Profile(firstName, lastName, address, city, state, zip, dob, email, phone, mobile, disability, visa, occupation);
             printCreateUsername();
             printCreatePassword();
             app.addUser();
@@ -195,5 +195,8 @@ public class FlightUI {
             System.out.println(e + " Try again");
             printSettingPreferences();
         }
+    }
+    public void printBookingNotLogin () {
+        
     }
 }
