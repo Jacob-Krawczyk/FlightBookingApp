@@ -8,6 +8,7 @@ public class FlightsList {
     private FlightDatabaseLoader flightLoader;
     private FlightDatabaseWriter flightWriter;
     private ArrayList<Flight> flights;
+    private ArrayList<Flight> returnList;
     private static FlightsList flightList;
 
     /**
@@ -31,32 +32,33 @@ public class FlightsList {
     }
 
     /**
-     * Returns list of flights based on destination inputted by user 
-     * @return list of flights based on destination
+     * Clears search array list
      */
-    public ArrayList<Flight> getFlightByDestination(String destination) {
-        ArrayList<Flight> returnList = new ArrayList<Flight>();
-        for(Flight flight: flights) {
-            String flightDestination = (String) personJSON.get("destination");
-            if(flightDestination.equals(destination)) {
-                returnList.add(flight);
-            }
-        }
-        return returnList;
+    public void clearSearch() {
+        returnList.clear();
     }
 
     /**
-     * Returns list of flights based on airline
-     * @return list of flights based on airline
+     * Adds flights based on destination inputted by user
      */
-    public ArrayList<Flight> getFlightByAirline(String airline) {
-        ArrayList<Flight> returnList = new ArrayList<Flight>();
-        for(Flight flight:flights) {
-            String flightAirline = (String) personJSON.get("Airline");
-            if(flightAirline.equals(airline)) {
+    public void getFlightByDestination(String destination) {
+        for(Flight flight: flights) {
+            if(flight.getDestination().equals(destination)) {
                 returnList.add(flight);
             }
         }
-        return returnList;
+    }
+
+    /**
+     * Removes flights if they don't match airline
+     */
+    public void getFlightByAirline(String airline) {
+        if(!airline.equals("none")) {
+            for(Flight search: flights) {
+                if(!search.getAirline.equals(airline)) {
+                    returnList.remove(search);
+                }
+            }
+        }
     }
 }

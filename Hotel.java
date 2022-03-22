@@ -28,9 +28,31 @@ public class Hotel{
         this.rooms=rooms;
         
     }
-    public void addAmenity(Amenities amenity){
+
+    public String getAmenities() {
+        return this.amenities;
+    }
+
+    public String getLocation() {
+        return this.location;
+    }
+
+    public int getNumOfBed() {
+        return this.numberOfBeds;
+    }
+
+    public String getRoomType() {
+        return this.roomType;
+    }
+
+    public ArrayList<Accessibility> getAccessibility() {
+        return this.accessibilities;
+    }
+
+    public void addAmenities(Amenities amenity){
         amenities.add(amenity);
     }
+
     public void removeAmenity(Amenities amenity){
         amenities.remove(amenity);
     }
