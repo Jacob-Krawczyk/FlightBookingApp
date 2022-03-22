@@ -8,11 +8,9 @@ public class FlightBooking {
     protected ArrayList<Profile> travelers;
     private ArrayList<Seat> seats;
     private Flight flights;
-    
-    public void book(Flight flight, ArrayList<Seat> seats, ArrayList<Profile> travlelers) {
-        this.flights = flights;
-        this.seats = seats;
+    public FlightBooking(ArrayList<Profile> travelers, ArrayList<Seat> seats, Flight flights) {
         this.travelers = travelers;
+        this.seats = seats;
+        this.flights = flights;
     }
-
 }
