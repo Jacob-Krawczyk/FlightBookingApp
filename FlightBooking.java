@@ -7,12 +7,12 @@ import java.util.ArrayList;
 public class FlightBooking {
     protected ArrayList<Profile> travelers;
     private ArrayList<Seat> seats;
-    private Flight flight;
+    private Flight flights;
     
-    public void book() {
-        
+    public void book(Flight flight, ArrayList<Seat> seats, ArrayList<Profile> travlelers) {
+        this.flights = flights;
+        this.seats = seats;
+        this.travelers = travelers;
     }
-    public void cancel() {
 
-    }
 }

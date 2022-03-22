@@ -22,6 +22,18 @@ public class RegisteredUser implements User {
     public String getPassword() {
         return password;
     }
+    public void bookFlight() {
+
+    }
+    public void CancelFlight() {
+
+    }
+    public void bookHotel() {
+
+    }
+    public void cancelHotel() {
+        
+    }
     public void setPreferences() {
 
     }

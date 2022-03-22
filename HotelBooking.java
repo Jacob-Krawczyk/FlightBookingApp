@@ -9,10 +9,9 @@ public class HotelBooking {
     private ArrayList<Room> rooms;
     private Flight flight;
     
-    public void book() {
-        
-    }
-    public void cancel() {
-
+    public void book(ArrayList<Profile> travelers, ArrayList<Room> rooms, Flight flight) {
+        this.travelers = travelers;
+        this.rooms = rooms;
+        this.flight = flight;
     }
 }

@@ -22,10 +22,10 @@ public class Hotel{
     private String totalPrice;
 
     public Hotel (UUID id, String city, String hotel_name,  ArrayList rooms ){
-        this.id =id;
-        this.city=city;
-        this.name=hotel_name;
-        this.rooms=rooms;
+        this.id = id;
+        this.city = city;
+        this.name = hotel_name;
+        this.rooms = rooms;
         
     }
 
