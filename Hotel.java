@@ -10,9 +10,8 @@ public class Hotel{
     private String name;
     private String city;
     private ArrayList<Room> rooms;
-
     private ArrayList<Amenities> amenities;
-    private ArrayList<Accessibility> accessibility;
+    private ArrayList<Accessibility> accessibilities;
     private String roomType;
     private String numberOfBeds;
     private String checkOutDay;
@@ -29,17 +28,17 @@ public class Hotel{
         this.rooms=rooms;
         
     }
-    public void addAmenities(){
-
+    public void addAmenity(Amenities amenity){
+        amenities.add(amenity);
     }
-    public void removeAmenities(){
-
+    public void removeAmenity(Amenities amenity){
+        amenities.remove(amenity);
     }
-    public void addAccessibility(){
-
+    public void addAccessibility(Accessibility accessibility){
+        accessibilities.add(accessibility);
     }
-    public void removeAccessibility() {
-
+    public void removeAccessibility(Accessibility accessibility) {
+        accessibilities.remove(accessibility);
     }
 
     
