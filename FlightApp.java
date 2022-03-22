@@ -24,17 +24,6 @@ public class FlightApp {
    }
 
    /**
-    * Creates profile for new registered user
-    */
-   public Profile createAccount() {
-       try {
-           Profile newUser = new Profile(firstName, lastName, address, city, state, zip, dob, email, phone, mobile, disability, visa, occupation);
-       } catch (Exception e) {
-           System.out.println(e);
-           return null;
-   }
-
-   /**
     * Checks validity of username
     */
    public boolean checkValidityOfUsername (String username) {

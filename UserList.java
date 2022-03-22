@@ -21,7 +21,7 @@ public class UserList {
      * Adds user to list and to database files
      * @param user
      */
-    public void addUser(User user) {
+    public void addUser(RegisteredUser user) {
         users.add(user);
         userDatabaseWriter.add(user);
     }
@@ -30,29 +30,47 @@ public class UserList {
      * Removes user from list and from database file
      * @param user
      */
-    public void removeUser(User user) {
+    public void removeUser(RegisteredUser user) {
         users.remove(user);
         userDatabaseWriter.remove(user);
+    }
+
+    /**
+     * Adds friend to friend list of user
+     */
+    public void addFriend(Profile profile) {
+
+    }
+
+    /**
+     * Removes friend from friend list of user
+     */
+    public void removeFriend(Profile profile) {
+
     }
 
     /**
      * Returns user based on inputted username and password
      * @param username
      * @param password
+     * @return user based on inputted username and password
      */
-    public void getUser(String username, String password) {
-        for(User user: users) {
-            if(users.getUsername.equals(username) && users.getPassword.equals(password)) {
+    public RegisteredUser getUser(String username, String password) {
+        for(RegisteredUser user: users) {
+            String userName = (String) personJSON.get("username");
+            String passWord = (String) personJSON.get("password"));
+            if(userName.equals(username) && passWord.equals(password)) {
                 return user;
             }
         }
     }
 
     /**
-     * Prints list of all users in list
-     * @return
+     * Returns list of all registered users
+     * @return list of users
      */
     public ArrayList<User> getAllUsers() {
+        users = userDatabaseLoader.getUser();
         return users;
     }
 }
