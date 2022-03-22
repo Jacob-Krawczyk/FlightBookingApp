@@ -2,14 +2,25 @@
  * Registered Users
  * @author JavaFine
  */
-public class RegisteredUser {
+public class RegisteredUser implements User {
     private Profile userProfile;
+    private String username;
+    private String password;
     private ArrayList<FlightBooking> flightBookings = new ArrayList<FightBooking>();
     private ArrayList<HotelBooking> hotelBookings = new ArrayList<HotelBooking>();
     private ArrayList<Profile> friendList = new ArrayList<Profile>();
 
-    public RegisteredUser(Profile user) {
-        user = userProfile;
+    public RegisteredUser(Profile user, String username, String password) {
+        this.user = userProfile;
+        this.username = username;
+        this.password = password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+    public String getPassword() {
+        return password;
     }
     public void setPreferences() {
 

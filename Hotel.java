@@ -24,6 +24,27 @@ public class Hotel{
         this.numberOfBeds = numberOfBeds;
         this.roomType = roomType;
     }
+
+    public String getAmenities() {
+        return this.amenities;
+    }
+
+    public String getLocation() {
+        return this.location;
+    }
+
+    public int getNumOfBed() {
+        return this.numberOfBeds;
+    }
+
+    public String getRoomType() {
+        return this.roomType;
+    }
+
+    public ArrayList<Accessibility> getAccessibility() {
+        return this.accessibility;
+    }
+
     public void addAmenities(){
 
     }
