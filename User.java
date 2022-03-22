@@ -7,9 +7,9 @@ public class User {
 
     }
     public searchFlights() {
-
+        return;
     }
     public searchHotels() {
-        
+        return;
     }
 }

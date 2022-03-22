@@ -48,7 +48,6 @@ public class FlightApp {
    public User addUser(Profile newUser) {
        userDatabaseWriter.addUser(newUser);
        }
-   }
 
    // public Preferences addPreferences
 
