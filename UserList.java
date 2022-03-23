@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class UserList {
     private UserDatabase userDatabaseLoader;
     private UserDatabaseWriter userDatabaseWriter;
-    private ArrayList<User> users;
+    private ArrayList<RegisteredUser> users;
     private static UserList userList;
 
     public static UserList getInstance() {
@@ -39,7 +39,7 @@ public class UserList {
      * Adds friend to friend list of user
      */
     public void addFriend(Profile profile) {
-
+        
     }
 
     /**
@@ -57,19 +57,18 @@ public class UserList {
      */
     public RegisteredUser getUser(String username, String password) {
         for(RegisteredUser user: users) {
-            String userName = (String) personJSON.get("username");
-            String passWord = (String) personJSON.get("password"));
-            if(userName.equals(username) && passWord.equals(password)) {
+            if(user.getUsername.equals(username) && user.getPassword.equals(password)) {
                 return user;
             }
         }
+        return null;
     }
 
     /**
      * Returns list of all registered users
      * @return list of users
      */
-    public ArrayList<User> getAllUsers() {
+    public ArrayList<RegisteredUser> getAllUsers() {
         users = userDatabaseLoader.getUser();
         return users;
     }

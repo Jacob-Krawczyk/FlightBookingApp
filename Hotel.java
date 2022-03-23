@@ -10,9 +10,8 @@ public class Hotel{
     private String name;
     private String city;
     private ArrayList<Room> rooms;
-
     private ArrayList<Amenities> amenities;
-    private ArrayList<Accessibility> accessibility;
+    private ArrayList<Accessibility> accessibilities;
     private String roomType;
     private String numberOfBeds;
     private String checkOutDay;
@@ -23,23 +22,45 @@ public class Hotel{
     private String totalPrice;
 
     public Hotel (UUID id, String city, String hotel_name,  ArrayList rooms ){
-        this.id =id;
-        this.city=city;
-        this.name=hotel_name;
-        this.rooms=rooms;
+        this.id = id;
+        this.city = city;
+        this.name = hotel_name;
+        this.rooms = rooms;
         
     }
-    public void addAmenities(){
 
+    public String getAmenities() {
+        return this.amenities;
     }
-    public void removeAmenities(){
 
+    public String getLocation() {
+        return this.location;
     }
-    public void addAccessibility(){
 
+    public int getNumOfBed() {
+        return this.numberOfBeds;
     }
-    public void removeAccessibility() {
 
+    public String getRoomType() {
+        return this.roomType;
+    }
+
+    public ArrayList<Accessibility> getAccessibility() {
+        return this.accessibilities;
+    }
+
+    public void addAmenities(Amenities amenity){
+        amenities.add(amenity);
+    }
+
+    public void removeAmenity(Amenities amenity){
+        amenities.remove(amenity);
+    }
+    public void addAccessibility(Accessibility accessibility){
+        accessibilities.add(accessibility);
+    }
+    public void removeAccessibility(Accessibility accessibility) {
+        accessibilities.remove(accessibility);
     }
 
     

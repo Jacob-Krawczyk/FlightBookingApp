@@ -26,9 +26,9 @@ public class User {
         this.friends=friends;
     }
     public searchFlights() {
-
+        return;
     }
     public searchHotels() {
-        
+        return;
     }
 }

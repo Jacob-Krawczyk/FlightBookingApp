@@ -8,13 +8,21 @@ public class HotelsList {
     private HotelDatabaseLoader hotelLoader;
     private HotelDatabaseWriter hotelWriter;
     private ArrayList<Hotel> hotels;
+    private ArrayList<Hotel> returnList;
     private static HotelsList hotelList;
 
     public static HotelsList getInstance() {
         if(hotelList == null) {
-            hotelList = new hotelList();
+            hotelList = new HotelsList();
         }
         return hotelList;
+    }
+
+    /**
+     * Clears search array list
+     */
+    private void clearSearch() {
+        returnList.clear();
     }
 
     /**
@@ -26,83 +34,82 @@ public class HotelsList {
         return hotels;
     }
 
+    public ArrayList<Hotel> getSearch(String location, String amenities, String accessibility, String roomType, int numOfBeds) {
+        clearSearch();
+        getHotelByLocation(location);
+        getHotelByAmenities(amenities);
+        getHotelByAccessibility(accessibility);
+        getHotelByRoomType(roomType);
+        getHotelByNumberOfBeds(numOfBeds);
+        return returnList;
+    }
+
     /**
-     * Returns list of hotels that match location
+     * Adds hotels that match location to return list
      * @param location
-     * @return array list of hotels that match location
      */
-    public ArrayList<Hotel> getHotelByLocation(String location) {
-        ArrayList<Hotel> returnList = new ArrayList<Hotel>();
+    private void getHotelByLocation(String location) {
         for(Hotel hotel:hotels) {
-            String hotelLocation = (String) personJSON.get("location");
+            String hotelLocation = hotel.getLocation();
             if(hotelLocation.equals(location)) {
                 returnList.add(hotel);
             }
         }
-        return returnList;
     }
 
     /**
-     * Returns list of hotels that match amenities
+     * Removes hotels that don't match amentiies
      * @param amenities
-     * @return array list of hotels that match amenities 
      */
-    public ArrayList<Hotel> getHotelByAmenities(String amenities) {
-        ArrayList<Hotel> returnList = new ArrayList<Hotel>();
-        for(Hotel hotel: hotels) {
-            String hotelAmenities = (String) personJSON.get("amenities");
-            if(hotelAmenities.equals(amenities)) {
-                returnList.add(hotel);
+    private void getHotelByAmenities(String amenities) {
+        if(!amenities.equals("none")) {
+            for(Hotel search:returnList) {
+                if(!search.getAmenities().equals(amenities)) {
+                    returnList.remove(search);
+                }
             }
         }
-        return returnList;
     }
 
     /**
-     * Returns list of hotels that match accessibility 
+     * Removes hotels that don't match accessibility
      * @param accessibility
-     * @return list of hotels that match accessibility
      */
-    public ArrayList<Hotel> getHotelByAccessibility(String accessibility) {
-        ArrayList<Hotel> returnList = new ArrayList<Hotel>();
-        for(Hotel hotel: hotels) {
-            String hotelAccessibility = (String) personJSON.get("accessibility");
-            if(hotelAccessibility.equals(accessibility)) {
-                returnList.add(hotel);
+    private void getHotelByAccessibility(ArrayList<Accessibility> accessibility) {
+        if(!accessibility.equals("none")) {
+            for(Hotel search: returnList) {
+                if(!search.getAccessibility().containsAll(accessibility)) {
+                    returnList.remove(search);
+                }
             }
         }
-        return returnList;
     }
     
     /**
-     * Returns list of hotels that match room type
+     * Removes hotels that don't match room type
      * @param roomType
-     * @return list of hotels that match room type
      */
-    public ArrayList<Hotel> getHotelByRoomType(String roomType) {
-        ArrayList<Hotel> returnList = new ArrayList<Hotel>();
-        for(Hotel hotel: hotels) {
-            String hotelRoomType = (String) personJSON.get("room type");
-            if(hotelRoomType.equals(roomType)) {
-                returnList.add(hotel);
+    public void getHotelByRoomType(String roomType) {
+        if(!roomType.equals("none")) {
+            for(Hotel search: returnList) {
+                if(!search.getRoomType().equals(roomType)) {
+                    returnList.remove(search);
+                }
             }
         }
-        return returnList;
     }
 
     /**
-     * Returns list of hotels that match number of beds
+     * Removes hotels that don't match number of beds
      * @param numOfBeds
-     * @return list of hotels that match number of beds 
      */
-    public ArrayList<Hotel> getHotelByNumberOfBeds(int numOfBeds) {
-        ArrayList<Hotel> returnList = new ArrayList<Hotel>();
-        for(Hotel hotel: hotels) {
-            int hotelNumOfBeds = (int) personJSON.get("number of beds");
-            if(hotelNumOfBeds == numOfBeds) {
-                returnList.add(hotel);
+    public void getHotelByNumberOfBeds(int numOfBeds) {
+        if(numOfBeds != 0) {
+            for(Hotel search: returnList) {
+                if(search.getNumOfBed() != numOfBeds) {
+                    returnList.remove(search);
+                }
             }
         }
-        return returnList;
     }
 }

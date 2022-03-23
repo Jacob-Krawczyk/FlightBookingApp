@@ -89,6 +89,7 @@ public class FlightUI {
     }
     public void printCreateAccount() {
         try {
+            System.out.print("Please enter your information below.");
             System.out.print("First Name: ");
             String firstName = keyboard.nextLine();
             System.out.print("Last Name: ");

@@ -6,7 +6,9 @@ import java.util.*;
  */
 public class FlightApp {
    private User currentUser;
-   private UserDatabaseWriter userDatabase;
+   private FlightsList flightList;
+   private HotelsList hotelList;
+   private UserList userList;
    
    public FlightApp() {
 
@@ -21,6 +23,17 @@ public class FlightApp {
        } catch (Exception e) {
            System.out.println(e);
        }
+   }
+
+   /**
+    * Creates profile for new registered user
+    */
+   public Profile createAccount() {
+       try {
+           Profile newUser = new Profile(firstName, lastName, address, city, state, zip, dob, email, phone, mobile, disability, visa, occupation);
+       } catch (Exception e) {
+           System.out.println(e);
+           return null;
    }
 
    /**
@@ -48,7 +61,6 @@ public class FlightApp {
    public User addUser(Profile newUser) {
        userDatabaseWriter.addUser(newUser);
        }
-   }
 
    // public Preferences addPreferences
 
