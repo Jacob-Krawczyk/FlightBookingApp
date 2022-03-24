@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Registered Users
  * @author JavaFine
@@ -6,12 +8,12 @@ public class RegisteredUser implements User {
     private Profile userProfile;
     private String username;
     private String password;
-    private ArrayList<FlightBooking> flightBookings = new ArrayList<FightBooking>();
-    private ArrayList<HotelBooking> hotelBookings = new ArrayList<HotelBooking>();
-    private ArrayList<Profile> friendList = new ArrayList<Profile>();
+    private ArrayList<FlightBooking> flightBookings;
+    private ArrayList<HotelBooking> hotelBookings;
+    private ArrayList<Friend> friendList;
 
     public RegisteredUser(Profile user, String username, String password) {
-        this.user = userProfile;
+        this.userProfile = user;
         this.username = username;
         this.password = password;
     }
@@ -21,6 +23,9 @@ public class RegisteredUser implements User {
     }
     public String getPassword() {
         return password;
+    }
+    public ArrayList<Friend> getFriends() {
+        return friendList;
     }
     public void bookFlight() {
 
@@ -40,9 +45,15 @@ public class RegisteredUser implements User {
     public void accessTicketInfo() {
         
     }
-    private boolean ofAge() {
-        return age;
-
+    private boolean ofAge(int age) {
+        if(age >= 18) {
+            return true;
+        }
+        else if(age <= 0) {
+            System.out.println("Invalid age. Try again");
+            
+        }
+        return false;
     }
     public void addFlyer(ArrayList<Profile>) {
 
@@ -52,12 +63,11 @@ public class RegisteredUser implements User {
     }
     public void addUserFriend() {
         System.out.println("Added friend");
-
     }
     public void removeFriend() {
         System.out.println("Removed friend");
-
     }
+
     public void accessItinerary(ArrayList<FlightBooking> flightBookings, ArrayList<HotelBooking> hotelBookings) {
         
 
