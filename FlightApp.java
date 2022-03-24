@@ -60,19 +60,6 @@ public class FlightApp {
         return flightList.getAllFlights();
     }
 
-    /**
-     * Returns flight based on inputted keyword
-     */
-    public Flight getFlight(String keyword) {
- 
-    }
-
-    /**
-     * Returns hotel based on inputted keyword
-     */
-    public Hotel getHotel(String keyword) {
-
-<<<<<<< HEAD
    /**
     * Returns flight based on inputted keyword
     */
@@ -88,7 +75,4 @@ public class FlightApp {
     return null;
 
    }
-=======
-    }
->>>>>>> refs/remotes/origin/main
 }

@@ -16,11 +16,7 @@ public class RegisteredUser implements User {
     private ArrayList<Friend> friendList;
 
     public RegisteredUser(Profile user, String username, String password) {
-<<<<<<< HEAD
         this.userProfile = userProfile;
-=======
-        this.userProfile = user;
->>>>>>> refs/remotes/origin/main
         this.username = username;
         this.password = password;
     }
