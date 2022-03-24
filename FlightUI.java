@@ -44,16 +44,16 @@ public class FlightUI {
             System.out.print("Enter your password: ");
             String password = keyboard.nextLine();
             RegisteredUser currentUser = app.login(username, password);
-            printActionsPage();
+            printActionsPage(currentUser);
         } catch (Exception e) {
             System.out.println(e + " Try again.");
-            printLogin(currentUser);
+            printLogin();
         }
     }
     public void printActionsPage(RegisteredUser currentUser) {
         try {
             System.out.println("Welcome, " + currentUser.getUsername().toString()
-                    + "!\n\n1. Search Flight\n2. Search Hotel\n3. Look at Itinerary\n4. Go to Friend's List\n5. Preferences\n\nType the number corresponding to what you wuold like to do: ");
+                    + "!\n\n1. Search Flight\n2. Search Hotel\n3. Look at Itinerary\n4. Go to Friend's List\n5. Set Preferences\n\nType the number corresponding to what you wuold like to do: ");
             int response = keyboard.nextInt();
             keyboard.nextLine();
             switch (response) {
@@ -70,12 +70,12 @@ public class FlightUI {
                     printFriendsList();
                     break;
                 case 5:
-                    printPreferences();
+                    printSetPrefQuestion(currentUser);
                     break;
             }
         } catch (Exception e) {
             System.out.println(e + "\nTry Again.");
-            printActionsPage();
+            printActionsPage(currentUser);
         }
     }
     public void printFlightSearch() {
@@ -117,30 +117,33 @@ public class FlightUI {
             System.out.print("Occupation: ");
             String occupaton = keyboard.nextLine();
             Profile newUser = new Profile(firstName, lastName, address, city, state, zip, dob, email, phone, mobile, disability, visa, occupation);
-            printCreateUsername();
-            printCreatePassword();
-            app.addUser();
+            String username = createUsername();
+            String password = createPassword();
+            RegisteredUser currentUser = new RegisteredUser(newUser, username, password);
+            app.addUser(currentUser);
             System.out.println("Account creation successful!");
-            printSetPref();
+            printSetPrefQuestion(currentUser);
         } catch (Exception e) {
             System.out.println(e + " Try again.");
             printCreateAccount();
         }
     }
-    public void printCreateUsername() {
+    public String createUsername() {
         try {
             System.out.println("Username: ");
             String username = keyboard.nextLine();
             if (!app.checkValidityOfUsername(username)) {
                 System.out.println("Sorry! This username is already taken. Try again.");
-                printCreateUsername();
+                createUsername();
             }
+            return username;
         } catch (Exception e) {
             System.out.println(e + " Try again.");
-            printCreateUsername();
+            createUsername();
         }
+        return null;
     }
-    public void printCreatePassword() {
+    public String createPassword() {
         try {
             System.out.println("Password: ");
             String password = keyboard.nextLine();
@@ -148,55 +151,95 @@ public class FlightUI {
             String passwordCheck = keyboard.nextLine();
             if (!password.equals(passwordCheck)) {
                 System.out.println("These passwords don't match! Try again.");
-                printCreatePassword();
+                createPassword();
             }
-            printSetPrefQuestion();
+            return password;
         } catch (Exception e) {
             System.out.println(e + " Try again.");
-            printCreatePassword();
+            createPassword();
         }
+        return null;
     }
-    public void printSetPrefQuestion() {
+    public void printSetPrefQuestion(RegisteredUser currentUser) {
         try {
             System.out.println("Do you want to set your preferences? Type \"y\" or \"no\".");
             String setPref = keyboard.nextLine();
             if (setPref.equals("y")) {
-                printSetPreferences();
+                printSetPreferences(currentUser);
             } else if (setPref.equals("n")) {
-                printActionsPage();
+                printActionsPage(currentUser);
             } else {
                 System.out.println("Invalid response. Try again.");
                 printSetPreferences();
             }
         } catch (Exception e) {
             System.out.println(e +" Try again.");
-            printSetPrefQuestion();
+            printSetPrefQuestion(currentUser);
         }
     }
-    public void printSetPreferences() {
+    public void printSetPreferences(RegisteredUser currentUser) {
         try {
-            System.out.println("Setting Preferences\n\nPlease choose airlines you wish to travel with from the following list. Separate the airlines with commas");
-            for(String airline: EnumSet.allOf(AirlineCompany.class)) {
-                System.out.println(airline.toString());
-            }
-            String prefAirline = keyboard.nextLine();
-            ArrayList<String> prefAirlines = prefAirline.split("[,]", 0);
-            System.out.print("Please choose your preferred flight class from the following list. Separate the flight classes with commas.");
-            for(String class: EnumSet.allOf(FlightClass.class)) {
-                System.out.println(class.toString());
-            }
-            String prefClass = keyboard.nextLine();
-            ArrayList<String> prefClasses = prefClass.split("[,]", 0);
-            System.out.print("Preferred Airports: ");
-            ArrayList<String> preferredAirports = keyboard.nextLine();
-            System.out.print("Airports to Exclude: ");
-            ArrayList<String> excludedAirports = keyboard.nextLine();
-
+            System.out.println("Setting Preferences\n\n");
+            ArrayList<String> prefAirlines = addAirlinePref();
+            ArrayList<String> prefClasses = addClassPref();
+            Preferences pref = new Preferences(prefAirlines, prefClasses);
+            currentUser.setPreferences(pref);
             System.out.println("Preferences successfully updated!");
+            printActionsPage(currentUser);
         } catch (Exception e) {
             System.out.println(e + " Try again");
-            printSetPreferences();
+            printSetPreferences(currentUser);
         }
+    }
+    public ArrayList<String> addAirlinePref() {
+        System.out.println(
+                "Please choose airlines you wish to travel with from the following list. Write each preferred airline as a new line and write \"done\" when you're done.");
+        for (AirlineCompany airline : EnumSet.allOf(AirlineCompany.class)) {
+            System.out.println(airline.toString());
+        }
+        ArrayList<String> prefAirlines = new ArrayList<String>();
+        String airline = keyboard.nextLine();
+        while (!airline.equalsIgnoreCase("done")) {
+            if(!validAirline(airline)) {
+                System.out.println("Invalid airport. Try again.");
+            }
+            prefAirlines.add(airline);
+            airline = keyboard.nextLine();
+        }
+        return prefAirlines;
+    }
+    public boolean validAirline(String airline) {
+        for(AirlineCompany comp: EnumSet.allOf(AirlineCompany.class)) {
+            if(airline.equals(comp)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public ArrayList<String> addClassPref() {
+        System.out.print(
+                "Please choose your preferred flight class from the following list. Write each preferred class as a new line and write \"done\" when you're done.");
+        for (FlightClass flightClass : EnumSet.allOf(FlightClass.class)) {
+            System.out.println(flightClass.toString());
+        }
+        ArrayList<String> prefClasses = new ArrayList<String>();
+        String prefClass = keyboard.nextLine();
+        while(!prefClass.equalsIgnoreCase("done")) {
+            if(!validClass(prefClass)) {
+                System.out.println("Invalid class. Try again.");
+            }
+            prefClasses.add(prefClass);
+            prefClass = keyboard.nextLine();
+        }
+        return prefClasses;
+    }
+    public boolean validClass(String prefClass) {
+        for(FlightClass flightClass: EnumSet.allOf(FlightClass.class)) {
+            if(prefClass.equals(flightClass)) {
+                return true;
+            }
+        }
+        return false;
     }
     public void printBookingNotLogin () {
         
