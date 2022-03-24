@@ -21,7 +21,7 @@ public class Hotel{
     private String pricePerNight;
     private String totalPrice;
 
-    public Hotel (UUID id, String city, String hotel_name,  ArrayList rooms ){
+    public Hotel (UUID id, String city, String hotel_name,  ArrayList<Room> rooms ){
         this.id = id;
         this.city = city;
         this.name = hotel_name;
@@ -29,15 +29,15 @@ public class Hotel{
         
     }
 
-    public String getAmenities() {
+    public ArrayList<Amenities> getAmenities() {
         return this.amenities;
     }
 
     public String getLocation() {
-        return this.location;
+        return this.city;
     }
 
-    public int getNumOfBed() {
+    public String getNumOfBed() {
         return this.numberOfBeds;
     }
 

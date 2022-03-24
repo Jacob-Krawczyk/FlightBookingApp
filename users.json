@@ -11,15 +11,21 @@
             "firstname": "Joe",
             "lastname": "Bryant",
             "d.o.b": "April 25, 1975",
-            "discount": "none"
-    }
+            "discount": "none",
+            "flights":[{"flightid":"1", "seat":"13a"}
+            ],
+            "hotels":[{"hoteid":"1","check in day":"3.24","check out day":"3.26"}]
+    },
     {
         "id": "4",
         "firstname": "Mike",
         "lastname": "J",
         "d.o.b": "April 30, 1975",
-        "discount": "none"
-        }         ]
+        "discount": "none",
+        "flights":[{"flightid":"1", "seat":"14a"}
+        ],
+        "hotels":[{"hotelid":"2","check in day":"3.22","check out day":"3.26"}]}         
+    ]
     }]
     
     

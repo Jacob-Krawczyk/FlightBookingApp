@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * A Singleton Listing of Flights
@@ -29,6 +30,10 @@ public class FlightsList {
     public ArrayList<Flight> getAllFlights() {
         flights = flightLoader.getFlight();
         return flights;
+    }
+
+    public Flight getFlightByUUID(UUID id){
+        return null;
     }
 
     /**

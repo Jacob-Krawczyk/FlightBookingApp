@@ -10,8 +10,11 @@ public class Friend {
 	private String lastName;
 	private String dateOfBirthday;
 	private String discount;
+    ArrayList<Flight> flights;
+    ArrayList<Hotel> hotels;
 
-    public Friend(UUID Friend_ID,String Friend_FirstName,String Friend_LastName,String Friend_DateOfBirthday,String Friend_Discount) {
+    public Friend(UUID Friend_ID,String Friend_FirstName,String Friend_LastName,String Friend_DateOfBirthday,String Friend_Discount,Flight friend_flight
+    ,Hotel new_Room) {
        this.id=Friend_ID;
 	   this.firstName=Friend_FirstName;
 	   this.lastName=Friend_LastName;
