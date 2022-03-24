@@ -33,7 +33,7 @@ public class FlightUI {
                     break;
             }
         } catch (Exception e) {
-            System.out.println(e + "\nTry Again");
+            System.out.println(e + "\n\nTry Again");
             printWelcomingPage();
         }
     }
@@ -43,18 +43,18 @@ public class FlightUI {
             String username = keyboard.nextLine();
             System.out.print("Enter your password: ");
             String password = keyboard.nextLine();
-            RegisteredUser currentUser = app.login();
+            RegisteredUser currentUser = app.login(username, password);
             printActionsPage();
         } catch (Exception e) {
             System.out.println(e + " Try again.");
-            printLogin();
+            printLogin(currentUser);
         }
     }
-    public void printActionsPage() {
+    public void printActionsPage(RegisteredUser currentUser) {
         try {
-            System.out.println("Welcome, " + currentUser.getName()
+            System.out.println("Welcome, " + currentUser.getUsername().toString()
                     + "!\n\n1. Search Flight\n2. Search Hotel\n3. Look at Itinerary\n4. Go to Friend's List\n5. Preferences\n\nType the number corresponding to what you wuold like to do: ");
-            int response = keyboard.nextLine();
+            int response = keyboard.nextInt();
             keyboard.nextLine();
             switch (response) {
                 case 1:
@@ -150,29 +150,30 @@ public class FlightUI {
                 System.out.println("These passwords don't match! Try again.");
                 printCreatePassword();
             }
+            printSetPrefQuestion();
         } catch (Exception e) {
             System.out.println(e + " Try again.");
             printCreatePassword();
         }
     }
-    public void printSetPref() {
+    public void printSetPrefQuestion() {
         try {
             System.out.println("Do you want to set your preferences? Type \"y\" or \"no\".");
             String setPref = keyboard.nextLine();
             if (setPref.equals("y")) {
-                printSettingPreferences();
+                printSetPreferences();
             } else if (setPref.equals("n")) {
                 printActionsPage();
             } else {
                 System.out.println("Invalid response. Try again.");
-                printSettingPreferences();
+                printSetPreferences();
             }
         } catch (Exception e) {
             System.out.println(e +" Try again.");
-            printSetPref();
+            printSetPrefQuestion();
         }
     }
-    public void printSettingPreferences() {
+    public void printSetPreferences() {
         try {
             System.out.println("Setting Preferences\n\nPlease choose airlines you wish to travel with from the following list. Separate the airlines with commas");
             for(String airline: EnumSet.allOf(AirlineCompany.class)) {
@@ -194,7 +195,7 @@ public class FlightUI {
             System.out.println("Preferences successfully updated!");
         } catch (Exception e) {
             System.out.println(e + " Try again");
-            printSettingPreferences();
+            printSetPreferences();
         }
     }
     public void printBookingNotLogin () {

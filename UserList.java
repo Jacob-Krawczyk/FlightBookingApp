@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * A Singleton Listing of Users
@@ -16,7 +17,13 @@ public class UserList {
         }
         return userList;
     }
-
+    public RegisteredUser getUserByUUID(UUID id) {
+        for (RegisteredUser user: users) {
+            if (user.getID().equals(id))
+                return user;
+        }
+        return null;
+    }
     /**
      * Adds user to list and to database files
      * @param user
@@ -38,15 +45,25 @@ public class UserList {
     /**
      * Adds friend to friend list of user
      */
-    public void addFriend(Profile profile) {
-        
+    public void addFriend(Friend friend) {
+        userDatabaseWriter.addFriend(friend);
+        users.add(friend);
     }
 
     /**
      * Removes friend from friend list of user
      */
-    public void removeFriend(Profile profile) {
+    public void removeFriend(Friend friend) {
+        userDatabaseWriter.removeFriend(friend);
+        users.remove(friend);
+    }
 
+    /**
+     * Returns the list of friends associated with current user
+     * @return list of friends
+     */
+    public ArrayList<Friend> getFriendsList() {
+        return users.getFriends();
     }
 
     /**
@@ -69,7 +86,7 @@ public class UserList {
      * @return list of users
      */
     public ArrayList<RegisteredUser> getAllUsers() {
-        users = userDatabaseLoader.getUser();
+        users = userList.getAllUsers();
         return users;
     }
 }

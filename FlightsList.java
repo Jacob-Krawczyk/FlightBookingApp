@@ -22,7 +22,13 @@ public class FlightsList {
         }
         return flightList;
     }
-
+public Flight getFlightByUUID(UUID id) {
+    for (Flight flight: flights) {
+        if (flight.getID().equals(id))
+            return flight;
+    }
+    return null;
+}
     /**
      * Returns list of all flights
      * @return all flights

@@ -63,5 +63,9 @@ public class Hotel{
         accessibilities.remove(accessibility);
     }
 
+    public Object getID() {
+        return this.id;
+    }
+
     
 }

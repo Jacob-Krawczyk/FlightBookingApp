@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * A Singleton Listing of Hotels
@@ -32,6 +33,13 @@ public class HotelsList {
     public ArrayList<Hotel> getAllHotels() {
         hotels = hotelLoader.getHotel();
         return hotels;
+    }
+    public Hotel getHotelByUUID(UUID id) {
+        for (Hotel hotel: hotels) {
+            if (hotel.getID().equals(id))
+                return hotel;
+        }
+        return null;
     }
 
     public ArrayList<Hotel> getSearch(String location, String amenities, String accessibility, String roomType, int numOfBeds) {

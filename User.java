@@ -25,10 +25,13 @@ public class User {
         this.discount=discount;
         this.friends=friends;
     }
-    public searchFlights() {
+    public void searchFlights() {
         return;
     }
-    public searchHotels() {
+    public void searchHotels() {
         return;
+    }
+    public Object getID() {
+        return this.id;
     }
 }
