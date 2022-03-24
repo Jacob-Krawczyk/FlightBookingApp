@@ -26,7 +26,6 @@ public class Hotel{
         this.city = city;
         this.name = hotel_name;
         this.rooms = rooms;
-        
     }
 
     public ArrayList<Amenities> getAmenities() {
@@ -35,14 +34,6 @@ public class Hotel{
 
     public String getLocation() {
         return this.city;
-    }
-
-    public String getNumOfBed() {
-        return this.numberOfBeds;
-    }
-
-    public String getRoomType() {
-        return this.roomType;
     }
 
     public ArrayList<Accessibility> getAccessibility() {
@@ -66,6 +57,13 @@ public class Hotel{
     public Object getID() {
         return this.id;
     }
-
+    public String getHotelName()
+    {
+        return this.name;
+    }
+    public ArrayList<Room> getHotelRooms() {
+        return this.getHotelRooms();
+      }
+    
     
 }

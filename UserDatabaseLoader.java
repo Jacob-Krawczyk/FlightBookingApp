@@ -7,7 +7,7 @@ import org.json.simple.parser.JSONParser;
 
 public class UserDatabaseLoader{
 	
-	protected static final String User_FILE_NAME = "users.json";
+	protected static final String User_FILE_NAME = "src/users.json";
 	protected static final String User_FILE_Id = "id";
 	protected static final String User_FILE_User_Id="user-id";
 	protected static final String User_FILE_Password = "password";
