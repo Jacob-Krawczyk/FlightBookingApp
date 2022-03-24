@@ -11,6 +11,7 @@ public class RegisteredUser implements User {
     private Profile userProfile;
     private String username;
     private String password;
+    private Preferences pref;
     private ArrayList<FlightBooking> flightBookings;
     private ArrayList<HotelBooking> hotelBookings;
     private ArrayList<Friend> friendList;
@@ -29,6 +30,12 @@ public class RegisteredUser implements User {
     }
     public ArrayList<Friend> getFriends() {
         return friendList;
+    }
+    public void setPreferences(Preferences pref) {
+        this.pref = pref;
+    }
+    public Preferences getPreferences() {
+        return pref;
     }
     public void bookFlight() {
 
