@@ -42,7 +42,7 @@ public class HotelsList {
         return null;
     }
 
-    public ArrayList<Hotel> getSearch(String location, String amenities, String accessibility, String roomType, int numOfBeds) {
+    public ArrayList<Hotel> getSearch(String location, String amenities, ArrayList<Accessibility> accessibility, String roomType, int numOfBeds) {
         clearSearch();
         getHotelByLocation(location);
         getHotelByAmenities(amenities);
@@ -114,9 +114,10 @@ public class HotelsList {
     public void getHotelByNumberOfBeds(int numOfBeds) {
         if(numOfBeds != 0) {
             for(Hotel search: returnList) {
-                if(search.getNumOfBed() != numOfBeds) {
-                    returnList.remove(search);
+                if(search.getnumOfBeds() == numOfBeds) {
+                    returnList.add(search);
                 }
+                
             }
         }
     }

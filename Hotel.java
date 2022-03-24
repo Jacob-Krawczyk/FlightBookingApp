@@ -13,7 +13,8 @@ public class Hotel{
     private ArrayList<Amenities> amenities;
     private ArrayList<Accessibility> accessibilities;
     private String roomType;
-    private String numberOfBeds;
+    private String typeOfBeds;
+    private int numOfBeds;
     private String checkOutDay;
     private String checkInDay;
     private String checkInTime;
@@ -21,12 +22,29 @@ public class Hotel{
     private String pricePerNight;
     private String totalPrice;
 
-    public Hotel (UUID id, String city, String hotel_name,  ArrayList<Room> rooms ){
-        this.id = id;
-        this.city = city;
-        this.name = hotel_name;
-        this.rooms = rooms;
+    // public Hotel (UUID id, String city, String hotel_name,  ArrayList<Room> rooms ){
+    //     this.id = id;
+    //     this.city = city;
+    //     this.name = hotel_name;
+    //     this.rooms = rooms;
         
+    // }
+
+    public Hotel(UUID id, String name, String city, ArrayList<Room> rooms, ArrayList<Amenities> amenities,
+            ArrayList<Accessibility> accessibilities, String roomType, String typeOfBeds, int numOfBeds,
+            String checkOutDay, String checkInDay, String checkInTime) {
+        this.id = id;
+        this.name = name;
+        this.city = city;
+        this.rooms = rooms;
+        this.amenities = amenities;
+        this.accessibilities = accessibilities;
+        this.roomType = roomType;
+        this.typeOfBeds = typeOfBeds;
+        this.numOfBeds = numOfBeds;
+        this.checkOutDay = checkOutDay;
+        this.checkInDay = checkInDay;
+        this.checkInTime = checkInTime;
     }
 
     public ArrayList<Amenities> getAmenities() {
@@ -37,8 +55,8 @@ public class Hotel{
         return this.city;
     }
 
-    public String getNumOfBed() {
-        return this.numberOfBeds;
+    public int getnumOfBeds() {
+        return this.numOfBeds;
     }
 
     public String getRoomType() {
