@@ -38,10 +38,6 @@ public Flight getFlightByUUID(UUID id) {
         return flights;
     }
 
-    public Flight getFlightByUUID(UUID id){
-        return null;
-    }
-
     /**
      * Clears search array list
      */
@@ -66,7 +62,7 @@ public Flight getFlightByUUID(UUID id) {
     public void getFlightByAirline(String airline) {
         if(!airline.equals("none")) {
             for(Flight search: flights) {
-                if(!search.getAirline.equals(airline)) {
+                if(!search.getAirline().equals(airline)) {
                     returnList.remove(search);
                 }
             }
