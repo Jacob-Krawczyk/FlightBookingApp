@@ -5,79 +5,74 @@ import java.util.*;
  * @author JavaFine
  */
 public class FlightApp {
-   private User currentUser;
-   private FlightsList flightList;
-   private HotelsList hotelList;
-   private UserList userList;
+    private User currentUser;
+    private FlightsList flightList;
+    private HotelsList hotelList;
+    private UserList userList;
    
-   public FlightApp() {
+    public FlightApp() {
 
-   }
+    }
 
-   /**
-    * Searches for RegisteredUser based on information inputted by user
-    */
-   public User login(String username, String password) {
-       try {
-           return UserDatabase.getUser(username, password);
-       } catch (Exception e) {
-           System.out.println(e);
-       }
-   }
+    /**
+     * Searches for RegisteredUser based on information inputted by user
+     */
+    public RegisteredUser login(String username, String password) {
+        try {
+            return userList.getUser(username, password);
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        } 
+    }
 
-   /**
-    * Creates profile for new registered user
-    */
-   public Profile createAccount() {
-       try {
-           Profile newUser = new Profile(firstName, lastName, address, city, state, zip, dob, email, phone, mobile, disability, visa, occupation);
-       } catch (Exception e) {
-           System.out.println(e);
-           return null;
-   }
+    /**
+     * Checks validity of username
+     */
+    public boolean checkValidityOfUsername (String username) {
+        try {
+            ArrayList<RegisteredUser> users = userList.getAllUsers();
+            for(RegisteredUser user: users) {
+                if(username.equals(user.getUsername())) {
+                    return false;
+                }
+            }
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+    }
 
-   /**
-    * Checks validity of username
-    */
-   public boolean checkValidityOfUsername (String username) {
-       try {
-           UserDatabaseLoader userDatabase = UserDatabaseLoader.getInstance();
-           userDatabase.loadJsonFile();
-           RegisteredUser users = json.entries;
-           for(RegisteredUser user:users) {
-               if(username.equals(user.Username)) {
-                   return false;
-               }
-           }
-           return true;
-       } catch (Exception e) {
-           System.out.println(e);
-       }
-   }
+    /**
+     * Adds RegisteredUser to User.json file 
+     */
+    public RegisteredUser addUser(RegisteredUser newUser) {
+        userDatabaseWriter.addUser(newUser);
+        userList.addUser(newUser);
+        return newUser;
+    }
 
-   /**
-    * Adds RegisteredUser to User.json file 
-    */
-   public User addUser(Profile newUser) {
-       userDatabaseWriter.addUser(newUser);
-       }
+    /**
+     * Returns list of all flights 
+     */
+    public ArrayList<Flight> getAllFlights() {
+        return flightList.getAllFlights();
+    }
 
-   // public Preferences addPreferences
+    /**
+     * Returns flight based on inputted keyword
+     */
+    public Flight getFlight(String keyword) {
+ 
+    }
 
-   /**
-    * Returns list of all flights 
-    */
-   public ArrayList<Flight> getAllFlights() {
-       FlightDatabaseLoader flightDatabase = FlightDatabaseLoader.getInstance();
-       flightDatabase.loadJsonFile();
-       ArrayList<Flight> allFlights = new ArrayList<Flight>();
-       Flight flights = json.entries;
-       for(currentFlight:flights) {
-           allFlights.add(currentFlight);
-       }
-       return allFlights;
-   }
+    /**
+     * Returns hotel based on inputted keyword
+     */
+    public Hotel getHotel(String keyword) {
 
+<<<<<<< HEAD
    /**
     * Returns flight based on inputted keyword
     */
@@ -93,4 +88,7 @@ public class FlightApp {
     return null;
 
    }
+=======
+    }
+>>>>>>> refs/remotes/origin/main
 }
