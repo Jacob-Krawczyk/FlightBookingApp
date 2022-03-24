@@ -82,6 +82,7 @@ public class FlightApp {
     * Returns flight based on inputted keyword
     */
    public Flight getFlight(String keyword) {
+    return null;
 
    }
 
@@ -89,6 +90,7 @@ public class FlightApp {
     * Returns hotel based on inputted keyword
     */
    public Hotel getHotel(String keyword) {
+    return null;
 
    }
 }

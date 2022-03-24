@@ -3,7 +3,9 @@
  * @author JavaFine
  */
 import java.util.ArrayList;
+import java.util.UUID;
 public class RegisteredUser implements User {
+    private UUID id;
     private Profile userProfile;
     private String username;
     private String password;
@@ -12,7 +14,7 @@ public class RegisteredUser implements User {
     private ArrayList<Profile> friendList = new ArrayList<Profile>();
 
     public RegisteredUser(Profile user, String username, String password) {
-        this.user = userProfile;
+        this.userProfile = userProfile;
         this.username = username;
         this.password = password;
     }
@@ -62,5 +64,9 @@ public class RegisteredUser implements User {
     public void accessItinerary(ArrayList<FlightBooking> flightBookings, ArrayList<HotelBooking> hotelBookings) {
         
 
+    }
+
+    public Object getID() {
+        return this.id;
     }
 }

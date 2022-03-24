@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * A Singleton Listing of Users
@@ -16,7 +17,13 @@ public class UserList {
         }
         return userList;
     }
-
+    public RegisteredUser getUserByUUID(UUID id) {
+        for (RegisteredUser user: users) {
+            if (user.getID().equals(id))
+                return user;
+        }
+        return null;
+    }
     /**
      * Adds user to list and to database files
      * @param user

@@ -31,4 +31,7 @@ public class User {
     public void searchHotels() {
         return;
     }
+    public Object getID() {
+        return this.id;
+    }
 }
