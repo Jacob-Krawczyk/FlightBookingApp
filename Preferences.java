@@ -1,23 +1,17 @@
+import java.util.ArrayList;
+
 public class Preferences {
-    private String airline;
-    private String flightClass;
-    private Arrayist<String> airportsToExclude = new ArrayList<String>();
-    private String ratings;
-    private ArrayList<String> preferredAirports = new ArrayList<String>();
+    private ArrayList<String> airline;
+    private ArrayList<String> flightClass;
 
-    public Preferences(String airline, String flight, String type, String ratings) {
-
+    public Preferences(ArrayList<String> airline, ArrayList<String> flightClass) {
+        this.airline = airline;
+        this.flightClass = flightClass;
     }
-    public void addAirportToExclude() {
-
+    public ArrayList<String> getAirline() {
+        return airline;
     }
-    public void removeAirportToExclude() {
-
-    }
-    public void addPreferredAirport() {
-
-    }
-    public void removePreferredAirport() {
-        
+    public ArrayList<String> getFlightClass() {
+        return flightClass;
     }
 }
