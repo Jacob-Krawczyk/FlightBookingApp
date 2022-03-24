@@ -2,6 +2,7 @@
  * Registered Users
  * @author JavaFine
  */
+import java.util.ArrayList;
 public class RegisteredUser implements User {
     private Profile userProfile;
     private String username;
@@ -32,7 +33,7 @@ public class RegisteredUser implements User {
 
     }
     public void cancelHotel() {
-        
+
     }
     public void setPreferences() {
 
@@ -44,7 +45,7 @@ public class RegisteredUser implements User {
         return age;
 
     }
-    public void addFlyer(ArrayList<Profile>) {
+    public void addFlyer(ArrayList<Profile> flyer) {
 
     }
     public void addNonUserFriend(Profile friend) {
