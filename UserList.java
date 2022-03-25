@@ -6,14 +6,14 @@ import java.util.UUID;
  * @author JavaFine
  */
 public class UserList {
-    private UserDatabase userDatabaseLoader;
+    private UserDatabaseLoader userDatabaseLoader;
     private UserDatabaseWriter userDatabaseWriter;
     private ArrayList<RegisteredUser> users;
     private static UserList userList;
 
     public static UserList getInstance() {
         if(userList == null) {
-            userList = new userList();
+            userList = new UserList();
         }
         return userList;
     }
@@ -45,9 +45,9 @@ public class UserList {
     /**
      * Adds friend to friend list of user
      */
-    public void addFriend(Friend friend) {
+    public void addFriend(RegisteredUser currentUser, Friend friend) {
         userDatabaseWriter.addFriend(friend);
-        users.add(friend);
+        currentUser.add(friend);
     }
 
     /**
