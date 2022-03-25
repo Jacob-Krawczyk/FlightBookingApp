@@ -5,7 +5,7 @@ import java.util.*;
  * Users 
  * @author JavaFine
  */
-public class User {
+public abstract class User {
     private UUID id;
     private String userId;
     private String password;

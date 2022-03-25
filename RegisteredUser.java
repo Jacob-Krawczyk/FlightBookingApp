@@ -1,12 +1,11 @@
-import java.util.ArrayList;
-
 /**
  * Registered Users
  * @author JavaFine
  */
+
 import java.util.ArrayList;
 import java.util.UUID;
-public class RegisteredUser implements User {
+public class RegisteredUser extends User {
     private UUID id;
     private Profile userProfile;
     private String username;
@@ -16,11 +15,24 @@ public class RegisteredUser implements User {
     private ArrayList<HotelBooking> hotelBookings;
     private ArrayList<Friend> friendList;
 
-    public RegisteredUser(Profile user, String username, String password) {
+    //loading an existing user from json
+    public RegisteredUser(UUID id, String userID, String firstName, String lastName, String dateOfBirthday, String discount, ArrayList<friend> friends, Profile user, String username, String password) {
+        super(id, userID, password, firstName, lastName, dateOfBirthday, discount, friends, user, username, password);
         this.userProfile = userProfile;
         this.username = username;
         this.password = password;
     }
+
+    //creating a use
+    public RegisteredUser(UUID id, String userID, String firstName, String lastName, String dateOfBirthday, String discount, ArrayList<friend> friends, Profile user, String username, String password) {
+        this.id = UUID.randomUUID();
+        super(id, userID, password, firstName, lastName, dateOfBirthday, discount, friends, user, username, password)
+        
+        this.userProfile = userProfile;
+        this.username = username;
+        this.password = password;
+    }
+
 
     public String getUsername() {
         return username;
