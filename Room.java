@@ -13,21 +13,42 @@ public class Room {
     private String checkOutDay;
     private String checkInTime;
     private String checkOutTime;
-    private String pricePerNight;
-    private String totalPrice;
-
+    
     public Room(String room_type,String number_of_beds,String check_in_date,String check_out_date,
-    String check_in_time, String check_out_time,String price_per_night,String total_price) {
+    String check_in_time, String check_out_time) {
         this.numberOfBeds = number_of_beds;
         this.roomType = room_type;
         this.checkInDay = check_in_date;
         this.checkOutDay = check_out_date;
         this.checkInTime=check_in_time;
         this.checkOutTime=check_out_time;
-        this.pricePerNight=price_per_night;
-        this.totalPrice=total_price;
+       
         
     }
+    public String getRoomType()
+    {
+        return roomType;
+    }
+    public String getRoomCheckInDate()
+    {
+        return this.checkInDay;
+    }
+    public String getRoomCheckInTime()
+    {
+        return this.checkInTime;
+    }
+    public String getRoomCheckOutDate()
+    {
+        return this.checkOutDay;
+    }
+    public String getRoomCheckOutTime()
+    {
+        return this.checkOutTime;
+    }
+    public String getRoomNumberOfBeds()
+    {
+        return this.numberOfBeds;
+    }
+  
     
-
 }

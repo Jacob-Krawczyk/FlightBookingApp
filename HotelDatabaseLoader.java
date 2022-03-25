@@ -7,7 +7,7 @@ import org.json.simple.parser.JSONParser;
 
 public class HotelDatabaseLoader{
 	
-	protected static final String HOTEL_FILE_NAME = "hotels.json";
+	protected static final String HOTEL_FILE_NAME = "src/hotels.json";
 	protected static final String HOTEL_FILE_ID = "id";
 	protected static final String HOTEL_FILE_CITY = "city";
 	protected static final String HOTEL_FILE_CHECK_IN_DATE = "check in date";
@@ -15,8 +15,6 @@ public class HotelDatabaseLoader{
 	protected static final String HOTEL_FILE_CHECK_IN_TIME="check in time";
 	protected static final String HOTEL_FILE_CHECK_OUT_TIME="check out time";
 	protected static final String HOTEL_NAME="hotel name";
-	protected static final String HOTEL_PRICE_PER_NIGHT="price per night";
-	protected static final String HOTEL_TOTAL_PRICE="total price";
 	protected static final String HOTEL_ROOM_TYPE="room type";
 	protected static final String HOTEL_NUMBER_OF_BEDS="number of beds";
 	
@@ -50,11 +48,10 @@ public class HotelDatabaseLoader{
 				String check_out_date =(String) hotelJSON.get("check out date");
 				String check_in_time=(String) hotelJSON.get("check in time");
 				String check_out_time=(String) hotelJSON.get("check out time");
-				String price_per_night=(String)hotelJSON.get("price per night");
-				String total_price=(String)hotelJSON.get("total price");
+				
 
           		Room new_room = new Room(room_type, number_of_beds,check_in_date,check_out_date,
-				  check_in_time,check_out_time,price_per_night,total_price);
+				  check_in_time,check_out_time);
  				rooms.add(new_room);
          
         		}
