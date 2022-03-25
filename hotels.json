@@ -1,8 +1,8 @@
 [{
     "id": "1",
-    "city": "Chicago",
-    "hotel name": "Marriott of Chicago",
-    "rooms": [{"room type":"big bed room","number of beds":"1", "check in date": "Sat Aug 12 2022","check out date": "Mon Aug 14 2022",
+    "city": "Seattle",
+    "hotel name": "Marriott of Seattle",
+    "rooms": [{"room type":"big bed room","number of beds":"2", "check in date": "Sat Aug 12 2022","check out date": "Mon Aug 14 2022",
         "check in time": "3:30 PM",
         "check out time": "12:00 PM"},
         {"room type":"two bed room","number of beds":"2", "check in date": "Sat Aug 12 2022","check out date": "Mon Aug 14 2022",

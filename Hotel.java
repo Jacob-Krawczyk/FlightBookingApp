@@ -37,17 +37,6 @@ public class Hotel{
         this.name = name;
         this.city = city;
         this.rooms = rooms;
-<<<<<<< HEAD
-=======
-        this.amenities = amenities;
-        this.accessibilities = accessibilities;
-        this.roomType = roomType;
-        this.typeOfBeds = typeOfBeds;
-        this.numOfBeds = numOfBeds;
-        this.checkOutDay = checkOutDay;
-        this.checkInDay = checkInDay;
-        this.checkInTime = checkInTime;
->>>>>>> c82a0c812262b5842a12412c5a799e2205b2d6dc
     }
 
     public ArrayList<Amenities> getAmenities() {
@@ -58,17 +47,6 @@ public class Hotel{
         return this.city;
     }
 
-<<<<<<< HEAD
-=======
-    public int getnumOfBeds() {
-        return this.numOfBeds;
-    }
-
-    public String getRoomType() {
-        return this.roomType;
-    }
-
->>>>>>> c82a0c812262b5842a12412c5a799e2205b2d6dc
     public ArrayList<Accessibility> getAccessibility() {
         return this.accessibilities;
     }
@@ -97,6 +75,14 @@ public class Hotel{
     public ArrayList<Room> getHotelRooms() {
         return this.getHotelRooms();
       }
+
+    public Object getRoomType() {
+        return this.getRoomType();
+    }
+
+    public int getnumOfBeds() {
+        return this.getnumOfBeds();
+    }
     
     
 }

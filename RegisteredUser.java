@@ -16,17 +16,17 @@ public class RegisteredUser extends User {
     private ArrayList<Friend> friendList;
 
     //loading an existing user from json
-    public RegisteredUser(UUID id, String userID, String firstName, String lastName, String dateOfBirthday, String discount, ArrayList<friend> friends, Profile user, String username, String password) {
-        super(id, userID, password, firstName, lastName, dateOfBirthday, discount, friends, user, username, password);
+    public RegisteredUser(UUID id, String firstName, String lastName, String dateOfBirthday, String discount, ArrayList<Friend> friendList, Profile user, String username, String password) {
+        super(id, password, firstName, lastName, dateOfBirthday, discount, friendList, user, username, password);
         this.userProfile = userProfile;
         this.username = username;
         this.password = password;
     }
 
     //creating a use
-    public RegisteredUser(UUID id, String userID, String firstName, String lastName, String dateOfBirthday, String discount, ArrayList<friend> friends, Profile user, String username, String password) {
+    public RegisteredUser(UUID id, String firstName, String lastName, String dateOfBirthday, String discount, ArrayList<Friend> friendList, Profile user, String username, String password) {
         this.id = UUID.randomUUID();
-        super(id, userID, password, firstName, lastName, dateOfBirthday, discount, friends, user, username, password)
+        super(id, password, firstName, lastName, dateOfBirthday, discount, friendList, user, username, password);
         
         this.userProfile = userProfile;
         this.username = username;
@@ -82,7 +82,7 @@ public class RegisteredUser extends User {
         String last = friend.getLast();
         String dob = friend.getDOB();
         String discount = friend.getDiscount();
-        Friend friend = new Friend(first,last,dob,discount);
+        Friend aFriend = new Friend(first,last,dob,discount);
         
     }
     public void addUserFriend() {

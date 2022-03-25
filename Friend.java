@@ -22,6 +22,9 @@ public class Friend {
 	   this.discount=Friend_Discount;
     }
 
+    public Friend(String first, String last, String dob, String discount2) {
+    }
+
     public void setFirstName(String name) {
         this.firstName=name;
     }

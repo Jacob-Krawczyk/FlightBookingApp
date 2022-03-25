@@ -1,9 +1,9 @@
 [{  "id": "1",
     "departs from": "Columbia",
-    "destination": "Chicago",
+    "destination": "Seattle",
     "departure date": "Sat Aug 12 2022",
     "departure time": "12:00 PM",
     "arrival time": "3:00 PM",
-    "seats": [{"name": "1a", "available": "true"},{"name": "1b", "available": "false"}],
+    "seats": [{"name": "13a", "available": "true"},{"name": "13b", "available": "true"}],
     "Airline": "American Airlines"
     }]
