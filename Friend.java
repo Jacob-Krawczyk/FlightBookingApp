@@ -33,7 +33,7 @@ public class Friend {
     {
         this.dateOfBirthday=date;
     }
-    public String getFirstNamer() {
+    public String getFirstName() {
         return firstName;
     }
 

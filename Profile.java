@@ -17,11 +17,11 @@ public class Profile {
     private String disability;
     private String visa;
     private String occupation;
-    private ArrayList<String> discounts;
+    private String discount;
 
     public Profile(String firstName, String lastName, String address, String city, String state, String zip,
             String dateOfBirth, String emailAddress, String phoneNumber, String disability, String visa,
-            String occupation, ArrayList<String> discounts) {
+            String occupation, String discount) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -34,7 +34,7 @@ public class Profile {
         this.disability = disability;
         this.visa = visa;
         this.occupation = occupation;
-        this.discounts = discounts;
+        this.discount = discount;
     }
     public String getFirst() {
         return firstName;
@@ -42,13 +42,16 @@ public class Profile {
     public String getLast() {
         return lastName;
     }
+    public String getDOB() {
+        return dateOfBirth;
+    }
+    public String getDiscount() {
+        return discount;
+    }
     public String getVisa() {
         return visa;
     }
     public String getOccupation() {
         return occupation;
-    }
-    public ArrayList<String> accessDiscounts() {
-        return discounts;
     }
 }

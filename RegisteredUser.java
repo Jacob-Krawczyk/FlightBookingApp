@@ -66,7 +66,12 @@ public class RegisteredUser implements User {
 
     }
     public void addNonUserFriend(Profile friend) {
-
+        String first = friend.getFirst();
+        String last = friend.getLast();
+        String dob = friend.getDOB();
+        String discount = friend.getDiscount();
+        Friend friend = new Friend(first,last,dob,discount);
+        
     }
     public void addUserFriend() {
         System.out.println("Added friend");
