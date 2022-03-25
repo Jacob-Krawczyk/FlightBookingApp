@@ -170,7 +170,7 @@ public class FlightUI {
                 printActionsPage(currentUser);
             } else {
                 System.out.println("Invalid response. Try again.");
-                printSetPreferences();
+                printSetPreferences(currentUser);
             }
         } catch (Exception e) {
             System.out.println(e +" Try again.");
@@ -242,6 +242,9 @@ public class FlightUI {
         return false;
     }
     public void printBookingNotLogin () {
+        
+    }
+    public void printItinerary(RegisteredUser currentUser) {
         
     }
 }

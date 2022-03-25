@@ -60,7 +60,7 @@ public Flight getFlightByUUID(UUID id) {
      * Removes flights if they don't match airline
      */
     public void getFlightByAirline(String airline) {
-        if(!airline.equals("none")) {
+        if(!airline.equals(null)) {
             for(Flight search: flights) {
                 if(!search.getAirline().equals(airline)) {
                     returnList.remove(search);

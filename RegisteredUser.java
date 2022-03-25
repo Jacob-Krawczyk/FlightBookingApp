@@ -59,10 +59,7 @@ public class RegisteredUser implements User {
         if(age >= 18) {
             return true;
         }
-        else if(age <= 0) {
-            System.out.println("Invalid age. Try again");
-            
-        }
+        System.out.println("Invalid age.");
         return false;
     }
     public void addFlyer(ArrayList<Profile> flyer) {
@@ -78,9 +75,15 @@ public class RegisteredUser implements User {
         System.out.println("Removed friend");
     }
 
-    public void accessItinerary(ArrayList<FlightBooking> flightBookings, ArrayList<HotelBooking> hotelBookings) {
-        
-
+    public void accessItinerary() {
+        System.out.println("Booked Flights");
+        for(FlightBooking flight:flightBookings) {
+            System.out.println(flight);
+        }
+        System.out.println("Booked Hotels");
+        for(HotelBooking hotel:hotelBookings) {
+            System.out.println(hotel);
+        }
     }
 
     public Object getID() {
