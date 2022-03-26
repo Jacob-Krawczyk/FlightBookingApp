@@ -30,7 +30,7 @@ public class HotelDatabaseLoader{
 			JSONParser parser = new JSONParser();
 			JSONArray hotelJason = (JSONArray) new JSONParser().parse(reader);
 			
-			for(int i =0;i<flightJason.size();i++)
+			for(int i =0;i<hotelJason.size();i++)
 			{
 				JSONObject hotelJSON =(JSONObject) hotelJason.get(i);
 				UUID id =(UUID) hotelJSON.get("id");
