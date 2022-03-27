@@ -14,6 +14,15 @@ public class Room {
     private String checkInTime;
     private String checkOutTime;
     
+    /**
+     * Constructs a room
+     * @param room_type
+     * @param number_of_beds
+     * @param check_in_date
+     * @param check_out_date
+     * @param check_in_time
+     * @param check_out_time
+     */
     public Room(String room_type,String number_of_beds,String check_in_date,String check_out_date,
     String check_in_time, String check_out_time) {
         this.numberOfBeds = number_of_beds;
@@ -22,33 +31,53 @@ public class Room {
         this.checkOutDay = check_out_date;
         this.checkInTime=check_in_time;
         this.checkOutTime=check_out_time;
-       
-        
     }
-    public String getRoomType()
-    {
+
+    /**
+     * Returns room type
+     * @return room type
+     */
+    public String getRoomType() {
         return roomType;
     }
-    public String getRoomCheckInDate()
-    {
+
+    /**
+     * Returns room check in date
+     * @return
+     */
+    public String getRoomCheckInDate() {
         return this.checkInDay;
     }
-    public String getRoomCheckInTime()
-    {
+
+    /**
+     * Returns room check in time
+     * @return
+     */
+    public String getRoomCheckInTime() {
         return this.checkInTime;
     }
-    public String getRoomCheckOutDate()
-    {
+
+    /**
+     * Returns room check out date 
+     * @return
+     */
+    public String getRoomCheckOutDate() {
         return this.checkOutDay;
     }
-    public String getRoomCheckOutTime()
-    {
+
+    /**
+     * Returns room check out time 
+     * @return
+     */
+    public String getRoomCheckOutTime() {
         return this.checkOutTime;
     }
-    public String getRoomNumberOfBeds()
-    {
+
+    /**
+     * Returns number of beds 
+     * @return number of beds 
+     */
+    public String getRoomNumberOfBeds() {
         return this.numberOfBeds;
-    }
-  
-    
+    }   
 }

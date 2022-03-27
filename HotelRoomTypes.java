@@ -17,14 +17,17 @@ public enum HotelRoomTypes {
 
     private final String textForm;
 
-/**
- * This method converts the values into strings
- * @param textForm
- */
+    /**
+     * Converts the values into strings 
+     * @param textForm
+     */
     private HotelRoomTypes(String textForm) {
         this.textForm = textForm;
     }
 
+    /**
+     * Returns string form 
+     */
     public String toString() {
         return textForm;
     }

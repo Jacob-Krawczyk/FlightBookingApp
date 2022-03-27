@@ -39,47 +39,99 @@ public class Hotel{
         this.rooms = rooms;
     }
 
+    /**
+     * Returns list of amenities of hotel
+     * @return array list of amenities 
+     */
     public ArrayList<Amenities> getAmenities() {
         return this.amenities;
     }
 
+    /**
+     * Returns location of hotel
+     * @return location
+     */
     public String getLocation() {
         return this.city;
     }
 
+    /**
+     * Returns list of accessibilities of hotel
+     * @return array list of accessibilities
+     */
     public ArrayList<Accessibility> getAccessibility() {
         return this.accessibilities;
     }
 
+    /**
+     * Adds amentity to amenities list
+     * @param amenity
+     */
     public void addAmenities(Amenities amenity){
         amenities.add(amenity);
     }
 
+    /**
+     * Removes amenity from amentiies list 
+     * @param amenity
+     */
     public void removeAmenity(Amenities amenity){
         amenities.remove(amenity);
     }
+
+    /**
+     * Adds accessibility to accessibilities list
+     * @param accessibility
+     */
     public void addAccessibility(Accessibility accessibility){
         accessibilities.add(accessibility);
     }
+
+    /**
+     * Removes accessibility from accessibilities list 
+     * @param accessibility
+     */
     public void removeAccessibility(Accessibility accessibility) {
         accessibilities.remove(accessibility);
     }
 
+    /**
+     * Returns UUID
+     * @return UUID
+     */
     public Object getID() {
         return this.id;
     }
+
+    /**
+     * Returns name of hotel
+     * @return hotel name
+     */
     public String getHotelName()
     {
         return this.name;
     }
+
+    /**
+     * Returns hotel rooms 
+     * @return array list of hotel rooms
+     */
     public ArrayList<Room> getHotelRooms() {
         return this.getHotelRooms();
-      }
+    }
 
-    public Object getRoomType() {
+    /**
+     * Returns room type
+     * @return room type 
+     */
+    public String getRoomType() {
         return this.getRoomType();
     }
 
+    /**
+     * Returns number of beds 
+     * @return number of beds 
+     */
     public int getnumOfBeds() {
         return this.getnumOfBeds();
     }

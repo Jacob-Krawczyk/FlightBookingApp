@@ -12,6 +12,10 @@ public class HotelsList {
     private ArrayList<Hotel> returnList;
     private static HotelsList hotelList;
 
+    /**
+     * Creates a single instance of HotelsList and returns that single instance
+     * @return HotelsList
+     */
     public static HotelsList getInstance() {
         if(hotelList == null) {
             hotelList = new HotelsList();
@@ -34,6 +38,12 @@ public class HotelsList {
         hotels = HotelDatabaseLoader.getHotel();
         return hotels;
     }
+
+    /**
+     * Returns hotel based on UUID
+     * @param id
+     * @return hotel
+     */
     public Hotel getHotelByUUID(UUID id) {
         for (Hotel hotel: hotels) {
             if (hotel.getID().equals(id))
@@ -42,6 +52,15 @@ public class HotelsList {
         return null;
     }
 
+    /**
+     * Returns hotel search result 
+     * @param location
+     * @param amenities
+     * @param accessibility
+     * @param roomType
+     * @param numOfBeds
+     * @return hotel search array list
+     */
     public ArrayList<Hotel> getSearch(String location, ArrayList<Amenities> amenities, ArrayList<Accessibility> accessibility, String roomType, int numOfBeds) {
         clearSearch();
         getHotelByLocation(location);
