@@ -203,7 +203,7 @@ public class FlightUI {
             if(!validAccessibility(accessibilityString)) {
                 System.out.println("Invalid accessibility. Try again.");
             }
-            Accessibility accessibility = Accessibility.valueOf(accessibilityString.toUpperClass());
+            Accessibility accessibility = Accessibility.valueOf(accessibilityString.toUpperCase());
             prefAccessibilities.add(accessibility);
         }
         return prefAccessibilities;
@@ -247,7 +247,7 @@ public class FlightUI {
             System.out.print("Visa: ");
             String visa = keyboard.nextLine();
             System.out.print("Occupation: ");
-            String occupaton = keyboard.nextLine();
+            String occupation = keyboard.nextLine();
             Profile newUser = new Profile(firstName, lastName, address, city, state, zip, dob, email, phone, mobile, disability, visa, occupation);
             String username = createUsername();
             String password = createPassword();
