@@ -3,7 +3,9 @@
  * @author JavaFine
  */
 import java.util.ArrayList;
-
+/**
+ * Setting all of the information for booking a flight
+ */
 public class FlightBooking {
     protected ArrayList<Profile> travelers;
     private ArrayList<Seat> seats;

@@ -28,7 +28,10 @@ public class Flight {
     this.flightSeats = flightSeats;
     this.airline = airline;
   }
-
+/**
+ * This is where we created the getters for all of the parameters
+ * @return
+ */
   public UUID getID() {
     return this.id;
   }

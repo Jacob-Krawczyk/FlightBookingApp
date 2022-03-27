@@ -6,7 +6,12 @@
  public class Seat {
     private boolean occupied;
     private String seatNumber;
-
+/**
+ * The following methods are how we go about getting whether 
+ * or not the seat is occupied and the seats number
+ * @param occupied
+ * @param seatNumber
+ */
     public Seat(boolean occupied, String seatNumber) {
         this.setOccupied(occupied);
         this.setSeatNumber(seatNumber);

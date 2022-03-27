@@ -24,7 +24,10 @@ public class Friend {
 
     public Friend(String first, String last, String dob, String discount2) {
     }
-
+/**
+ * Created getters and setter for friend
+ * @param name
+ */
     public void setFirstName(String name) {
         this.firstName=name;
     }
