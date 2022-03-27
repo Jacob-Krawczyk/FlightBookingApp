@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.UUID;
 
 /**
@@ -42,7 +43,7 @@ public class HotelsList {
         return null;
     }
 
-    public ArrayList<Hotel> getSearch(String location, String amenities, ArrayList<Accessibility> accessibility, String roomType, int numOfBeds) {
+    public ArrayList<Hotel> getSearch(String location, ArrayList<Amenities> amenities, ArrayList<Accessibility> accessibility, String roomType, int numOfBeds) {
         clearSearch();
         getHotelByLocation(location);
         getHotelByAmenities(amenities);
@@ -69,11 +70,17 @@ public class HotelsList {
      * Removes hotels that don't match amentiies
      * @param amenities
      */
-    private void getHotelByAmenities(String amenities) {
-        if(!amenities.equals("none")) {
-            for(Hotel search:returnList) {
-                if(!search.getAmenities().equals(amenities)) {
-                    returnList.remove(search);
+    private void getHotelByAmenities(ArrayList<Amenities> amenities) {
+        EnumSet<Amenities> amenitiesList = EnumSet.allOf(Amenities.class);
+        ArrayList<Amenities> removeList = new ArrayList<Amenities>();
+        for(Amenities amen: amenitiesList) {
+            removeList.add(amen);
+        }
+        removeList.removeAll(amenities);
+        for(Hotel search: returnList) {
+            for(Amenities rem: removeList) {
+                if(search.getAmenities().equals(rem)) {
+                    returnList.remove(rem);
                 }
             }
         }
@@ -84,10 +91,16 @@ public class HotelsList {
      * @param accessibility
      */
     private void getHotelByAccessibility(ArrayList<Accessibility> accessibility) {
-        if(!accessibility.equals("none")) {
-            for(Hotel search: returnList) {
-                if(!search.getAccessibility().containsAll(accessibility)) {
-                    returnList.remove(search);
+        EnumSet<Accessibility> accessibilityList = EnumSet.allOf(Accessibility.class);
+        ArrayList<Accessibility> removeList = new ArrayList<Accessibility>();
+        for(Accessibility access: accessibilityList) {
+            removeList.add(access);
+        }
+        removeList.removeAll(accessibility);
+        for(Hotel search: returnList) {
+            for(Accessibility rem: removeList) {
+                if(search.getAccessibility().equals(rem)) {
+                    returnList.remove(rem);
                 }
             }
         }

@@ -61,5 +61,7 @@ public class Flight {
     return this.airline;
   }
 
-
+  public String toString() {
+    return "Departure Location: " + this.departLocation + " Destination: " + this.destination + "\nDepature Date: " + this.departDate + " Departure Time: " + this.departTime + " Arrival Time: " + this.arrivalTime;
+  }
 }
