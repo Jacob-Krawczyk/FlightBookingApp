@@ -50,7 +50,7 @@ public class RegisteredUser extends User {
         return pref;
     }
     public void bookFlight() {
-
+       
     }
     public void CancelFlight() {
 

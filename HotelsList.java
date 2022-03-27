@@ -8,7 +8,6 @@ import java.util.UUID;
  */
 public class HotelsList {
     private HotelDatabaseLoader hotelLoader;
-    private HotelDatabaseWriter hotelWriter;
     private ArrayList<Hotel> hotels;
     private ArrayList<Hotel> returnList;
     private static HotelsList hotelList;
@@ -32,7 +31,7 @@ public class HotelsList {
      * @return list of all hotels from database
      */
     public ArrayList<Hotel> getAllHotels() {
-        hotels = hotelLoader.getHotel();
+        hotels = HotelDatabaseLoader.getHotel();
         return hotels;
     }
     public Hotel getHotelByUUID(UUID id) {

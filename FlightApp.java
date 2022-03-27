@@ -75,4 +75,16 @@ public class FlightApp {
     return null;
 
    }
+   public void printItinerary(RegisteredUser currentUser) {
+       ArrayList<String> itinerary = currentUser.accessItinerary();
+       for(String item: itinerary) {
+           System.out.println(item.toString());
+       }
+   }
+   public void printFriendsList(RegisteredUser currentUser) {
+       ArrayList<Friend> friendsList = currentUser.getFriends();
+       for(Friend friend:friendsList) {
+           System.out.println(friend.toString());
+       }
+   }
 }
