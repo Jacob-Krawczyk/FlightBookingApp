@@ -1,4 +1,3 @@
-
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -6,7 +5,10 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-
+/**
+ * Flight Database Loader
+ * @author JavaFine
+ */
 public class FlightDatabaseLoader {
   protected static final String FLIGHT_FILE = "src/flight.json";
   protected static final String ID = "id";
@@ -56,18 +58,10 @@ public class FlightDatabaseLoader {
             arrival_time, seats, Airline);
         // add the every single flight to arraylist of flights.
         flights.add(flight);
-
       }
-
-
-    } catch (Exception e) {
-        
+    } catch (Exception e) {  
+      System.out.println(e); 
     }
-
-
     return flights;
   }
-
-
-
 }

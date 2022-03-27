@@ -23,13 +23,20 @@ public class FlightsList {
         }
         return flightList;
     }
-public Flight getFlightByUUID(UUID id) {
-    for (Flight flight: flights) {
-        if (flight.getID().equals(id))
-            return flight;
+
+    /**
+     * Returns a single flight by UUID
+     * @param id
+     * @return flight
+     */
+    public Flight getFlightByUUID(UUID id) {
+        for (Flight flight: flights) {
+            if (flight.getID().equals(id))
+                return flight;
+        }
+        return null;
     }
-    return null;
-}
+
     /**
      * Returns list of all flights
      * @return all flights
@@ -39,12 +46,19 @@ public Flight getFlightByUUID(UUID id) {
         return flights;
     }
 
+    /**
+     * Returns list of flights within parameters user inputted
+     * @param destination
+     * @param airline
+     * @return
+     */
     public ArrayList<Flight> getSearch(String destination, ArrayList<String> airline) {
         clearSearch();
         getFlightByDestination(destination);
         getFlightByAirline(airline);
         return flights;
     }
+    
     /**
      * Clears search array list
      */

@@ -1,8 +1,7 @@
 /**
- * Flight Application
+ * A Profile 
  * @author JavaFine
  */
-
 public class Profile {
     private String firstName;
     private String lastName;

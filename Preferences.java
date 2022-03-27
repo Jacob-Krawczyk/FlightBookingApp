@@ -1,5 +1,9 @@
 import java.util.ArrayList;
 
+/**
+ * Registered User's Preferences
+ * @author JavaFine
+ */
 public class Preferences {
     private ArrayList<String> airline;
     private ArrayList<String> flightClass;

@@ -1,10 +1,10 @@
+import java.util.ArrayList;
+import java.util.UUID;
+
 /**
  * Registered Users
  * @author JavaFine
  */
-
-import java.util.ArrayList;
-import java.util.UUID;
 public class RegisteredUser extends User {
     private UUID id;
     private Profile userProfile;
@@ -41,7 +41,6 @@ public class RegisteredUser extends User {
         UUID uuid = UUID.randomUUID();
         friendList = null;
         RegisteredUser newUser = new RegisteredUser(uuid, friendList, userProfile, username, password);
-
     }
 
     /**

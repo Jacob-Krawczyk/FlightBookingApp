@@ -1,10 +1,6 @@
 /**
- * Flight Application
+ * Flight Class Enum
  * @author JavaFine
- */
-/**
- * This is the ennumeration that stores all of the different classes
- * you can sit in for flight
  */
 public enum FlightClass {
    ECONOMY("Economy"),
@@ -14,14 +10,18 @@ public enum FlightClass {
    
    private final String textForm;
 
-/**
- * This method converts the values into strings
- * @param textForm
- */
+   /**
+    * Converts the values into strings 
+    * @param textForm
+    */
    private FlightClass(String textForm) {
         this.textForm = textForm;
     }
 
+    /**
+     * Returns the string form of the values
+     * @return strings
+     */
    public String toString() {
       return textForm;
    }

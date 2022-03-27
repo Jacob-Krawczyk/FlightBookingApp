@@ -1,9 +1,9 @@
 import java.util.*;
+
 /**
- * Flight Application
+ * A Friend 
  * @author JavaFine
  */
-
 public class Friend {
     private UUID id ;
 	private String firstName;
@@ -13,8 +13,17 @@ public class Friend {
     ArrayList<Flight> flights;
     ArrayList<Hotel> hotels;
 
-    public Friend(UUID Friend_ID,String Friend_FirstName,String Friend_LastName,String Friend_DateOfBirthday,String Friend_Discount,Flight friend_flight
-    ,Hotel new_Room) {
+    /**
+     * Loads friend from JSON file
+     * @param Friend_ID
+     * @param Friend_FirstName
+     * @param Friend_LastName
+     * @param Friend_DateOfBirthday
+     * @param Friend_Discount
+     * @param friend_flight
+     * @param new_Room
+     */
+    public Friend(UUID Friend_ID,String Friend_FirstName,String Friend_LastName,String Friend_DateOfBirthday,String Friend_Discount) {
        this.id=Friend_ID;
 	   this.firstName=Friend_FirstName;
 	   this.lastName=Friend_LastName;
@@ -22,39 +31,54 @@ public class Friend {
 	   this.discount=Friend_Discount;
     }
 
-    public Friend(String first, String last, String dob, String discount2) {
-    }
-/**
- * Created getters and setter for friend
- * @param name
- */
-    public void setFirstName(String name) {
-        this.firstName=name;
+    /**
+     * Creates non-user friend
+     * @param first
+     * @param last
+     * @param dob
+     * @param discount2
+     */
+    public void createNonUserFriend(String first, String last, String dob, String discount2) {
+        UUID uuid = UUID.randomUUID();
+        Friend newFriend = new Friend(uuid, first, last, dob, discount2);
     }
 
-    public void setLastName(String name) {
-        this.lastName=name;
-    }
-    public void setdateOfBirthday(String date)
-    {
-        this.dateOfBirthday=date;
-    }
+    /**
+     * Returns first name 
+     * @return first name
+     */
     public String getFirstName() {
         return firstName;
     }
 
-    public String getLastName()
-    {
+    /**
+     * Returns last name
+     * @return
+     */
+    public String getLastName() {
         return lastName;
     }
-    public String getDateOfBirthday()
-    {
+
+    /**
+     * Returns date of birth
+     * @return
+     */
+    public String getDateOfBirthday() {
         return dateOfBirthday;
     }
-    public String getDiscount()
-    {
+
+    /**
+     * Returns discount
+     * @return
+     */
+    public String getDiscount() {
         return discount;
     }
+
+    /**
+     * Returns string containing friend's information 
+     * @return string
+     */
     public String toString() {
         return "First Name: " + this.firstName + " Last Name: " + this.lastName + " Date of Birth: " + this.dateOfBirthday + " Discount: " + this.discount + " Flights: " + this.flights.toString() + " Hotels: " + this.hotels.toString(); 
     }

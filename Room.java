@@ -1,12 +1,11 @@
-/**
- * Room class
- * @author JavaFine
- */
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * A Room
+ * @author JavaFine
+ */
 public class Room {
-   
     private String numberOfBeds;
     private String roomType;
     private String checkInDay;
@@ -43,7 +42,7 @@ public class Room {
 
     /**
      * Returns room check in date
-     * @return
+     * @return room check in date
      */
     public String getRoomCheckInDate() {
         return this.checkInDay;
@@ -51,7 +50,7 @@ public class Room {
 
     /**
      * Returns room check in time
-     * @return
+     * @return room check in time
      */
     public String getRoomCheckInTime() {
         return this.checkInTime;
@@ -59,7 +58,7 @@ public class Room {
 
     /**
      * Returns room check out date 
-     * @return
+     * @return room check out date 
      */
     public String getRoomCheckOutDate() {
         return this.checkOutDay;
@@ -67,7 +66,7 @@ public class Room {
 
     /**
      * Returns room check out time 
-     * @return
+     * @return room check out time
      */
     public String getRoomCheckOutTime() {
         return this.checkOutTime;

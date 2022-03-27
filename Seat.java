@@ -1,35 +1,41 @@
 /**
- * Flight Application
- * @author JavaFine
+ * A Seat on a Flight
  */
-
  public class Seat {
     private boolean occupied;
     private String seatNumber;
-/**
- * The following methods are how we go about getting whether 
- * or not the seat is occupied and the seats number
- * @param occupied
- * @param seatNumber
- */
+
+    /**
+     * Constructs a seat 
+     * @param occupied
+     * @param seatNumber
+     */
     public Seat(boolean occupied, String seatNumber) {
         this.setOccupied(occupied);
-        this.setSeatNumber(seatNumber);
+        this.seatNumber = seatNumber;
     }
 
+    /**
+     * Checks whether seat is occupied or not
+     * @return boolean
+     */
     public boolean isOccupied() {
         return occupied;
     }
 
+    /**
+     * Changes seat occupation status
+     * @param occupied
+     */
     public void setOccupied(boolean occupied) {
         this.occupied = occupied;
     }
 
+    /**
+     * Returns seat number
+     * @return seat number
+     */
     public String getSeatNumber() {
         return seatNumber;
-    }
-
-    public void setSeatNumber(String seatNumber) {
-        this.seatNumber = seatNumber;
     }
  } 

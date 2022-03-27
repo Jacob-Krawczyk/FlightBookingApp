@@ -1,10 +1,6 @@
 /**
- * Flight Application
+ * Hotel Room Type Enum
  * @author JavaFine
- */
-/**
- * This is the ennumeration that stores all of the different 
- * types of hotel rooms
  */
 public enum HotelRoomTypes {
     SUITE("Suite"),

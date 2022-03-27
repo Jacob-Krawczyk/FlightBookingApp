@@ -1,10 +1,10 @@
-/**
- * Hotel Class
- * @author JavaFine
- */
 import java.util.ArrayList;
 import java.util.UUID;
 
+/**
+ * A Hotel
+ * @author JavaFine
+ */
 public class Hotel{
     private UUID id; 
     private String name;
@@ -22,17 +22,14 @@ public class Hotel{
     private String pricePerNight;
     private String totalPrice;
 
-    // public Hotel (UUID id, String city, String hotel_name,  ArrayList<Room> rooms ){
-    //     this.id = id;
-    //     this.city = city;
-    //     this.name = hotel_name;
-    //     this.rooms = rooms;
-        
-    // }
-
-    public Hotel(UUID id, String name, String city, ArrayList<Room> rooms, ArrayList<Amenities> amenities,
-            ArrayList<Accessibility> accessibilities, String roomType, String typeOfBeds, int numOfBeds,
-            String checkOutDay, String checkInDay, String checkInTime) {
+    /**
+     * Loads JSON File
+     * @param id
+     * @param name
+     * @param city
+     * @param rooms
+     */
+    public Hotel(UUID id, String name, String city, ArrayList<Room> rooms) {
         this.id = id;
         this.name = name;
         this.city = city;
@@ -67,7 +64,7 @@ public class Hotel{
      * Adds amentity to amenities list
      * @param amenity
      */
-    public void addAmenities(Amenities amenity){
+    public void addAmenities(Amenities amenity) {
         amenities.add(amenity);
     }
 
@@ -75,7 +72,7 @@ public class Hotel{
      * Removes amenity from amentiies list 
      * @param amenity
      */
-    public void removeAmenity(Amenities amenity){
+    public void removeAmenity(Amenities amenity) {
         amenities.remove(amenity);
     }
 
@@ -83,7 +80,7 @@ public class Hotel{
      * Adds accessibility to accessibilities list
      * @param accessibility
      */
-    public void addAccessibility(Accessibility accessibility){
+    public void addAccessibility(Accessibility accessibility) {
         accessibilities.add(accessibility);
     }
 
@@ -107,8 +104,7 @@ public class Hotel{
      * Returns name of hotel
      * @return hotel name
      */
-    public String getHotelName()
-    {
+    public String getHotelName() {
         return this.name;
     }
 
@@ -135,6 +131,4 @@ public class Hotel{
     public int getnumOfBeds() {
         return this.getnumOfBeds();
     }
-    
-    
 }

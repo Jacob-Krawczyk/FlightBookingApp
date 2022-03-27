@@ -6,7 +6,6 @@ import org.json.simple.parser.JSONParser;
 
 
 public class HotelDatabaseLoader{
-	
 	protected static final String HOTEL_FILE_NAME = "src/hotels.json";
 	protected static final String HOTEL_FILE_ID = "id";
 	protected static final String HOTEL_FILE_CITY = "city";
@@ -19,8 +18,7 @@ public class HotelDatabaseLoader{
 	protected static final String HOTEL_NUMBER_OF_BEDS="number of beds";
 	
 	
-	public static ArrayList<Hotel> getHotel()
-	{
+	public static ArrayList<Hotel> getHotel() {
 		ArrayList<Hotel> hotels = new ArrayList<Hotel>();
 		ArrayList<Room> rooms = new ArrayList<Room>();
 		
@@ -53,19 +51,14 @@ public class HotelDatabaseLoader{
           		Room new_room = new Room(room_type, number_of_beds,check_in_date,check_out_date,
 				  check_in_time,check_out_time);
  				rooms.add(new_room);
-         
         		}
 				Hotel hotel = new Hotel(id, city,hotel_name,rooms);
 				hotels.add(hotel);
 			}
-			
 		}
 		catch (Exception e) {
-        
+			System.out.println(e);
 		}
-	
 		return hotels;
-		
 	}
-	
 }

@@ -1,10 +1,13 @@
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+/**
+ * Hotel Database Writer 
+ * @author JavaFine
+ */
 public class HotelDatabaseWriter {
   protected static final String Hotel_FILE = "src/hotels.json";
   protected static final String ID = "id";
@@ -30,13 +33,9 @@ public class HotelDatabaseWriter {
     try (FileWriter file = new FileWriter(Hotel_FILE)) {
       file.write(jasonHotels.toJSONString());
       file.flush();
-
     } catch (IOException e) {
       e.printStackTrace();
     }
-
-
-
   }
 
   public static JSONObject getHotelsJSON(Hotel hotel) {
@@ -55,7 +54,6 @@ public class HotelDatabaseWriter {
     for (int j = 0; j < currentRooms.size(); j++) {
       jasonRooms.add(getRoomsJSON(currentRooms.get(j)));
     }
-
     return jsonoF;
   }
 

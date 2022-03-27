@@ -1,10 +1,13 @@
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+/**
+ * Flight Database Writer 
+ * @author JavaFine
+ */
 public class FlightDatabaseWriter {
   protected static final String FLIGHT_FILE = "src/flight.json";
   protected static final String ID = "id";
@@ -30,13 +33,9 @@ public class FlightDatabaseWriter {
     try (FileWriter file = new FileWriter(FLIGHT_FILE)) {
       file.write(jasonFlights.toJSONString());
       file.flush();
-
     } catch (IOException e) {
       e.printStackTrace();
     }
-
-
-
   }
 
   public static JSONObject getFlightsJSON(Flight flight) {
@@ -58,7 +57,6 @@ public class FlightDatabaseWriter {
     for (int j = 0; j < currentSeats.size(); j++) {
       jasonseats.add(getSeatsJSON(currentSeats.get(j)));
     }
-
     return jsonoF;
   }
 

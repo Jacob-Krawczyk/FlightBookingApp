@@ -4,9 +4,11 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-
+/**
+ * User Database Loader 
+ * @author JavaFine
+ */
 public class UserDatabaseLoader{
-	
 	protected static final String User_FILE_NAME = "src/users.json";
 	protected static final String User_FILE_Id = "id";
 	protected static final String User_FILE_User_Id="user-id";
@@ -18,7 +20,10 @@ public class UserDatabaseLoader{
 	protected static final String HOTEL_FILE_ID = "id";
 	protected static final String HOTEL_ROOM_TYPE="room type";
 
-	
+	/**
+	 * Returns list of users from JSON file
+	 * @return array list of users
+	 */
 	public static ArrayList<User> getUser()
 	{
 		ArrayList<User> users = new ArrayList<User>();
@@ -76,14 +81,10 @@ public class UserDatabaseLoader{
 				User user = new User(id, userID,password,firstName,lastName,dateOfBirthday,discount,friends);
 				users.add(user);
 			}
-			
 		}
 		catch (Exception e) {
-        
+			System.out.println(e);     
 		}
-	
 		return users;
-		
 	}
-	
 }

@@ -1,11 +1,7 @@
 /**
- * Flight Application
- * @author JavaFine
- */
-/** 
- * This is the enumeration we made to store all of the values for 
- * the different acceessabilities that a hotel can have
- */
+  * Hotel Accessibility Enum
+  @author JavaFine
+  */
 public enum Accessibility {
     SERVICE_ANIMAL("Service Animal"),
     HEARING_ACCESSABILITY_KIT("Hearing Accessibility Kit"),
@@ -17,14 +13,19 @@ public enum Accessibility {
     SHOWER_SEATS("Shower Seats");
 
     private final String textForm;
-/**
- * This method converts the values into strings
- * @param textForm
- */
+
+    /**
+     * Converts the values into strings 
+     * @param textForm
+     */
     private Accessibility(String textForm) {
         this.textForm = textForm;
     }
 
+    /**
+     * Returns string form of accessibility enum
+     * @return string
+     */
     public String toSring() {
         return textForm;
     }

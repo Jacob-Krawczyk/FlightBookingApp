@@ -11,12 +11,22 @@ public class UserList {
     private ArrayList<RegisteredUser> users;
     private static UserList userList;
 
+    /**
+     * Creates and returns a single instance of UserList
+     * @return UserList
+     */
     public static UserList getInstance() {
         if(userList == null) {
             userList = new UserList();
         }
         return userList;
     }
+
+    /**
+     * Returns user by UUID
+     * @param id
+     * @return user 
+     */
     public RegisteredUser getUserByUUID(UUID id) {
         for (RegisteredUser user: users) {
             if (user.getID().equals(id))
@@ -24,6 +34,7 @@ public class UserList {
         }
         return null;
     }
+    
     /**
      * Adds user to list and to database files
      * @param user
