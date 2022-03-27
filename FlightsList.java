@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.UUID;
 
 /**
@@ -38,6 +39,12 @@ public Flight getFlightByUUID(UUID id) {
         return flights;
     }
 
+    public ArrayList<Flight> getSearch(String destination, ArrayList<String> airline) {
+        clearSearch();
+        getFlightByDestination(destination);
+        getFlightByAirline(airline);
+        return flights;
+    }
     /**
      * Clears search array list
      */
@@ -59,11 +66,17 @@ public Flight getFlightByUUID(UUID id) {
     /**
      * Removes flights if they don't match airline
      */
-    public void getFlightByAirline(String airline) {
-        if(!airline.equals(null)) {
-            for(Flight search: flights) {
-                if(!search.getAirline().equals(airline)) {
-                    returnList.remove(search);
+    public void getFlightByAirline(ArrayList<String> airline) {
+        EnumSet<AirlineCompany> airlineList = EnumSet.allOf(AirlineCompany.class);
+        ArrayList<String> removeList = new ArrayList<String>();
+        for(AirlineCompany comp: airlineList) {
+            removeList.add(comp.toString());
+        }
+        removeList.removeAll(airline);
+        for(Flight flight: flights) {
+            for(String rem: removeList) {
+                if(flight.getAirline().equals(rem)) {
+                    returnList.remove(flight);
                 }
             }
         }

@@ -1,4 +1,5 @@
 import java.util.*;
+import java.lang.*;
 
 /**
  * User Interface for Flight Application 
@@ -23,10 +24,10 @@ public class FlightUI {
                     printCreateAccount();
                     break;
                 case 3:
-                    printFlightSearch();
+                    printFlightSearchNotLoggedIn();
                     break;
                 case 4:
-                    printHotelSearch();
+                    printHotelSearchNotLoggedIn();
                     break;
                 case 5:
                     printQuit();
@@ -58,16 +59,16 @@ public class FlightUI {
             keyboard.nextLine();
             switch (response) {
                 case 1:
-                    printFlightSearch();
+                    printFlightSearch(currentUser);
                     break;
                 case 2:
-                    printHotelSearch();
+                    printHotelSearch(currentUser);
                     break;
                 case 3:
-                    printItinerary();
+                    printItinerary(currentUser);
                     break;
                 case 4:
-                    printFriendsList();
+                    printFriendsList(currentUser);
                     break;
                 case 5:
                     printSetPrefQuestion(currentUser);
@@ -78,11 +79,105 @@ public class FlightUI {
             printActionsPage(currentUser);
         }
     }
-    public void printFlightSearch() {
-
+    public void printFlightSearchNotLoggedIn() {
+        System.out.println("What is your destination?");
+        String destination = keyboard.nextLine();
+        System.out.println("From the following list, what is your preferred airline?");
+        String airline = keyboard.nextLine();
+        System.out.println("Here are all the flights that match your preferences.");
+        FlightsList flightlist = new FlightsList();
+        ArrayList<Flight> flightSearch = flightlist.getSearch(destination, airline);
+        for(int i = 0; i < flightSearch.size(); i++) {
+            System.out.println("Flight " + i + flightSearch.get(i).toString());
+        }
+        System.out.println("Type the number corresponding with the flight you wish to book to book it or type 99 to return to the actions page.");
+        int response = keyboard.nextInt();
+        keyboard.nextLine();
+        if(response == 99) {
+            printWelcomingPage();
+        }
+        printBookingNotLogin();
+        }
     }
-    public void printHotelSearch() {
-
+    public void printFlightSearch(RegisteredUser currentUser) {
+        ArrayList<String> airline = currentUser.getPreferences().getAirline();
+        System.out.println("What is your destination?");
+        String destination = keyboard.nextLine();
+        System.out.println("Here are all the flights that match your preferences.");
+        FlightsList flightList = new FlightsList();
+        ArrayList<Flight> flightSearch = flightList.getSearch(destination, airline);
+    }
+    public void printHotelSearchNotLoggedIn() {
+        System.out.println("Where do you want to book a hotel?");
+        String location = keyboard.nextLine();
+        ArrayList<Amenities> amenities = addAmenitiesPref();
+        ArrayList<Accessibility> accessibility = addAccessibilityPref();
+        System.out.println("What type of room do you want?");
+        String roomType = keyboard.nextLine();
+        System.out.println("How many beds do you want?");
+        int numOfBeds = keyboard.nextInt();
+        keyboard.nextLine();
+        HotelsList hotelList = new HotelsList();
+        ArrayList<Hotel> hotelSearch = hotelList.getSearch(location, amenities, accessibility, roomType, numOfBeds);
+        for(int i = 0; i < hotelSearch.size(); i++) {
+            System.out.println("Hotel " + i + hotelSearch.get(i).toString());
+        }
+        System.out.println("Type the number corresponding with the hotel you wish to book or type 99 to return to the actions page.");
+        int response = keyboard.nextInt();
+        keyboard.nextLine();
+        if(response == 99) {
+            printWelcomingPage();
+        }
+        printBookingNotLogin();
+        }
+    }
+    public ArrayList<Amenities> addAmenitiesPref() {
+        System.out.println("Please choose amenities you wish the hotel to have from the following list. Write each amentity on a separate line and write \"done\" when you're done.");
+        for(Amenities amenity: EnumSet.allOf(Amenities.class)) {
+            System.out.println(amenity.toString());
+        }
+        ArrayList<Amenities> prefAmenities = new ArrayList<Amenities>();
+        String amenityString = keyboard.nextLine();
+        while (!amenityString.equals("done")) {
+            if(!validAmenity(amenityString)) {
+                System.out.println("Invalid amenity. Try again.");
+            }
+            Amenities amenity = Amenities.valueOf(amenityString.toUpperCase());
+            prefAmenities.add(amenity);
+        }
+        return prefAmenities;
+    }
+    public boolean validAmenity(String amenity) {
+        for(Amenities amen: EnumSet.allOf(Amenities.class)) {
+            if(amenity.equals(amen)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public ArrayList<Accessibility> addAccessibilityPref() {
+        System.out.println("Please choose accessibilities you wish the hotel to have from the following list. Write each accessibility on a separate line and write \"done\" when you're done.");
+        for(Accessibility accessibility: EnumSet.allOf(Accessibility.class)) {
+            System.out.println(accessibility.toString());
+        }
+        ArrayList<Accessibility> prefAccessibilities = new ArrayList<Accessibility>();
+        String accessibilityString = keyboard.nextLine();
+        while(!accessibilityString.equals("done")) {
+            if(!validAccessibility(accessibilityString)) {
+                System.out.println("Invalid accessibility. Try again.");
+            }
+            Accessibility accessibility = Accessibility.valueOf(accessibilityString.toUpperClass());
+            prefAccessibilities.add(accessibility);
+        }
+        return prefAccessibilities;
+    }
+    public boolean validAccessibility(String accessibility) {
+        for(Accessibility access: EnumSet.allOf(Accessibility.class)) {
+            if(accessibility.equals(access)) {
+                return true;
+            }
+        }
+        return false;
     }
     public void printQuit() {
         System.out.println("Thank you for using the Flight Booking App!");
@@ -242,7 +337,16 @@ public class FlightUI {
         return false;
     }
     public void printBookingNotLogin () {
-        
+        System.out.println("To be able to book, you must be logged in.\n1. Create Account\n2. Login\n3. Quit\nType the number corresponding with the action you wish to take.");
+        int resp = keyboard.nextInt();
+        keyboard.nextLine();
+        switch(resp) {
+            case 1:
+                printCreateAccount();
+            case 2:
+                printLogin();
+            case 3:
+                printQuit();
     }
     public void printItinerary(RegisteredUser currentUser) {
         
