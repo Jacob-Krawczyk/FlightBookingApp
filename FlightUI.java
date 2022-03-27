@@ -82,8 +82,7 @@ public class FlightUI {
     public void printFlightSearchNotLoggedIn() {
         System.out.println("What is your destination?");
         String destination = keyboard.nextLine();
-        System.out.println("From the following list, what is your preferred airline?");
-        String airline = keyboard.nextLine();
+        ArrayList<String> airline = addAirlinePref();
         System.out.println("Here are all the flights that match your preferences.");
         FlightsList flightlist = new FlightsList();
         ArrayList<Flight> flightSearch = flightlist.getSearch(destination, airline);
@@ -106,6 +105,44 @@ public class FlightUI {
         System.out.println("Here are all the flights that match your preferences.");
         FlightsList flightList = new FlightsList();
         ArrayList<Flight> flightSearch = flightList.getSearch(destination, airline);
+        for (int i = 0; i < flightSearch.size(); i++) {
+            System.out.println("Flight " + i + flightSearch.get(i).toString());
+        }
+        System.out.println("Type the number corresponding with the flight you wish to book to book it or type 99 to return to the actions page.");
+        int response = keyboard.nextInt();
+        keyboard.nextLine();
+        if (response == 99) {
+            printActionsPage(currentUser);
+        }
+        app.bookFlight(flightSearch.get(response));
+        System.out.println("Flight successfully booked! Returning to the actions page.");
+        printActionsPage(currentUser);
+    }
+    public void printHotelSearch(RegisteredUser currentUser) {
+        System.out.println("Where do you want to book a hotel?");
+        String location = keyboard.nextLine();
+        ArrayList<Amenities> amenities = addAmenitiesPref();
+        ArrayList<Accessibility> accessibility = addAccessibilityPref();
+        System.out.println("What type of room do you want?");
+        String roomType = keyboard.nextLine();
+        System.out.println("How many beds do you want?");
+        int numOfBeds = keyboard.nextInt();
+        keyboard.nextLine();
+        HotelsList hotelList = new HotelsList();
+        ArrayList<Hotel> hotelSearch = hotelList.getSearch(location, amenities, accessibility, roomType, numOfBeds);
+        for (int i = 0; i < hotelSearch.size(); i++) {
+            System.out.println("Hotel " + i + hotelSearch.get(i).toString());
+        }
+        System.out.println(
+                "Type the number corresponding with the hotel you wish to book or type 99 to return to the actions page.");
+        int response = keyboard.nextInt();
+        keyboard.nextLine();
+        if (response == 99) {
+            printActionsPage(currentUser);
+        }
+        app.bookHotel(hotelSearch.get(response));
+        System.out.println("Successfully booked hotel! Returning to Actions Page.");
+        printActionsPage(currentUser);
     }
     public void printHotelSearchNotLoggedIn() {
         System.out.println("Where do you want to book a hotel?");
@@ -347,5 +384,11 @@ public class FlightUI {
                 printLogin();
             case 3:
                 printQuit();
+    }
+    public void printItinerary(RegisteredUser currentUser) {
+        app.printItinerary(currentUser);
+    }
+    public void printFriendsList(RegisteredUser currentUser) {
+        app.printFriendsList(currentUser);
     }
 }

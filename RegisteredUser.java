@@ -38,7 +38,7 @@ public class RegisteredUser implements User {
         return pref;
     }
     public void bookFlight() {
-
+       
     }
     public void CancelFlight() {
 
@@ -73,7 +73,7 @@ public class RegisteredUser implements User {
         String last = friend.getLast();
         String dob = friend.getDOB();
         String discount = friend.getDiscount();
-        Friend friend = new Friend(first,last,dob,discount);
+        Friend newFriend = new Friend(first,last,dob,discount);
         
     }
     public void addUserFriend() {
@@ -83,7 +83,7 @@ public class RegisteredUser implements User {
         System.out.println("Removed friend");
     }
 
-    public void accessItinerary(ArrayList<FlightBooking> flightBookings, ArrayList<HotelBooking> hotelBookings) {
+    public ArrayList<String> accessItinerary() {
         
 
     }
