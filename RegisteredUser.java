@@ -14,6 +14,7 @@ public class RegisteredUser extends User {
     private ArrayList<FlightBooking> flightBookings;
     private ArrayList<HotelBooking> hotelBookings;
     private ArrayList<Friend> friendList;
+    private UserList userList;
 
     /**
      * Loads JSON file 
@@ -37,10 +38,11 @@ public class RegisteredUser extends User {
      * @param username
      * @param password
      */ 
-    public void createUser(Profile userProfile, String username, String password) {
+    public RegisteredUser(Profile userProfile, String username, String password) {
         UUID uuid = UUID.randomUUID();
         friendList = null;
         RegisteredUser newUser = new RegisteredUser(uuid, friendList, userProfile, username, password);
+        userList.addUser(newUser);
     }
 
     /**
@@ -128,12 +130,9 @@ public class RegisteredUser extends User {
      * Adds non-user friend to friends list
      * @param friend
      */
-    public void addNonUserFriend(Profile friend) {
-        String first = friend.getFirst();
-        String last = friend.getLast();
-        String dob = friend.getDOB();
-        String discount = friend.getDiscount();
-        Friend aFriend = new Friend(first,last,dob,discount);
+    public void addNonUserFriend(String firstName, String lastName, String dob, String discount) {
+        UUID uuid = UUID.randomUUID();
+        Friend aFriend = new Friend(uuid, firstName,lastName, dob, discount);
         friendList.add(aFriend);
     }
 
@@ -141,12 +140,14 @@ public class RegisteredUser extends User {
      * Adds user friend to friend's list
      * @param friend
      */
-    public void addUserFriend(RegisteredUser friend) {
-        String first = friend.getProfile().getFirst();
-        String last = friend.getProfile().getLast();
-        String dob = friend.getProfile().getDOB();
-        String discount = friend.getProfile().getDiscount();
-        Friend aFriend = new Friend(first, last, dob, discount);
+    public void addUserFriend(String username) {
+        RegisteredUser newFriend = userList.getUserByUsername(username);
+        UUID uuid = newFriend.getID();
+        String first = newFriend.getProfile().getFirst();
+        String last = newFriend.getProfile().getLast();
+        String dob = newFriend.getProfile().getDOB();
+        String discount = newFriend.getProfile().getDOB();
+        Friend aFriend = new Friend(uuid, first, last, dob, discount);
         friendList.add(aFriend);
     }
 
@@ -154,8 +155,12 @@ public class RegisteredUser extends User {
      * Removes friend from friends list
      * @param friend
      */
-    public void removeFriend(Friend friend) {
-        friendList.remove(friend);
+    public void removeFriend(String first, String last) {
+        for (Friend friend : friendList) {
+            if (friend.getFirstName().equals(first) && friend.getLastName().equals(last)) {
+                friendList.remove(friend);
+            }
+        }
     }
 
     /**
@@ -176,7 +181,7 @@ public class RegisteredUser extends User {
      * Returns UUID
      * @return UUID
      */
-    public Object getID() {
+    public UUID getID() {
         return this.id;
     }
 }

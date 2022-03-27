@@ -25,7 +25,7 @@ public class UserList {
     /**
      * Returns user by UUID
      * @param id
-     * @return user 
+     * @return registered user 
      */
     public RegisteredUser getUserByUUID(UUID id) {
         for (RegisteredUser user: users) {
@@ -35,6 +35,19 @@ public class UserList {
         return null;
     }
     
+    /**
+     * Returns user by username
+     * @param username
+     * @return registered user
+     */
+    public RegisteredUser getUserByUsername(String username) {
+        for(RegisteredUser user: users) {
+            if(user.getUsername().equals(username)) {
+                return user;
+            }
+        }
+        return null;
+    }
     /**
      * Adds user to list and to database files
      * @param user

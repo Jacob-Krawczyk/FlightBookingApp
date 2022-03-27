@@ -32,18 +32,6 @@ public class Friend {
     }
 
     /**
-     * Creates non-user friend
-     * @param first
-     * @param last
-     * @param dob
-     * @param discount2
-     */
-    public void createNonUserFriend(String first, String last, String dob, String discount2) {
-        UUID uuid = UUID.randomUUID();
-        Friend newFriend = new Friend(uuid, first, last, dob, discount2);
-    }
-
-    /**
      * Returns first name 
      * @return first name
      */

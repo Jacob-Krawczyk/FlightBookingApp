@@ -386,9 +386,53 @@ public class FlightUI {
                 printQuit();
     }
     public void printItinerary(RegisteredUser currentUser) {
+        System.out.println("Current Itinerary");
         app.printItinerary(currentUser);
+
     }
     public void printFriendsList(RegisteredUser currentUser) {
+        System.out.println("Friends List");
         app.printFriendsList(currentUser);
+        System.out.println("1. Add Non-User Friend\n2. Add User Friend\n3. Remove Friend\n4. Return to Actions Page\nType the number corresponding to the action you wish to take: ");
+        int response = keyboard.nextInt();
+        keyboard.nextLine();
+        switch(response) {
+            case 1:
+                printAddNonUserFriend(currentUser);
+            case 2:
+                printAddUserFriend(currentUser);
+            case 3:
+                printRemoveFriend(currentUser);
+            case 4: 
+                printActionsPage(currentUser);
+        }
+    }
+    public void printAddNonUserFriend(RegisteredUser currentUser) {
+        System.out.println("What is your friend's first name?");
+        String firstName = keyboard.nextLine();
+        System.out.println("What is your friend's last name?");
+        String lastName = keyboard.nextLine();
+        System.out.println("What is your friend's date of birth?");
+        String dob = keyboard.nextLine();
+        System.out.println("What discounts do your friend qualify for?");
+        String discount = keyboard.nextLine();
+        currentUser.addNonUserFriend(firstName, lastName, dob, discount);
+        System.out.println("New friend successfully added!");
+        printFriendsList(currentUser);
+    }
+    public void printAddUserFriend(RegisteredUser currentUser) {
+        System.out.println("What is the username of the user you wish to add to your friend list?");
+        String username = keyboard.nextLine();
+        currentUser.addUserFriend(username);
+        System.out.println("New friend successfully added!");
+    }
+    public void printRemoveFriend(RegisteredUser currentUser) {
+        System.out.println("What is the first name of the person you wish to remove from your friend list?");
+        String first = keyboard.nextLine();
+        System.out.println("What is the last name of the pereson you wish to remove from your friend list?");
+        String last = keyboard.nextLine();
+        currentUser.removeFriend(first, last);
+        System.out.println("Friend successfully removed!");
+        printFriendsList(currentUser);
     }
 }
