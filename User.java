@@ -26,6 +26,9 @@ public abstract class User {
     public User(UUID id2, String userID2, String password2, String firstName2, String lastName2, String dateOfBirthday2,
             String discount2, ArrayList<Friend> friendList, Profile user, String username, String password3) {
     }
+    public User(UUID id2, String password2, String firstName2, String lastName2, String dateOfBirthday2,
+            String discount2, ArrayList<Friend> friendList, Profile user, String username, String password3) {
+    }
     public void searchFlights() {
         return;
     }

@@ -24,14 +24,14 @@ public class RegisteredUser extends User {
     }
 
     //creating a use
-    public RegisteredUser(UUID id, String firstName, String lastName, String dateOfBirthday, String discount, ArrayList<Friend> friendList, Profile user, String username, String password) {
-        this.id = UUID.randomUUID();
-        super(id, password, firstName, lastName, dateOfBirthday, discount, friendList, user, username, password);
+    // public RegisteredUser(UUID id, String firstName, String lastName, String dateOfBirthday, String discount, ArrayList<Friend> friendList, Profile user, String username, String password) {
+    //     this.id = UUID.randomUUID();
+    //     super(id, password, firstName, lastName, dateOfBirthday, discount, friendList, user, username, password);
         
-        this.userProfile = userProfile;
-        this.username = username;
-        this.password = password;
-    }
+    //     this.userProfile = userProfile;
+    //     this.username = username;
+    //     this.password = password;
+    // }
 
 
     public String getUsername() {
@@ -105,5 +105,8 @@ public class RegisteredUser extends User {
 
     public Object getID() {
         return this.id;
+    }
+
+    public void add(Friend friend) {
     }
 }
