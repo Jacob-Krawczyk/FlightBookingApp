@@ -23,12 +23,14 @@ public class Friend {
      * @param friend_flight
      * @param new_Room
      */
-    public Friend(UUID Friend_ID,String Friend_FirstName,String Friend_LastName,String Friend_DateOfBirthday,String Friend_Discount) {
+    public Friend(UUID Friend_ID,String Friend_FirstName,String Friend_LastName,String Friend_DateOfBirthday,String Friend_Discount,ArrayList<Flight> friend_flight,ArrayList<Hotel> new_Hotel) {
        this.id=Friend_ID;
 	   this.firstName=Friend_FirstName;
 	   this.lastName=Friend_LastName;
 	   this.dateOfBirthday=Friend_DateOfBirthday;
 	   this.discount=Friend_Discount;
+       this.flights=friend_flight;
+       this.hotels=new_Hotel;
     }
 
     /**

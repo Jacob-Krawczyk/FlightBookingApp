@@ -28,7 +28,9 @@ public class UserDatabaseLoader{
 	{
 		ArrayList<User> users = new ArrayList<User>();
 		ArrayList<Friend> friends = new ArrayList<Friend>();
-		
+		ArrayList<Flight> flights = new ArrayList<Flight>();
+		ArrayList<Hotel> hotels = new ArrayList<Hotel>();
+
 		try {
 			//read json file
 			FileReader reader = new FileReader(User_FILE_NAME);
@@ -63,8 +65,8 @@ public class UserDatabaseLoader{
 					String Flight_Seat=(String) userJSON.get("seat");
 				}
 				Flight friend_flight = new Flight();
-				
-				friend_flight.getFlightByUUID(UUID Flight_ID);
+				friend_flight.getFlightByUUID(Flight_ID);
+				flights.add(friend_flight);
 				
 				JSONArray list_hotel =(JSONArray)personJSON.get("hotels");
 				for(int m=0;m<list_hotel.size();m++)
@@ -73,10 +75,11 @@ public class UserDatabaseLoader{
 					String Hotel_Room_Check_IN_Day=(String) userJSON.get("check in day");
 				}
 				Hotel new_Hotel = new Hotel();
-				new_Hotel.getHotelByUUID(UUID Hotel_ID);
-				
-          		Friend new_friend = new Friend(Friend_ID,Friend_FirstName,Friend_LastName,Friend_DateOfBirthday,Friend_Discount,friend_flight,new_Hotel);
+				new_Hotel.getHotelByUUID(Hotel_ID);
+				hotels.add(new_Hotel);
+          		Friend new_friend = new Friend(Friend_ID,Friend_FirstName,Friend_LastName,Friend_DateOfBirthday,Friend_Discount,flights,hotels);
 				friends.add(new_friend);
+				
         		}
 				User user = new User(id, userID,password,firstName,lastName,dateOfBirthday,discount,friends);
 				users.add(user);

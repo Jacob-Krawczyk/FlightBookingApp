@@ -22,6 +22,10 @@ public class Hotel{
     private String pricePerNight;
     private String totalPrice;
 
+    public Hotel()
+    {
+        
+    }
     /**
      * Loads JSON File
      * @param id
