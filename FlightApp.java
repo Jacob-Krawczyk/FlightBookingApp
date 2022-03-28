@@ -126,7 +126,32 @@ public class FlightApp {
         Friend friend = currentUser.getFriendByFristAndLast(first, last);
         hotelBooking.addTraveler(friend.getProfile());
     }
+
+    public void addFriendToFlightBooking(RegisteredUser currentUser, String first, String last, FlightBooking flightBooking) {
+        Friend friend = currentUser.getFriendByFristAndLast(first, last);
+        flightBooking.addTraveler(friend.getProfile());
+    }
+
+    public void addRoomToHotelBooking(HotelBooking hotelBooking, int roomNum) {
+        Room room = hotelList.getRoom(hotelBooking.getHotel(), roomNum);
+        hotelBooking.addRoom(room);
+    }
+
+    public void addSeatsToFlightBooking(FlightBooking flightBooking, String seatNum) {
+        Seat seat = flightList.getSeatBySeatNumber(flightBooking.getFlight(), seatNum)
+    }
     
+    public void printRooms(Hotel hotel, Date checkInDate, String checkinTime, Date checkOutDate, String checkOutTime) {
+        hotelList.printRoomByDateAndTime(hotel, checkInDate, checkinTime, checkOutDate, checkOutTime);
+    }
+
+    public void printAvailableSeats(Flight flight) {
+        ArrayList<Seat> available = flightList.getAvailableSeats(flight);
+        for(Seat seat: available) {
+            System.out.println(seat.toString());
+        }
+    }
+
     /**
      * Sets preferences of current user
      * @param currentUser

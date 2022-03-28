@@ -91,9 +91,9 @@ public class Flight {
    * @return array list of seats 
    */
   public ArrayList<Seat> getFlightSeats() {
-    return this.getFlightSeats();
+    return flightSeats;
   }
-
+  
   /**
    * Returns airline
    * @return airline

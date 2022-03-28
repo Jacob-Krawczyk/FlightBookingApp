@@ -20,6 +20,10 @@ public class FlightBooking {
         this.flights = flights;
     }
 
+    public void addTraveler(Profile profile) {
+        travelers.add(profile);
+    }
+
     public Flight getFlight() {
         return this.flights;
     }

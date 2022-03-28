@@ -1,3 +1,5 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -110,48 +112,96 @@ public class FlightUI {
         if (response == 99) {
             printActionsPage(currentUser);
         }
-        app.bookFlight(currentUser, flightSearch.get(response));
-        System.out.println("Flight successfully booked! Returning to the actions page.");
-        printActionsPage(currentUser);
-    }
-    public static void printHotelSearch(RegisteredUser currentUser) {
-        System.out.println("Where do you want to book a hotel?");
-        String location = keyboard.nextLine();
-        ArrayList<Amenities> amenities = addAmenitiesPref();
-        ArrayList<Accessibility> accessibility = addAccessibilityPref();
-        System.out.println("What type of room do you want?");
-        String roomType = keyboard.nextLine();
-        System.out.println("How many beds do you want?");
-        int numOfBeds = keyboard.nextInt();
-        keyboard.nextLine();
-        ArrayList<Hotel> hotelSearch = app.getHotelSearch(location, amenities, accessibility, roomType, numOfBeds);
-        for (int i = 0; i < hotelSearch.size(); i++) {
-            System.out.println("Hotel " + i + hotelSearch.get(i).toString());
-        }
-        System.out.println(
-                "Type the number corresponding with the hotel you wish to book or type 99 to return to the actions page.");
-        int response = keyboard.nextInt();
-        keyboard.nextLine();
-        if (response == 99) {
-            printActionsPage(currentUser);
-        }
-        System.out.println(
-            "How many people are you booking for?"
-        );
+        ArrayList<Profile> travelers = new ArrayList<Profile>();
+        travelers.add(currentUser.getProfile());
+        ArrayList<Seat> seats = new ArrayList<Seat>();
+        FlightBooking flightBooking = new FlightBooking(travelers, seats, flightSearch.get(response));
+        System.out.println("How many people are you booking for?");
         int numPeople = keyboard.nextInt();
-        keyboard.nextLine();
-        if (numPeople > 1) {
-            printFriendsList(currentUser);
+        if(numPeople > 1) {
+            app.printFriendsList(currentUser);
             for(int i = numPeople; i > 0; i--) {
                 System.out.println("What is the first name of the friend you want to book for?");
                 String friendFirst = keyboard.nextLine();
                 System.out.println("What is the last name of the friend you want to book for?");
                 String friendLast = keyboard.nextLine();
+                app.addFriendToFlightBooking(currentUser, friendFirst, friendLast, flightBooking);
+                System.out.println("Friend successfully added to flight booking!");
             }
         }
-        app.bookHotel(currentUser, hotelSearch.get(response));
-        System.out.println("Successfully booked hotel! Returning to Actions Page.");
+        System.out.println("Here are the seats that are available on that flight.");
+        app.printAvailableSeats(flightBooking.getFlight());
+        System.out.println("Type the number of the seat you wish to book. You should book one seat per friend.");
+        app.addSeatsToFlightBooking(n)
+        app.bookFlight(currentUser, flightSearch.get(response));
+        System.out.println("Flight successfully booked! Returning to the actions page.");
         printActionsPage(currentUser);
+    }
+    public static void printHotelSearch(RegisteredUser currentUser) {
+        try {
+            System.out.println("Where do you want to book a hotel?");
+            String location = keyboard.nextLine();
+            ArrayList<Amenities> amenities = addAmenitiesPref();
+            ArrayList<Accessibility> accessibility = addAccessibilityPref();
+            System.out.println("What type of room do you want?");
+            String roomType = keyboard.nextLine();
+            System.out.println("How many beds do you want?");
+            int numOfBeds = keyboard.nextInt();
+            keyboard.nextLine();
+            ArrayList<Hotel> hotelSearch = app.getHotelSearch(location, amenities, accessibility, roomType, numOfBeds);
+            for (int i = 0; i < hotelSearch.size(); i++) {
+                System.out.println("Hotel " + i + hotelSearch.get(i).toString());
+            }
+            System.out.println("Type the number corresponding with the hotel you wish to book or type 99 to return to the actions page.");
+            int response = keyboard.nextInt();
+            keyboard.nextLine();
+            if (response == 99) {
+                printActionsPage(currentUser);
+            }
+            ArrayList<Profile> travelers = new ArrayList<Profile>();
+            travelers.add(currentUser.getProfile());
+            ArrayList<Room> rooms = new ArrayList<Room>();
+            HotelBooking hotelBooking = new HotelBooking(travelers, rooms, hotelSearch.get(response));
+            System.out.println("How many people are you booking for?");
+            int numPeople = keyboard.nextInt();
+            keyboard.nextLine();
+            if (numPeople > 1) {
+                app.printFriendsList(currentUser);
+                for(int i = numPeople; i > 0; i--) {
+                    System.out.println("What is the first name of the friend you want to book for?");
+                    String friendFirst = keyboard.nextLine();
+                    System.out.println("What is the last name of the friend you want to book for?");
+                    String friendLast = keyboard.nextLine();
+                    app.addFriendToHotelBooking(currentUser, friendFirst, friendLast, hotelBooking);
+                    System.out.println("Friend successfully added!");
+                }
+            }
+            System.out.println("What check in day do you want for the room? Type in the format \"dd/mm/yyyy\".");
+            String checkinDay = keyboard.nextLine();
+            Date checkInDay = new SimpleDateFormat("dd/mm/yyyy").parse(checkinDay);
+            System.out.println("What check in time do you want for the room?");
+            String checkinTime = keyboard.nextLine();
+            System.out.println("What check out day do you want for the room?");
+            String checkoutDay = keyboard.nextLine();
+            Date checkOutDay = new SimpleDateFormat("dd/mm/yyyy").parse(checkoutDay);
+            System.out.println("What check out time do you want for the room?");
+            String checkoutTime = keyboard.nextLine();
+            System.out.println("Here are the rooms that fit that criteria.");
+            app.printRooms(hotelBooking.getHotel(), checkInDay, checkinTime, checkOutDay, checkoutTime);
+            System.out.println("How many rooms are you planning on booking?");
+            int roomNum = keyboard.nextInt();
+            keyboard.nextLine();
+            for(int i = roomNum; i > 0; i--) {
+                System.out.println("Type the number corresponding to the room you wish to book.");
+                app.addRoomToHotelBooking(hotelBooking, roomNum);
+                System.out.println("Room added to hotel booking.");
+            }
+            app.bookHotel(currentUser, hotelBooking);
+            System.out.println("Successfully booked hotel! Returning to Actions Page.");
+            printActionsPage(currentUser);
+        } catch(Exception e) {
+            System.out.println(e);
+        }
     }
     public static void printHotelSearchNotLoggedIn() {
         System.out.println("Where do you want to book a hotel?");
