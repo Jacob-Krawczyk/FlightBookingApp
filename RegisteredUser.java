@@ -158,6 +158,7 @@ public class RegisteredUser extends User {
         UUID uuid = UUID.randomUUID();
         Friend aFriend = new Friend(uuid, firstName,lastName, dob, discount);
         friendList.add(aFriend);
+        return aFriend;
     }
 
     /**
