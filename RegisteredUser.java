@@ -78,6 +78,21 @@ public class RegisteredUser extends User {
     }
 
     /**
+     * Returns friend based on first and last name
+     * @param first
+     * @param last
+     * @return friend
+     */
+    public Friend getFriendByFristAndLast(String first, String last) {
+        for(Friend friends: friendList) {
+            if(friends.getFirstName().equals(first) && friends.getLastName().equals(last)) {
+                return friends;
+            }
+        }
+        return null;
+    }
+
+    /**
      * Sets user preferences 
      * @param pref
      */
@@ -104,7 +119,7 @@ public class RegisteredUser extends User {
     }
 
    
-    public void bookHotel(Hotel hotel) {
+    public void bookHotel(HotelBooking hotel) {
         hotelBookings.add(hotel);
     }
 
@@ -127,13 +142,23 @@ public class RegisteredUser extends User {
     }
     
     /**
-     * Adds non-user friend to friends list
+     * Adds a friend in general
      * @param friend
      */
-    public void addNonUserFriend(String firstName, String lastName, String dob, String discount) {
+    public void addFriend(Friend friend) {
+        friendList.add(friend);
+    }
+
+    /**
+     * Adds non-user friend to friends list
+     * @param friend
+     * @return 
+     */
+    public Friend addNonUserFriend(String firstName, String lastName, String dob, String discount) {
         UUID uuid = UUID.randomUUID();
         Friend aFriend = new Friend(uuid, firstName,lastName, dob, discount);
         friendList.add(aFriend);
+        return aFriend;
     }
 
     /**
@@ -149,6 +174,7 @@ public class RegisteredUser extends User {
         String discount = newFriend.getProfile().getDOB();
         Friend aFriend = new Friend(uuid, first, last, dob, discount);
         friendList.add(aFriend);
+        userList.addFriend(aFriend);
     }
 
     /**
@@ -159,6 +185,7 @@ public class RegisteredUser extends User {
         for (Friend friend : friendList) {
             if (friend.getFirstName().equals(first) && friend.getLastName().equals(last)) {
                 friendList.remove(friend);
+                userList.removeFriend(friend);
             }
         }
     }
@@ -175,6 +202,14 @@ public class RegisteredUser extends User {
         for(HotelBooking hotel:hotelBookings) {
             System.out.println(hotel.toString());
         }
+    }
+
+    public ArrayList<HotelBooking> getHotel() {
+        return hotelBookings;
+    }
+
+    public ArrayList<FlightBooking> getFlight() {
+        return flightBookings;
     }
 
     /**

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -54,7 +55,7 @@ public class UserList {
      */
     public void addUser(RegisteredUser user) {
         users.add(user);
-        userDatabaseWriter.add(user);
+        ((List<RegisteredUser>) userDatabaseWriter).add(user);
     }
 
     /**
@@ -63,23 +64,21 @@ public class UserList {
      */
     public void removeUser(RegisteredUser user) {
         users.remove(user);
-        userDatabaseWriter.remove(user);
+        ((List<RegisteredUser>) userDatabaseWriter).remove(user);
     }
 
     /**
      * Adds friend to friend list of user
      */
-    public void addFriend(RegisteredUser currentUser, Friend friend) {
-        userDatabaseWriter.addFriend(friend);
-        currentUser.add(friend);
+    public void addFriend(Friend friend) {
+        ((UserList) userDatabaseWriter).addFriend(friend);
     }
 
     /**
      * Removes friend from friend list of user
      */
     public void removeFriend(Friend friend) {
-        userDatabaseWriter.removeFriend(friend);
-        users.remove(friend);
+        ((UserList) userDatabaseWriter).removeFriend(friend);
     }
 
     /**
@@ -87,7 +86,7 @@ public class UserList {
      * @return list of friends
      */
     public ArrayList<Friend> getFriendsList() {
-        return users.getFriends();
+        return userList.getFriendsList();
     }
 
     /**
@@ -98,7 +97,7 @@ public class UserList {
      */
     public RegisteredUser getUser(String username, String password) {
         for(RegisteredUser user: users) {
-            if(user.getUsername.equals(username) && user.getPassword.equals(password)) {
+            if(user.getUsername().equals(username) && user.getPassword().equals(password)) {
                 return user;
             }
         }
@@ -110,7 +109,7 @@ public class UserList {
      * @return list of users
      */
     public ArrayList<RegisteredUser> getAllUsers() {
-        users = userList.getAllUsers();
+        users = userDatabaseLoader.getUser();
         return users;
     }
 }
