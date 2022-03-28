@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.*;
 
 /**
  * A Room
@@ -8,8 +7,8 @@ import java.util.Date;
 public class Room {
     private String numberOfBeds;
     private String roomType;
-    private String checkInDay;
-    private String checkOutDay;
+    private Date checkInDay;
+    private Date checkOutDay;
     private String checkInTime;
     private String checkOutTime;
     
@@ -22,7 +21,7 @@ public class Room {
      * @param check_in_time
      * @param check_out_time
      */
-    public Room(String room_type,String number_of_beds,String check_in_date,String check_out_date,
+    public Room(String room_type,String number_of_beds,Date check_in_date,Date check_out_date,
     String check_in_time, String check_out_time) {
         this.numberOfBeds = number_of_beds;
         this.roomType = room_type;
@@ -44,7 +43,7 @@ public class Room {
      * Returns room check in date
      * @return room check in date
      */
-    public String getRoomCheckInDate() {
+    public Date getRoomCheckInDate() {
         return this.checkInDay;
     }
 
@@ -60,7 +59,7 @@ public class Room {
      * Returns room check out date 
      * @return room check out date 
      */
-    public String getRoomCheckOutDate() {
+    public Date getRoomCheckOutDate() {
         return this.checkOutDay;
     }
 

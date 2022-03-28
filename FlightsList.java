@@ -95,4 +95,25 @@ public class FlightsList {
             }
         }
     }
+
+    public ArrayList<Seat> getAvailableSeats(Flight flight) {
+        ArrayList<Seat> flightSeats = flight.getFlightSeats();
+        ArrayList<Seat> available = new ArrayList<Seat>();
+        for (Seat seat : flightSeats) {
+            if (!seat.isOccupied()) {
+                available.add(seat);
+            }
+        }
+        return available;
+    }
+
+    public Seat getSeatBySeatNumber(Flight flight, String seatNum) {
+        ArrayList<Seat> seats = flight.getFlightSeats();
+        for(Seat seat: seats) {
+            if(seat.getSeatNumber().equals(seatNum)) {
+                return seat;
+            }
+        }
+        return null;
+    }
 }

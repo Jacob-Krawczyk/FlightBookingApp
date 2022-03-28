@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * A Singleton Listing of Hotels
@@ -151,5 +149,21 @@ public class HotelsList {
                 
             }
         }
+    }
+
+    public void printRoomByDateAndTime(Hotel hotel, Date checkInDate, String checkinTime, Date checkOutDate, String checkOutTime) {
+        ArrayList<Room> rooms = hotel.getHotelRooms();
+        for(int i = 0; i < rooms.size(); i++) {
+            if (rooms.get(i).getRoomCheckInDate().equals(checkInDate) && rooms.get(i).getRoomCheckInTime().equals(checkinTime)
+                    && rooms.get(i).getRoomCheckOutDate().equals(checkOutDate)
+                    && rooms.get(i).getRoomCheckOutTime().equals(checkOutTime)) {
+                System.out.println(rooms.get(i).toString());
+            }
+        }
+    }
+
+    public Room getRoom(Hotel hotel, int roomNum) {
+        ArrayList<Room> rooms = hotel.getHotelRooms();
+        return rooms.get(roomNum);
     }
 }

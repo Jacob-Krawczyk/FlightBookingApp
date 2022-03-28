@@ -1,9 +1,79 @@
 [{  "id": "1",
     "departs from": "Columbia",
+    "destination": "Atlanta",
+    "departure date": "Sat Aug 12 2022",
+    "departure time": "12:00 PM",
+    "arrival time": "1:30 PM",
+    "seats": [{"name": "13A", "available": "true"},{"name": "13B", "available": "true"}],
+    "Airline": "American Airlines"
+    },
+{
+    "id": "2",
+    "departs from": "Atlanta",
+    "destination": "Seattle",
+    "departure date": "Sat Aug 12 2022",
+    "departure time": "3:30 PM",
+    "arrival time": "9:00 PM",
+    "seats": [{"name": "13A", "available": "true"},{"name": "13B", "available": "true"}],
+    "Airline": "American Airlines"
+},
+{
+    "id": "3",
+    "departs from": "Columbia",
     "destination": "Seattle",
     "departure date": "Sat Aug 12 2022",
     "departure time": "12:00 PM",
-    "arrival time": "3:00 PM",
-    "seats": [{"name": "13a", "available": "true"},{"name": "13b", "available": "true"}],
-    "Airline": "American Airlines"
-    }]
+    "arrival time": "8:00 PM",
+    "seats": [{"name": "13A", "available": "true"},{"name": "13B", "available": "true"}],
+    "Airline": "Delta"
+},
+{
+    "id": "4",
+    "departs from": "Columbia",
+    "destination": "Nashville",
+    "departure date": "Sat Aug 12 2022",
+    "departure time": "8:00 AM",
+    "arrival time": "9:30 AM",
+    "seats": [{"name": "13A", "available": "true"},{"name": "13B", "available": "true"}],
+    "Airline": "SouthWest"
+},
+{
+    "id": "5",
+    "departs from": "Nashville",
+    "destination": "Seattle",
+    "departure date": "Sat Aug 12 2022",
+    "departure time": "12:00 PM",
+    "arrival time": "4:30 PM",
+    "seats": [{"name": "13A", "available": "true"},{"name": "13B", "available": "true"}],
+    "Airline": "SouthWest"
+},
+{
+    "id": "6",
+    "departs from": "Columbia",
+    "destination": "Atlanta",
+    "departure date": "Sat Aug 12 2022",
+    "departure time": "2:00 PM",
+    "arrival time": "3:30 PM",
+    "seats": [{"name": "13A", "available": "true"},{"name": "13B", "available": "true"}],
+    "Airline": "United Airlines"
+},
+{
+    "id": "7",
+    "departs from": "Atlanta",
+    "destination": "Phoenix",
+    "departure date": "Sat Aug 12 2022",
+    "departure time": "5:00 PM",
+    "arrival time": "8:30 PM",
+    "seats": [{"name": "13A", "available": "true"},{"name": "13B", "available": "true"}],
+    "Airline": "United Airlines"
+},
+{
+    "id": "8",
+    "departs from": "Phoenix",
+    "destination": "Seattle",
+    "departure date": "Sat Aug 12 2022",
+    "departure time": "9:30 PM",
+    "arrival time": "12:00 AM",
+    "seats": [{"name": "13A", "available": "true"},{"name": "13B", "available": "true"}],
+    "Airline": "United Airlines"
+}]
