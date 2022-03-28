@@ -60,11 +60,11 @@ public class HotelDatabaseWriter {
   public static JSONObject getRoomsJSON(Room room) {
     JSONObject jsonoS = new JSONObject();
     jsonoS.put(Rooms_room_type, room.getRoomType());
-	jsonoS.put(Roomes_number_of_beds,room.getRoomNumberOfBeds());
+  	jsonoS.put(Roomes_number_of_beds,room.getRoomNumberOfBeds());
     jsonoS.put(Roomes_check_in_date,room.getRoomCheckInDate());
-	jsonoS.put(Roomes_check_out_date,room.getRoomCheckOutDate());
-	jsonoS.put(Roomes_check_in_time,room.getRoomCheckInTime());
-	jsonoS.put(Roomes_check_out_time,room.getRoomCheckOutTime());
+	  jsonoS.put(Roomes_check_out_date,room.getRoomCheckOutDate());
+	  jsonoS.put(Roomes_check_in_time,room.getRoomCheckInTime());
+	  jsonoS.put(Roomes_check_out_time,room.getRoomCheckOutTime());
 
     return jsonoS;
   }

@@ -16,7 +16,9 @@ public class HotelDatabaseLoader{
 	protected static final String HOTEL_NAME="hotel name";
 	protected static final String HOTEL_ROOM_TYPE="room type";
 	protected static final String HOTEL_NUMBER_OF_BEDS="number of beds";
-	
+	protected static final String HOTEL_AMENITIES="Amenities";
+	protected static final String HOTEL_Price_Per_Night="Price per night";
+	protected static final String HOTEL_Rating="Rating";
 	
 	public static ArrayList<Hotel> getHotel() {
 		ArrayList<Hotel> hotels = new ArrayList<Hotel>();
@@ -46,7 +48,14 @@ public class HotelDatabaseLoader{
 				String check_out_date =(String) hotelJSON.get("check out date");
 				String check_in_time=(String) hotelJSON.get("check in time");
 				String check_out_time=(String) hotelJSON.get("check out time");
-				
+				/*
+				String Amenities=(String) hotelJSON.get("Amenities");
+				String Price_Per_Night=(String) hotelJSON.get("Price per night");
+				String Rating=(String) hotelJSON.get("Rating");
+				Room new_room = new Room(room_type, number_of_beds,check_in_date,check_out_date,
+				  check_in_time,check_out_time);
+ 				rooms.add(new_room);
+				*/
 
           		Room new_room = new Room(room_type, number_of_beds,check_in_date,check_out_date,
 				  check_in_time,check_out_time);
