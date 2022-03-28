@@ -63,20 +63,20 @@ public class UserDatabaseLoader{
 				{
 					UUID Flight_ID=(UUID)userJSON.get("flightid");
 					String Flight_Seat=(String) userJSON.get("seat");
+					Flight friend_flight = new Flight();
+					friend_flight.getFlightByUUID(Flight_ID);
+					flights.add(friend_flight);
 				}
-				Flight friend_flight = new Flight();
-				friend_flight.getFlightByUUID(Flight_ID);
-				flights.add(friend_flight);
-				
 				JSONArray list_hotel =(JSONArray)personJSON.get("hotels");
 				for(int m=0;m<list_hotel.size();m++)
 				{
 					UUID Hotel_ID=(UUID)userJSON.get("roomid");
 					String Hotel_Room_Check_IN_Day=(String) userJSON.get("check in day");
+					Hotel new_Hotel = new Hotel();
+					new_Hotel.getHotelByUUID(Hotel_ID);
+					hotels.add(new_Hotel);
 				}
-				Hotel new_Hotel = new Hotel();
-				new_Hotel.getHotelByUUID(Hotel_ID);
-				hotels.add(new_Hotel);
+				
           		Friend new_friend = new Friend(Friend_ID,Friend_FirstName,Friend_LastName,Friend_DateOfBirthday,Friend_Discount,flights,hotels);
 				friends.add(new_friend);
 				
