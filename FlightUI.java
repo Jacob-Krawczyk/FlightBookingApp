@@ -135,6 +135,20 @@ public class FlightUI {
         if (response == 99) {
             printActionsPage(currentUser);
         }
+        System.out.println(
+            "How many people are you booking for?"
+        );
+        int numPeople = keyboard.nextInt();
+        keyboard.nextLine();
+        if (numPeople > 1) {
+            printFriendsList(currentUser);
+            for(int i = numPeople; i > 0; i--) {
+                System.out.println("What is the first name of the friend you want to book for?");
+                String friendFirst = keyboard.nextLine();
+                System.out.println("What is the last name of the friend you want to book for?");
+                String friendLast = keyboard.nextLine();
+            }
+        }
         app.bookHotel(currentUser, hotelSearch.get(response));
         System.out.println("Successfully booked hotel! Returning to Actions Page.");
         printActionsPage(currentUser);

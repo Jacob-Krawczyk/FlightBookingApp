@@ -33,7 +33,7 @@ public class Friend {
        this.hotels=new_Hotel;
     }
 
-    public Friend(String first, String last, String dob, String discount) {
+    public Friend(UUID uuid2, String first, String last, String dob, String discount) {
         UUID uuid = UUID.randomUUID();
         ArrayList<Flight> emptyFlightList = new ArrayList<Flight>();
         ArrayList<Hotel> emptyHotelList = new ArrayList<Hotel>();

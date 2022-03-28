@@ -37,7 +37,7 @@ public class HotelDatabaseLoader{
 				String hotel_name=(String)hotelJSON.get("hotel name");
 				
 				
-				JSONArray list = (JSONArray) personJSON.get("rooms");
+				JSONArray list = (JSONArray) hotelJSON.get("rooms");
         	for (int j = 0; j < list.size(); j++) {
          	 	JSONObject getRooms = (JSONObject) list.get(j);
          	 	String room_type=(String)hotelJSON.get("room type");

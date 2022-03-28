@@ -220,7 +220,7 @@ public class FlightApp {
      * @param currentUser
      * @param hotel
      */
-    public void bookHotel(RegisteredUser currentUser, Hotel hotel) {
+    public void bookHotel(RegisteredUser currentUser, HotelBooking hotel) {
         currentUser.bookHotel(hotel);
     }
 
@@ -229,7 +229,7 @@ public class FlightApp {
      * @param currentUser
      * @param flight
      */
-    public void bookFlight(RegisteredUser currentUser, Flight flight) {
+    public void bookFlight(RegisteredUser currentUser, FlightBooking flight) {
         currentUser.bookFlight(flight);
     }
 
@@ -238,8 +238,7 @@ public class FlightApp {
     }
 
     public void cancelFlight(RegisteredUser currentUser, FlightBooking flight) {
-        Flight cancel = flight.getFlight();
-        currentUser.CancelFlight(cancel);
+        currentUser.CancelFlight(flight);
     }
 
     public ArrayList<HotelBooking> getBookedHotels(RegisteredUser currentUser) {
@@ -247,8 +246,7 @@ public class FlightApp {
     }
 
     public void cancelHotel(RegisteredUser currentUser, HotelBooking hotel) {
-        Hotel cancel = hotel.getHotel();
-        currentUser.cancelHotel(cancel);
+        currentUser.cancelHotel(hotel);
     }
 
     /**
