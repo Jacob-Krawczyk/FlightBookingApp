@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+mport java.util.ArrayList;
 
 /**
  * Stores information for hotel booking
@@ -25,10 +25,17 @@ public class HotelBooking {
         travelers.add(profile);
     }
     
+    /**
+     * Returns the name of the Hotel
+     * @return
+     */
     public Hotel getHotel() {
         return this.hotel;
     }
 
+    /**
+     * Returns the number of guests, rooms, and the hotel.
+     */
     public String toString() {
         return "Guests: " + this.travelers + "\nRooms: " + this.rooms + "\nHotel: " + this.hotel;
     }
