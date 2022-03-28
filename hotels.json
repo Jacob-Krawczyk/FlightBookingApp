@@ -12,7 +12,9 @@
             "check in time": "3:30 PM",
             "check out time": "12:00 PM", "Amenities": "Pool, Gym, Coffee Kit", "Price per night": "$100", "Rating": "*****"}]
     },
-    [{
+
+    
+        {
         "id": "2",
         "city": "Seattle",
         "hotel name": "Motel 6",
@@ -27,7 +29,7 @@
                 "check out time": "12:00 PM", "Amenities": "Smoke, Parking","Price per night": "$65",
                 "Rating": "****"}]
         },
-        [{
+        {
             "id": "3",
             "city": "Seattle",
             "hotel name": "White Castle",
@@ -42,7 +44,7 @@
                     "check out time": "12:00 PM", "Amenities": "Parking, Smoke", "Price per night": "$45",
                     "Rating": "**"}]
             },
-            [{
+            {
                 "id": "4",
                 "city": "Seattle",
                 "hotel name": "Hilton of Seattle",
@@ -56,7 +58,10 @@
                         "check in time": "2:30 PM",
                         "check out time": "11:00 AM", "Amenities": "Pool, Toiletries, Gym, Coffee Kit, Meals, Wifi", "Price per night": "$150",
                         "Rating": "*****"}]
-                }]]]
+                }
+            
+            
+            
 ]
     
     

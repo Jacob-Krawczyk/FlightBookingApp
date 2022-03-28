@@ -33,7 +33,7 @@ public class UserDatabaseWriter {
 
   public static void saveUsers() {
     UserList users = UserList.getInstance();
-    ArrayList<User> currentUsers = users.getAllUsers();
+    ArrayList<RegisteredUser> currentUsers = users.getAllUsers();
     JSONArray jasonUsers = new JSONArray();
 
     for (int i = 0; i < currentUsers.size(); i++) {
@@ -48,7 +48,7 @@ public class UserDatabaseWriter {
     }
   }
 
-  public static JSONObject getUsersJSON(User user) {
+  public static JSONObject getUsersJSON(RegisteredUser user) {
     // creat a object of jason
     JSONObject jsonoF = new JSONObject();
 
