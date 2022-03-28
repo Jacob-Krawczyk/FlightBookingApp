@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -54,7 +55,7 @@ public class UserList {
      */
     public void addUser(RegisteredUser user) {
         users.add(user);
-        userDatabaseWriter.add(user);
+        ((List<RegisteredUser>) userDatabaseWriter).add(user);
     }
 
     /**
@@ -63,21 +64,21 @@ public class UserList {
      */
     public void removeUser(RegisteredUser user) {
         users.remove(user);
-        userDatabaseWriter.remove(user);
+        ((List<RegisteredUser>) userDatabaseWriter).remove(user);
     }
 
     /**
      * Adds friend to friend list of user
      */
     public void addFriend(Friend friend) {
-        userDatabaseWriter.addFriend(friend);
+        ((UserList) userDatabaseWriter).addFriend(friend);
     }
 
     /**
      * Removes friend from friend list of user
      */
     public void removeFriend(Friend friend) {
-        userDatabaseWriter.removeFriend(friend);
+        ((UserList) userDatabaseWriter).removeFriend(friend);
     }
 
     /**
