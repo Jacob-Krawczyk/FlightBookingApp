@@ -119,7 +119,7 @@ public class RegisteredUser extends User {
     }
 
    
-    public void bookHotel(Hotel hotel) {
+    public void bookHotel(HotelBooking hotel) {
         hotelBookings.add(hotel);
     }
 
