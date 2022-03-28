@@ -26,8 +26,7 @@
             "Price per night": "$65"},
             {"room type":"Standard","number of beds":"2", "check in date": "Sat Aug 12 2022","check out date": "Mon Aug 14 2022",
                 "check in time": "2:30 PM",
-                "check out time": "12:00 PM", "Amenities": "Smoke, Parking","Price per night": "$65",
-                "Rating": "****"}]
+                "check out time": "12:00 PM","Price per night": "$65"}]
         },
         {
             "id": "3",
