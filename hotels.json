@@ -2,12 +2,57 @@
     "id": "1",
     "city": "Seattle",
     "hotel name": "Marriott of Seattle",
-    "rooms": [{"room type":"big bed room","number of beds":"2", "check in date": "Sat Aug 12 2022","check out date": "Mon Aug 14 2022",
+    "rooms": [{"room type":"Deluxe","number of beds":"2", "check in date": "Sat Aug 12 2022","check out date": "Mon Aug 14 2022",
         "check in time": "3:30 PM",
-        "check out time": "12:00 PM"},
-        {"room type":"two bed room","number of beds":"2", "check in date": "Sat Aug 12 2022","check out date": "Mon Aug 14 2022",
+        "check out time": "12:00 PM",
+        "Price per night": "$100",
+        "Rating": "*****"},
+        {"room type":"Deluxe","number of beds":"2", "check in date": "Sat Aug 12 2022","check out date": "Mon Aug 14 2022",
             "check in time": "3:30 PM",
-            "check out time": "12:00 PM"}]
-    }]
+            "check out time": "12:00 PM", "Price per night": "$100", "Rating": "*****"}]
+    },
+    [{
+        "id": "2",
+        "city": "Seattle",
+        "hotel name": "Motel 6",
+        "rooms": [{"room type":"Standard","number of beds":"2", "check in date": "Sat Aug 12 2022","check out date": "Mon Aug 14 2022",
+            "check in time": "2:30 PM",
+            "check out time": "12:00 PM",
+            "Price per night": "$65",
+            "Rating": "****"},
+            {"room type":"Standard","number of beds":"2", "check in date": "Sat Aug 12 2022","check out date": "Mon Aug 14 2022",
+                "check in time": "2:30 PM",
+                "check out time": "12:00 PM", "Price per night": "$65",
+                "Rating": "****"}]
+        },
+        [{
+            "id": "3",
+            "city": "Seattle",
+            "hotel name": "White Castle",
+            "rooms": [{"room type":"Minimalist","number of beds":"2", "check in date": "Sat Aug 12 2022","check out date": "Mon Aug 14 2022",
+                "check in time": "2:30 PM",
+                "check out time": "12:00 PM",
+                "Price per night": "$45",
+                "Rating": "**"},
+                {"room type":"Minimalist","number of beds":"2", "check in date": "Sat Aug 12 2022","check out date": "Mon Aug 14 2022",
+                    "check in time": "2:30 PM",
+                    "check out time": "12:00 PM", "Price per night": "$45",
+                    "Rating": "**"}]
+            },
+            [{
+                "id": "4",
+                "city": "Seattle",
+                "hotel name": "Hilton of Seattle",
+                "rooms": [{"room type":"Suite","number of beds":"2", "check in date": "Sat Aug 12 2022","check out date": "Mon Aug 14 2022",
+                    "check in time": "2:30 PM",
+                    "check out time": "11:00 AM",
+                    "Price per night": "$150",
+                    "Rating": "*****"},
+                    {"room type":"Suite","number of beds":"2", "check in date": "Sat Aug 12 2022","check out date": "Mon Aug 14 2022",
+                        "check in time": "2:30 PM",
+                        "check out time": "11:00 AM", "Price per night": "$150",
+                        "Rating": "*****"}]
+                }]]]
+]
     
     
