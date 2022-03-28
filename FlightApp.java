@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.*;
 
 /**
@@ -137,7 +138,7 @@ public class FlightApp {
      */
     public boolean checkValidityOfAirline(String airline) {
         for (AirlineCompany comp : EnumSet.allOf(AirlineCompany.class)) {
-            if (airline.equals(comp)) {
+            if (airline.equals(comp.toString())) {
                 return true;
             }
         }
@@ -151,7 +152,7 @@ public class FlightApp {
      */
     public boolean checkValidityOfClass(String prefClass) {
         for (FlightClass flightClass : EnumSet.allOf(FlightClass.class)) {
-            if (prefClass.equals(flightClass)) {
+            if (prefClass.equals(flightClass.toString())) {
                 return true;
             }
         }
@@ -165,7 +166,7 @@ public class FlightApp {
      */
     public boolean CheckValidityOfAccessibility(String accessibility) {
         for (Accessibility access : EnumSet.allOf(Accessibility.class)) {
-            if (accessibility.equals(access)) {
+            if (accessibility.equals(access.toString())) {
                 return true;
             }
         }
@@ -179,7 +180,7 @@ public class FlightApp {
      */
     public boolean checkValidityOfAmenity(String amenity) {
         for (Amenities amen : EnumSet.allOf(Amenities.class)) {
-            if (amenity.equals(amen)) {
+            if (amenity.equals(amen.toString())) {
                 return true;
             }
         }
@@ -227,21 +228,37 @@ public class FlightApp {
         currentUser.bookFlight(flight);
     }
 
-    public void printBookedHotels(RegisteredUser currentUser) {
-        ArrayList<HotelBooking> hotelBookings = currentUser.getHotel();
-        for(int i = 0; i < hotelBookings.size(); i++) {
-            System.out.println(i + ". " + hotelBookings.get(i).toString());
-        }
+    public ArrayList<FlightBooking> getBookedFlights(RegisteredUser currentUser) {
+        return currentUser.getFlight();
     }
 
-    public void printTickets(RegisteredUser currentUser) {
-        ArrayList<FlightBooking> flightList = currentUser.getFlight();
-        for(FlightBooking flight: flightList) {
-            
-        }
+    public void cancelFlight(RegisteredUser currentUser, FlightBooking flight) {
+        Flight cancel = flight.getFlight();
+        currentUser.CancelFlight(cancel);
+    }
+
+    public ArrayList<HotelBooking> getBookedHotels(RegisteredUser currentUser) {
+        return currentUser.getHotel();
+    }
+
+    public void cancelHotel(RegisteredUser currentUser, HotelBooking hotel) {
+        Hotel cancel = hotel.getHotel();
+        currentUser.cancelHotel(cancel);
+    }
+
+    /**
+     * Writes tickets to file
+     * @param currentUser
+     */
+    public void printTickets(RegisteredUser currentUser, String title) {
         try {
-            File tickets = new File("tickets.txt");
-            if
+            ArrayList<FlightBooking> flightList = currentUser.getFlight();
+            PrintWriter fileWriter = new PrintWriter(new FileOutputStream(title));
+            fileWriter.println("Flight Tickets");
+            for (FlightBooking flight : flightList) {
+                fileWriter.println(flight.toString());
+            }
+            fileWriter.close();
         } catch (Exception e) {
             System.out.println(e);
         }

@@ -19,4 +19,12 @@ public class FlightBooking {
         this.seats = seats;
         this.flights = flights;
     }
+
+    public Flight getFlight() {
+        return this.flights;
+    }
+
+    public String toString() {
+        return "Travelers: " + this.travelers + "\nSeats: " + this.seats + "\nFlights: " + this.flights;
+    }
 }
