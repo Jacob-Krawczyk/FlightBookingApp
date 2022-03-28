@@ -134,4 +134,13 @@ public class Hotel{
     public int getnumOfBeds() {
         return this.getnumOfBeds();
     }
+    public String getCheckInDay()
+    {
+        return checkInDay;
+    }
+    public String getCheckOutDay()
+    {
+        return checkOutDay;
+    }
+
 }

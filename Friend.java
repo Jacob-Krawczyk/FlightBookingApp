@@ -96,4 +96,12 @@ public class Friend {
     {
         return id;
     }
+    public ArrayList<Flight> getFlights()
+    {
+        return flights;
+    }
+    public ArrayList<Hotel> getHotels()
+    {
+        return hotels;
+    }
  } 

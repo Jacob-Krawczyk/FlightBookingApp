@@ -55,7 +55,7 @@ public class UserDatabaseWriter {
       // give a array in the begining
       jasonUsers.add(getUsersJSON(currentUsers.get(i)));
     }
-    try (FileWriter file = new FileWriter(User_FILE)) {
+    try (FileWriter file = new FileWriter(User_FILE_NAME)) {
       file.write(jasonUsers.toJSONString());
       file.flush();
     } catch (IOException e) {
@@ -93,7 +93,7 @@ public class UserDatabaseWriter {
 	  JSONArray jasonFlight = new JSONArray();
    	jsonoF.put(Friend_Flights, jasonFlight);
      ///problem
-    ArrayList<Flight> currentFlights = user.getFriendByFristAndLast(jasonFriends.get("firstname"),jasonFriends.get("lastname")).getFlights();
+    ArrayList<Flight> currentFlights = user.getFriends().get(j).getFlights();
       
     for (int k = 0; k < currentFlights.size(); k++) 
 	  {
@@ -101,7 +101,8 @@ public class UserDatabaseWriter {
     }
 	  JSONArray jasonHotel = new JSONArray();
    	jsonoF.put(Friend_Hotels, jasonHotel);
-    ArrayList<Hotel> currentHotels = user.getFriends());
+     //problem
+    ArrayList<Hotel> currentHotels = user.getFriends().get(j).getHotels();
 	
     for (int i= 0; i < currentHotels.size(); i++) 
 	  {
@@ -132,7 +133,7 @@ public class UserDatabaseWriter {
   public static JSONObject getHotelsJSON(Hotel hotel) {
     JSONObject jsonoS = new JSONObject();
     jsonoS.put(Friend_Hotel_id, hotel.getID());
-    jsonoS.put(Friend_Hotel_Check_In_Day,hotel.getHotelRooms().getRoomCheckInDate());
+    jsonoS.put(Friend_Hotel_Check_In_Day,hotel.getCheckInDay());
 	  jsonoS.put(Friend_Hotel_Check_Out_Day,hotel.getCheckOutDay());
     return jsonoS;
   }
