@@ -138,7 +138,7 @@ public class FlightApp {
     }
 
     public void addSeatsToFlightBooking(FlightBooking flightBooking, String seatNum) {
-        Seat seat = flightList.getSeatBySeatNumber(flightBooking.getFlight(), seatNum)
+        Seat seat = flightList.getSeatBySeatNumber(flightBooking.getFlight(), seatNum);
     }
     
     public void printRooms(Hotel hotel, Date checkInDate, String checkinTime, Date checkOutDate, String checkOutTime) {
