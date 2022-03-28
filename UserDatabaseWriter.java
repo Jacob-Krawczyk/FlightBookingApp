@@ -40,7 +40,7 @@ public class UserDatabaseWriter {
       // give a array in the begining
       jasonUsers.add(getUsersJSON(currentUsers.get(i)));
     }
-    try (FileWriter file = new FileWriter(Users_FILE)) {
+    try (FileWriter file = new FileWriter(User_FILE)) {
       file.write(jasonUsers.toJSONString());
       file.flush();
     } catch (IOException e) {
@@ -96,13 +96,13 @@ public class UserDatabaseWriter {
 	jsonoS.put(Friend_Date_Of_Birthday,friend.getDateOfBirthday());
 	jsonoS.put(Friend_Discount,friend.getDiscount());
 	jsonoS.put(Friend_Flights,friend.getFlights());
-	jsonoS.put(Friend_Hotel_Check_In_Day,friend.getFlights());
+	jsonoS.put(Friend_Hotels,friend.getHotels());
     return jsonoS;
   }
   public static JSONObject getFlightsJSON(Flight flight) {
     JSONObject jsonoS = new JSONObject();
     jsonoS.put(Friend_Flight_id , flight.getId());
-	jsonoS.put(Friend_Flight_Seat,flight.getFirstName());
+	jsonoS.put(Friend_Flight_Seat,flight.getSeat());
     return jsonoS;
   }
   public static JSONObject getHotelsJSON(Hotel hotel) {

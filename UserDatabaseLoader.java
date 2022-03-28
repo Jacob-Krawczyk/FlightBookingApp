@@ -48,7 +48,7 @@ public class UserDatabaseLoader{
 				String dateOfBirthday=(String)userJSON.get("d.o.b");
 				String discount=(String)userJSON.get("discount");
 
-				JSONArray list = (JSONArray) personJSON.get("Friends");
+				JSONArray list = (JSONArray) userJSON.get("Friends");
         		for (int j = 0; j < list.size(); j++) 
 				{
          	 	JSONObject getFriends = (JSONObject) list.get(j);
@@ -58,7 +58,7 @@ public class UserDatabaseLoader{
 				String Friend_DateOfBirthday=(String)userJSON.get("d.o.b");
 				String Friend_Discount=(String)userJSON.get("discount");
 
-				JSONArray list_flight =(JSONArray)personJSON.get("flights");
+				JSONArray list_flight =(JSONArray)userJSON.get("flights");
 				for(int k=0;k<list_flight.size();k++)
 				{
 					UUID Flight_ID=(UUID)userJSON.get("flightid");
@@ -67,7 +67,7 @@ public class UserDatabaseLoader{
 					friend_flight.getFlightByUUID(Flight_ID);
 					flights.add(friend_flight);
 				}
-				JSONArray list_hotel =(JSONArray)personJSON.get("hotels");
+				JSONArray list_hotel =(JSONArray)userJSON.get("hotels");
 				for(int m=0;m<list_hotel.size();m++)
 				{
 					UUID Hotel_ID=(UUID)userJSON.get("roomid");

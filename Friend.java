@@ -40,6 +40,18 @@ public class Friend {
         Friend newFriend = new Friend(uuid, first, last, dob, discount, emptyFlightList, emptyHotelList);
     }
 
+    public Profile getProfile() {
+        String address = null;
+        String city = null;
+        String state = null; 
+        String zip = null;
+        String emailAddress = null;
+        String phoneNumber = null;
+        String disability = null;
+        String visa = null;
+        String occupation = null;
+        return new Profile(firstName, lastName, address, city, state, zip, dateOfBirthday, emailAddress, phoneNumber, disability, visa, occupation, discount);
+    }
     /**
      * Returns first name 
      * @return first name

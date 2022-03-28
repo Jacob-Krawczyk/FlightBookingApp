@@ -21,6 +21,10 @@ public class HotelBooking {
         this.hotel = hotel;
     }
 
+    public void addTraveler(Profile profile) {
+        travelers.add(profile);
+    }
+    
     public Hotel getHotel() {
         return this.hotel;
     }

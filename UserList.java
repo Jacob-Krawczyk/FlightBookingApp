@@ -104,6 +104,22 @@ public class UserList {
         return null;
     }
 
+    public void cancelFlight(Flight flight) {
+        userDatabaseWriter.removeFlight(flight);
+    }
+
+    public void bookFlight(Flight flight) {
+        userDatabaseWriter.addFlight(flight);
+    }
+
+    public void cancelHotel(Hotel hotel) {
+        userDatabaseWriter.removeHotel(hotel);
+    }
+
+    public void bookHotel(Hotel hotel) {
+        userDatabaseWriter.addHotel(hotel);
+    }
+
     /**
      * Returns list of all registered users
      * @return list of users

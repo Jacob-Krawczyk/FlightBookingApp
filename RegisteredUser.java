@@ -109,23 +109,27 @@ public class RegisteredUser extends User {
     }
 
    
-    public void bookFlight(Flight flight) {
-       
+    public void bookFlight(FlightBooking flight) {
+       flightBookings.add(flight);
+       userList.bookFlight(flight.getFlight());
     }
 
     
-    public void CancelFlight(Flight flight) {
-
+    public void CancelFlight(FlightBooking flight) {
+        flightBookings.remove(flight);
+        userList.cancelFlight(flight.getFlight());
     }
 
    
     public void bookHotel(HotelBooking hotel) {
         hotelBookings.add(hotel);
+        userList.bookHotel(hotel.getHotel());
     }
 
     
-    public void cancelHotel(Hotel hotel) {
+    public void cancelHotel(HotelBooking hotel) {
         hotelBookings.remove(hotel);
+        userList.cancelHotel(hotel.getHotel());
     }
     
     /**
