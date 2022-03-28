@@ -29,8 +29,7 @@ public class UserDatabaseLoader {
   protected static final String User_FILE_Occupation = "occupation";
   protected static final String User_FILE_Discount = "discount";
 
-  protected static final String HOTEL_FILE_ID = "id";
-  protected static final String HOTEL_ROOM_TYPE = "room type";
+  protected static final String User_Friends = "Friends";
 
   /**
    * Returns list of users from JSON file
@@ -56,16 +55,16 @@ public class UserDatabaseLoader {
         String password = (String) userJSON.get("password");
         String firstName = (String) userJSON.get("firstname");
         String lastName = (String) userJSON.get("lastname");
-		String address =(String) userJSON.get("address");
-		String city =(String) userJSON.get("city");
-		String state =(String) userJSON.get("state");
-		String zip=(String) userJSON.get("zip");
+	  	  String address =(String) userJSON.get("address");
+		    String city =(String) userJSON.get("city");
+		    String state =(String) userJSON.get("state");
+	    	String zip=(String) userJSON.get("zip");
         String dateOfBirthday = (String) userJSON.get("d.o.b");
-		String emailAddress =(String) userJSON.get("emailAddress");
-		String phoneNumber =(String) userJSON.get("phoneNumber");
-		String disability =(String) userJSON.get("disability");
-		String visa =(String) userJSON.get("visa");
-		String occupation =(String) userJSON.get("occupation");
+	    	String emailAddress =(String) userJSON.get("emailAddress");
+	    	String phoneNumber =(String) userJSON.get("phoneNumber");
+	    	String disability =(String) userJSON.get("disability");
+	    	String visa =(String) userJSON.get("visa");
+	    	String occupation =(String) userJSON.get("occupation");
         String discount = (String) userJSON.get("discount");
 
         JSONArray list = (JSONArray) userJSON.get("Friends");
@@ -99,10 +98,10 @@ public class UserDatabaseLoader {
               Friend_DateOfBirthday, Friend_Discount, flights, hotels);
           friends.add(new_friend);
         }
-		Profile new_User=new Profile(firstName, lastName, address, city, state, zip, dateOfBirthday, emailAddress, phoneNumber, disability, visa, occupation, discount);
-        RegisteredUser user =
+	        	Profile new_User=new Profile(firstName, lastName, address, city, state, zip, dateOfBirthday, emailAddress, phoneNumber, disability, visa, occupation, discount);
+            RegisteredUser user =
             new RegisteredUser(id, friends,new_User,userID,password);
-        users.add(user);
+            users.add(user);
       }
     } catch (Exception e) {
       System.out.println(e);

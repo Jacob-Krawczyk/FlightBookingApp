@@ -98,4 +98,32 @@ public class Profile {
     public String getOccupation() {
         return occupation;
     }
+
+    public String getCity()
+    {
+        return city;
+    }
+
+    public String getZip()
+    {
+        return zip;
+    }
+
+    public String getState()
+    {
+        return state;
+    }
+
+    public String getEmailAddress()
+    {
+        return emailAddress;
+    }
+    public String getPhoneNumber()
+    {
+        return phoneNumber;
+    }
+    public String getDisability()
+    {
+        return disability;
+    }
 }

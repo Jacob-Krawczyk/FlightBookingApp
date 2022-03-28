@@ -91,4 +91,9 @@ public class Friend {
     public String toString() {
         return "First Name: " + this.firstName + " Last Name: " + this.lastName + " Date of Birth: " + this.dateOfBirthday + " Discount: " + this.discount + " Flights: " + this.flights.toString() + " Hotels: " + this.hotels.toString(); 
     }
+    
+    public UUID getID()
+    {
+        return id;
+    }
  } 
