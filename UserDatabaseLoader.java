@@ -37,8 +37,8 @@ public class UserDatabaseLoader {
    * 
    * @return array list of users
    */
-  public static ArrayList<User> getUser() {
-    ArrayList<User> users = new ArrayList<User>();
+  public static ArrayList<RegisteredUser> getUser() {
+    ArrayList<RegisteredUser> users = new ArrayList<RegisteredUser>();
     ArrayList<Friend> friends = new ArrayList<Friend>();
     ArrayList<Flight> flights = new ArrayList<Flight>();
     ArrayList<Hotel> hotels = new ArrayList<Hotel>();

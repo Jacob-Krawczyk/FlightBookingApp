@@ -56,9 +56,9 @@ public class UserDatabaseWriter {
     jsonoF.put(User_ID, StringUUID);
     jsonoF.put(password, user.getPassword());
     jsonoF.put(User_First_Name,user.getFirstName());
-	jsonoF.put(User_Last_Name,user.getLastName());
-	jsonoF.put(User_Date_Of_Birthday,user.getDateOfBirthday());
-	jsonoF.put(User_Discount,user.getDiscount());
+	  jsonoF.put(User_Last_Name,user.getLastName());
+  	jsonoF.put(User_Date_Of_Birthday,user.getDateOfBirthday());
+	  jsonoF.put(User_Discount,user.getDiscount());
 	
     JSONArray jasonFriends = new JSONArray();
     jsonoF.put(Friends, jasonFriends);
@@ -66,7 +66,7 @@ public class UserDatabaseWriter {
 
     for (int j = 0; j < currentFriends.size(); j++) {
 		
-	JSONArray jasonFlight = new JSONArray();
+	  JSONArray jasonFlight = new JSONArray();
    	jsonoF.put(Friend_Flights, jasonFlight);
     ArrayList<Flight> currentFlights = user.getFriendFlights();
 	
