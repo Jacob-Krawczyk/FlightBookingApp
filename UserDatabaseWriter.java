@@ -33,14 +33,14 @@ public class UserDatabaseWriter {
 
   public static void saveUsers() {
     UserList users = UserList.getInstance();
-    ArrayList<User> currentUsers = users.getAllUsers();
+    ArrayList<RegisteredUser> currentUsers = users.getAllUsers();
     JSONArray jasonUsers = new JSONArray();
 
     for (int i = 0; i < currentUsers.size(); i++) {
       // give a array in the begining
       jasonUsers.add(getUsersJSON(currentUsers.get(i)));
     }
-    try (FileWriter file = new FileWriter(Users_FILE)) {
+    try (FileWriter file = new FileWriter(User_FILE)) {
       file.write(jasonUsers.toJSONString());
       file.flush();
     } catch (IOException e) {
@@ -48,7 +48,7 @@ public class UserDatabaseWriter {
     }
   }
 
-  public static JSONObject getUsersJSON(User user) {
+  public static JSONObject getUsersJSON(RegisteredUser user) {
     // creat a object of jason
     JSONObject jsonoF = new JSONObject();
 
@@ -56,9 +56,9 @@ public class UserDatabaseWriter {
     jsonoF.put(User_ID, StringUUID);
     jsonoF.put(password, user.getPassword());
     jsonoF.put(User_First_Name,user.getFirstName());
-	jsonoF.put(User_Last_Name,user.getLastName());
-	jsonoF.put(User_Date_Of_Birthday,user.getDateOfBirthday());
-	jsonoF.put(User_Discount,user.getDiscount());
+	  jsonoF.put(User_Last_Name,user.getLastName());
+  	jsonoF.put(User_Date_Of_Birthday,user.getDateOfBirthday());
+	  jsonoF.put(User_Discount,user.getDiscount());
 	
     JSONArray jasonFriends = new JSONArray();
     jsonoF.put(Friends, jasonFriends);
@@ -66,7 +66,7 @@ public class UserDatabaseWriter {
 
     for (int j = 0; j < currentFriends.size(); j++) {
 		
-	JSONArray jasonFlight = new JSONArray();
+	  JSONArray jasonFlight = new JSONArray();
    	jsonoF.put(Friend_Flights, jasonFlight);
     ArrayList<Flight> currentFlights = user.getFriendFlights();
 	
@@ -96,13 +96,13 @@ public class UserDatabaseWriter {
 	jsonoS.put(Friend_Date_Of_Birthday,friend.getDateOfBirthday());
 	jsonoS.put(Friend_Discount,friend.getDiscount());
 	jsonoS.put(Friend_Flights,friend.getFlights());
-	jsonoS.put(Friend_Hotel_Check_In_Day,friend.getFlights());
+	jsonoS.put(Friend_Hotels,friend.getHotels());
     return jsonoS;
   }
   public static JSONObject getFlightsJSON(Flight flight) {
     JSONObject jsonoS = new JSONObject();
     jsonoS.put(Friend_Flight_id , flight.getId());
-	jsonoS.put(Friend_Flight_Seat,flight.getFirstName());
+	jsonoS.put(Friend_Flight_Seat,flight.getSeat());
     return jsonoS;
   }
   public static JSONObject getHotelsJSON(Hotel hotel) {

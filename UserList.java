@@ -71,14 +71,14 @@ public class UserList {
      * Adds friend to friend list of user
      */
     public void addFriend(Friend friend) {
-        ((UserList) userDatabaseWriter).addFriend(friend);
+        userDatabaseWriter.addFriend(friend);
     }
 
     /**
      * Removes friend from friend list of user
      */
     public void removeFriend(Friend friend) {
-        ((UserList) userDatabaseWriter).removeFriend(friend);
+        userDatabaseWriter.removeFriend(friend);
     }
 
     /**

@@ -42,7 +42,7 @@ public class FlightsList {
      * @return all flights
      */
     public ArrayList<Flight> getAllFlights() {
-        flights = flightLoader.getFlight();
+        flights = FlightDatabaseLoader.getFlight();
         return flights;
     }
 
