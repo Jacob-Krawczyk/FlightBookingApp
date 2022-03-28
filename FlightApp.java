@@ -122,6 +122,11 @@ public class FlightApp {
         userList.removeFriend(friend);
     }
 
+    public void addFriendToHotelBooking(RegisteredUser currentUser, String first, String last, HotelBooking hotelBooking) {
+        Friend friend = currentUser.getFriendByFristAndLast(first, last);
+        hotelBooking.addTraveler(friend.getProfile());
+    }
+    
     /**
      * Sets preferences of current user
      * @param currentUser
@@ -224,7 +229,7 @@ public class FlightApp {
      * @param currentUser
      * @param flight
      */
-    public void bookFlight(RegisteredUser currentUser, Flight flight) {
+    public void bookFlight(RegisteredUser currentUser, FlightBooking flight) {
         currentUser.bookFlight(flight);
     }
 
@@ -233,8 +238,7 @@ public class FlightApp {
     }
 
     public void cancelFlight(RegisteredUser currentUser, FlightBooking flight) {
-        Flight cancel = flight.getFlight();
-        currentUser.CancelFlight(cancel);
+        currentUser.CancelFlight(flight);
     }
 
     public ArrayList<HotelBooking> getBookedHotels(RegisteredUser currentUser) {
@@ -242,8 +246,7 @@ public class FlightApp {
     }
 
     public void cancelHotel(RegisteredUser currentUser, HotelBooking hotel) {
-        Hotel cancel = hotel.getHotel();
-        currentUser.cancelHotel(cancel);
+        currentUser.cancelHotel(hotel);
     }
 
     /**
