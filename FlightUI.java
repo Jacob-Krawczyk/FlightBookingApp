@@ -132,7 +132,7 @@ public class FlightUI {
         System.out.println("Here are the seats that are available on that flight.");
         app.printAvailableSeats(flightBooking.getFlight());
         System.out.println("Type the number of the seat you wish to book. You should book one seat per friend.");
-        app.addSeatsToFlightBooking(n)
+        app.addSeatsToFlightBooking(n);
         app.bookFlight(currentUser, flightSearch.get(response));
         System.out.println("Flight successfully booked! Returning to the actions page.");
         printActionsPage(currentUser);

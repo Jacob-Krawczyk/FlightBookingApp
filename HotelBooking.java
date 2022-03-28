@@ -1,9 +1,10 @@
-mport java.util.ArrayList;
-
 /**
  * Stores information for hotel booking
  * @author JavaFine
  */
+
+import java.util.ArrayList;
+
 public class HotelBooking {
     protected ArrayList<Profile> travelers;
     private ArrayList<Room> rooms;
