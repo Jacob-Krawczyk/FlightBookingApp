@@ -17,8 +17,18 @@ public class UserDatabaseLoader {
   protected static final String User_FILE_Password = "password";
   protected static final String User_FILE_First_Name = "firstname";
   protected static final String User_FILE_Last_Name = "lastname";
+  protected static final String User_FILE_Address = "address";
+  protected static final String User_FILE_City = "city";
+  protected static final String User_FILE_State = "state";
+  protected static final String User_FILE_Zip = "zip";
   protected static final String User_FILE_Date_Of_Birthday = "d.o.b";
+  protected static final String User_FILE_Email_Address = "emailAddress";
+  protected static final String User_FILE_Phone_Number = "phoneNumber";
+  protected static final String User_FILE_Disability = "disability";
+  protected static final String User_FILE_Visa = "visa";
+  protected static final String User_FILE_Occupation = "occupation";
   protected static final String User_FILE_Discount = "discount";
+
   protected static final String HOTEL_FILE_ID = "id";
   protected static final String HOTEL_ROOM_TYPE = "room type";
 
@@ -46,7 +56,16 @@ public class UserDatabaseLoader {
         String password = (String) userJSON.get("password");
         String firstName = (String) userJSON.get("firstname");
         String lastName = (String) userJSON.get("lastname");
+		String address =(String) userJSON.get("address");
+		String city =(String) userJSON.get("city");
+		String state =(String) userJSON.get("state");
+		String zip=(String) userJSON.get("zip");
         String dateOfBirthday = (String) userJSON.get("d.o.b");
+		String emailAddress =(String) userJSON.get("emailAddress");
+		String phoneNumber =(String) userJSON.get("phoneNumber");
+		String disability =(String) userJSON.get("disability");
+		String visa =(String) userJSON.get("visa");
+		String occupation =(String) userJSON.get("occupation");
         String discount = (String) userJSON.get("discount");
 
         JSONArray list = (JSONArray) userJSON.get("Friends");
@@ -76,14 +95,13 @@ public class UserDatabaseLoader {
             //new_Hotels.getHotelByUUID(Hotel_ID);
            // hotels.add(new_Hotel);
           }
-
           Friend new_friend = new Friend(Friend_ID, Friend_FirstName, Friend_LastName,
               Friend_DateOfBirthday, Friend_Discount, flights, hotels);
           friends.add(new_friend);
-
         }
+		Profile new_User=new Profile(firstName, lastName, address, city, state, zip, dateOfBirthday, emailAddress, phoneNumber, disability, visa, occupation, discount);
         RegisteredUser user =
-            new RegisteredUser(id, userID, password, firstName, lastName, dateOfBirthday);
+            new RegisteredUser(id, friends,new_User,userID,password);
         users.add(user);
       }
     } catch (Exception e) {
