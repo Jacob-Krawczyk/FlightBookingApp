@@ -215,7 +215,7 @@ public class FlightApp {
      * @param currentUser
      * @param hotel
      */
-    public void bookHotel(RegisteredUser currentUser, Hotel hotel) {
+    public void bookHotel(RegisteredUser currentUser, HotelBooking hotel) {
         currentUser.bookHotel(hotel);
     }
 
