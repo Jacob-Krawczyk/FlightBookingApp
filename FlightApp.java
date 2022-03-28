@@ -122,6 +122,11 @@ public class FlightApp {
         userList.removeFriend(friend);
     }
 
+    public void addFriendToHotelBooking(RegisteredUser currentUser, String first, String last, HotelBooking hotelBooking) {
+        Friend friend = currentUser.getFriendByFristAndLast(first, last);
+        hotelBooking.addTraveler(friend.getProfile());
+    }
+    
     /**
      * Sets preferences of current user
      * @param currentUser
