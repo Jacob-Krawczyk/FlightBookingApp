@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 /**
  * Stores information for flight booking
+ * @author JavaFine
  */
 public class FlightBooking {
     protected ArrayList<Profile> travelers;
@@ -20,10 +21,17 @@ public class FlightBooking {
         this.flights = flights;
     }
 
+    /**
+     * Return the flights
+     * @return
+     */
     public Flight getFlight() {
         return this.flights;
     }
 
+    /**
+     * Returns the number of travelers, seats and flights.
+     */
     public String toString() {
         return "Travelers: " + this.travelers + "\nSeats: " + this.seats + "\nFlights: " + this.flights;
     }
