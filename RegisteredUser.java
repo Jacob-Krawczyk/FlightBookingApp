@@ -119,7 +119,7 @@ public class RegisteredUser extends User {
     }
 
    
-    public void bookHotel(Hotel hotel) {
+    public void bookHotel(HotelBooking hotel) {
         hotelBookings.add(hotel);
     }
 
@@ -152,9 +152,8 @@ public class RegisteredUser extends User {
     /**
      * Adds non-user friend to friends list
      * @param friend
-     * @return 
      */
-    public Friend addNonUserFriend(String firstName, String lastName, String dob, String discount) {
+    public void addNonUserFriend(String firstName, String lastName, String dob, String discount) {
         UUID uuid = UUID.randomUUID();
         Friend aFriend = new Friend(uuid, firstName,lastName, dob, discount);
         friendList.add(aFriend);
