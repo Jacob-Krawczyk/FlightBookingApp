@@ -96,7 +96,7 @@ public class UserDatabaseWriter {
 	jsonoS.put(Friend_Date_Of_Birthday,friend.getDateOfBirthday());
 	jsonoS.put(Friend_Discount,friend.getDiscount());
 	jsonoS.put(Friend_Flights,friend.getFlights());
-	jsonoS.put(Friend_Hotel_Check_In_Day,friend.getFlights());
+	jsonoS.put(Friend_Hotels,friend.getHotels());
     return jsonoS;
   }
   public static JSONObject getFlightsJSON(Flight flight) {
