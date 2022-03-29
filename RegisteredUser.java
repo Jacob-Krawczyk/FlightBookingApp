@@ -120,9 +120,8 @@ public class RegisteredUser extends User {
      * Removes flight from user's flight list
      * @param flight
      */
-    public void CancelFlight(FlightBooking flight) {
+    public void cancelFlight(FlightBooking flight) {
         flightBookings.remove(flight);
-        userList.cancelFlight(flight.getFlight());
     }
 
     /**
@@ -131,7 +130,6 @@ public class RegisteredUser extends User {
      */
     public void bookHotel(HotelBooking hotel) {
         hotelBookings.add(hotel);
-        userList.bookHotel(hotel.getHotel());
     }
 
     /**
@@ -140,7 +138,6 @@ public class RegisteredUser extends User {
      */
     public void cancelHotel(HotelBooking hotel) {
         hotelBookings.remove(hotel);
-        userList.cancelHotel(hotel.getHotel());
     }
     
     /**
