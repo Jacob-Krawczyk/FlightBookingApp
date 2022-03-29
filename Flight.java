@@ -37,6 +37,11 @@ public class Flight {
     this.airline = airline;
   }
 
+  /**
+   * Returns seat based on inputted seat number
+   * @param seatNum
+   * @return seat
+   */
   public Seat getSeatBySeatNumber(String seatNum) {
     for (Seat seat : flightSeats) {
       if (seat.getSeatNumber().equals(seatNum)) {

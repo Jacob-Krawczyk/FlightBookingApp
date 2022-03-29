@@ -9,29 +9,28 @@ import java.util.UUID;
  * @author JavaFine
  */
 public class HotelsList {
-  private HotelDatabaseLoader hotelLoader;
-  private ArrayList<Hotel> hotels;
-  private ArrayList<Hotel> returnList;
-  private static HotelsList hotelList;
+    private ArrayList<Hotel> hotels;
+    private ArrayList<Hotel> returnList;
+    private static HotelsList hotelList;
 
-  /**
-   * Creates a single instance of HotelsList and returns that single instance
-   * 
-   * @return HotelsList
-   */
-  public static HotelsList getInstance() {
-    if (hotelList == null) {
-      hotelList = new HotelsList();
+    /**   
+     * Creates a single instance of HotelsList and returns that single instance
+     * 
+     * @return HotelsList
+     */
+    public static HotelsList getInstance() {
+        if (hotelList == null) {
+        hotelList = new HotelsList();
+        }
+        return hotelList;
     }
-    return hotelList;
-  }
 
-  /**
-   * Clears search array list
-   */
-  private void clearSearch() {
-    returnList.clear();
-  }
+    /**
+     * Clears search array list
+     */
+    private void clearSearch() {
+        returnList.clear();
+    }
 
   /**
    * Returns list of all hotels from database

@@ -100,6 +100,14 @@ public class Profile {
     }
 
     /**
+     * Returns address
+     * @return address
+     */
+    public String getAddress() {
+        return address;
+    }
+
+    /**
      * Return city
      * @return city
      */
