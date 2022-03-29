@@ -42,7 +42,7 @@ public class FlightDatabaseWriter {
     JSONObject jsonoF = new JSONObject();
     String StringUUID = flight.getID().toString();
     jsonoF.put(ID, StringUUID);
-    jsonoF.put(Departs_FROM, flight.getDepart());
+    jsonoF.put(Departs_FROM, flight.getDepartLocation());
     jsonoF.put(DESTINATION, flight.getDestination());
     jsonoF.put(DEPARTURE_DATE, flight.getDepartDate());
     jsonoF.put(DEPARTURE_TIME, flight.getDepartTime());

@@ -44,8 +44,8 @@ public class HotelDatabaseLoader{
          	 	JSONObject getRooms = (JSONObject) list.get(j);
          	 	String room_type=(String)hotelJSON.get("room type");
           		String number_of_beds=(String)hotelJSON.get("number of beds");
-				String check_in_date =(String) hotelJSON.get("check in date");
-				String check_out_date =(String) hotelJSON.get("check out date");
+				Date check_in_date =(Date) hotelJSON.get("check in date");
+				Date check_out_date =(Date) hotelJSON.get("check out date");
 				String check_in_time=(String) hotelJSON.get("check in time");
 				String check_out_time=(String) hotelJSON.get("check out time");
 				/*
