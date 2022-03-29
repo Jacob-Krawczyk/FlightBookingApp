@@ -21,13 +21,16 @@ public class HotelDatabaseWriter {
   protected static final String Roomes_check_out_time = "check out time";
   protected static final String Roomes_Price_Per_Night="Price per night";
 
+  /**
+   * Saves hotels 
+   */
   public static void saveHotels() {
     HotelsList hotels = HotelsList.getInstance();
     ArrayList<Hotel> currentHotels = hotels.getAllHotels();
     JSONArray jasonHotels = new JSONArray();
 
     for (int i = 0; i < currentHotels.size(); i++) {
-      // give a array in the begining
+      // Give a array in the begining
       jasonHotels.add(getHotelsJSON(currentHotels.get(i)));
     }
     try (FileWriter file = new FileWriter(Hotel_FILE)) {
@@ -38,8 +41,13 @@ public class HotelDatabaseWriter {
     }
   }
 
+  /**
+   * Gets hotels from JSON
+   * @param hotel
+   * @return
+   */
   public static JSONObject getHotelsJSON(Hotel hotel) {
-    // creat a object of jason
+    // Creat a object of JSON
     JSONObject jsonoF = new JSONObject();
 
     String StringUUID = hotel.getID().toString();
@@ -57,6 +65,11 @@ public class HotelDatabaseWriter {
     return jsonoF;
   }
 
+  /**
+   * Gets rooms from JSON
+   * @param room
+   * @return
+   */
   public static JSONObject getRoomsJSON(Room room) {
     JSONObject jsonoS = new JSONObject();
     jsonoS.put(Rooms_room_type, room.getRoomType());
