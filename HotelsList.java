@@ -57,6 +57,16 @@ public class HotelsList {
     return null;
   }
 
+  public void addTraveler(RegisteredUser currentUser, String first, String last, HotelBooking hotelBooking) {
+    Friend friend = currentUser.getFriendByFristAndLast(first, last);
+    hotelBooking.addTraveler(friend.getProfile());
+  }
+
+  public void addRoom(HotelBooking hotelBooking, Hotel hotel, int roomNum) {
+      Room room = hotel.getHotelRooms().get(roomNum);
+      hotelBooking.addRoom(room);
+  }
+
   /**
    * Returns hotel search result
    * 
@@ -65,17 +75,29 @@ public class HotelsList {
    * @param accessibility
    * @param roomType
    * @param numOfBeds
+   * @param rating
    * @return hotel search array list
    */
   public ArrayList<Hotel> getSearch(String location, ArrayList<Amenities> amenities,
-      ArrayList<Accessibility> accessibility, String roomType, int numOfBeds) {
+      ArrayList<Accessibility> accessibility, String roomType, int numOfBeds, double rating) {
     clearSearch();
     getHotelByLocation(location);
     getHotelByAmenities(amenities);
     getHotelByAccessibility(accessibility);
     getHotelByRoomType(roomType);
     getHotelByNumberOfBeds(numOfBeds);
+    getHotelByRating(rating);
     return returnList;
+  }
+
+  public ArrayList<Hotel> getFourMatchesByLocation(String location) {
+      clearSearch();
+      getHotelByLocation(location);
+      ArrayList<Hotel> fourMatches = new ArrayList<Hotel>();
+      for(int i = 0; i < 4; i++) {
+          fourMatches.add(returnList.get(i));
+      }
+      return fourMatches;
   }
 
   /**
@@ -92,6 +114,30 @@ public class HotelsList {
     }
   }
 
+  public boolean checkValidityOfAccessibility(String accessibility) {
+      for (Accessibility access : EnumSet.allOf(Accessibility.class)) {
+          if (accessibility.equals(access.toString())) {
+              return true;
+          }
+      }
+      return false;
+  }
+  public boolean checkValidityOfAmenity(String amenity) {
+      for (Amenities amen : EnumSet.allOf(Amenities.class)) {
+          if (amenity.equals(amen.toString())) {
+              return true;
+          }
+      }
+      return false;
+  }
+  private void getHotelByRating(double rating) {
+      for (Hotel hotel: hotels) {
+          double hotelRating = hotel.getRating();
+          if (hotelRating != rating) {
+              returnList.remove(hotel);
+          }
+      }
+  }
   /**
    * Removes hotels that don't match amentiies
    * 
@@ -182,11 +228,6 @@ public class HotelsList {
         System.out.println(rooms.get(i).toString());
       }
     }
-  }
-
-  public Room getRoom(Hotel hotel, int roomNum) {
-    ArrayList<Room> rooms = hotel.getHotelRooms();
-    return rooms.get(roomNum);
   }
 
   public void cancelHotel(UUID hotelID) {

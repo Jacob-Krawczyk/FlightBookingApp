@@ -37,6 +37,15 @@ public class Flight {
     this.airline = airline;
   }
 
+  public Seat getSeatBySeatNumber(String seatNum) {
+    for (Seat seat : flightSeats) {
+      if (seat.getSeatNumber().equals(seatNum)) {
+        return seat;
+      }
+    }
+    return null;
+  }
+
   /**
    * Returns UUID
    * @return UUID

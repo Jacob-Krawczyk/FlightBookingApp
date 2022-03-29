@@ -1,5 +1,5 @@
-import java.util.ArrayList;
-import java.util.UUID;
+import java.util.*;
+import java.io.*;
 
 /**
  * A Singleton Listing of Users
@@ -36,6 +36,86 @@ public class UserList {
         return user;
     }
     return null;
+  }
+
+  public void printItinerary(RegisteredUser currentUser) {
+      currentUser.accessItinerary();
+  }
+
+  public void writeItineraryToFile(RegisteredUser currentUser, String title) {
+      try {
+          ArrayList<FlightBooking> flightList = currentUser.getFlight();
+          ArrayList<HotelBooking> hotelList = currentUser.getHotel();
+          PrintWriter fileWriter = new PrintWriter(new FileOutputStream(title));
+          fileWriter.println("Flight Bookings");
+          for (FlightBooking flight : flightList) {
+              fileWriter.println(flight.toString());
+          }
+          fileWriter.println("Hotel Bookings");
+          for (HotelBooking hotel : hotelList) {
+              fileWriter.println(hotel.toString());
+          }
+          fileWriter.close();
+      } catch (Exception e) {
+          System.out.println(e);
+      }
+
+  }
+
+  public boolean checkValidityOfUsername(String username) {
+      for (RegisteredUser user : users) {
+          if (username.equals(user.getUsername())) {
+              return false;
+          }
+      }
+      return true;
+  }
+
+  public void getFriendsList(RegisteredUser currentUser) {
+      ArrayList<Friend> friends = currentUser.getFriends(); 
+      for(Friend friend: friends) {
+          System.out.println(friend.toString());
+      }
+  }
+
+  public void addNonUserFriend(RegisteredUser currentUser, String firstName, String lastName, String dob, String discount) {
+      currentUser.addNonUserFriend(firstName, lastName, dob, discount);
+  }
+
+  public void bookHotel(RegisteredUser currentUser, HotelBooking hotel) {
+      currentUser.bookHotel(hotel);
+  }
+
+  public ArrayList<FlightBooking> getBookedFlights(RegisteredUser currentUser) {
+      return currentUser.getFlight();
+  }
+
+  public ArrayList<HotelBooking> getBookedHotels(RegisteredUser currentUser) {
+      return currentUser.getHotel();
+  }
+
+  public void cancelFlight(RegisteredUser currentUser, FlightBooking flight) {
+      currentUser.cancelFlight(flight);
+  }
+
+  public void cancelHotel(RegisteredUser currentUser, HotelBooking hotel) {
+      currentUser.cancelHotel(hotel);
+  }
+
+  public void bookFlight(RegisteredUser currentUser, FlightBooking flight) {
+      currentUser.bookFlight(flight);
+  }
+
+  public void setPreferences(RegisteredUser currentUser, Preferences pref) {
+      currentUser.setPreferences(pref);
+  }
+
+  public void removeFriend(RegisteredUser currentUser, String first, String last) {
+      currentUser.removeFriend(first, last);
+  }
+
+  public void addUserFriend(RegisteredUser currentUser, String username) {
+      currentUser.addUserFriend(username);
   }
 
   /**

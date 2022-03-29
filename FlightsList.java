@@ -62,9 +62,30 @@ public class FlightsList {
         + twoTransfer.toString();
   }
 
-  public Flight getFirstMatch(String departLocation, String destination,
+  public ArrayList<Flight> getFirstMatch(String departLocation, String destination,
       ArrayList<String> airline) {
-    return getOneSingleFlight(departLocation, destination, airline);
+    Flight flight = getOneSingleFlight(departLocation, destination, airline);
+    ArrayList<Flight> firstMatch = new ArrayList<Flight>();
+    firstMatch.add(flight);
+    return firstMatch;
+  }
+
+  public boolean checkValidityOfAirline(String airline) {
+      for (AirlineCompany comp : EnumSet.allOf(AirlineCompany.class)) {
+          if (airline.equals(comp.toString())) {
+              return true;
+          }
+      }
+      return false;
+  }
+
+  public boolean checkValidityOfClass(String prefClass) {
+      for (FlightClass flightClass : EnumSet.allOf(FlightClass.class)) {
+          if (prefClass.equals(flightClass.toString())) {
+              return true;
+          }
+      }
+      return false;
   }
 
   public ArrayList<Flight> getSecondMatch(String departLocation, String destination,
@@ -211,6 +232,18 @@ public class FlightsList {
     return flightByDest;
   }
 
+  public void addTraveler(RegisteredUser currentUser, String first, String last, FlightBooking flightBooking) {
+      Friend friend = currentUser.getFriendByFristAndLast(first, last);
+      flightBooking.addTraveler(friend.getProfile());
+  }
+
+  public FlightBooking createFlightBooking(RegisteredUser currentUser, ArrayList<Flight> flightSearch) {
+      ArrayList<Profile> travelers = new ArrayList<Profile>();
+      travelers.add(currentUser.getProfile());
+      ArrayList<Seat> seats = new ArrayList<Seat>();
+      return new FlightBooking(travelers, seats, flightSearch);
+  }
+
   /**
    * Returns list of flights filtered by departure location and airline
    * 
@@ -265,13 +298,9 @@ public class FlightsList {
    * @param seatNum
    * @return
    */
-  public Seat getSeatBySeatNumber(Flight flight, String seatNum) {
-    ArrayList<Seat> seats = flight.getFlightSeats();
-    for (Seat seat : seats) {
-      if (seat.getSeatNumber().equals(seatNum)) {
-        return seat;
-      }
-    }
+  public Seat addSeatToFlightBooking(Flight flight, String seatNum, FlightBooking flightBooking) {
+    Seat seat = flight.getSeatBySeatNumber(seatNum);
+    flightBooking.addSeat(seat);
     return null;
   }
 
