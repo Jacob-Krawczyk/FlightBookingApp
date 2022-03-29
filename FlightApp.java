@@ -50,6 +50,7 @@ public class FlightApp {
 
     /**
      * Adds RegisteredUser to User.json file 
+     * @return new RegisteredUser
      */
     public RegisteredUser addUser(RegisteredUser newUser) {
         try {
@@ -66,7 +67,12 @@ public class FlightApp {
      * @return array list of flights
      */
     public ArrayList<Flight> getAllFlights() {
-        return flightList.getAllFlights();
+        try {
+            return flightList.getAllFlights();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
     }
 
     /**
@@ -74,7 +80,11 @@ public class FlightApp {
      * @param currentUser
      */
     public void printItinerary(RegisteredUser currentUser) {
-        currentUser.accessItinerary();
+        try {
+            currentUser.accessItinerary();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     /**
@@ -82,9 +92,13 @@ public class FlightApp {
      * @param currentUser
      */
     public void printFriendsList(RegisteredUser currentUser) {
-        ArrayList<Friend> friendsList = currentUser.getFriends();
-        for(Friend friend:friendsList) {
-            System.out.println(friend.toString());
+        try {
+            ArrayList<Friend> friendsList = currentUser.getFriends();
+            for(Friend friend:friendsList) {
+                System.out.println(friend.toString());
+            }
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }
 
@@ -97,8 +111,12 @@ public class FlightApp {
      * @param discount
      */
     public void addNonUserFriend(RegisteredUser currentUser, String first, String last, String dob, String discount) {
-        Friend friend = currentUser.addNonUserFriend(first, last, dob, discount);
-        userList.addFriend(friend);
+        try {
+            Friend friend = currentUser.addNonUserFriend(first, last, dob, discount);
+            userList.addFriend(friend);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     /**
@@ -107,7 +125,11 @@ public class FlightApp {
      * @param username
      */
     public void addUserFriend(RegisteredUser currentUser, String username) {
-         currentUser.addUserFriend(username);
+        try {
+            currentUser.addUserFriend(username);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
    
     /**
@@ -117,9 +139,13 @@ public class FlightApp {
      * @param last
      */
     public void removeFriend(RegisteredUser currentUser, String first, String last) {
-        currentUser.removeFriend(first,last);
-        Friend friend = currentUser.getFriendByFristAndLast(first, last);
-        userList.removeFriend(friend);
+        try {
+            currentUser.removeFriend(first,last);
+            Friend friend = currentUser.getFriendByFristAndLast(first, last);
+            userList.removeFriend(friend);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     /**
@@ -130,8 +156,12 @@ public class FlightApp {
      * @param hotelBooking
      */
     public void addFriendToHotelBooking(RegisteredUser currentUser, String first, String last, HotelBooking hotelBooking) {
-        Friend friend = currentUser.getFriendByFristAndLast(first, last);
-        hotelBooking.addTraveler(friend.getProfile());
+        try {
+            Friend friend = currentUser.getFriendByFristAndLast(first, last);
+            hotelBooking.addTraveler(friend.getProfile());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     /**
@@ -142,8 +172,12 @@ public class FlightApp {
      * @param flightBooking
      */
     public void addFriendToFlightBooking(RegisteredUser currentUser, String first, String last, FlightBooking flightBooking) {
-        Friend friend = currentUser.getFriendByFristAndLast(first, last);
-        flightBooking.addTraveler(friend.getProfile());
+        try {
+            Friend friend = currentUser.getFriendByFristAndLast(first, last);
+            flightBooking.addTraveler(friend.getProfile());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     /**
@@ -152,25 +186,45 @@ public class FlightApp {
      * @param roomNum
      */
     public void addRoomToHotelBooking(HotelBooking hotelBooking, int roomNum) {
-        Room room = hotelList.getRoom(hotelBooking.getHotel(), roomNum);
-        hotelBooking.addRoom(room);
+        try {
+            Room room = hotelList.getRoom(hotelBooking.getHotel(), roomNum);
+            hotelBooking.addRoom(room);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
+    /**
+     * Creates and returns flight booking
+     * @param currentUser
+     * @param flightSearch
+     * @return flight booking
+     */
     public FlightBooking createFlightBooking(RegisteredUser currentUser, ArrayList<Flight> flightSearch) {
-        ArrayList<Profile> travelers = new ArrayList<Profile>();
-        travelers.add(currentUser.getProfile());
-        ArrayList<Seat> seats = new ArrayList<Seat>();
-        return new FlightBooking(travelers, seats, flightSearch);
+        try {
+            ArrayList<Profile> travelers = new ArrayList<Profile>();
+            travelers.add(currentUser.getProfile());
+            ArrayList<Seat> seats = new ArrayList<Seat>();
+            return new FlightBooking(travelers, seats, flightSearch);
+        } catch (Exception e) {
+            System.out.println(e); 
+        }
+        return null;
     }
 
     /**
      * Adds seats to flight booking
      * @param flightBooking
+     * @param flight
      * @param seatNum
      */
     public void addSeatsToFlightBooking(FlightBooking flightBooking, int flight, String seatNum) {
-        Seat seat = flightList.getSeatBySeatNumber(flightBooking.getFlight().get(flight), seatNum);
-        flightBooking.addSeat(seat);
+        try {
+            Seat seat = flightList.getSeatBySeatNumber(flightBooking.getFlight().get(flight), seatNum);
+            flightBooking.addSeat(seat);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
     
     /**
@@ -182,7 +236,11 @@ public class FlightApp {
      * @param checkOutTime
      */
     public void printRooms(Hotel hotel, Date checkInDate, String checkinTime, Date checkOutDate, String checkOutTime) {
-        hotelList.printRoomByDateAndTime(hotel, checkInDate, checkinTime, checkOutDate, checkOutTime);
+        try {
+            hotelList.printRoomByDateAndTime(hotel, checkInDate, checkinTime, checkOutDate, checkOutTime);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     /**
@@ -190,7 +248,11 @@ public class FlightApp {
      * @param flight
      */
     public void printAvailableSeats(Flight flight) {
-        flightList.getAvailableSeats(flight);
+        try {
+            flightList.getAvailableSeats(flight);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     /**
@@ -199,7 +261,11 @@ public class FlightApp {
      * @param pref
      */
     public void setPreferences(RegisteredUser currentUser, Preferences pref) {
-        currentUser.setPreferences(pref);
+        try {
+            currentUser.setPreferences(pref);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     /**
@@ -208,10 +274,14 @@ public class FlightApp {
      * @return boolean
      */
     public boolean checkValidityOfAirline(String airline) {
-        for (AirlineCompany comp : EnumSet.allOf(AirlineCompany.class)) {
-            if (airline.equals(comp.toString())) {
-                return true;
+        try {
+            for (AirlineCompany comp : EnumSet.allOf(AirlineCompany.class)) {
+                if (airline.equals(comp.toString())) {
+                    return true;
+                }
             }
+        } catch (Exception e) {
+            System.out.println(e);
         }
         return false;
     }
@@ -222,10 +292,14 @@ public class FlightApp {
      * @return boolean
      */
     public boolean checkValidityOfClass(String prefClass) {
-        for (FlightClass flightClass : EnumSet.allOf(FlightClass.class)) {
-            if (prefClass.equals(flightClass.toString())) {
-                return true;
+        try {
+            for (FlightClass flightClass : EnumSet.allOf(FlightClass.class)) {
+                if (prefClass.equals(flightClass.toString())) {
+                    return true;
+                }
             }
+        } catch (Exception e) {
+            System.out.println(e);
         }
         return false;
     }
@@ -236,10 +310,14 @@ public class FlightApp {
      * @return boolean
      */
     public boolean CheckValidityOfAccessibility(String accessibility) {
-        for (Accessibility access : EnumSet.allOf(Accessibility.class)) {
-            if (accessibility.equals(access.toString())) {
-                return true;
+        try {
+            for (Accessibility access : EnumSet.allOf(Accessibility.class)) {
+                if (accessibility.equals(access.toString())) {
+                    return true;
+                }
             }
+        } catch (Exception e) {
+            System.out.println(e);
         }
         return false;
     }
@@ -247,25 +325,35 @@ public class FlightApp {
     /**
      * Checks validity of amenity inputted by user
      * @param amenity
-     * @return boolena
+     * @return boolean
      */
     public boolean checkValidityOfAmenity(String amenity) {
-        for (Amenities amen : EnumSet.allOf(Amenities.class)) {
-            if (amenity.equals(amen.toString())) {
-                return true;
+        try {
+            for (Amenities amen : EnumSet.allOf(Amenities.class)) {
+                if (amenity.equals(amen.toString())) {
+                    return true;
+                }
             }
+        } catch (Exception e) {
+            System.out.println(e);
         }
         return false;
     }
 
     /**
      * Returns flight search result
+     * @param departLocation
      * @param destination
      * @param airline
      * @return array list of filtered flights 
      */
     public ArrayList<Flight> getSingleFlights(String departLocation, String destination, ArrayList<String> airline) {
-        return flightList.getSingles(departLocation, destination, airline);
+        try {
+            return flightList.getSingles(departLocation, destination, airline);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
     }
 
     /**
@@ -278,7 +366,12 @@ public class FlightApp {
      * @return array list of filtered hotels
      */
     public ArrayList<Hotel> getHotelSearch(String location, ArrayList<Amenities> amenities, ArrayList<Accessibility> accessibility, String roomType, int numOfBeds) {
-        return hotelList.getSearch(location, amenities, accessibility, roomType, numOfBeds);
+        try {
+            return hotelList.getSearch(location, amenities, accessibility, roomType, numOfBeds);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
     }
 
     /**
@@ -287,7 +380,11 @@ public class FlightApp {
      * @param hotel
      */
     public void bookHotel(RegisteredUser currentUser, HotelBooking hotel) {
-        currentUser.bookHotel(hotel);
+        try {
+            currentUser.bookHotel(hotel);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     /**
@@ -296,7 +393,11 @@ public class FlightApp {
      * @param flight
      */
     public void bookFlight(RegisteredUser currentUser, FlightBooking flight) {
-        currentUser.bookFlight(flight);
+        try {
+            currentUser.bookFlight(flight);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     /**
@@ -305,7 +406,12 @@ public class FlightApp {
      * @return array list of booked flights
      */
     public ArrayList<FlightBooking> getBookedFlights(RegisteredUser currentUser) {
-        return currentUser.getFlight();
+        try {
+            return currentUser.getFlight();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
     }
 
     /**
@@ -314,16 +420,25 @@ public class FlightApp {
      * @param flight
      */
     public void cancelFlight(RegisteredUser currentUser, FlightBooking flight) {
-        currentUser.CancelFlight(flight);
+        try {
+            currentUser.CancelFlight(flight);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     /**
      * Returns booked hotels list
      * @param currentUser
-     * @return
+     * @return array list of hotel bookings
      */
     public ArrayList<HotelBooking> getBookedHotels(RegisteredUser currentUser) {
-        return currentUser.getHotel();
+        try {
+            return currentUser.getHotel();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
     }
 
     /**
@@ -332,12 +447,17 @@ public class FlightApp {
      * @param hotel
      */
     public void cancelHotel(RegisteredUser currentUser, HotelBooking hotel) {
-        currentUser.cancelHotel(hotel);
+        try {
+            currentUser.cancelHotel(hotel);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     /**
-     * Writes itinerary to file
+     * Writes itinerary to file user named
      * @param currentUser
+     * @param title
      */
     public void writeItineraryToFile(RegisteredUser currentUser, String title) {
         try {
@@ -358,30 +478,102 @@ public class FlightApp {
         }
     }
 
+    /**
+     * Returns list all connecting flights
+     * @param departLocation
+     * @param destination
+     * @param airline
+     * @return array list of connecting flights
+     */
     public ArrayList<ArrayList<Flight>> getConnectingFlights(String departLocation, String destination, ArrayList<String> airline) {
-        return flightList.getConnectingFlights(departLocation, destination, airline);
+        try {
+            return flightList.getConnectingFlights(departLocation, destination, airline);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
     }
 
+    /**
+     * Returns four matches - 1 direct flight, 2 single transfer, 1 double transfer
+     * @param departLocation
+     * @param destination
+     * @param airline
+     * @return string of four matches 
+     */
     public String getFourMatches(String departLocation, String destination, ArrayList<String> airline) {
-        return flightList.getFourMatches(departLocation, destination, airline);
+        try {
+            return flightList.getFourMatches(departLocation, destination, airline);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
     }
 
+    /**
+     * Returns direct flight match
+     * @param departLocation
+     * @param destination
+     * @param airline
+     * @return array list of single direct flight
+     */
     public ArrayList<Flight> getFirstMatch(String departLocation, String destination, ArrayList<String> airline) {
-        Flight flight = flightList.getFirstMatch(departLocation, destination, airline);
-        ArrayList<Flight> firstMatch = new ArrayList<Flight>();
-        firstMatch.add(flight);
-        return firstMatch;
+        try {
+            Flight flight = flightList.getFirstMatch(departLocation, destination, airline);
+            ArrayList<Flight> firstMatch = new ArrayList<Flight>();
+            firstMatch.add(flight);
+            return firstMatch;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
     }
 
+    /**
+     * Returns all flights in first one transfer flight
+     * @param departLocation
+     * @param destination
+     * @param airline
+     * @return array list of flights for one transfer flight
+     */
     public ArrayList<Flight> getSecondMatch(String departLocation, String destination, ArrayList<String> airline) {
-        return flightList.getSecondMatch(departLocation, destination, airline);
+        try {
+            return flightList.getSecondMatch(departLocation, destination, airline);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
     }
 
+    /**
+     * Returns all flights in second one transfer flight
+     * @param departLocation
+     * @param destination
+     * @param airline
+     * @return array list of flights for one transfer flight
+     */
     public ArrayList<Flight> getThirdMatch(String departLocation, String destination, ArrayList<String> airline) {
-        return flightList.getThirdMatch(departLocation, destination, airline);
+        try {
+            return flightList.getThirdMatch(departLocation, destination, airline);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
     }
 
+    /**
+     * Returns all flights in two transflight flight
+     * @param departLocation
+     * @param destination
+     * @param airline
+     * @return array list of flights for one transfer flight
+     */
     public ArrayList<Flight> getFourthMatch(String departLocation, String destination, ArrayList<String> airline) {
-        return flightList.getFourthMatch(departLocation, destination, airline);
+        try {
+            return flightList.getFourthMatch(departLocation, destination, airline);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
     }
 }
