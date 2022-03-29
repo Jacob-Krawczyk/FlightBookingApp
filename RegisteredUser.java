@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * Registered Users
@@ -130,19 +129,6 @@ public class RegisteredUser extends User {
     public void cancelHotel(HotelBooking hotel) {
         hotelBookings.remove(hotel);
         userList.cancelHotel(hotel.getHotel());
-    }
-    
-    /**
-     * Checks if user is of age 
-     * @param age
-     * @return boolean
-     */
-    private boolean ofAge(int age) {
-        if(age >= 18) {
-            return true;
-        }
-        System.out.println("Invalid age.");
-        return false;
     }
     
     /**

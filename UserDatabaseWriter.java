@@ -1,6 +1,5 @@
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
+import java.io.*;
+import java.util.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -137,6 +136,4 @@ public class UserDatabaseWriter {
 	  jsonoS.put(Friend_Hotel_Check_Out_Day,hotel.getCheckOutDay());
     return jsonoS;
   }
-
-
 }

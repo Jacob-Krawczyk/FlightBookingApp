@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * A Singleton Listing of Users
@@ -104,12 +102,16 @@ public class UserList {
         return null;
     }
 
-    public void cancelFlight(Flight flight) {
-        userDatabaseWriter.removeFlight(flight);
+    public void cancelFlight(ArrayList<Flight> flights) {
+        for(Flight flight: flights) {
+            userDatabaseWriter.removeFlight(flight);
+        }
     }
 
-    public void bookFlight(Flight flight) {
-        userDatabaseWriter.addFlight(flight);
+    public void bookFlight(ArrayList<Flight> flights) {
+        for(Flight flight: flights) {
+            userDatabaseWriter.addFlight(flight);
+        }
     }
 
     public void cancelHotel(Hotel hotel) {
