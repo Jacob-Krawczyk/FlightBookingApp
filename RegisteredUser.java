@@ -176,7 +176,7 @@ public class RegisteredUser extends User {
         String discount = newFriend.getProfile().getDOB();
         Friend aFriend = new Friend(uuid, first, last, dob, discount);
         friendList.add(aFriend);
-        userList.addFriend(aFriend);
+        return aFriend;
     }
 
     /**
@@ -188,7 +188,6 @@ public class RegisteredUser extends User {
         for (Friend friend : friendList) {
             if (friend.getFirstName().equals(first) && friend.getLastName().equals(last)) {
                 friendList.remove(friend);
-                userList.removeFriend(friend);
             }
         }
     }
