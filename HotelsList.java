@@ -59,14 +59,24 @@ public class HotelsList {
      * @param numOfBeds
      * @return hotel search array list
      */
-    public ArrayList<Hotel> getSearch(String location, ArrayList<Amenities> amenities, ArrayList<Accessibility> accessibility, String roomType, int numOfBeds) {
+    public ArrayList<Hotel> getSearch(String location, ArrayList<Amenities> amenities, ArrayList<Accessibility> accessibility, String roomType, int numOfBeds, Double rating) {
         clearSearch();
         getHotelByLocation(location);
         getHotelByAmenities(amenities);
         getHotelByAccessibility(accessibility);
         getHotelByRoomType(roomType);
         getHotelByNumberOfBeds(numOfBeds);
+        getHotelByRatings(rating);
         return returnList;
+    }
+
+    private void getHotelByRatings(double ratings) {
+        for(Hotel hotel: hotels) {
+            double hotelRating = hotel.getRating();
+            if(hotelRating != ratings) {
+                returnList.remove(hotel);
+            }
+        }
     }
 
     /**
