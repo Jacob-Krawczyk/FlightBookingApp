@@ -365,6 +365,23 @@ public class FlightUI {
         return numPeople;
     }
 
+    public static boolean checkRatingValidity(double rating) {
+        if(rating < 0.0 || rating > 5.0) {
+            return false;
+        }
+        return true;
+    }
+
+    public static double addRatingPref() {
+        System.out.println("What rating do you want? Ratings go up to 5.0.");
+        double rating = keyboard.nextDouble();
+        if(!checkRatingValidity(rating)) {
+            addRatingPref();
+            return 0.0;
+        }
+        return rating;
+    }
+
     /**
      * Registered User searching for hotels
      * @param currentUser
@@ -375,16 +392,45 @@ public class FlightUI {
             String location = keyboard.nextLine();
             ArrayList<Amenities> amenities = addAmenitiesPref();
             ArrayList<Accessibility> accessibility = addAccessibilityPref();
-            System.out.println("What rating do you want? Ratings go up to 5.0.");
-            double rating = keyboard.nextDouble();
-            
-            Double rating = addRatingPref();
+            double rating = addRatingPref();
             System.out.println("What type of room do you want?");
             String roomType = keyboard.nextLine();
             System.out.println("How many beds do you want?");
             int numOfBeds = keyboard.nextInt();
             keyboard.nextLine();
-            ArrayList<Hotel> hotelSearch = app.getHotelSearch(location, amenities, accessibility, roomType, numOfBeds);
+            System.out.println("1. Four Matches Based on Location\n2. All Preferences\nType the number corresponding with the search result you want.");
+            int response = keyboard.nextInt();
+            keyboard.nextLine();
+            switch(response) {
+                case 1:
+                    printFourMatchesByLocation(currentUser, location);
+                    break;
+                case 2: 
+                    printAllMatches(currentUser, location, amenities, accessibility, roomType, numOfBeds, rating);
+                    break;
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public static void printFourMatchesByLocation(RegisteredUser currentUser, String location) {
+        ArrayList<Hotel> hotelSearch = app.getFourMatchesByLocation(location);
+        for (int i = 0; i < hotelSearch.size(); i++) {
+            System.out.println("Hotel " + i + hotelSearch.get(i).toString());
+        }
+        System.out.println("Type the number corresponding with the hotel yo uwish to book or type 99 to return to the actions page.");
+        int response = keyboard.nextInt();
+        keyboard.nextLine();
+        if (response == 99) {
+            printActionsPage(currentUser);
+        }
+        printBookHotel(currentUser, hotelSearch, response);
+    }
+
+    public static void printAllMatches(RegisteredUser currentUser, String location, ArrayList<Amenities> amenities, ArrayList<Accessibility> accessibility, String roomType, int numOfBeds, double rating) {
+        try { 
+            ArrayList<Hotel> hotelSearch = app.getHotelSearch(location, amenities, accessibility, roomType, numOfBeds, rating);
             for (int i = 0; i < hotelSearch.size(); i++) {
                 System.out.println("Hotel " + i + hotelSearch.get(i).toString());
             }
@@ -394,6 +440,14 @@ public class FlightUI {
             if (response == 99) {
                 printActionsPage(currentUser);
             }
+            printBookHotel(currentUser, hotelSearch, response);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public static void printBookHotel(RegisteredUser currentUser, ArrayList<Hotel> hotelSearch, int response) {
+        try { 
             ArrayList<Profile> travelers = new ArrayList<Profile>();
             travelers.add(currentUser.getProfile());
             ArrayList<Room> rooms = new ArrayList<Room>();
@@ -435,7 +489,7 @@ public class FlightUI {
             app.bookHotel(currentUser, hotelBooking);
             System.out.println("Successfully booked hotel! Returning to Actions Page.");
             printActionsPage(currentUser);
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
@@ -448,12 +502,41 @@ public class FlightUI {
         String location = keyboard.nextLine();
         ArrayList<Amenities> amenities = addAmenitiesPref();
         ArrayList<Accessibility> accessibility = addAccessibilityPref();
+        double rating = addRatingPref();
         System.out.println("What type of room do you want?");
         String roomType = keyboard.nextLine();
         System.out.println("How many beds do you want?");
         int numOfBeds = keyboard.nextInt();
         keyboard.nextLine();
-        ArrayList<Hotel> hotelSearch = app.getHotelSearch(location, amenities, accessibility, roomType, numOfBeds);
+        System.out.println("1. Four Matches Based on Location\n2. All Preferences\nType the number corresponding with the search result you want.");
+            int response = keyboard.nextInt();
+            keyboard.nextLine();
+            switch(response) {
+                case 1:
+                    printFourMatchesByLocationNotLoggedIn(location);
+                    break;
+                case 2: 
+                    printAllMatchesNotLoggedIn(location, amenities, accessibility, roomType, numOfBeds, rating);
+                    break;
+            }
+        }
+
+    public static void printFourMatchesByLocationNotLoggedIn(String location) {
+        ArrayList<Hotel> hotelSearch = app.getFourMatchesByLocation(location);
+        for(int i = 0; i < hotelSearch.size(); i++) {
+            System.out.println("Hotel " + i + hotelSearch.get(i).toString());
+        }
+        System.out.println("Type the number corresponding with the hotel you wish to book or type 99 to return to the actions page.");
+        int response = keyboard.nextInt();
+        keyboard.nextLine();
+        if(response == 99) {
+            printWelcomingPage();
+        }
+        printBookingNotLogin();
+    }
+
+    public static void printAllMatchesNotLoggedIn(String location, ArrayList<Amenities>amenities, ArrayList<Accessibility> accessibility, String roomType, int numOfBeds, double rating) {
+        ArrayList<Hotel> hotelSearch = app.getHotelSearch(location, amenities, accessibility, roomType, numOfBeds, rating);
         for(int i = 0; i < hotelSearch.size(); i++) {
             System.out.println("Hotel " + i + hotelSearch.get(i).toString());
         }
@@ -486,14 +569,6 @@ public class FlightUI {
             prefAmenities.add(amenity);
         }
         return prefAmenities;
-    }
-    public static Double addRatingPref() {
-        System.out.println("Please choose the minimum rating you would like for your hotel to have. Ratings go up to 5.0.");
-        for(Hotel hotel: HotelsList.getInstance().getAllHotels()){
-            if(hotel.getRating() >= rating){
-
-            }
-        }
     }
 
     /**
