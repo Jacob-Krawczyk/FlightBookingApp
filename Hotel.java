@@ -16,6 +16,7 @@ public class Hotel{
     private int numOfBeds;
     private String checkOutDay;
     private String checkInDay;
+    private Double rating;
     private String checkInTime;
     private String checkOutTime;
     private String pricePerNight;
@@ -151,5 +152,8 @@ public class Hotel{
     public String getCheckOutDay()
     {
         return checkOutDay;
+    }
+    public Double getRating() {
+        return this.rating;
     }
 }

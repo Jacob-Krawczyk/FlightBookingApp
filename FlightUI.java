@@ -375,6 +375,10 @@ public class FlightUI {
             String location = keyboard.nextLine();
             ArrayList<Amenities> amenities = addAmenitiesPref();
             ArrayList<Accessibility> accessibility = addAccessibilityPref();
+            System.out.println("What rating do you want? Ratings go up to 5.0.");
+            double rating = keyboard.nextDouble();
+            
+            Double rating = addRatingPref();
             System.out.println("What type of room do you want?");
             String roomType = keyboard.nextLine();
             System.out.println("How many beds do you want?");
@@ -482,6 +486,14 @@ public class FlightUI {
             prefAmenities.add(amenity);
         }
         return prefAmenities;
+    }
+    public static Double addRatingPref() {
+        System.out.println("Please choose the minimum rating you would like for your hotel to have. Ratings go up to 5.0.");
+        for(Hotel hotel: HotelsList.getInstance().getAllHotels()){
+            if(hotel.getRating() >= rating){
+
+            }
+        }
     }
 
     /**
