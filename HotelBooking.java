@@ -21,10 +21,18 @@ public class HotelBooking {
         this.hotel = hotel;
     }
 
+    /**
+     * Adds friend to hotel booking
+     * @param profile
+     */
     public void addTraveler(Profile profile) {
         travelers.add(profile);
     }
     
+    /**
+     * Adds room to hotel booking
+     * @param room
+     */
     public void addRoom(Room room) {
         rooms.add(room);
     }

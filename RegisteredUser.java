@@ -107,25 +107,37 @@ public class RegisteredUser extends User {
         return pref;
     }
 
-   
+    /**
+     * Adds flight to user's flight list 
+     * @param flight
+     */
     public void bookFlight(FlightBooking flight) {
        flightBookings.add(flight);
        userList.bookFlight(flight.getFlight());
     }
 
-    
+    /**
+     * Removes flight from user's flight list
+     * @param flight
+     */
     public void CancelFlight(FlightBooking flight) {
         flightBookings.remove(flight);
         userList.cancelFlight(flight.getFlight());
     }
 
-   
+    /**
+     * Adds hotel to user's hotel list
+     * @param hotel
+     */
     public void bookHotel(HotelBooking hotel) {
         hotelBookings.add(hotel);
         userList.bookHotel(hotel.getHotel());
     }
 
-    
+    /**
+     * Removes hotel from user's hotel list
+     * @param hotel
+     */
     public void cancelHotel(HotelBooking hotel) {
         hotelBookings.remove(hotel);
         userList.cancelHotel(hotel.getHotel());
@@ -141,8 +153,11 @@ public class RegisteredUser extends User {
 
     /**
      * Adds non-user friend to friends list
-     * @param friend
-     * @return 
+     * @param firstName
+     * @param lastName
+     * @param dob
+     * @param discount
+     * @return friend
      */
     public Friend addNonUserFriend(String firstName, String lastName, String dob, String discount) {
         UUID uuid = UUID.randomUUID();
@@ -152,8 +167,8 @@ public class RegisteredUser extends User {
     }
 
     /**
-     * Adds user friend to friend's list
-     * @param friend
+     * Adds user friend to friend's list based on username
+     * @param userName
      */
     public void addUserFriend(String username) {
         RegisteredUser newFriend = userList.getUserByUsername(username);
@@ -168,8 +183,9 @@ public class RegisteredUser extends User {
     }
 
     /**
-     * Removes friend from friends list
-     * @param friend
+     * Removes friend from friends list based on first and last name
+     * @param first
+     * @param last
      */
     public void removeFriend(String first, String last) {
         for (Friend friend : friendList) {
@@ -194,10 +210,18 @@ public class RegisteredUser extends User {
         }
     }
 
+    /**
+     * Returns list of booked hotels 
+     * @return array list of hotel bookings
+     */
     public ArrayList<HotelBooking> getHotel() {
         return hotelBookings;
     }
 
+    /**
+     * Returns list of booked flights
+     * @return array list of flight bookings
+     */
     public ArrayList<FlightBooking> getFlight() {
         return flightBookings;
     }

@@ -157,6 +157,14 @@ public class HotelsList {
         }
     }
 
+    /**
+     * Prints rooms that match user's preferred check-in and check-out day and time
+     * @param hotel
+     * @param checkInDate
+     * @param checkinTime
+     * @param checkOutDate
+     * @param checkOutTime
+     */
     public void printRoomByDateAndTime(Hotel hotel, Date checkInDate, String checkinTime, Date checkOutDate, String checkOutTime) {
         ArrayList<Room> rooms = hotel.getHotelRooms();
         for(int i = 0; i < rooms.size(); i++) {
@@ -168,6 +176,12 @@ public class HotelsList {
         }
     }
 
+    /**
+     * Returns list of rooms hotel has
+     * @param hotel
+     * @param roomNum
+     * @return array list of rooms
+     */
     public Room getRoom(Hotel hotel, int roomNum) {
         ArrayList<Room> rooms = hotel.getHotelRooms();
         return rooms.get(roomNum);
