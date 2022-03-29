@@ -15,7 +15,6 @@ public class FlightsList {
 
     /**
      * Returns instance of flights list
-     * 
      * @return flights list
      */
     public static FlightsList getInstance() {
@@ -27,7 +26,6 @@ public class FlightsList {
 
     /**
      * Returns a single flight by UUID
-     * 
      * @param id
      * @return flight
      */
@@ -41,7 +39,6 @@ public class FlightsList {
 
     /**
      * Returns list of all flights
-     * 
      * @return all flights
      */
     public ArrayList<Flight> getAllFlights() {
@@ -49,6 +46,13 @@ public class FlightsList {
         return flights;
     }
 
+    /**
+     * Returns string with four flight matches
+     * @param departLocation
+     * @param destination
+     * @param airline
+     * @return string of four flight matches
+     */
     public String getFourMatches(String departLocation, String destination,
         ArrayList<String> airline) {
         Flight single = getOneSingleFlight(departLocation, destination, airline);
@@ -62,6 +66,13 @@ public class FlightsList {
             + twoTransfer.toString();
     }
 
+    /**
+     * Gets first match - direct flight
+     * @param departLocation
+     * @param destination
+     * @param airline
+     * @return array list of single direct flight
+     */
     public ArrayList<Flight> getFirstMatch(String departLocation, String destination,
         ArrayList<String> airline) {
         Flight flight = getOneSingleFlight(departLocation, destination, airline);
@@ -70,6 +81,11 @@ public class FlightsList {
         return firstMatch;
     }
 
+    /**
+     * Checks validity of airline
+     * @param airline
+     * @return boolean
+     */
     public boolean checkValidityOfAirline(String airline) {
         for (AirlineCompany comp : EnumSet.allOf(AirlineCompany.class)) {
             if (airline.equals(comp.toString())) {

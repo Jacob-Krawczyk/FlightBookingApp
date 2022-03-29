@@ -22,8 +22,7 @@ public class Hotel{
     private String pricePerNight;
     private String totalPrice;
 
-    public Hotel()
-    {
+    public Hotel() {
         
     }
     /**
