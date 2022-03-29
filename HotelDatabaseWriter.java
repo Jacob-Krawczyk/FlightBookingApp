@@ -19,6 +19,7 @@ public class HotelDatabaseWriter {
   protected static final String Roomes_check_out_date = "check out date";
   protected static final String Roomes_check_in_time = "check in time";
   protected static final String Roomes_check_out_time = "check out time";
+  protected static final String Roomes_Price_Per_Night="Price per night";
 
   public static void saveHotels() {
     HotelsList hotels = HotelsList.getInstance();
@@ -64,6 +65,7 @@ public class HotelDatabaseWriter {
 	  jsonoS.put(Roomes_check_out_date,room.getRoomCheckOutDate());
 	  jsonoS.put(Roomes_check_in_time,room.getRoomCheckInTime());
 	  jsonoS.put(Roomes_check_out_time,room.getRoomCheckOutTime());
+    jsonoS.put(Roomes_Price_Per_Night,room.getPricePerNight());
 
     return jsonoS;
   }
