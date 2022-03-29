@@ -50,7 +50,7 @@ public abstract class User {
      * @param numOfBeds
      * @return hotel search array list
      */
-    public ArrayList<Hotel> searchHotels(String location, ArrayList<Amenities> amenities, ArrayList<Accessibility> accessibility, String roomType, int numOfBeds) {
-        return hotelList.getSearch(location, amenities, accessibility, roomType, numOfBeds);
+    public ArrayList<Hotel> searchHotels(String location, ArrayList<Amenities> amenities, ArrayList<Accessibility> accessibility, String roomType, int numOfBeds, double rating) {
+        return hotelList.getSearch(location, amenities, accessibility, roomType, numOfBeds, rating);
     }
 }
