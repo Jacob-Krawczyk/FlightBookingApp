@@ -122,7 +122,7 @@ public class FlightApp {
      */
     public void addUserFriend(RegisteredUser currentUser, String username) {
         try {
-            currentUser.addUserFriend(username);
+            userList.addUserFriend(currentUser, username);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -361,9 +361,9 @@ public class FlightApp {
      * @param numOfBeds
      * @return array list of filtered hotels
      */
-    public ArrayList<Hotel> getHotelSearch(String location, ArrayList<Amenities> amenities, ArrayList<Accessibility> accessibility, String roomType, int numOfBeds) {
+    public ArrayList<Hotel> getHotelSearch(String location, ArrayList<Amenities> amenities, ArrayList<Accessibility> accessibility, String roomType, int numOfBeds, double rating) {
         try {
-            return hotelList.getSearch(location, amenities, accessibility, roomType, numOfBeds);
+            return hotelList.getSearch(location, amenities, accessibility, roomType, numOfBeds, rating);
         } catch (Exception e) {
             System.out.println(e);
         }
