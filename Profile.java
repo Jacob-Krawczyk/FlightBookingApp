@@ -99,29 +99,55 @@ public class Profile {
         return occupation;
     }
 
+    /**
+     * Return city
+     * @return city
+     */
     public String getCity()
     {
         return city;
     }
 
+    /**
+     * Returns zip
+     * @return zip
+     */
     public String getZip()
     {
         return zip;
     }
 
+    /**
+     * Returns state
+     * @return state
+     */
     public String getState()
     {
         return state;
     }
 
+    /**
+     * Returns email address
+     * @return email address
+     */
     public String getEmailAddress()
     {
         return emailAddress;
     }
+
+    /**
+     * Returns phone number
+     * @return phone number
+     */
     public String getPhoneNumber()
     {
         return phoneNumber;
     }
+
+    /**
+     * Returns disability
+     * @return disability
+     */
     public String getDisability()
     {
         return disability;

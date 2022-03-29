@@ -33,6 +33,14 @@ public class Friend {
        this.hotels=new_Hotel;
     }
 
+    /**
+     * Creates new friend
+     * @param uuid2
+     * @param first
+     * @param last
+     * @param dob
+     * @param discount
+     */
     public Friend(UUID uuid2, String first, String last, String dob, String discount) {
         UUID uuid = UUID.randomUUID();
         ArrayList<Flight> emptyFlightList = new ArrayList<Flight>();
@@ -40,6 +48,10 @@ public class Friend {
         Friend newFriend = new Friend(uuid, first, last, dob, discount, emptyFlightList, emptyHotelList);
     }
 
+    /**
+     * Returns profile of friend
+     * @return profile
+     */
     public Profile getProfile() {
         String address = null;
         String city = null;
@@ -52,6 +64,7 @@ public class Friend {
         String occupation = null;
         return new Profile(firstName, lastName, address, city, state, zip, dateOfBirthday, emailAddress, phoneNumber, disability, visa, occupation, discount);
     }
+
     /**
      * Returns first name 
      * @return first name
@@ -91,17 +104,28 @@ public class Friend {
     public String toString() {
         return "First Name: " + this.firstName + " Last Name: " + this.lastName + " Date of Birth: " + this.dateOfBirthday + " Discount: " + this.discount + " Flights: " + this.flights.toString() + " Hotels: " + this.hotels.toString(); 
     }
-    
-    public UUID getID()
-    {
+
+    /**
+     * Returns friend's UUID
+     * @return uuid
+     */
+    public UUID getID() {
         return id;
     }
-    public ArrayList<Flight> getFlights()
-    {
+
+    /**
+     * Returns flight list of friend
+     * @return array list of flights
+     */
+    public ArrayList<Flight> getFlights() {
         return flights;
     }
-    public ArrayList<Hotel> getHotels()
-    {
+
+    /**
+     * Returns hotel list of friend
+     * @return array list of hotels
+     */
+    public ArrayList<Hotel> getHotels() {
         return hotels;
     }
  } 

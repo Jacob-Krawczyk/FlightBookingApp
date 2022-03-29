@@ -1,13 +1,11 @@
-import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.UUID;
+import java.io.*;
+import java.util.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 /**
  * User Database Loader
- * 
  * @author JavaFine
  */
 public class UserDatabaseLoader {

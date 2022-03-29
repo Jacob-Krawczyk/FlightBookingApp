@@ -10,12 +10,13 @@ public abstract class User {
 
     /**
      * Returns flight search result
+     * @param departLocation
      * @param destination
      * @param airline
      * @return flight search array list
      */
-    public ArrayList<Flight> searchFlights(String destination, ArrayList<String> airline) {
-        return flightList.getSearch(destination, airline);
+    public String searchFlights(String departLocation, String destination, ArrayList<String> airline) {
+        return flightList.getFourMatches(departLocation, destination, airline);
     }
 
     /**

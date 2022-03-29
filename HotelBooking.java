@@ -1,10 +1,9 @@
+import java.util.ArrayList;
+
 /**
  * Stores information for hotel booking
  * @author JavaFine
  */
-
-import java.util.ArrayList;
-
 public class HotelBooking {
     protected ArrayList<Profile> travelers;
     private ArrayList<Room> rooms;
@@ -22,10 +21,18 @@ public class HotelBooking {
         this.hotel = hotel;
     }
 
+    /**
+     * Adds friend to hotel booking
+     * @param profile
+     */
     public void addTraveler(Profile profile) {
         travelers.add(profile);
     }
     
+    /**
+     * Adds room to hotel booking
+     * @param room
+     */
     public void addRoom(Room room) {
         rooms.add(room);
     }

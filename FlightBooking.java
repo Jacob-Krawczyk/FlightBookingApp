@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class FlightBooking {
     protected ArrayList<Profile> travelers;
     private ArrayList<Seat> seats;
-    private Flight flights;
+    private ArrayList<Flight> flights;
 
     /**
      * Constructs an instance of the information for flight booking
@@ -15,21 +15,33 @@ public class FlightBooking {
      * @param seats
      * @param flights
      */
-    public FlightBooking(ArrayList<Profile> travelers, ArrayList<Seat> seats, Flight flights) {
+    public FlightBooking(ArrayList<Profile> travelers, ArrayList<Seat> seats, ArrayList<Flight> flights) {
         this.travelers = travelers;
         this.seats = seats;
         this.flights = flights;
     }
 
+    /**
+     * Adds traveler to traveler list
+     * @param profile
+     */
     public void addTraveler(Profile profile) {
         travelers.add(profile);
+    }
+
+    /**
+     * Adds seat to seat list
+     * @param seat
+     */
+    public void addSeat(Seat seat) {
+        seats.add(seat);
     }
 
     /**
      * Return the flights
      * @return
      */
-    public Flight getFlight() {
+    public ArrayList<Flight> getFlight() {
         return this.flights;
     }
 
@@ -37,6 +49,6 @@ public class FlightBooking {
      * Returns the number of travelers, seats and flights.
      */
     public String toString() {
-        return "Travelers: " + this.travelers + "\nSeats: " + this.seats + "\nFlights: " + this.flights;
+        return "Travelers:\n" + this.travelers + "\nSeats:\n" + this.seats + "\nFlights:\n" + this.flights;
     }
 }

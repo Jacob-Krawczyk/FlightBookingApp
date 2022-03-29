@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * A Singleton Listing of Users
@@ -69,6 +67,7 @@ public class UserList {
 
     /**
      * Adds friend to friend list of user
+     * @param friend
      */
     public void addFriend(Friend friend) {
         userDatabaseWriter.addFriend(friend);
@@ -76,6 +75,7 @@ public class UserList {
 
     /**
      * Removes friend from friend list of user
+     * @param friend
      */
     public void removeFriend(Friend friend) {
         userDatabaseWriter.removeFriend(friend);
@@ -104,18 +104,38 @@ public class UserList {
         return null;
     }
 
-    public void cancelFlight(Flight flight) {
-        userDatabaseWriter.removeFlight(flight);
+    /**
+     * Removes flight from user's flight list
+     * @param flights
+     */
+    public void cancelFlight(ArrayList<Flight> flights) {
+        for(Flight flight: flights) {
+            userDatabaseWriter.removeFlight(flight);
+        }
     }
 
-    public void bookFlight(Flight flight) {
-        userDatabaseWriter.addFlight(flight);
+    /**
+     * Adds flight to user's flight list
+     * @param flights
+     */
+    public void bookFlight(ArrayList<Flight> flights) {
+        for(Flight flight: flights) {
+            userDatabaseWriter.addFlight(flight);
+        }
     }
 
+    /**
+     * Removes hotel from user's hotel list
+     * @param hotel
+     */
     public void cancelHotel(Hotel hotel) {
         userDatabaseWriter.removeHotel(hotel);
     }
 
+    /**
+     * Adds hotel to user's hotel list
+     * @param hotel
+     */
     public void bookHotel(Hotel hotel) {
         userDatabaseWriter.addHotel(hotel);
     }

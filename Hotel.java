@@ -112,7 +112,7 @@ public class Hotel{
     }
 
     /**
-     * Returns hotel rooms 
+     * Returns list of hotel rooms 
      * @return array list of hotel rooms
      */
     public ArrayList<Room> getHotelRooms() {
@@ -134,13 +134,22 @@ public class Hotel{
     public int getnumOfBeds() {
         return this.getnumOfBeds();
     }
+
+    /**
+     * Returns check in day
+     * @return check in day
+     */
     public String getCheckInDay()
     {
         return checkInDay;
     }
+
+    /**
+     * Returns check out day
+     * @return
+     */
     public String getCheckOutDay()
     {
         return checkOutDay;
     }
-
 }
