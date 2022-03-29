@@ -165,8 +165,9 @@ public class RegisteredUser extends User {
     /**
      * Adds user friend to friend's list based on username
      * @param userName
+     * @return 
      */
-    public void addUserFriend(String username) {
+    public Friend addUserFriend(String username) {
         RegisteredUser newFriend = userList.getUserByUsername(username);
         UUID uuid = newFriend.getID();
         String first = newFriend.getProfile().getFirst();

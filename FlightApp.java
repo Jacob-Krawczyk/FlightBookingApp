@@ -11,6 +11,9 @@ public class FlightApp {
     private UserList userList;
    
     public FlightApp() {
+        this.flightList = flightList.getInstance();
+        this.hotelList = hotelList.getInstance();
+        this.userList = userList.getInstance();
 
     }
 
@@ -154,7 +157,7 @@ public class FlightApp {
     public void addFriendToHotelBooking(RegisteredUser currentUser, String first, String last, HotelBooking hotelBooking) {
         try {
             Friend friend = currentUser.getFriendByFristAndLast(first, last);
-            hotelBooking.addTraveler(friend.getProfile());
+            hotelList.addTraveler(friend.getProfile());
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -170,7 +173,7 @@ public class FlightApp {
     public void addFriendToFlightBooking(RegisteredUser currentUser, String first, String last, FlightBooking flightBooking) {
         try {
             Friend friend = currentUser.getFriendByFristAndLast(first, last);
-            flightBooking.addTraveler(friend.getProfile());
+            flightList.addTraveler(friend.getProfile());
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -184,7 +187,7 @@ public class FlightApp {
     public void addRoomToHotelBooking(HotelBooking hotelBooking, int roomNum) {
         try {
             Room room = hotelList.getRoom(hotelBooking.getHotel(), roomNum);
-            hotelBooking.addRoom(room);
+            hotelList.addRoom(room);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -217,7 +220,7 @@ public class FlightApp {
     public void addSeatsToFlightBooking(FlightBooking flightBooking, int flight, String seatNum) {
         try {
             Seat seat = flightList.getSeatBySeatNumber(flightBooking.getFlight().get(flight), seatNum);
-            flightBooking.addSeat(seat);
+            flightList.addSeat(seat);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -519,6 +522,15 @@ public class FlightApp {
             ArrayList<Flight> firstMatch = new ArrayList<Flight>();
             firstMatch.add(flight);
             return firstMatch;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+
+    public ArrayList<Hotel> getFourMatchesByLocation(String location) {
+        try {
+            return hotelList.getFourMatchesByLocation(location);
         } catch (Exception e) {
             System.out.println(e);
         }

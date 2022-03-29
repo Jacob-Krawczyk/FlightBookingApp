@@ -7,6 +7,8 @@ import java.util.*;
 public class FlightsList {
     private FlightDatabaseLoader flightLoader;
     private FlightDatabaseWriter flightWriter;
+    protected ArrayList<Profile> travelers;
+    private ArrayList<Seat> seats;
     private ArrayList<Flight> flights;
     private static FlightsList flightList;
 
@@ -304,5 +306,13 @@ public class FlightsList {
             }
         }
         return null;
+    }
+
+    public void addTraveler(Profile profile) {
+        travelers.add(profile);
+    }
+
+    public void addSeat(Seat seat) {
+        seats.add(seat);
     }
 }

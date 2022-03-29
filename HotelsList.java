@@ -7,8 +7,10 @@ import java.util.*;
 public class HotelsList {
     private HotelDatabaseLoader hotelLoader;
     private ArrayList<Hotel> hotels;
+    private ArrayList<Room> rooms;
     private ArrayList<Hotel> returnList;
     private static HotelsList hotelList;
+    protected ArrayList<Profile> travelers;
 
     /**
      * Creates a single instance of HotelsList and returns that single instance
@@ -70,6 +72,14 @@ public class HotelsList {
         return returnList;
     }
 
+    public ArrayList<Hotel> getFourMatchesByLocation(String location) {
+        clearSearch();
+        getHotelByLocation(location);
+        for (int i = 4; i < returnList.size(); i++) {
+            returnList.remove(returnList.get(i));
+        }
+        return returnList;
+    }
     private void getHotelByRatings(double ratings) {
         for(Hotel hotel: hotels) {
             double hotelRating = hotel.getRating();
@@ -195,5 +205,13 @@ public class HotelsList {
     public Room getRoom(Hotel hotel, int roomNum) {
         ArrayList<Room> rooms = hotel.getHotelRooms();
         return rooms.get(roomNum);
+    }
+
+    public void addRoom(Room room) {
+        rooms.add(room);
+    }
+
+    public void addTraveler(Profile profile) {
+        travelers.add(profile);
     }
 }

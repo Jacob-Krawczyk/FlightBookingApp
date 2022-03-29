@@ -98,6 +98,11 @@ public class UserList {
         addFriend(friend);
     }
 
+    public void addUserFriend(RegisteredUser currentUser, String username) {
+        Friend friend = currentUser.addUserFriend(username);
+        addFriend(friend);
+    }
+
     /**
      * Returns user based on inputted username and password
      * @param username
@@ -158,4 +163,5 @@ public class UserList {
     public void printItinerary(RegisteredUser currentUser) {
         currentUser.accessItinerary();
     }
+
 }
