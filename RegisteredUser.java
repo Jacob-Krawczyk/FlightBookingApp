@@ -39,7 +39,7 @@ public class RegisteredUser extends User {
      */ 
     public RegisteredUser(Profile userProfile, String username, String password) {
         UUID uuid = UUID.randomUUID();
-        friendList = null;
+        friendList = new ArrayList<Friend>();
         RegisteredUser newUser = new RegisteredUser(uuid, friendList, userProfile, username, password);
         userList.addUser(newUser);
     }
