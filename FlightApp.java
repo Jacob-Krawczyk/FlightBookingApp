@@ -122,34 +122,75 @@ public class FlightApp {
         userList.removeFriend(friend);
     }
 
+    /**
+     * Adds friend to hotel booking
+     * @param currentUser
+     * @param first
+     * @param last
+     * @param hotelBooking
+     */
     public void addFriendToHotelBooking(RegisteredUser currentUser, String first, String last, HotelBooking hotelBooking) {
         Friend friend = currentUser.getFriendByFristAndLast(first, last);
         hotelBooking.addTraveler(friend.getProfile());
     }
 
+    /**
+     * Adds friend to flight booking
+     * @param currentUser
+     * @param first
+     * @param last
+     * @param flightBooking
+     */
     public void addFriendToFlightBooking(RegisteredUser currentUser, String first, String last, FlightBooking flightBooking) {
         Friend friend = currentUser.getFriendByFristAndLast(first, last);
         flightBooking.addTraveler(friend.getProfile());
     }
 
+    /**
+     * Adds room to hotel booking
+     * @param hotelBooking
+     * @param roomNum
+     */
     public void addRoomToHotelBooking(HotelBooking hotelBooking, int roomNum) {
         Room room = hotelList.getRoom(hotelBooking.getHotel(), roomNum);
         hotelBooking.addRoom(room);
     }
 
-    public void addSeatsToFlightBooking(FlightBooking flightBooking, String seatNum) {
-        Seat seat = flightList.getSeatBySeatNumber(flightBooking.getFlight(), seatNum);
+    public FlightBooking createFlightBooking(RegisteredUser currentUser, ArrayList<Flight> flightSearch) {
+        ArrayList<Profile> travelers = new ArrayList<Profile>();
+        travelers.add(currentUser.getProfile());
+        ArrayList<Seat> seats = new ArrayList<Seat>();
+        return new FlightBooking(travelers, seats, flightSearch);
+    }
+
+    /**
+     * Adds seats to flight booking
+     * @param flightBooking
+     * @param seatNum
+     */
+    public void addSeatsToFlightBooking(FlightBooking flightBooking, int flight, String seatNum) {
+        Seat seat = flightList.getSeatBySeatNumber(flightBooking.getFlight().get(flight), seatNum);
+        flightBooking.addSeat(seat);
     }
     
+    /**
+     * Prints rooms of hotel
+     * @param hotel
+     * @param checkInDate
+     * @param checkinTime
+     * @param checkOutDate
+     * @param checkOutTime
+     */
     public void printRooms(Hotel hotel, Date checkInDate, String checkinTime, Date checkOutDate, String checkOutTime) {
         hotelList.printRoomByDateAndTime(hotel, checkInDate, checkinTime, checkOutDate, checkOutTime);
     }
 
+    /**
+     * Prints available seats on flight
+     * @param flight
+     */
     public void printAvailableSeats(Flight flight) {
-        ArrayList<Seat> available = flightList.getAvailableSeats(flight);
-        for(Seat seat: available) {
-            System.out.println(seat.toString());
-        }
+        flightList.getAvailableSeats(flight);
     }
 
     /**
@@ -223,8 +264,8 @@ public class FlightApp {
      * @param airline
      * @return array list of filtered flights 
      */
-    public ArrayList<Flight> getFlightSearch(String destination, ArrayList<String> airline) {
-        return flightList.getSearch(destination, airline);
+    public ArrayList<Flight> getSingleFlights(String departLocation, String destination, ArrayList<String> airline) {
+        return flightList.getSingles(departLocation, destination, airline);
     }
 
     /**
@@ -258,37 +299,89 @@ public class FlightApp {
         currentUser.bookFlight(flight);
     }
 
+    /**
+     * Returns booked flights list
+     * @param currentUser
+     * @return array list of booked flights
+     */
     public ArrayList<FlightBooking> getBookedFlights(RegisteredUser currentUser) {
         return currentUser.getFlight();
     }
 
+    /**
+     * Removes flight from bookedf light list
+     * @param currentUser
+     * @param flight
+     */
     public void cancelFlight(RegisteredUser currentUser, FlightBooking flight) {
         currentUser.CancelFlight(flight);
     }
 
+    /**
+     * Returns booked hotels list
+     * @param currentUser
+     * @return
+     */
     public ArrayList<HotelBooking> getBookedHotels(RegisteredUser currentUser) {
         return currentUser.getHotel();
     }
 
+    /**
+     * Removes hotel from booked hotels list
+     * @param currentUser
+     * @param hotel
+     */
     public void cancelHotel(RegisteredUser currentUser, HotelBooking hotel) {
         currentUser.cancelHotel(hotel);
     }
 
     /**
-     * Writes tickets to file
+     * Writes itinerary to file
      * @param currentUser
      */
-    public void printTickets(RegisteredUser currentUser, String title) {
+    public void writeItineraryToFile(RegisteredUser currentUser, String title) {
         try {
             ArrayList<FlightBooking> flightList = currentUser.getFlight();
+            ArrayList<HotelBooking> hotelList = currentUser.getHotel();
             PrintWriter fileWriter = new PrintWriter(new FileOutputStream(title));
-            fileWriter.println("Flight Tickets");
+            fileWriter.println("Flight Bookings");
             for (FlightBooking flight : flightList) {
                 fileWriter.println(flight.toString());
+            }
+            fileWriter.println("Hotel Bookings");
+            for (HotelBooking hotel: hotelList) {
+                fileWriter.println(hotel.toString());
             }
             fileWriter.close();
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+
+    public ArrayList<ArrayList<Flight>> getConnectingFlights(String departLocation, String destination, ArrayList<String> airline) {
+        return flightList.getConnectingFlights(departLocation, destination, airline);
+    }
+
+    public String getFourMatches(String departLocation, String destination, ArrayList<String> airline) {
+        return flightList.getFourMatches(departLocation, destination, airline);
+    }
+
+    public ArrayList<Flight> getFirstMatch(String departLocation, String destination, ArrayList<String> airline) {
+        Flight flight = flightList.getFirstMatch(departLocation, destination, airline);
+        ArrayList<Flight> firstMatch = new ArrayList<Flight>();
+        firstMatch.add(flight);
+        return firstMatch;
+    }
+
+    public ArrayList<Flight> getSecondMatch(String departLocation, String destination, ArrayList<String> airline) {
+        return flightList.getSecondMatch(departLocation, destination, airline);
+    }
+
+    public ArrayList<Flight> getThirdMatch(String departLocation, String destination, ArrayList<String> airline) {
+        return flightList.getThirdMatch(departLocation, destination, airline);
+    }
+
+    public ArrayList<Flight> getFourthMatch(String departLocation, String destination, ArrayList<String> airline) {
+        return flightList.getFourthMatch(departLocation, destination, airline);
     }
 }

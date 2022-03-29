@@ -50,7 +50,7 @@ public class Flight {
    * Returns departure location
    * @return departure location 
    */
-  public String getDepart() {
+  public String getDepartLocation() {
     return this.departLocation;
   }
 
@@ -93,7 +93,7 @@ public class Flight {
   public ArrayList<Seat> getFlightSeats() {
     return flightSeats;
   }
-  
+
   /**
    * Returns airline
    * @return airline

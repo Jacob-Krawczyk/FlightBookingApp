@@ -94,9 +94,12 @@ public class HotelsList {
         }
         removeList.removeAll(amenities);
         for(Hotel search: returnList) {
+            ArrayList<Amenities> amenity = search.getAmenities();
             for(Amenities rem: removeList) {
-                if(search.getAmenities().equals(rem)) {
-                    returnList.remove(rem);
+                for(Amenities cur: amenity) {
+                    if(cur.equals(rem)) {
+                        returnList.remove(search);
+                    }
                 }
             }
         }
@@ -115,8 +118,11 @@ public class HotelsList {
         removeList.removeAll(accessibility);
         for(Hotel search: returnList) {
             for(Accessibility rem: removeList) {
-                if(search.getAccessibility().equals(rem)) {
-                    returnList.remove(rem);
+                ArrayList<Accessibility> accessibilities = search.getAccessibility();
+                for(Accessibility cur: accessibilities) {
+                    if(cur.equals(rem)) {
+                        returnList.remove(search);
+                    }
                 }
             }
         }

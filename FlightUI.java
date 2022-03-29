@@ -1,4 +1,3 @@
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -81,46 +80,179 @@ public class FlightUI {
         }
     }
     public static void printFlightSearchNotLoggedIn() {
+        System.out.println("Where are you departing from?");
+        String departLocation = keyboard.nextLine();
         System.out.println("What is your destination?");
         String destination = keyboard.nextLine();
         ArrayList<String> airline = addAirlinePref();
-        System.out.println("Here are all the flights that match your preferences.");
-        ArrayList<Flight> flightSearch = app.getFlightSearch(destination, airline);
-        for(int i = 0; i < flightSearch.size(); i++) {
-            System.out.println("Flight " + i + flightSearch.get(i).toString());
-        }
-        System.out.println("Type the number corresponding with the flight you wish to book to book it or type 99 to return to the actions page.");
+        System.out.println("1. Four matches (1 direct, 2 single transfers, 1 two tranfers)\n2. All matching flights\n3. Single Flights only\n4. Connecting flights only\nType the number corresponding with the search result you want: ");
         int response = keyboard.nextInt();
         keyboard.nextLine();
-        if(response == 99) {
+        switch(response) {
+            case 1:
+                printFourMatchesNotLoggedIn(departLocation, destination, airline);
+                break;
+            case 2:
+                printSingleFlightsOnlyNotLoggedIn(departLocation, destination, airline);
+                break;
+            case 4: 
+                printConnectingFlightsOnlyNotLoggedIn(departLocation, destination, airline);
+                break;
+        }
+    }
+    public static void printFourMatchesNotLoggedIn(String departLocation, String destination, ArrayList<String> airline) {
+        System.out.println("Here are four matches.");
+        app.getFourMatches(departLocation, destination, airline);
+        System.out.println(
+                "Type the number corresponding with the flight you wish to book or type 99 to return to the actions page.");
+        int response = keyboard.nextInt();
+        keyboard.nextLine();
+        if (response == 99) {
+            printWelcomingPage();
+        }
+        printBookingNotLogin();
+    }
+    public static void printSingleFlightsOnlyNotLoggedIn(String departLocation, String destination, ArrayList<String> airline) {
+        ArrayList<Flight> flightSearch = printSingleFlights(departLocation, destination, airline);
+        System.out.println("Type the number corresponding with the flight you wish to book or type 99 to return to the actions page.");
+        int response = keyboard.nextInt();
+        keyboard.nextLine();
+        if (response == 99) {
+            printWelcomingPage();
+        } 
+        printBookingNotLogin();
+    }
+    public static void printConnectingFlightsOnlyNotLoggedIn(String departLocation, String destination, ArrayList<String> airline) {
+        ArrayList<ArrayList<Flight>> flightSearch = printConnectingFlight(departLocation, destination, airline);
+        System.out.println("Type the number corresponding with the connecting flight you wish to book or type 99 to return to the actions page.");
+        int response = keyboard.nextInt();
+        keyboard.nextLine();
+        if (response == 99) {
             printWelcomingPage();
         }
         printBookingNotLogin();
     }
     public static void printFlightSearch(RegisteredUser currentUser) {
         ArrayList<String> airline = currentUser.getPreferences().getAirline();
+        System.out.println("Where are you departing from?");
+        String departLocation = keyboard.nextLine();
         System.out.println("What is your destination?");
         String destination = keyboard.nextLine();
-        System.out.println("Here are all the flights that match your preferences.");
-        ArrayList<Flight> flightSearch = app.getFlightSearch(destination, airline);
-        for (int i = 0; i < flightSearch.size(); i++) {
-            System.out.println("Flight " + i + flightSearch.get(i).toString());
+        System.out.println("1. Four matches (1 direct, 2 single transfers, 1 two tranfers)\n2. Single Flights only\n3. Connecting flights only\nType the number corresponding with the search result you want: ");
+        int response = keyboard.nextInt();
+        keyboard.nextLine();
+        switch (response) {
+            case 1:
+                printFourMatchesPage(currentUser, departLocation, destination, airline);
+                break;
+            case 2:
+                printSingleFlightsPage(currentUser, departLocation, destination, airline);
+                break;
+            case 4:
+                printConnectingFlightsPage(currentUser, departLocation, destination, airline);
+                break;
         }
-        System.out.println("Type the number corresponding with the flight you wish to book to book it or type 99 to return to the actions page.");
+    }
+    public static void printFourMatchesPage(RegisteredUser currentUser, String departLocation, String destination, ArrayList<String> airline) {
+        System.out.println("Here are four matches.");
+        app.getFourMatches(departLocation, destination, airline);
+        System.out.println(
+                "Type the number corresponding with the flight you wish to book or type 99 to return to the actions page.");
+        int response = keyboard.nextInt();
+        keyboard.nextLine();
+        switch(response) {
+            case 1:
+                ArrayList<Flight> firstFlightSearch = app.getFirstMatch(departLocation, destination, airline);
+                printBookFlight(currentUser, firstFlightSearch);
+                break;
+            case 2:
+                ArrayList<Flight> secondFlightSearch = app.getSecondMatch(departLocation, destination, airline);
+                printBookFlight(currentUser, secondFlightSearch);
+                break;
+            case 3:
+                ArrayList<Flight> thirdFlightSearch = app.getThirdMatch(departLocation, destination, airline);
+                printBookFlight(currentUser, thirdFlightSearch);
+                break;
+            case 4:
+                ArrayList<Flight> fourthFlightSearch = app.getFourthMatch(departLocation, destination, airline);
+                printBookFlight(currentUser, fourthFlightSearch);
+                break;
+            case 99:
+                printActionsPage(currentUser);
+                break;
+        }
+    }
+    public static void printBookFlight(RegisteredUser currentUser, ArrayList<Flight> flightSearch) {
+        FlightBooking flightBooking = app.createFlightBooking(currentUser, flightSearch);
+        int numPeople = printAddFriendsToFlightBooking(currentUser, flightBooking);
+        System.out.println("Here are all the seats available on the flight.");
+        app.printAvailableSeats(flightBooking.getFlight().get(0));
+        for (int i = 0; i < numPeople; i++) {
+            printAddSeat(flightBooking, 0);
+        }
+        app.bookFlight(currentUser, flightBooking);
+        System.out.println("Flight successfully booked! Returning to the actions page.");
+        printActionsPage(currentUser);
+    }
+    public static void printSingleFlightsPage(RegisteredUser currentUser, String departLocation, String destination, ArrayList<String> airline) {
+        ArrayList<Flight> flightSearch = printSingleFlights(departLocation, destination, airline);
+        System.out.println("Type the number corresponding with the flight you wish to book or type 99 to return to the actions page.");
         int response = keyboard.nextInt();
         keyboard.nextLine();
         if (response == 99) {
             printActionsPage(currentUser);
         }
-        ArrayList<Profile> travelers = new ArrayList<Profile>();
-        travelers.add(currentUser.getProfile());
-        ArrayList<Seat> seats = new ArrayList<Seat>();
-        FlightBooking flightBooking = new FlightBooking(travelers, seats, flightSearch.get(response));
+        printBookFlight(currentUser, flightSearch);
+    }
+    public static ArrayList<Flight> printSingleFlights(String departLocation, String destination, ArrayList<String> airline) {
+        System.out.println("Here are all single flights that match your preferences.");
+        ArrayList<Flight> flightSearch = app.getSingleFlights(departLocation, destination, airline);
+        for (int i = 0; i < flightSearch.size(); i++) {
+            System.out.println("Flight " + i + ": " + flightSearch.get(i).toString());
+        }
+        return flightSearch;
+    }
+    public static void printConnectingFlightsPage(RegisteredUser currentUser, String departLocation, String destination, ArrayList<String> airline) {
+        ArrayList<ArrayList<Flight>> flightSearch = printConnectingFlight(departLocation, destination, airline);
+        System.out.println("Type the number corresponding with the connecting flight you wish to book or type 99 to return to the actions page.");
+        int response = keyboard.nextInt();
+        keyboard.nextLine();
+        if (response == 99) {
+            printActionsPage(currentUser);
+        }
+        FlightBooking flightBooking = app.createFlightBooking(currentUser, flightSearch.get(response));
+        int numPeople = printAddFriendsToFlightBooking(currentUser, flightBooking);
+        for(int i = 0; i < flightBooking.getFlight().size(); i++) {
+            System.out.println("Here are the seats that are available on flight " + i + ". Remember you need to book one seat per person.");
+            app.printAvailableSeats(flightBooking.getFlight().get(i));
+            for(int j = numPeople; j > 0; j--) {
+                printAddSeat(flightBooking, i);
+            }
+        }
+        app.bookFlight(currentUser, flightBooking);
+        System.out.println("Flight successfully booked! Returning to the actions page.");
+        printActionsPage(currentUser);
+    }
+    public static void printAddSeat(FlightBooking flightBooking, int num) {
+        System.out.println("Type the number of the seat you wish to book.");
+        String seatNum = keyboard.nextLine();
+        app.addSeatsToFlightBooking(flightBooking, num, seatNum);
+        System.out.println("Seat added to flight booking.");
+    }
+    public static ArrayList<ArrayList<Flight>> printConnectingFlight(String departLocation, String destination, ArrayList<String> airline) {
+        System.out.println("Here are all the connecting flights that match your preferences.");
+        ArrayList<ArrayList<Flight>> flightSearch = app.getConnectingFlights(departLocation, destination, airline);
+        for (int i = 0; i < flightSearch.size(); i++) {
+            System.out.println("Connecting Flight " + i + ": " + flightSearch.get(i).toString());
+        }
+        return flightSearch;
+    }
+    public static int printAddFriendsToFlightBooking(RegisteredUser currentUser, FlightBooking flightBooking) {
         System.out.println("How many people are you booking for?");
         int numPeople = keyboard.nextInt();
-        if(numPeople > 1) {
+        if (numPeople > 1) {
             app.printFriendsList(currentUser);
-            for(int i = numPeople; i > 0; i--) {
+            for (int i = numPeople; i > 0; i--) {
                 System.out.println("What is the first name of the friend you want to book for?");
                 String friendFirst = keyboard.nextLine();
                 System.out.println("What is the last name of the friend you want to book for?");
@@ -129,13 +261,7 @@ public class FlightUI {
                 System.out.println("Friend successfully added to flight booking!");
             }
         }
-        System.out.println("Here are the seats that are available on that flight.");
-        app.printAvailableSeats(flightBooking.getFlight());
-        System.out.println("Type the number of the seat you wish to book. You should book one seat per friend.");
-        app.addSeatsToFlightBooking(n);
-        app.bookFlight(currentUser, flightSearch.get(response));
-        System.out.println("Flight successfully booked! Returning to the actions page.");
-        printActionsPage(currentUser);
+        return numPeople;
     }
     public static void printHotelSearch(RegisteredUser currentUser) {
         try {
@@ -405,35 +531,42 @@ public class FlightUI {
         switch(resp) {
             case 1:
                 printCreateAccount();
+                break;
             case 2:
                 printLogin();
+                break;
             case 3:
                 printQuit();
+                break;
         }
     }
-    public static void printItinerary(RegisteredUser currentUser) {
+    public static void printItineraryPage(RegisteredUser currentUser) {
         System.out.println("Current Itinerary");
         app.printItinerary(currentUser);
-        System.out.println("1. Cancel Flight Booking\n2. Cancel Hotel Booking\n3. Print flight tickets\n4. Return to Actions Page\nType the number corresponding to the action you wish to take: ");
+        System.out.println("1. Cancel Flight Booking\n2. Cancel Hotel Booking\n3. Print itinerary to file\n4. Return to Actions Page\nType the number corresponding to the action you wish to take: ");
         int response = keyboard.nextInt();
         keyboard.nextLine();
         switch(response) {
             case 1: 
                 printCancelFlight(currentUser);
+                break;
             case 2: 
                 printCancelHotel(currentUser);
+                break;
             case 3:
-                printTickets(currentUser);
+                printItinerary(currentUser);
+                break;
             case 4: 
                 printActionsPage(currentUser);
+                break;
         }
     }
-    public static void printTickets(RegisteredUser currentUser) {
+    public static void printItinerary(RegisteredUser currentUser) {
         System.out.println("What is the name of the file you wish to print the ticketes on?");
         String title = keyboard.nextLine();
-        app.printTickets(currentUser, title);
+        app.writeItineraryToFile(currentUser, title);
         System.out.println("Tickets successfully printed onto file!");
-        printItinerary(currentUser);
+        printItineraryPage(currentUser);
     }
     public static void printCancelFlight(RegisteredUser currentUser) {
         ArrayList<FlightBooking> flightBookings = app.getBookedFlights(currentUser);
@@ -468,12 +601,16 @@ public class FlightUI {
         switch(response) {
             case 1:
                 printAddNonUserFriend(currentUser);
+                break;
             case 2:
                 printAddUserFriend(currentUser);
+                break;
             case 3:
                 printRemoveFriend(currentUser);
+                break;
             case 4: 
                 printActionsPage(currentUser);
+                break;
         }
     }
     public static void printAddNonUserFriend(RegisteredUser currentUser) {
