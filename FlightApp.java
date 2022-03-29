@@ -1,4 +1,3 @@
-import java.io.*;
 import java.util.*;
 
 /**
@@ -14,7 +13,6 @@ public class FlightApp {
         this.flightList = flightList.getInstance();
         this.hotelList = hotelList.getInstance();
         this.userList = userList.getInstance();
-
     }
 
     /**
@@ -34,6 +32,7 @@ public class FlightApp {
 
     /**
      * Checks validity of username
+     * @param username
      * @return boolean
      */
     public boolean checkValidityOfUsername (String username) {
@@ -47,6 +46,7 @@ public class FlightApp {
 
     /**
      * Adds RegisteredUser to User.json file 
+     * @param newUser
      */
     public void addUser(RegisteredUser newUser) {
         try {
@@ -328,6 +328,7 @@ public class FlightApp {
      * @param accessibility
      * @param roomType
      * @param numOfBeds
+     * @param rating
      * @return array list of filtered hotels
      */
     public ArrayList<Hotel> getHotelSearch(String location, ArrayList<Amenities> amenities, ArrayList<Accessibility> accessibility, String roomType, int numOfBeds, double rating) {
@@ -449,7 +450,7 @@ public class FlightApp {
     }
 
     /**
-     * Returns four matches - 1 direct flight, 2 single transfer, 1 double transfer
+     * Returns four flight matches - 1 direct flight, 2 single transfer, 1 double transfer
      * @param departLocation
      * @param destination
      * @param airline
@@ -480,6 +481,11 @@ public class FlightApp {
         return null;
     }
 
+    /**
+     * Returns four hotel matches based on location
+     * @param location
+     * @return array list of hotels
+     */
     public ArrayList<Hotel> getFourMatchesByLocation(String location) {
         try {
             return hotelList.getFourMatchesByLocation(location);
