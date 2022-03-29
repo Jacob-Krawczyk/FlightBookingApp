@@ -41,7 +41,7 @@ public class UserDatabaseLoader {
     ArrayList<Hotel> hotels = new ArrayList<Hotel>();
 
     try {
-      // read json file
+      // Read json file
       FileReader reader = new FileReader(User_FILE_NAME);
       JSONParser parser = new JSONParser();
       JSONArray userJason = (JSONArray) new JSONParser().parse(reader);
@@ -79,27 +79,20 @@ public class UserDatabaseLoader {
             JSONObject getFri_flight = (JSONObject) list.get(k);
             UUID Flight_ID = (UUID) getFri_flight.get("flightid");
             String Flight_Seat = (String) getFri_flight.get("seat");
-            // Flight friend_flight = new Flight();
-            // friend_flight.getFlightByUUID(Flight_ID);
-            // flights.add(friend_flight);
           }
           JSONArray list_hotel = (JSONArray) userJSON.get("hotels");
           for (int m = 0; m < list_hotel.size(); m++) {
             JSONObject getFri_hotel = (JSONObject) list.get(m);
             UUID Hotel_ID = (UUID) getFri_hotel.get("roomid");
             String Hotel_Room_Check_IN_Day = (String) getFri_hotel.get("check in day");
-           // HotelsList new_Hotels = new HotelsList();
-            //new_Hotels.getHotelByUUID(Hotel_ID);
-           // hotels.add(new_Hotel);
           }
           Friend new_friend = new Friend(Friend_ID, Friend_FirstName, Friend_LastName,
               Friend_DateOfBirthday, Friend_Discount, flights, hotels);
           friends.add(new_friend);
         }
-	        	Profile new_User=new Profile(firstName, lastName, address, city, state, zip, dateOfBirthday, emailAddress, phoneNumber, disability, visa, occupation, discount);
-            RegisteredUser user =
-            new RegisteredUser(id, friends,new_User,userID,password);
-            users.add(user);
+	      Profile new_User=new Profile(firstName, lastName, address, city, state, zip, dateOfBirthday, emailAddress, phoneNumber, disability, visa, occupation, discount);
+        RegisteredUser user = new RegisteredUser(id, friends,new_User,userID,password); 
+        users.add(user);
       }
     } catch (Exception e) {
       System.out.println(e);

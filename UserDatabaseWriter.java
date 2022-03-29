@@ -26,8 +26,6 @@ public class UserDatabaseWriter {
   protected static final String User_FILE_Occupation = "occupation";
   protected static final String User_FILE_Discount = "discount";
 
-  
-  
   protected static final String Friends = "Friends";
   protected static final String Friend_ID = "id";
   protected static final String Friend_First_Name = "firstname";
@@ -44,14 +42,16 @@ public class UserDatabaseWriter {
   protected static final String Friend_Hotel_Check_In_Day = "check in day";
   protected static final String Friend_Hotel_Check_Out_Day = "check out day";
 
-
+  /**
+   * Saves registered users
+   */
   public static void saveUsers() {
     UserList users = UserList.getInstance();
     ArrayList<RegisteredUser> currentUsers = users.getAllUsers();
     JSONArray jasonUsers = new JSONArray();
 
     for (int i = 0; i < currentUsers.size(); i++) {
-      // give a array in the begining
+      // Give a array in the begining
       jasonUsers.add(getUsersJSON(currentUsers.get(i)));
     }
     try (FileWriter file = new FileWriter(User_FILE_NAME)) {
@@ -62,8 +62,11 @@ public class UserDatabaseWriter {
     }
   }
 
+  /**
+   * Gets registered users from JSON file
+   */
   public static JSONObject getUsersJSON(RegisteredUser user) {
-    // creat a object of jason
+    // Creat a object of JSON
     JSONObject jsonoF = new JSONObject();
     
     String StringUUID = user.getID().toString();
@@ -86,32 +89,33 @@ public class UserDatabaseWriter {
     jsonoF.put(Friends, jasonFriends);
     ArrayList<Friend> currentFriends = user.getFriends();
 
-    for (int j = 0; j < currentFriends.size(); j++) 
-    {
-
-	  JSONArray jasonFlight = new JSONArray();
-   	jsonoF.put(Friend_Flights, jasonFlight);
-     ///problem
-    ArrayList<Flight> currentFlights = user.getFriends().get(j).getFlights();
-      
-    for (int k = 0; k < currentFlights.size(); k++) 
-	  {
-      jasonFlight.add(getFlightsJSON(currentFlights.get(k)));
-    }
-	  JSONArray jasonHotel = new JSONArray();
-   	jsonoF.put(Friend_Hotels, jasonHotel);
-     //problem
-    ArrayList<Hotel> currentHotels = user.getFriends().get(j).getHotels();
-	
-    for (int i= 0; i < currentHotels.size(); i++) 
-	  {
-      jasonHotel.add(getHotelsJSON(currentHotels.get(i)));
-    }
-	    jasonFriends.add(getFriendsJSON(currentFriends.get(j)));
+    for (int j = 0; j < currentFriends.size(); j++) {
+      JSONArray jasonFlight = new JSONArray();
+      jsonoF.put(Friend_Flights, jasonFlight);
+      // Problem
+      ArrayList<Flight> currentFlights = user.getFriends().get(j).getFlights();
+        
+      for (int k = 0; k < currentFlights.size(); k++) {
+        jasonFlight.add(getFlightsJSON(currentFlights.get(k)));
+      }
+      JSONArray jasonHotel = new JSONArray();
+      jsonoF.put(Friend_Hotels, jasonHotel);
+      // Problem
+      ArrayList<Hotel> currentHotels = user.getFriends().get(j).getHotels();
+    
+      for (int i= 0; i < currentHotels.size(); i++) {
+        jasonHotel.add(getHotelsJSON(currentHotels.get(i)));
+      }
+      jasonFriends.add(getFriendsJSON(currentFriends.get(j)));
     }
     return jsonoF;
   }
 
+  /**
+   * Gets friends from JSON
+   * @param friend
+   * @return
+   */
   public static JSONObject getFriendsJSON(Friend friend) {
     JSONObject jsonoS = new JSONObject();
     jsonoS.put(Friend_ID , friend.getID());
@@ -123,12 +127,24 @@ public class UserDatabaseWriter {
 	  jsonoS.put(Friend_Hotels,friend.getHotels());
     return jsonoS;
   }
+
+  /**
+   * Gets user's flights from JSON file
+   * @param flight
+   * @return
+   */
   public static JSONObject getFlightsJSON(Flight flight) {
     JSONObject jsonoS = new JSONObject();
     jsonoS.put(Friend_Flight_id , flight.getID());
 	  jsonoS.put(Friend_Flight_Seat,flight.getFlightSeats());
     return jsonoS;
   }
+
+  /**
+   * Gets user's hotels from JSON file
+   * @param hotel
+   * @return
+   */
   public static JSONObject getHotelsJSON(Hotel hotel) {
     JSONObject jsonoS = new JSONObject();
     jsonoS.put(Friend_Hotel_id, hotel.getID());
