@@ -69,16 +69,16 @@ public class UserList {
      * Adds friend to friend list of user
      * @param friend
      */
-    public void addFriend(Friend friend) {
-        userDatabaseWriter.addFriend(friend);
+    public void addFriend(RegisteredUser currentUser, Friend friend) {
+        currentUser.addFriend(friend);
     }
 
     /**
      * Removes friend from friend list of user
      * @param friend
      */
-    public void removeFriend(Friend friend) {
-        userDatabaseWriter.removeFriend(friend);
+    public void removeFriend(RegisteredUser currentUser, String first, String last) {
+        currentUser.removeFriend(first, last);
     }
 
     /**
@@ -95,12 +95,12 @@ public class UserList {
 
     public void addNonUserFriend(RegisteredUser currentUser, String first, String last, String dob, String discount) {
         Friend friend = currentUser.addNonUserFriend(first, last, dob, discount);
-        addFriend(friend);
+        addFriend(currentUser, friend);
     }
 
     public void addUserFriend(RegisteredUser currentUser, String username) {
         Friend friend = currentUser.addUserFriend(username);
-        addFriend(friend);
+        addFriend(currentUser, friend);
     }
 
     /**
