@@ -81,7 +81,7 @@ public class FlightApp {
      */
     public void printItinerary(RegisteredUser currentUser) {
         try {
-            currentUser.accessItinerary();
+            userList.printItinerary(currentUser);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -93,10 +93,7 @@ public class FlightApp {
      */
     public void printFriendsList(RegisteredUser currentUser) {
         try {
-            ArrayList<Friend> friendsList = currentUser.getFriends();
-            for(Friend friend:friendsList) {
-                System.out.println(friend.toString());
-            }
+            userList.getFriendsList(currentUser);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -112,8 +109,7 @@ public class FlightApp {
      */
     public void addNonUserFriend(RegisteredUser currentUser, String first, String last, String dob, String discount) {
         try {
-            Friend friend = currentUser.addNonUserFriend(first, last, dob, discount);
-            userList.addFriend(friend);
+            userList.addNonUserFriend(currentUser, first, last, dob, discount);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -421,7 +417,7 @@ public class FlightApp {
      */
     public void cancelFlight(RegisteredUser currentUser, FlightBooking flight) {
         try {
-            currentUser.CancelFlight(flight);
+            userList.cancelFlight(currentUser, flight);
         } catch (Exception e) {
             System.out.println(e);
         }

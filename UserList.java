@@ -82,11 +82,20 @@ public class UserList {
     }
 
     /**
-     * Returns the list of friends associated with current user
+     * Prints list of friends associated with current user
+     * @param currentUser
      * @return list of friends
      */
-    public ArrayList<Friend> getFriendsList() {
-        return userList.getFriendsList();
+    public void getFriendsList(RegisteredUser currentUser) {
+        ArrayList<Friend> friendsList = currentUser.getFriends();
+        for (Friend friend : friendsList) {
+            System.out.println(friend.toString());
+        }
+    }
+
+    public void addNonUserFriend(RegisteredUser currentUser, String first, String last, String dob, String discount) {
+        Friend friend = currentUser.addNonUserFriend(first, last, dob, discount);
+        addFriend(friend);
     }
 
     /**
@@ -96,6 +105,7 @@ public class UserList {
      * @return user based on inputted username and password
      */
     public RegisteredUser getUser(String username, String password) {
+        
         for(RegisteredUser user: users) {
             if(user.getUsername().equals(username) && user.getPassword().equals(password)) {
                 return user;
@@ -143,5 +153,9 @@ public class UserList {
     public ArrayList<RegisteredUser> getAllUsers() {
         users = userDatabaseLoader.getUser();
         return users;
+    }
+
+    public void printItinerary(RegisteredUser currentUser) {
+        currentUser.accessItinerary();
     }
 }

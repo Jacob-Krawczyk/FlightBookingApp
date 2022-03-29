@@ -113,7 +113,6 @@ public class RegisteredUser extends User {
      */
     public void bookFlight(FlightBooking flight) {
        flightBookings.add(flight);
-       userList.bookFlight(flight.getFlight());
     }
 
     /**
