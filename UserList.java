@@ -108,36 +108,32 @@ public class UserList {
      * Removes flight from user's flight list
      * @param flights
      */
-    public void cancelFlight(ArrayList<Flight> flights) {
-        for(Flight flight: flights) {
-            userDatabaseWriter.removeFlight(flight);
-        }
+    public void cancelFlight(RegisteredUser currentUser, FlightBooking flight) {
+        currentUser.cancelFlight(flight);
     }
 
     /**
      * Adds flight to user's flight list
      * @param flights
      */
-    public void bookFlight(ArrayList<Flight> flights) {
-        for(Flight flight: flights) {
-            userDatabaseWriter.addFlight(flight);
-        }
+    public void bookFlight(RegisteredUser currentUser, FlightBooking flight) {
+        currentUser.bookFlight(flight);
     }
 
     /**
      * Removes hotel from user's hotel list
      * @param hotel
      */
-    public void cancelHotel(Hotel hotel) {
-        userDatabaseWriter.removeHotel(hotel);
+    public void cancelHotel(RegisteredUser currentUser, HotelBooking hotel) {
+        currentUser.cancelHotel(hotel);
     }
 
     /**
      * Adds hotel to user's hotel list
      * @param hotel
      */
-    public void bookHotel(Hotel hotel) {
-        userDatabaseWriter.addHotel(hotel);
+    public void bookHotel(RegisteredUser currentUser, HotelBooking hotel) {
+        currentUser.bookHotel(hotel);
     }
 
     /**
