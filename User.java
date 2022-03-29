@@ -9,14 +9,36 @@ public abstract class User {
     private HotelsList hotelList;
 
     /**
-     * Returns flight search result
+     * Returns four matches of flights 
      * @param departLocation
      * @param destination
      * @param airline
-     * @return flight search array list
+     * @return string
      */
-    public String searchFlights(String departLocation, String destination, ArrayList<String> airline) {
+    public String getFourMatches(String departLocation, String destination, ArrayList<String> airline) {
         return flightList.getFourMatches(departLocation, destination, airline);
+    }
+
+    /**
+     * Returns all straight flights
+     * @param departLocation
+     * @param destination
+     * @param airline
+     * @return array list of flights
+     */
+    public ArrayList<Flight> getSingleFlights(String departLocation, String destination, ArrayList<String> airline) {
+        return flightList.getSingles(departLocation, destination, airline);
+    }
+
+    /**
+     * Returns all connecting flights
+     * @param departLocation
+     * @param destination
+     * @param airline
+     * @return array list of connecting flights
+     */
+    public ArrayList<ArrayList<Flight>> getConnectingFlights(String departLocation, String destination, ArrayList<String> airline) {
+        return flightList.getConnectingFlights(departLocation, destination, airline);
     }
 
     /**
