@@ -38,15 +38,16 @@ public class FlightBooking {
     }
 
     /**
-     * Return the flights
-     * @return
+     * Return a list of the booked flights
+     * @return array list of flights 
      */
     public ArrayList<Flight> getFlight() {
         return this.flights;
     }
 
     /**
-     * Returns the number of travelers, seats and flights.
+     * Returns a string representing the flight booking
+     * @return string
      */
     public String toString() {
         return "Travelers:\n" + this.travelers + "\nSeats:\n" + this.seats + "\nFlights:\n" + this.flights;

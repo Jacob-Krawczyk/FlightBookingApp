@@ -13,7 +13,7 @@ public abstract class User {
      * @param departLocation
      * @param destination
      * @param airline
-     * @return string
+     * @return string of four matches 
      */
     public String getFourMatches(String departLocation, String destination, ArrayList<String> airline) {
         return flightList.getFourMatches(departLocation, destination, airline);

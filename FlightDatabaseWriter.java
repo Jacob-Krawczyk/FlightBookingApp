@@ -20,13 +20,16 @@ public class FlightDatabaseWriter {
   protected static final String SEAT_NAME = "name";
   protected static final String SEAT_AVAILABLE = "available";
 
+  /**
+   * Saves flights
+   */
   public static void saveFlights() {
     FlightsList flights = FlightsList.getInstance();
     ArrayList<Flight> currentFlights = flights.getAllFlights();
     JSONArray jasonFlights = new JSONArray();
 
     for (int i = 0; i < currentFlights.size(); i++) {
-      // give a array in the begining
+      // Give a array in the begining
       jasonFlights.add(getFlightsJSON(currentFlights.get(i)));
     }
     try (FileWriter file = new FileWriter(FLIGHT_FILE)) {
@@ -37,8 +40,13 @@ public class FlightDatabaseWriter {
     }
   }
 
+  /**
+   * Gets flights from JSON file
+   * @param flight
+   * @return
+   */
   public static JSONObject getFlightsJSON(Flight flight) {
-    // creat a object of jason
+    // Creat a object of jason
     JSONObject jsonoF = new JSONObject();
     String StringUUID = flight.getID().toString();
     jsonoF.put(ID, StringUUID);
@@ -59,6 +67,11 @@ public class FlightDatabaseWriter {
     return jsonoF;
   }
 
+  /**
+   * Gets seats from JSON file
+   * @param seat
+   * @return
+   */
   public static JSONObject getSeatsJSON(Seat seat) {
     JSONObject jsonoS = new JSONObject();
     jsonoS.put(SEAT_NAME, seat.getSeatNumber());

@@ -322,7 +322,7 @@ public class FlightUI {
     public static void printAddSeat(FlightBooking flightBooking, int num) {
         System.out.println("Type the number of the seat you wish to book.");
         String seatNum = keyboard.nextLine();
-        app.addSeatsToFlightBooking(flightBooking, num, seatNum);
+        app.addSeatsToFlightBooking(flightBooking, flightBooking.getFlight().get(num), seatNum);
         System.out.println("Seat added to flight booking.");
     }
 
@@ -584,7 +584,7 @@ public class FlightUI {
         ArrayList<Accessibility> prefAccessibilities = new ArrayList<Accessibility>();
         String accessibilityString = keyboard.nextLine();
         while(!accessibilityString.equals("done")) {
-            if(!app.CheckValidityOfAccessibility(accessibilityString)) {
+            if(!app.checkValidityOfAccessibility(accessibilityString)) {
                 System.out.println("Invalid accessibility. Try again.");
             }
             Accessibility accessibility = Accessibility.valueOf(accessibilityString.toUpperCase());
