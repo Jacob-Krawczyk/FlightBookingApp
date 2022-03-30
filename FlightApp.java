@@ -70,7 +70,7 @@ public class FlightApp {
     }
 
     /**
-     * Prints itinerary of current userx
+     * Prints itinerary of current users
      * @param currentUser
      */
     public void printItinerary(RegisteredUser currentUser) {
