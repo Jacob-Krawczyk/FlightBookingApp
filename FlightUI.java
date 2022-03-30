@@ -132,7 +132,7 @@ public class FlightUI {
      */
     public static void printFourMatchesNotLoggedIn(String departLocation, String destination, ArrayList<String> airline) {
         try {
-            System.out.println("Here are four matches.");
+            System.out.println("Here are four matches: ");
             System.out.println(app.getFourMatches(departLocation, destination, airline));
             System.out.println(
                     "Type the number corresponding with the flight you wish to book or type 99 to return to the actions page.");
@@ -228,7 +228,7 @@ public class FlightUI {
      */
     public static void printFourMatchesPage(RegisteredUser currentUser, String departLocation, String destination, ArrayList<String> airline) {
         try {
-            System.out.println("Here are four matches.");
+            System.out.println("Here are four matches: ");
             app.getFourMatches(departLocation, destination, airline);
             System.out.println("Type the number corresponding with the flight you wish to book or type 99 to return to the actions page.");
             int response = keyboard.nextInt();
@@ -312,7 +312,7 @@ public class FlightUI {
      */
     public static ArrayList<Flight> printSingleFlights(String departLocation, String destination, ArrayList<String> airline) {
         try {
-            System.out.println("Here are all single flights that match your preferences.");
+            System.out.println("Here are all single flights that match your preferences:");
             ArrayList<Flight> flightSearch = app.getSingleFlights(departLocation, destination, airline);
             for (int i = 0; i < flightSearch.size(); i++) {
                 System.out.println("Flight " + i + ": " + flightSearch.get(i).toString());
@@ -486,7 +486,7 @@ public class FlightUI {
             for (int i = 0; i < hotelSearch.size(); i++) {
                 System.out.println("Hotel " + (i+1) + hotelSearch.get(i).toString());
             }
-            System.out.println("Type the number corresponding with the hotel yo uwish to book or type 99 to return to the actions page.");
+            System.out.println("Type the number corresponding with the hotel you wish to book or type 99 to return to the actions page.");
             int response = keyboard.nextInt();
             keyboard.nextLine();
             if (response == 99) {
@@ -667,7 +667,7 @@ public class FlightUI {
                 amenityString = keyboard.nextLine();
                 
             }
-            System.out.println("AmenitiePref is updated!");
+            System.out.println("Amenities Prefferences updated!");
             return prefAmenities;
         } catch (Exception e) {
             System.out.println(e);
