@@ -17,7 +17,7 @@ public class UserList {
     UserList() {
         users = userDatabaseLoader.getUser();
     }
-    
+
     /**
      * Creates and returns a single instance of UserList
      * @return UserList
