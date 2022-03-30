@@ -761,7 +761,7 @@ public class FlightUI {
         try {
             System.out.println("Username: ");
             String username = keyboard.nextLine();
-            if (!app.checkValidityOfUsername(username)) {
+            if (app.checkValidityOfUsername(username)) {
                 System.out.println("Sorry! This username is already taken. Try again.");
                 createUsername();
             }
