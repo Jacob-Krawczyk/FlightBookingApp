@@ -173,7 +173,7 @@ public class FlightsList {
         ArrayList<ArrayList<Flight>> twoTransfers = new ArrayList<ArrayList<Flight>>();
         getThreeConnectingFlights(twoTransfers, departLocation, destination, airline);
 
-        if(twoTransfers.size() == 0){
+        if(twoTransfers.size() == 0) {
             return null;
         }
         return twoTransfers.get(0);
@@ -235,8 +235,8 @@ public class FlightsList {
     public void getThreeConnectingFlights(ArrayList<ArrayList<Flight>> returnList, String departLocation, String destination, ArrayList<String> airline) {
         ArrayList<Flight> init = getFlightByDepartLocation(airline, departLocation);
         ArrayList<Flight> fin = getFlightByDestination(airline, destination);
-        ArrayList<Flight> between = new ArrayList<Flight>();
-        getFlightsGen(between, departLocation, destination);
+        ArrayList<Flight> between = getAllFlights();
+        getFlightByAirline(between, airline);
         for (Flight i : init) {
             for (Flight bet : between) {
                 if (i.getDestination().equals(bet.getDepartLocation())) {
