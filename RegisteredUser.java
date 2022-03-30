@@ -23,10 +23,10 @@ public class RegisteredUser extends User {
      * @param username
      * @param password
      */
-    public RegisteredUser(UUID id, ArrayList<Friend> friendList, Profile user, String username, String password) {
+    public RegisteredUser(UUID id, ArrayList<Friend> friendList, Profile userpProfile, String username, String password) {
         this.id = id;
         this.friendList = friendList;
-        this.userProfile = userProfile;
+        this.userProfile = userpProfile;
         this.username = username;
         this.password = password;
     }
