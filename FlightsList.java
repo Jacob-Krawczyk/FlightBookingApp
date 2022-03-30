@@ -406,4 +406,7 @@ public class FlightsList {
             }
         }
     }
+    public void saveFlights() {
+        FlightDatabaseWriter.saveFlights();
+    }
 }

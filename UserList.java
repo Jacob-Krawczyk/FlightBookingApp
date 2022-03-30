@@ -230,8 +230,10 @@ public class UserList {
      * Adds user to list and to database files
      * @param user
      */
-    public void addUser(RegisteredUser user) {
+    public RegisteredUser addUser(Profile userProfile, String username, String password) {
+        RegisteredUser user = new RegisteredUser(userProfile, username, password);
         users.add(user);
+        return user;
     }
 
     /**
@@ -276,5 +278,9 @@ public class UserList {
      */
     public ArrayList<RegisteredUser> getAllUsers() {
         return users;
+    }
+
+    public void saveUsers(){
+        UserDatabaseWriter.saveUsers();
     }
 }

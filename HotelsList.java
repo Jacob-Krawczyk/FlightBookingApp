@@ -265,4 +265,7 @@ public class HotelsList {
             }
         }
     }
+    public static void saveHotels() {
+        HotelDatabaseWriter.saveHotels();
+    }
 }

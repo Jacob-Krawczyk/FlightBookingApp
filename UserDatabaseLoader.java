@@ -62,7 +62,7 @@ public class UserDatabaseLoader {
         Date dateOfBirthday = parseDate((String)userJSON.get("d.o.b"));
 	    	String emailAddress =(String) userJSON.get("emailAddress");
 	    	String phoneNumber =(String) userJSON.get("phoneNumber");
-	    	String disability =(String) userJSON.get("disability");
+	    	Boolean disability =(Boolean) userJSON.get("disability");
 	    	String visa =(String) userJSON.get("visa");
 	    	String occupation =(String) userJSON.get("occupation");
         String discount = (String) userJSON.get("discount");
@@ -92,7 +92,7 @@ public class UserDatabaseLoader {
               Friend_DateOfBirthday, Friend_Discount, flights, hotels);
           friends.add(new_friend);
         }
-	      Profile new_User=new Profile(firstName, lastName, address, city, state, zip, dateOfBirthday, emailAddress, phoneNumber, disability, visa, occupation, discount);
+	      Profile new_User=new Profile(firstName, lastName, address, city, state, zip, dateOfBirthday, emailAddress, phoneNumber, visa, disability.booleanValue(), occupation, discount);
         RegisteredUser user = new RegisteredUser(id, friends,new_User,userID,password); 
         users.add(user);
       }

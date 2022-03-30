@@ -48,14 +48,18 @@ public class FlightApp {
      * Adds RegisteredUser to User.json file 
      * @param newUser
      */
-    public void addUser(RegisteredUser newUser) {
+    public RegisteredUser addUser(Profile userProfile, String username, String password) {
+        RegisteredUser user = null;
+        
         try {
         	System.out.println("--");
-            userList.addUser(newUser);
+            user = userList.addUser(userProfile, username, password);
             System.out.println("1213---");
         } catch (Exception e) {
             System.out.println(e);
         }
+
+        return user;
     }
 
     /**
@@ -543,5 +547,11 @@ public class FlightApp {
             System.out.println(e);
         }
         return null;
+    }
+
+    public void quit(){
+        flightList.saveFlights();
+        HotelsList.saveHotels();
+        userList.saveUsers();
     }
 }

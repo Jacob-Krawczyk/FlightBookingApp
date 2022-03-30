@@ -13,7 +13,6 @@ public class RegisteredUser extends User {
     private ArrayList<FlightBooking> flightBookings;
     private ArrayList<HotelBooking> hotelBookings;
     private ArrayList<Friend> friendList;
-    private UserList userList;
 
     /**
      * Loads JSON file 
@@ -49,7 +48,6 @@ public class RegisteredUser extends User {
        // this.username = userProfile.get
         System.out.println(username);
         RegisteredUser newUser = new RegisteredUser(uuid, friendList, userProfile, username, password);
-        userList.addUser(newUser);
      
     }
 
@@ -177,7 +175,7 @@ public class RegisteredUser extends User {
      * @return 
      */
     public Friend addUserFriend(String username) {
-        RegisteredUser newFriend = userList.getUserByUsername(username);
+        RegisteredUser newFriend = UserList.getInstance().getUserByUsername(username);
         UUID uuid = newFriend.getID();
         String first = newFriend.getProfile().getFirst();
         String last = newFriend.getProfile().getLast();

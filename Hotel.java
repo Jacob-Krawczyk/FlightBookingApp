@@ -116,7 +116,7 @@ public class Hotel{
      * @return array list of hotel rooms
      */
     public ArrayList<Room> getHotelRooms() {
-        return this.getHotelRooms();
+        return this.rooms;
     }
 
     /**
