@@ -38,7 +38,7 @@ public class Room {
      * @return room type
      */
     public String getRoomType() {
-        return roomType;
+        return this.roomType;
     }
 
     /**
@@ -84,8 +84,7 @@ public class Room {
      * Returns price per night
      * @return  price per night 
      */
-    public String getPricePerNight()
-    {
+    public String getPricePerNight() {
         return this.PricePerNight;
     }
 }

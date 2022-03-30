@@ -13,7 +13,7 @@ public class FlightUI {
     }
 
     /**
-     * Welcoming page of applicatin
+     * Welcoming page of application
      */
     public static void printWelcomingPage() {
         try {

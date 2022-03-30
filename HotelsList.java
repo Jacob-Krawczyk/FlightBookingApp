@@ -126,7 +126,7 @@ public class HotelsList {
     /**
      * Checks that inputted accessibility is valid
      * @param accessibility
-     * @return
+     * @return boolean
      */
     public boolean checkValidityOfAccessibility(String accessibility) {
         for (Accessibility access : EnumSet.allOf(Accessibility.class)) {
@@ -140,7 +140,7 @@ public class HotelsList {
     /**
      * Checks that inputted amenity is valid
      * @param amenity
-     * @return
+     * @return boolean
      */
     public boolean checkValidityOfAmenity(String amenity) {
         for (Amenities amen : EnumSet.allOf(Amenities.class)) {
@@ -238,6 +238,14 @@ public class HotelsList {
         }
     }
 
+    /**
+     * Prints roombs based on inputted date and time
+     * @param hotel
+     * @param checkInDate
+     * @param checkinTime
+     * @param checkOutDate
+     * @param checkOutTime
+     */
     public void printRoomByDateAndTime(Hotel hotel, Date checkInDate, String checkinTime,
         Date checkOutDate, String checkOutTime) {
         ArrayList<Room> rooms = hotel.getHotelRooms();

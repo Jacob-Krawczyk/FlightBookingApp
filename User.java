@@ -48,6 +48,7 @@ public abstract class User {
      * @param accessibility
      * @param roomType
      * @param numOfBeds
+     * @param rating
      * @return hotel search array list
      */
     public ArrayList<Hotel> searchHotels(String location, ArrayList<Amenities> amenities, ArrayList<Accessibility> accessibility, String roomType, int numOfBeds, double rating) {

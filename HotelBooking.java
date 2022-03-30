@@ -38,15 +38,15 @@ public class HotelBooking {
     }
 
     /**
-     * Returns the name of the Hotel
-     * @return
+     * Returns hotel
+     * @return hotel
      */
     public Hotel getHotel() {
         return this.hotel;
     }
 
     /**
-     * Returns the number of guests, rooms, and the hotel.
+     * Returns the string form of hotel booking
      */
     public String toString() {
         return "Guests: " + this.travelers + "\nRooms: " + this.rooms + "\nHotel: " + this.hotel;

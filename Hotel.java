@@ -25,6 +25,7 @@ public class Hotel{
     public Hotel() {
         
     }
+
     /**
      * Loads JSON File
      * @param id
@@ -145,7 +146,7 @@ public class Hotel{
 
     /**
      * Returns check out day
-     * @return
+     * @return check out day
      */
     public String getCheckOutDay() {
         return checkOutDay;

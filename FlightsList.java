@@ -4,7 +4,6 @@ import java.util.UUID;
 
 /**
  * A Singleton Listing of Flights
- * 
  * @author JavaFine
  */
 public class FlightsList {

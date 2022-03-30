@@ -75,7 +75,7 @@ public class Friend {
 
     /**
      * Returns last name
-     * @return
+     * @return last name
      */
     public String getLastName() {
         return lastName;
@@ -83,7 +83,7 @@ public class Friend {
 
     /**
      * Returns date of birth
-     * @return
+     * @return date of birth
      */
     public String getDateOfBirthday() {
         return dateOfBirthday;
@@ -91,7 +91,7 @@ public class Friend {
 
     /**
      * Returns discount
-     * @return
+     * @return discount
      */
     public String getDiscount() {
         return discount;
@@ -102,12 +102,12 @@ public class Friend {
      * @return string
      */
     public String toString() {
-        return "First Name: " + this.firstName + " Last Name: " + this.lastName + " Date of Birth: " + this.dateOfBirthday + " Discount: " + this.discount + " Flights: " + this.flights.toString() + " Hotels: " + this.hotels.toString(); 
+        return "First Name: " + this.firstName + " Last Name: " + this.lastName + " Date of Birth: " + this.dateOfBirthday + " Discount: " + this.discount + "\nFlights:\n" + this.flights.toString() + "\nHotels:\n" + this.hotels.toString(); 
     }
 
     /**
      * Returns friend's UUID
-     * @return uuid
+     * @return UUID
      */
     public UUID getID() {
         return id;
