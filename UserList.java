@@ -3,7 +3,6 @@ import java.io.*;
 
 /**
  * A Singleton Listing of Users
- * 
  * @author JavaFine
  */
 public class UserList {
@@ -14,34 +13,42 @@ public class UserList {
 
     /**
      * Creates and returns a single instance of UserList
-     * 
      * @return UserList
      */
     public static UserList getInstance() {
         if (userList == null) {
-        userList = new UserList();
+            userList = new UserList();
         }
         return userList;
     }
 
     /**
      * Returns user by UUID
-     * 
      * @param id
      * @return registered user
      */
     public RegisteredUser getUserByUUID(UUID id) {
         for (RegisteredUser user : users) {
-        if (user.getID().equals(id))
-            return user;
+            if (user.getID().equals(id)) {
+                return user;
+            }
         }
         return null;
     }
 
+    /**
+     * Prints itinerary
+     * @param currentUser
+     */
     public void printItinerary(RegisteredUser currentUser) {
         currentUser.accessItinerary();
     }
 
+    /**
+     * Writes itinerary to file
+     * @param currentUser
+     * @param title
+     */
     public void writeItineraryToFile(RegisteredUser currentUser, String title) {
         try {
             ArrayList<FlightBooking> flightList = currentUser.getFlight();
@@ -61,6 +68,11 @@ public class UserList {
         }
     }
 
+    /**
+     * Checks validity of username
+     * @param username
+     * @return
+     */
     public boolean checkValidityOfUsername(String username) {
         for (RegisteredUser user : users) {
             if (username.equals(user.getUsername())) {
@@ -70,6 +82,10 @@ public class UserList {
         return true;
     }
 
+    /**
+     * Returns friend list 
+     * @param currentUser
+     */
     public void getFriendsList(RegisteredUser currentUser) {
         ArrayList<Friend> friends = currentUser.getFriends(); 
         for(Friend friend: friends) {
@@ -77,90 +93,137 @@ public class UserList {
         }
     }
 
+    /**
+     * Adds Non User Friend to Friend List 
+     * @param currentUser
+     * @param firstName
+     * @param lastName
+     * @param dob
+     * @param discount
+     */
     public void addNonUserFriend(RegisteredUser currentUser, String firstName, String lastName, String dob, String discount) {
         currentUser.addNonUserFriend(firstName, lastName, dob, discount);
     }
 
+    /**
+     * Books hotel
+     * @param currentUser
+     * @param hotel
+     */
     public void bookHotel(RegisteredUser currentUser, HotelBooking hotel) {
         currentUser.bookHotel(hotel);
     }
 
+    /**
+     * Returns list of booked flights 
+     * @param currentUser
+     * @return
+     */
     public ArrayList<FlightBooking> getBookedFlights(RegisteredUser currentUser) {
         return currentUser.getFlight();
     }
 
+    /**
+     * Returns list of booked hotels 
+     * @param currentUser
+     * @return
+     */
     public ArrayList<HotelBooking> getBookedHotels(RegisteredUser currentUser) {
         return currentUser.getHotel();
     }
 
+    /**
+     * Removes flight from booked flights 
+     * @param currentUser
+     * @param flight
+     */
     public void cancelFlight(RegisteredUser currentUser, FlightBooking flight) {
         currentUser.cancelFlight(flight);
     }
 
+    /**
+     * Removes hotel from booked hotels 
+     * @param currentUser
+     * @param hotel
+     */
     public void cancelHotel(RegisteredUser currentUser, HotelBooking hotel) {
         currentUser.cancelHotel(hotel);
     }
 
+    /**
+     * Adds flight to booked flights 
+     * @param currentUser
+     * @param flight
+     */
     public void bookFlight(RegisteredUser currentUser, FlightBooking flight) {
         currentUser.bookFlight(flight);
     }
 
+    /**
+     * Sets preferences 
+     * @param currentUser
+     * @param pref
+     */
     public void setPreferences(RegisteredUser currentUser, Preferences pref) {
         currentUser.setPreferences(pref);
     }
 
+    /**
+     * Removes friend from friend list
+     * @param currentUser
+     * @param first
+     * @param last
+     */
     public void removeFriend(RegisteredUser currentUser, String first, String last) {
         currentUser.removeFriend(first, last);
     }
 
+    /**
+     * Adds user friend to friend list 
+     * @param currentUser
+     * @param username
+     */
     public void addUserFriend(RegisteredUser currentUser, String username) {
         currentUser.addUserFriend(username);
     }
 
     /**
      * Returns user by username
-     * 
      * @param username
      * @return registered user
      */
     public RegisteredUser getUserByUsername(String username) {
         for (RegisteredUser user : users) {
-        if (user.getUsername().equals(username)) {
-            return user;
-        }
+            if (user.getUsername().equals(username)) {
+                return user;
+            }
         }
         return null;
     }
 
     /**
      * Adds user to list and to database files
-     * 
      * @param user
      */
     public void addUser(RegisteredUser user) {
         users.add(user);
-        // ((List<RegisteredUser>) userDatabaseWriter).add(user);
     }
 
     /**
      * Removes user from list and from database file
-     * 
      * @param user
      */
     public void removeUser(UUID userID) {
         for (RegisteredUser user : users) {
-        if (user.getID().equals(userID)) {
-            int pos = this.users.indexOf(user);
-            users.remove(pos);
+            if (user.getID().equals(userID)) {
+                int pos = this.users.indexOf(user);
+                users.remove(pos);
+            }
         }
-        }
-        // ((List<RegisteredUser>) userDatabaseWriter).remove(user);
     }
-
 
     /**
      * Returns the list of friends associated with current user
-     * 
      * @return list of friends
      */
     public ArrayList<Friend> getFriendsList() {
@@ -169,23 +232,21 @@ public class UserList {
 
     /**
      * Returns user based on inputted username and password
-     * 
      * @param username
      * @param password
      * @return user based on inputted username and password
      */
     public RegisteredUser getUser(String username, String password) {
         for (RegisteredUser user : users) {
-        if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
-            return user;
-        }
+            if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+                return user;
+            }
         }
         return null;
     }
 
     /**
      * Returns list of all registered users
-     * 
      * @return list of users
      */
     public ArrayList<RegisteredUser> getAllUsers() {
