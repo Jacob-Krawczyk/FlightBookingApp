@@ -710,6 +710,7 @@ public class FlightUI {
     public static void printQuit() {
         try {
         System.out.println("Thank you for using the Flight Booking App!");
+        app.quit();
         System.exit(0);
         } catch (Exception e) {
             System.out.println(e);
