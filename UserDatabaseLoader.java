@@ -103,7 +103,7 @@ public class UserDatabaseLoader {
   }
   public static Date parseDate(String date) {
 		try {
-			return new SimpleDateFormat("MM/dd/yyyy").parse(date);
+			return new SimpleDateFormat("mm/dd/yyyy").parse(date);
 		} catch (ParseException e) {
 			System.out.println("Sorry " + date + " is not parsable");
 			return null;

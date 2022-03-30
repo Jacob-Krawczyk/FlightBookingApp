@@ -1,6 +1,8 @@
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import javax.swing.text.DateFormatter;
+
 /**
  * User Interface for Flight Application 
  * @author JavaFine
@@ -534,14 +536,14 @@ public class FlightUI {
                     System.out.println("Friend successfully added!");
                 }
             }
-            System.out.println("What check in day do you want for the room? Type in the format \"dd/mm/yyyy\".");
+            System.out.println("What check in day do you want for the room? Type in the format \"mm/dd/yyyy\".");
             String checkinDay = keyboard.nextLine();
-            Date checkInDay = new SimpleDateFormat("dd/mm/yyyy").parse(checkinDay);
+            Date checkInDay = new SimpleDateFormat("mm/dd/yyyy").parse(checkinDay);
             System.out.println("What check in time do you want for the room?");
             String checkinTime = keyboard.nextLine();
-            System.out.println("What check out day do you want for the room?");
+            System.out.println("What check out day do you want for the room? Type in the format \"mm/dd/yyyy\".");
             String checkoutDay = keyboard.nextLine();
-            Date checkOutDay = new SimpleDateFormat("dd/mm/yyyy").parse(checkoutDay);
+            Date checkOutDay = new SimpleDateFormat("mm/dd/yyyy").parse(checkoutDay);
             System.out.println("What check out time do you want for the room?");
             String checkoutTime = keyboard.nextLine();
             System.out.println("Here are the rooms that fit that criteria.");
@@ -732,8 +734,9 @@ public class FlightUI {
             String state = keyboard.nextLine();
             System.out.print("Zip: ");
             String zip = keyboard.nextLine();
-            System.out.print("Date of Birth: ");
-            String dob = keyboard.nextLine();
+            System.out.print("Date of Birth: Type in the format \"mm/dd/yyyy\".");
+            String dateOfBirth = keyboard.nextLine();
+            Date dob = new SimpleDateFormat("mm/dd/yyyy").parse(dateOfBirth);
             System.out.print("Email Address: ");
             String email = keyboard.nextLine();
             System.out.print("Phone Number: ");
@@ -1061,8 +1064,9 @@ public class FlightUI {
             String firstName = keyboard.nextLine();
             System.out.println("What is your friend's last name?");
             String lastName = keyboard.nextLine();
-            System.out.println("What is your friend's date of birth?");
-            String dob = keyboard.nextLine();
+            System.out.println("What is your friend's date of birth? Type in the format \"mm/dd/yyyy\".");
+            String dateOfBirth = keyboard.nextLine();
+            Date dob = new SimpleDateFormat("mm/dd/yyyy").parse(dateOfBirth);
             System.out.println("What discounts do your friend qualify for?");
             String discount = keyboard.nextLine();
             app.addNonUserFriend(currentUser, firstName, lastName, dob, discount);
