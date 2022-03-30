@@ -14,7 +14,7 @@ import org.json.simple.parser.JSONParser;
  * @author JavaFine
  */
 public class UserDatabaseLoader {
-  protected static final String User_FILE_NAME = "users.json";
+  protected static final String User_FILE_NAME = "src/users.json";
   protected static final String User_FILE_Id = "id";
   protected static final String User_FILE_User_Id = "user-id";
   protected static final String User_FILE_Password = "password";
@@ -72,7 +72,8 @@ public class UserDatabaseLoader {
         String discount = (String) userJSON.get("discount");
 
         JSONArray list = (JSONArray) userJSON.get("Friends");
-        for (int j = 0; j < list.size(); j++) {
+        for (int j = 0; j < list.size(); j++) 
+        {
           JSONObject getFriends = (JSONObject) list.get(j);
           String String_Friend_ID = (String) getFriends.get("id");
           UUID Friend_ID = UUID.fromString(String_Friend_ID);
@@ -83,18 +84,22 @@ public class UserDatabaseLoader {
 
           JSONArray list_flight = (JSONArray) getFriends.get("flights");
           for (int k = 0; k < list_flight.size(); k++) {
-            JSONObject getFri_flight = (JSONObject) list.get(k);
+            JSONObject getFri_flight = (JSONObject) list_flight.get(k);
+       
             String String_Flight_ID = (String) getFri_flight.get("flightid");
+           // System.out.println(String_Flight_ID);
             UUID Flight_ID = UUID.fromString(String_Friend_ID);
             String Flight_Seat = (String) getFri_flight.get("seat");
           }
           JSONArray list_hotel = (JSONArray) getFriends.get("hotels");
           for (int m = 0; m < list_hotel.size(); m++) {
-            JSONObject getFri_hotel = (JSONObject) list.get(m);
-            String String_Hotel_ID = (String) getFri_hotel.get("roomid");
+            JSONObject getFri_hotel = (JSONObject) list_hotel.get(m);
+            String String_Hotel_ID = (String) getFri_hotel.get("hotelid");
+           // System.out.println(String_Hotel_ID);
             UUID Hotel_ID = UUID.fromString(String_Hotel_ID);
             Date Hotel_Room_Check_IN_Day = parseDate((String) getFri_hotel.get("check in day"));
           }
+          
           Friend new_friend = new Friend(Friend_ID, Friend_FirstName, Friend_LastName,
               Friend_DateOfBirthday, Friend_Discount, flights, hotels);
           friends.add(new_friend);
@@ -104,6 +109,7 @@ public class UserDatabaseLoader {
                 emailAddress, phoneNumber, visa, disability.booleanValue(), occupation, discount);
         RegisteredUser user = new RegisteredUser(id, friends, new_User, userID, password);
         users.add(user);
+        return users;
       }
     } catch (Exception e) {
       System.out.println(e);
