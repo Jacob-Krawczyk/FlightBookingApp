@@ -15,7 +15,7 @@ public class HotelsList {
      */
     public static HotelsList getInstance() {
         if (hotelList == null) {
-        hotelList = new HotelsList();
+            hotelList = new HotelsList();
         }
         return hotelList;
     }
@@ -43,8 +43,9 @@ public class HotelsList {
      */
     public Hotel getHotelByUUID(UUID id) {
         for (Hotel hotel : hotels) {
-        if (hotel.getID().equals(id))
-            return hotel;
+            if (hotel.getID().equals(id)) {
+                return hotel;
+            }
         }
         return null;
     }
@@ -241,10 +242,7 @@ public class HotelsList {
         Date checkOutDate, String checkOutTime) {
         ArrayList<Room> rooms = hotel.getHotelRooms();
         for (int i = 0; i < rooms.size(); i++) {
-        if (rooms.get(i).getRoomCheckInDate().equals(checkInDate)
-            && rooms.get(i).getRoomCheckInTime().equals(checkinTime)
-            && rooms.get(i).getRoomCheckOutDate().equals(checkOutDate)
-            && rooms.get(i).getRoomCheckOutTime().equals(checkOutTime)) {
+            if (rooms.get(i).getRoomCheckInDate().equals(checkInDate) && rooms.get(i).getRoomCheckInTime().equals(checkinTime) && rooms.get(i).getRoomCheckOutDate().equals(checkOutDate) && rooms.get(i).getRoomCheckOutTime().equals(checkOutTime)) {
                 System.out.println(rooms.get(i).toString());
             }
         }

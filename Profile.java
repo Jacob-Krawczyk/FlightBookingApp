@@ -111,8 +111,7 @@ public class Profile {
      * Return city
      * @return city
      */
-    public String getCity()
-    {
+    public String getCity() {
         return city;
     }
 
@@ -120,8 +119,7 @@ public class Profile {
      * Returns zip
      * @return zip
      */
-    public String getZip()
-    {
+    public String getZip() {
         return zip;
     }
 
@@ -129,8 +127,7 @@ public class Profile {
      * Returns state
      * @return state
      */
-    public String getState()
-    {
+    public String getState() {
         return state;
     }
 
@@ -138,8 +135,7 @@ public class Profile {
      * Returns email address
      * @return email address
      */
-    public String getEmailAddress()
-    {
+    public String getEmailAddress() {
         return emailAddress;
     }
 
@@ -147,8 +143,7 @@ public class Profile {
      * Returns phone number
      * @return phone number
      */
-    public String getPhoneNumber()
-    {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
@@ -156,8 +151,7 @@ public class Profile {
      * Returns disability
      * @return disability
      */
-    public String getDisability()
-    {
+    public String getDisability() {
         return disability;
     }
 }

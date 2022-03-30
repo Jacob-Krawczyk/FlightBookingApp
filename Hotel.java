@@ -139,8 +139,7 @@ public class Hotel{
      * Returns check in day
      * @return check in day
      */
-    public String getCheckInDay()
-    {
+    public String getCheckInDay() {
         return checkInDay;
     }
 
@@ -148,10 +147,14 @@ public class Hotel{
      * Returns check out day
      * @return
      */
-    public String getCheckOutDay()
-    {
+    public String getCheckOutDay() {
         return checkOutDay;
     }
+
+    /**
+     * Returns rating
+     * @return rating 
+     */
     public Double getRating() {
         return this.rating;
     }
