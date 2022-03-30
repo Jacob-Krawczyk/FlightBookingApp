@@ -32,7 +32,7 @@ public class Hotel{
      * @param city
      * @param rooms
      */
-    public Hotel(UUID id, String name, String city, ArrayList<Room> rooms) {
+    public Hotel(UUID id, String city, String name, ArrayList<Room> rooms) {
         this.id = id;
         this.name = name;
         this.city = city;
@@ -157,5 +157,8 @@ public class Hotel{
      */
     public Double getRating() {
         return this.rating;
+    }
+    public String toString() {
+        return " Name: " + name;
     }
 }

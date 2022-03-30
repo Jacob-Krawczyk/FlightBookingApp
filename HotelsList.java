@@ -9,6 +9,9 @@ public class HotelsList {
     private ArrayList<Hotel> returnList=new ArrayList<Hotel>();
     private static HotelsList hotelList=new HotelsList();
 
+    private HotelsList() {
+        hotels = HotelDatabaseLoader.getHotel();
+    }
     /**   
      * Creates a single instance of HotelsList and returns that single instance
      * @return HotelsList
@@ -32,7 +35,6 @@ public class HotelsList {
      * @return list of all hotels from database
      */
     public ArrayList<Hotel> getAllHotels() {
-        hotels = HotelDatabaseLoader.getHotel();
         return hotels;
     }
 
@@ -104,7 +106,7 @@ public class HotelsList {
         clearSearch();
         getHotelByLocation(location);
         ArrayList<Hotel> fourMatches = new ArrayList<Hotel>();
-        for(int i = 0; i < 4; i++) {
+        for(int i = 0; i < 4 && i < returnList.size(); i++) {
             fourMatches.add(returnList.get(i));
         }
         return fourMatches;
@@ -115,6 +117,7 @@ public class HotelsList {
      * @param location
      */
     private void getHotelByLocation(String location) {
+
         for (Hotel hotel : hotels) {
             String hotelLocation = hotel.getLocation();
             if (hotelLocation.equals(location)) {

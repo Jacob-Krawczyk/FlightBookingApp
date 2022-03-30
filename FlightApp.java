@@ -6,7 +6,7 @@ import java.util.*;
  */
 public class FlightApp {
     private FlightsList flightList =new FlightsList();
-    private HotelsList hotelList=new HotelsList();
+    private HotelsList hotelList;
     private UserList userList =new UserList();
    
     public FlightApp() {

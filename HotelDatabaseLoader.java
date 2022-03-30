@@ -1,4 +1,6 @@
 import java.io.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -9,7 +11,7 @@ import org.json.simple.parser.JSONParser;
  * @author JavaFine
  */
 public class HotelDatabaseLoader{
-	protected static final String HOTEL_FILE_NAME = "src/hotels.json";
+	protected static final String HOTEL_FILE_NAME = "hotels.json";
 	protected static final String HOTEL_FILE_ID = "id";
 	protected static final String HOTEL_FILE_CITY = "city";
 	protected static final String HOTEL_FILE_CHECK_IN_DATE = "check in date";
@@ -37,7 +39,7 @@ public class HotelDatabaseLoader{
 			
 			for(int i =0;i<hotelJason.size();i++) {
 				JSONObject hotelJSON =(JSONObject) hotelJason.get(i);
-				UUID id =(UUID) hotelJSON.get("id");
+				UUID id =UUID.fromString((String) hotelJSON.get("id"));
 				String city = (String) hotelJSON.get("city");
 				
 				String hotel_name=(String)hotelJSON.get("hotel name");
@@ -45,16 +47,15 @@ public class HotelDatabaseLoader{
 				JSONArray list = (JSONArray) hotelJSON.get("rooms");
 				for (int j = 0; j < list.size(); j++) {
 					JSONObject getRooms = (JSONObject) list.get(j);
-					String room_type=(String)hotelJSON.get("room type");
-					String number_of_beds=(String)hotelJSON.get("number of beds");
-					Date check_in_date =(Date) hotelJSON.get("check in date");
-					Date check_out_date =(Date) hotelJSON.get("check out date");
-					String check_in_time=(String) hotelJSON.get("check in time");
-					String check_out_time=(String) hotelJSON.get("check out time");
+					String room_type=(String)getRooms.get("room type");
+					int number_of_beds=((Long)getRooms.get("number of beds")).intValue();
+					Date check_in_date =parseDate((String)getRooms.get("check in date"));
+					Date check_out_date =parseDate((String)getRooms.get("check out date"));
+					String check_in_time=(String) getRooms.get("check in time");
+					String check_out_time=(String) getRooms.get("check out time");
 					
 					String Price_Per_Night=(String) hotelJSON.get("Price per night");
-					Room new_room = new Room(room_type, number_of_beds,check_in_date,check_out_date,
-					check_in_time,check_out_time,Price_Per_Night);
+					Room new_room = new Room(room_type, number_of_beds,check_in_date,check_out_date, check_in_time,check_out_time,Price_Per_Night);
 					rooms.add(new_room);
         		}
 				Hotel hotel = new Hotel(id, city,hotel_name,rooms);
@@ -66,4 +67,14 @@ public class HotelDatabaseLoader{
 		}
 		return hotels;
 	}
+
+	public static Date parseDate(String date) {
+		try {
+			return new SimpleDateFormat("MM/dd/yyyy").parse(date);
+		} catch (ParseException e) {
+			System.out.println("Sorry " + date + " is not parsable");
+			return null;
+		}
+	}
 }
+

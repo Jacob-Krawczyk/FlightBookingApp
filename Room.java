@@ -5,7 +5,7 @@ import java.util.*;
  * @author JavaFine
  */
 public class Room {
-    private String numberOfBeds;
+    private int numberOfBeds;
     private String roomType;
     private Date checkInDay;
     private Date checkOutDay;
@@ -22,7 +22,7 @@ public class Room {
      * @param check_out_time
      * @param price_per_night
      */
-    public Room(String room_type,String number_of_beds,Date check_in_date,Date check_out_date,
+    public Room(String room_type,int number_of_beds,Date check_in_date,Date check_out_date,
     String check_in_time, String check_out_time,String price_per_night) {
         this.numberOfBeds = number_of_beds;
         this.roomType = room_type;
@@ -77,7 +77,7 @@ public class Room {
      * Returns number of beds 
      * @return number of beds 
      */
-    public String getRoomNumberOfBeds() {
+    public int getRoomNumberOfBeds() {
         return this.numberOfBeds;
     }  
     /**

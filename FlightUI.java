@@ -482,7 +482,7 @@ public class FlightUI {
         try {
             ArrayList<Hotel> hotelSearch = app.getFourMatchesByLocation(location);
             for (int i = 0; i < hotelSearch.size(); i++) {
-                System.out.println("Hotel " + i + hotelSearch.get(i).toString());
+                System.out.println("Hotel " + (i+1) + hotelSearch.get(i).toString());
             }
             System.out.println("Type the number corresponding with the hotel yo uwish to book or type 99 to return to the actions page.");
             int response = keyboard.nextInt();
@@ -500,7 +500,7 @@ public class FlightUI {
         try { 
             ArrayList<Hotel> hotelSearch = app.getHotelSearch(location, amenities, accessibility, roomType, numOfBeds, rating);
             for (int i = 0; i < hotelSearch.size(); i++) {
-                System.out.println("Hotel " + i + hotelSearch.get(i).toString());
+                System.out.println("Hotel " + (i+1) + hotelSearch.get(i).toString());
             }
             System.out.println("Type the number corresponding with the hotel you wish to book or type 99 to return to the actions page.");
             int response = keyboard.nextInt();
