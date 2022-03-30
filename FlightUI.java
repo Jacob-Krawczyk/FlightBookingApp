@@ -40,8 +40,7 @@ public class FlightUI {
                     break;
             }
         } catch (Exception e) {
-            System.out.println(e + "\n\nTry Again");
-            printWelcomingPage();
+            System.out.println(e);
         }
     }
 
