@@ -23,7 +23,6 @@ public enum HotelRoomTypes {
 
     /**
      * Returns string form 
-     * @return string
      */
     public String toString() {
         return textForm;

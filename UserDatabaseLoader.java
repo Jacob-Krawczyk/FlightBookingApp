@@ -31,6 +31,7 @@ public class UserDatabaseLoader {
 
   /**
    * Returns list of users from JSON file
+   * 
    * @return array list of users
    */
   public static ArrayList<RegisteredUser> getUser() {

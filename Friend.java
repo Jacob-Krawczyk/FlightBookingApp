@@ -10,8 +10,8 @@ public class Friend {
 	private String lastName;
 	private String dateOfBirthday;
 	private String discount;
-    ArrayList<Flight> flights;
-    ArrayList<Hotel> hotels;
+    ArrayList<Flight> flights = new ArrayList<Flight>();
+    ArrayList<Hotel> hotels=new ArrayList<Hotel>();
 
     /**
      * Loads friend from JSON file
@@ -75,7 +75,7 @@ public class Friend {
 
     /**
      * Returns last name
-     * @return last name
+     * @return
      */
     public String getLastName() {
         return lastName;
@@ -83,7 +83,7 @@ public class Friend {
 
     /**
      * Returns date of birth
-     * @return date of birth
+     * @return
      */
     public String getDateOfBirthday() {
         return dateOfBirthday;
@@ -91,7 +91,7 @@ public class Friend {
 
     /**
      * Returns discount
-     * @return discount
+     * @return
      */
     public String getDiscount() {
         return discount;
@@ -102,12 +102,12 @@ public class Friend {
      * @return string
      */
     public String toString() {
-        return "First Name: " + this.firstName + " Last Name: " + this.lastName + " Date of Birth: " + this.dateOfBirthday + " Discount: " + this.discount + "\nFlights:\n" + this.flights.toString() + "\nHotels:\n" + this.hotels.toString(); 
+        return "First Name: " + this.firstName + " Last Name: " + this.lastName + " Date of Birth: " + this.dateOfBirthday + " Discount: " + this.discount + " Flights: " + this.flights.toString() + " Hotels: " + this.hotels.toString(); 
     }
 
     /**
      * Returns friend's UUID
-     * @return UUID
+     * @return uuid
      */
     public UUID getID() {
         return id;

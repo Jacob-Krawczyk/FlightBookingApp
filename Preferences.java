@@ -5,8 +5,8 @@ import java.util.ArrayList;
  * @author JavaFine
  */
 public class Preferences {
-    private ArrayList<String> airline;
-    private ArrayList<String> flightClass;
+    private ArrayList<String> airline = new ArrayList<String>();
+    private ArrayList<String> flightClass= new ArrayList<String>();
 
     /**
      * Constructs preferences 

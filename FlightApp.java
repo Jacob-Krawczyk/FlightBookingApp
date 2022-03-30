@@ -5,9 +5,9 @@ import java.util.*;
  * @author JavaFine
  */
 public class FlightApp {
-    private FlightsList flightList;
-    private HotelsList hotelList;
-    private UserList userList;
+    private FlightsList flightList =new FlightsList();
+    private HotelsList hotelList=new HotelsList();
+    private UserList userList =new UserList();
    
     public FlightApp() {
         this.flightList = flightList.getInstance();
@@ -50,7 +50,9 @@ public class FlightApp {
      */
     public void addUser(RegisteredUser newUser) {
         try {
+        	System.out.println("--");
             userList.addUser(newUser);
+            System.out.println("1213---");
         } catch (Exception e) {
             System.out.println(e);
         }

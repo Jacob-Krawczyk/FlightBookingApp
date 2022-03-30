@@ -13,7 +13,7 @@ public class FlightUI {
     }
 
     /**
-     * Welcoming page of application
+     * Welcoming page of applicatin
      */
     public static void printWelcomingPage() {
         try {
@@ -658,10 +658,14 @@ public class FlightUI {
             while (!amenityString.equals("done")) {
                 if(!app.checkValidityOfAmenity(amenityString)) {
                     System.out.println("Invalid amenity. Try again.");
+                    addAmenitiesPref();
                 }
                 Amenities amenity = Amenities.valueOf(amenityString.toUpperCase());
                 prefAmenities.add(amenity);
+                amenityString = keyboard.nextLine();
+                
             }
+            System.out.println("AmenitiePref is updated!");
             return prefAmenities;
         } catch (Exception e) {
             System.out.println(e);
@@ -688,7 +692,9 @@ public class FlightUI {
                 }
                 Accessibility accessibility = Accessibility.valueOf(accessibilityString.toUpperCase());
                 prefAccessibilities.add(accessibility);
+                accessibilityString = keyboard.nextLine();
             }
+            System.out.println("your Accessibility Pref is updated");
             return prefAccessibilities;
         } catch (Exception e) {
             System.out.println(e);
@@ -742,7 +748,9 @@ public class FlightUI {
             String occupation = keyboard.nextLine();
             Profile newUser = new Profile(firstName, lastName, address, city, state, zip, dob, email, phone, mobile, disability, visa, occupation);
             String username = createUsername();
+      
             String password = createPassword();
+          // System.out.println(password);
             RegisteredUser currentUser = new RegisteredUser(newUser, username, password);
             app.addUser(currentUser);
             System.out.println("Account creation successful!");
@@ -758,19 +766,30 @@ public class FlightUI {
      * @return username
      */
     public static String createUsername() {
-        try {
+        String ans="";
+    	try {
             System.out.println("Username: ");
             String username = keyboard.nextLine();
-            if (app.checkValidityOfUsername(username)) {
-                System.out.println("Sorry! This username is already taken. Try again.");
+            ans=username;
+           if (app.checkValidityOfUsername(username)) {
+        	   
+      /*          System.out.println("Sorry! This username is already taken. Try again.");
                 createUsername();
+                */
+        	   System.out.println("Great your user name is :"+username);
             }
-            return username;
+           else
+           {
+        	   System.out.println("invalid username type again please");
+        	   createUsername();
+           }
+           
         } catch (Exception e) {
             System.out.println(e + " Try again.");
             createUsername();
         }
-        return null;
+		return ans;
+     
     }
 
     /**
@@ -823,6 +842,7 @@ public class FlightUI {
      */
     public static void printSetPreferences(RegisteredUser currentUser) {
         try {
+        	System.out.println(currentUser.getUsername());
             System.out.println("Setting Preferences\n\n");
             ArrayList<String> prefAirlines = addAirlinePref();
             ArrayList<String> prefClasses = addClassPref();
@@ -869,7 +889,7 @@ public class FlightUI {
     public static ArrayList<String> addClassPref() {
         try {
             System.out.print(
-                    "Please choose your preferred flight class from the following list. Write each preferred class as a new line and write \"done\" when you're done.");
+                    "Please choose your preferred flight class from the following list. Write each preferred class as a new line and write \"done\" when you're done.\n");
             for (FlightClass flightClass : EnumSet.allOf(FlightClass.class)) {
                 System.out.println(flightClass.toString());
             }

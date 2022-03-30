@@ -4,12 +4,13 @@ import java.util.UUID;
 
 /**
  * A Singleton Listing of Flights
+ * 
  * @author JavaFine
  */
 public class FlightsList {
-    private FlightDatabaseLoader flightLoader;
-    private ArrayList<Flight> flights;
-    private static FlightsList flightList;
+    private FlightDatabaseLoader flightLoader = new FlightDatabaseLoader();
+    private ArrayList<Flight> flights = new ArrayList<Flight>();
+    private static FlightsList flightList=new FlightsList(); 
 
     /**
      * Returns instance of flights list

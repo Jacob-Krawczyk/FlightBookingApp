@@ -8,8 +8,8 @@ import java.io.*;
 public class UserList {
     private UserDatabaseLoader userDatabaseLoader;
     private UserDatabaseWriter userDatabaseWriter;
-    private ArrayList<RegisteredUser> users;
-    private static UserList userList;
+    private ArrayList<RegisteredUser> users = new ArrayList<RegisteredUser>();
+    private static UserList userList = new UserList();
 
     /**
      * Creates and returns a single instance of UserList
@@ -74,12 +74,34 @@ public class UserList {
      * @return
      */
     public boolean checkValidityOfUsername(String username) {
-        for (RegisteredUser user : users) {
+    	//System.out.println("-----------------");
+    	if(users!=null) {
+    		for (RegisteredUser user : users) {
+    		//	System.out.println("-----sdsfsd------");
+                if (username.equals(user.getUsername())) {
+                    return false;
+                }
+                else {
+                	return true;
+                }
+            }
+    		
+    	}
+    	 return true;
+    	
+    	
+    	
+    	
+    	
+        /*for (RegisteredUser user : users) {
             if (username.equals(user.getUsername())) {
                 return false;
             }
+            else {
+            	return true;
+            }
         }
-        return true;
+        return true;*/
     }
 
     /**

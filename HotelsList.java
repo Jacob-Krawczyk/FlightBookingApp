@@ -5,9 +5,9 @@ import java.util.*;
  * @author JavaFine
  */
 public class HotelsList {
-    private ArrayList<Hotel> hotels;
-    private ArrayList<Hotel> returnList;
-    private static HotelsList hotelList;
+    private ArrayList<Hotel> hotels =new ArrayList<Hotel>();
+    private ArrayList<Hotel> returnList=new ArrayList<Hotel>();
+    private static HotelsList hotelList=new HotelsList();
 
     /**   
      * Creates a single instance of HotelsList and returns that single instance
@@ -126,7 +126,7 @@ public class HotelsList {
     /**
      * Checks that inputted accessibility is valid
      * @param accessibility
-     * @return boolean
+     * @return
      */
     public boolean checkValidityOfAccessibility(String accessibility) {
         for (Accessibility access : EnumSet.allOf(Accessibility.class)) {
@@ -140,15 +140,17 @@ public class HotelsList {
     /**
      * Checks that inputted amenity is valid
      * @param amenity
-     * @return boolean
+     * @return
      */
     public boolean checkValidityOfAmenity(String amenity) {
+    	boolean check = false;
         for (Amenities amen : EnumSet.allOf(Amenities.class)) {
             if (amenity.equals(amen.toString())) {
-                return true;
+            	check =true;
+               // return true;
             }
         }
-        return false;
+        return check;
     }
 
     /**
@@ -238,14 +240,6 @@ public class HotelsList {
         }
     }
 
-    /**
-     * Prints roombs based on inputted date and time
-     * @param hotel
-     * @param checkInDate
-     * @param checkinTime
-     * @param checkOutDate
-     * @param checkOutTime
-     */
     public void printRoomByDateAndTime(Hotel hotel, Date checkInDate, String checkinTime,
         Date checkOutDate, String checkOutTime) {
         ArrayList<Room> rooms = hotel.getHotelRooms();

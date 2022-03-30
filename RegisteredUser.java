@@ -7,13 +7,13 @@ import java.util.*;
 public class RegisteredUser extends User {
     private UUID id;
     private Profile userProfile;
-    private String username;
-    private String password;
+    private String username="";
+    private String password="";
     private Preferences pref;
     private ArrayList<FlightBooking> flightBookings;
     private ArrayList<HotelBooking> hotelBookings;
     private ArrayList<Friend> friendList;
-    private UserList userList;
+    private UserList userList= new UserList();
 
     /**
      * Loads JSON file 
@@ -24,11 +24,16 @@ public class RegisteredUser extends User {
      * @param password
      */
     public RegisteredUser(UUID id, ArrayList<Friend> friendList, Profile userpProfile, String username, String password) {
-        this.id = id;
+        //System.out.println("uuserpProfile.getLast();
+    	this.id = id;
         this.friendList = friendList;
         this.userProfile = userpProfile;
         this.username = username;
         this.password = password;
+     /*   System.out.println(this.userProfile.getLast()+"asdoijsadkjl");
+        
+        System.out.println(this.username+"username 穿进去了");
+        */
     }
 
     /**
@@ -38,10 +43,14 @@ public class RegisteredUser extends User {
      * @param password
      */ 
     public RegisteredUser(Profile userProfile, String username, String password) {
+    	 this.username = username;
         UUID uuid = UUID.randomUUID();
         friendList = new ArrayList<Friend>();
+       // this.username = userProfile.get
+        System.out.println(username);
         RegisteredUser newUser = new RegisteredUser(uuid, friendList, userProfile, username, password);
         userList.addUser(newUser);
+     
     }
 
     /**
@@ -49,7 +58,7 @@ public class RegisteredUser extends User {
      * @return username
      */
     public String getUsername() {
-        return username;
+        return this.username;
     }
     
     /**

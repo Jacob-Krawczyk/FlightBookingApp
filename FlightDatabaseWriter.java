@@ -43,7 +43,7 @@ public class FlightDatabaseWriter {
   /**
    * Gets flights from JSON file
    * @param flight
-   * @return flight
+   * @return
    */
   public static JSONObject getFlightsJSON(Flight flight) {
     // Creat a object of jason
@@ -70,7 +70,7 @@ public class FlightDatabaseWriter {
   /**
    * Gets seats from JSON file
    * @param seat
-   * @return seat
+   * @return
    */
   public static JSONObject getSeatsJSON(Seat seat) {
     JSONObject jsonoS = new JSONObject();
