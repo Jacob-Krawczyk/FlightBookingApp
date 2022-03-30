@@ -50,9 +50,7 @@ public class FlightApp {
      */
     public void addUser(RegisteredUser newUser) {
         try {
-        	System.out.println("--");
             userList.addUser(newUser);
-            System.out.println("1213---");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -72,7 +70,7 @@ public class FlightApp {
     }
 
     /**
-     * Prints itinerary of current users
+     * Prints itinerary of current userx
      * @param currentUser
      */
     public void printItinerary(RegisteredUser currentUser) {

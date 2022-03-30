@@ -11,9 +11,13 @@ public class UserList {
     private ArrayList<RegisteredUser> users = new ArrayList<RegisteredUser>();
     private static UserList userList = new UserList();
 
+    /**
+     * Gets list of users from JSON file
+     */
     UserList() {
         users = userDatabaseLoader.getUser();
     }
+    
     /**
      * Creates and returns a single instance of UserList
      * @return UserList
