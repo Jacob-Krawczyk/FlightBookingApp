@@ -1,5 +1,5 @@
 [{
-    "id": "2",
+    "id": "00fb3db9-c369-4ba0-b9a1-9f6caefc77dd",
     "user-id":  "bill_smith",
     "password": "00000000",
     "firstname": "Bill",
@@ -15,24 +15,24 @@
     "occupation":"",
     "discount": "veteran discount",
     "Friends": [{
-            "id": "3",
+            "id": "8c419235-390a-43dc-9573-92e473d58493",
             "firstname": "Joe",
             "lastname": "Bryant",
             "d.o.b": "April 25, 1975",
             "discount": "none",
-            "flights":[{"flightid":"1", "seat":"13a"}
+            "flights":[{"flightid":"b6c29459-baeb-4445-869b-983131198cbf", "seat":"13C"}
             ],
-            "hotels":[{"hoteid":"1","check in day":"3.24","check out day":"3.26"}]
+            "hotels":[{"hoteid":"2ead4186-a210-406d-a130-ba2c51b4ff78","check in day":"3.24","check out day":"3.26"}]
     },
     {
-        "id": "4",
+        "id": "291f744f-e71c-4099-ae2f-fe90de161d82",
         "firstname": "Mike",
         "lastname": "J",
         "d.o.b": "April 30, 1975",
         "discount": "none",
-        "flights":[{"flightid":"1", "seat":"14a"}
+        "flights":[{"flightid":"b6c29459-baeb-4445-869b-983131198cbf", "seat":"14a"}
         ],
-        "hotels":[{"hotelid":"2","check in day":"3.22","check out day":"3.26"}]}         
+        "hotels":[{"hotelid":"640421d5-51b2-4bc2-b432-d05c552d8d83","check in day":"3.22","check out day":"3.26"}]}         
     ]
     }]
     

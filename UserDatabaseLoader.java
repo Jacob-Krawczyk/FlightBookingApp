@@ -1,4 +1,6 @@
 import java.io.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -57,7 +59,7 @@ public class UserDatabaseLoader {
 		    String city =(String) userJSON.get("city");
 		    String state =(String) userJSON.get("state");
 	    	String zip=(String) userJSON.get("zip");
-        String dateOfBirthday = (String) userJSON.get("d.o.b");
+        Date dateOfBirthday = parseDate((String)userJSON.get("d.o.b"));
 	    	String emailAddress =(String) userJSON.get("emailAddress");
 	    	String phoneNumber =(String) userJSON.get("phoneNumber");
 	    	String disability =(String) userJSON.get("disability");
@@ -71,7 +73,7 @@ public class UserDatabaseLoader {
           UUID Friend_ID = (UUID) getFriends.get("id");
           String Friend_FirstName = (String) getFriends.get("firstname");
           String Friend_LastName = (String) getFriends.get("lastname");
-          String Friend_DateOfBirthday = (String) getFriends.get("d.o.b");
+          Date Friend_DateOfBirthday = parseDate((String)userJSON.get("d.o.b"));
           String Friend_Discount = (String) getFriends.get("discount");
 
           JSONArray list_flight = (JSONArray) userJSON.get("flights");
@@ -99,4 +101,12 @@ public class UserDatabaseLoader {
     }
     return users;
   }
+  public static Date parseDate(String date) {
+		try {
+			return new SimpleDateFormat("MM/dd/yyyy").parse(date);
+		} catch (ParseException e) {
+			System.out.println("Sorry " + date + " is not parsable");
+			return null;
+		}
+	}
 }

@@ -8,7 +8,7 @@ public class Friend {
     private UUID id ;
 	private String firstName;
 	private String lastName;
-	private String dateOfBirthday;
+	private Date dateOfBirthday;
 	private String discount;
     ArrayList<Flight> flights = new ArrayList<Flight>();
     ArrayList<Hotel> hotels=new ArrayList<Hotel>();
@@ -18,16 +18,16 @@ public class Friend {
      * @param Friend_ID
      * @param Friend_FirstName
      * @param Friend_LastName
-     * @param Friend_DateOfBirthday
+     * @param dob
      * @param Friend_Discount
      * @param friend_flight
      * @param new_Room
      */
-    public Friend(UUID Friend_ID,String Friend_FirstName,String Friend_LastName,String Friend_DateOfBirthday,String Friend_Discount,ArrayList<Flight> friend_flight,ArrayList<Hotel> new_Hotel) {
+    public Friend(UUID Friend_ID,String Friend_FirstName,String Friend_LastName,Date dob,String Friend_Discount,ArrayList<Flight> friend_flight,ArrayList<Hotel> new_Hotel) {
        this.id=Friend_ID;
 	   this.firstName=Friend_FirstName;
 	   this.lastName=Friend_LastName;
-	   this.dateOfBirthday=Friend_DateOfBirthday;
+	   this.dateOfBirthday=dob;
 	   this.discount=Friend_Discount;
        this.flights=friend_flight;
        this.hotels=new_Hotel;
@@ -41,7 +41,7 @@ public class Friend {
      * @param dob
      * @param discount
      */
-    public Friend(UUID uuid2, String first, String last, String dob, String discount) {
+    public Friend(UUID uuid2, String first, String last, Date dob, String discount) {
         UUID uuid = UUID.randomUUID();
         ArrayList<Flight> emptyFlightList = new ArrayList<Flight>();
         ArrayList<Hotel> emptyHotelList = new ArrayList<Hotel>();
@@ -85,7 +85,7 @@ public class Friend {
      * Returns date of birth
      * @return
      */
-    public String getDateOfBirthday() {
+    public Date getDateOfBirthday() {
         return dateOfBirthday;
     }
 

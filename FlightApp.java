@@ -7,7 +7,7 @@ import java.util.*;
 public class FlightApp {
     private FlightsList flightList;
     private HotelsList hotelList;
-    private UserList userList =new UserList();
+    private UserList userList;
    
     public FlightApp() {
         this.flightList = flightList.getInstance();

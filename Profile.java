@@ -1,3 +1,5 @@
+import java.util.Date;
+
 /**
  * A Profile 
  * @author JavaFine
@@ -9,7 +11,7 @@ public class Profile {
     private String city;
     private String state;
     private String zip;
-    private String dateOfBirth;
+    private Date dateOfBirth;
     private String emailAddress;
     private String phoneNumber;
     private String disability;
@@ -25,7 +27,7 @@ public class Profile {
      * @param city
      * @param state
      * @param zip
-     * @param dateOfBirth
+     * @param dateOfBirthday
      * @param emailAddress
      * @param phoneNumber
      * @param disability
@@ -34,7 +36,7 @@ public class Profile {
      * @param discount
      */
     public Profile(String firstName, String lastName, String address, String city, String state, String zip,
-            String dateOfBirth, String emailAddress, String phoneNumber, String disability, String visa,
+            Date dateOfBirthday, String emailAddress, String phoneNumber, String disability, String visa,
             String occupation, String discount) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -42,7 +44,7 @@ public class Profile {
         this.city = city;
         this.state = state;
         this.zip = zip;
-        this.dateOfBirth = dateOfBirth;
+        this.dateOfBirth = dateOfBirthday;
         this.emailAddress = emailAddress;
         this.phoneNumber = phoneNumber;
         this.disability = disability;
@@ -71,7 +73,7 @@ public class Profile {
      * Returns date of birth
      * @return date of birth
      */
-    public String getDOB() {
+    public Date getDOB() {
         return dateOfBirth;
     }
 

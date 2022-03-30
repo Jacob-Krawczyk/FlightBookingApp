@@ -11,6 +11,9 @@ public class UserList {
     private ArrayList<RegisteredUser> users = new ArrayList<RegisteredUser>();
     private static UserList userList = new UserList();
 
+    private UserList() {
+        users = userDatabaseLoader.getUser();
+    }
     /**
      * Creates and returns a single instance of UserList
      * @return UserList
@@ -272,7 +275,6 @@ public class UserList {
      * @return list of users
      */
     public ArrayList<RegisteredUser> getAllUsers() {
-        users = userDatabaseLoader.getUser();
         return users;
     }
 }
