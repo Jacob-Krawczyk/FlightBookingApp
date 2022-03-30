@@ -22,11 +22,11 @@ public class RegisteredUser extends User {
      * @param username
      * @param password
      */
-    public RegisteredUser(UUID id, ArrayList<Friend> friendList, Profile userpProfile, String username, String password) {
+    public RegisteredUser(UUID id, ArrayList<Friend> friendList, Profile userProfile, String username, String password) {
         //System.out.println("uuserpProfile.getLast();
     	this.id = id;
         this.friendList = friendList;
-        this.userProfile = userpProfile;
+        this.userProfile = userProfile;
         this.username = username;
         this.password = password;
      /*   System.out.println(this.userProfile.getLast()+"asdoijsadkjl");

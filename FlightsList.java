@@ -10,7 +10,7 @@ import java.util.UUID;
 public class FlightsList {
     private FlightDatabaseLoader flightLoader = new FlightDatabaseLoader();
     private ArrayList<Flight> flights = new ArrayList<Flight>();
-    private static FlightsList flightList=new FlightsList(); 
+    private static FlightsList flightList=new FlightsList();
 
     private FlightsList() {
         flights = flightLoader.getFlight(); //first line of get all flights
@@ -44,7 +44,7 @@ public class FlightsList {
      * @return all flights
      */
     public ArrayList<Flight> getAllFlights() {
-        return flights;
+        return flightLoader.getFlight();
     }
 
     /**
@@ -237,6 +237,28 @@ public class FlightsList {
         ArrayList<Flight> fin = getFlightByDestination(airline, destination);
         ArrayList<Flight> between = getAllFlights();
         getFlightByAirline(between, airline);
+        ArrayList<ArrayList<Flight>> firstTwo = new ArrayList<ArrayList<Flight>>();
+        for (Flight in: init) {
+            for (Flight bet: between) {
+                if(in.getDestination().equals(bet.getDepartLocation())) {
+                    ArrayList<Flight> temp = new ArrayList<Flight>();
+                    temp.add(in);
+                    temp.add(bet);
+                    firstTwo.add(temp);
+                }
+            }
+        }
+        for (ArrayList<Flight> bet: firstTwo) {
+            for (Flight f: fin) {
+                if(bet.get(1).getDestination().equals(f.getDepartLocation())) {
+                    ArrayList<Flight> threeFlights = new ArrayList<Flight>();
+                    threeFlights.addAll(bet);
+                    threeFlights.add(f);
+                    returnList.add(threeFlights);
+                }
+            }
+        }
+        /** 
         for (Flight i : init) {
             for (Flight bet : between) {
                 if (i.getDestination().equals(bet.getDepartLocation())) {
@@ -252,6 +274,7 @@ public class FlightsList {
                 }
             }
         }
+        */
     }
 
     /**
