@@ -11,7 +11,7 @@ public class UserList {
     private ArrayList<RegisteredUser> users = new ArrayList<RegisteredUser>();
     private static UserList userList = new UserList();
 
-    UserList() {
+    private UserList() {
         users = userDatabaseLoader.getUser();
     }
     /**

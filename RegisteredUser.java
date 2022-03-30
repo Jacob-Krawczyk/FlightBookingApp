@@ -13,7 +13,7 @@ public class RegisteredUser extends User {
     private ArrayList<FlightBooking> flightBookings;
     private ArrayList<HotelBooking> hotelBookings;
     private ArrayList<Friend> friendList;
-    private UserList userList= new UserList();
+    private UserList userList;
 
     /**
      * Loads JSON file 
