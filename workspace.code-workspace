@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "FlightBookingApp",
+			"path": "."
+		}
+	],
+	"settings": {
+		"java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx32G -Xms100m",
+		"java.project.referencedLibraries": [
+			"lib/**/*.jar",
+			"/Users/jakekrawczyk/Downloads/json-simple-1.1.1.jar"
+		]
+	}
+}
