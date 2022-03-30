@@ -35,6 +35,10 @@ public class RegisteredUser extends User {
         */
     }
 
+    public String toString() {
+        return "Username: " + this.username;
+    }
+
     /**
      * Creates new registered user 
      * @param userProfile

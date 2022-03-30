@@ -268,7 +268,7 @@ public class UserList {
      * @return user based on inputted username and password
      */
     public RegisteredUser getUser(String username, String password) {
-        for (RegisteredUser user : users) {
+        for (RegisteredUser user : getAllUsers()) {
             if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
                 return user;
             }
@@ -281,7 +281,7 @@ public class UserList {
      * @return list of users
      */
     public ArrayList<RegisteredUser> getAllUsers() {
-        return users;
+        return UserDatabaseLoader.getUser();
     }
 
     public void saveUsers(){

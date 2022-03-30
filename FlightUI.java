@@ -19,6 +19,10 @@ public class FlightUI {
      */
     public static void printWelcomingPage() {
         try {
+            ArrayList<RegisteredUser> users = app.getAllUsers();
+            for(int i = 0; i < users.size(); i++) {
+                System.out.println("success");
+            }
             System.out.println("Welcome to the Flight Booking App!\n\n1. Login\n2. Create Account\n3. Search Flights\n4. Search Hotels\n5. Quit\n\nType the number corresponding with what you want to do: ");
             int response = keyboard.nextInt();
             keyboard.nextLine();

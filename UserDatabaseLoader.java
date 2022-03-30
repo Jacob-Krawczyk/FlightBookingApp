@@ -50,7 +50,8 @@ public class UserDatabaseLoader {
 
       for (int i = 0; i < userJason.size(); i++) {
         JSONObject userJSON = (JSONObject) userJason.get(i);
-        UUID id = (UUID) userJSON.get("id");
+        String String_id = (String) userJSON.get("id");
+        UUID id = UUID.fromString(String_id);
         String userID = (String) userJSON.get("user-id");
         String password = (String) userJSON.get("password");
         String firstName = (String) userJSON.get("firstname");

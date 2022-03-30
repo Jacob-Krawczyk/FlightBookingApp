@@ -15,6 +15,9 @@ public class FlightApp {
         this.userList = userList.getInstance();
     }
 
+    public ArrayList<RegisteredUser> getAllUsers() {
+        return userList.getAllUsers();
+    }
     /**
      * Returns user based on username and password
      * @param username

@@ -1,5 +1,8 @@
 import java.io.FileReader;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.UUID;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -11,7 +14,7 @@ import org.json.simple.parser.JSONParser;
  * @author JavaFine
  */
 public class FlightDatabaseLoader {
-  protected static final String FLIGHT_FILE = "src/flight.json";
+  protected static final String FLIGHT_FILE = "flight.json";
   protected static final String ID = "id";
   protected static final String Departs_FROM = "departs from";
   protected static final String DESTINATION = "destination";
@@ -43,7 +46,7 @@ public class FlightDatabaseLoader {
         UUID id = UUID.fromString(String_id);
         String departs_from = (String) personJSON.get("departs from");
         String destination = (String) personJSON.get("destination");
-        String departure_date = (String) personJSON.get("departure date");
+        Date departure_date = parseDate((String)personJSON.get("departure date"));
         String departure_time = (String) personJSON.get("departure time");
         String arrival_time = (String) personJSON.get("arrival time");
         String Airline = (String) personJSON.get("Airline");
@@ -73,4 +76,12 @@ public class FlightDatabaseLoader {
     }
     return flights;
   }
+  public static Date parseDate(String date) {
+		try {
+			return new SimpleDateFormat("MM/dd/yyyy").parse(date);
+		} catch (ParseException e) {
+			System.out.println("Sorry " + date + " is not parsable");
+			return null;
+		}
+	}
 }
