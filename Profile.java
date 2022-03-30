@@ -14,7 +14,7 @@ public class Profile {
     private Date dateOfBirth;
     private String emailAddress;
     private String phoneNumber;
-    private String disability;
+    private Boolean disability;
     private String visa;
     private String occupation;
     private String discount;
@@ -30,13 +30,13 @@ public class Profile {
      * @param dateOfBirthday
      * @param emailAddress
      * @param phoneNumber
-     * @param disability
      * @param visa
+     * @param disability
      * @param occupation
      * @param discount
      */
     public Profile(String firstName, String lastName, String address, String city, String state, String zip,
-            Date dateOfBirthday, String emailAddress, String phoneNumber, String disability, String visa,
+            Date dateOfBirthday, String emailAddress, String phoneNumber, String visa, Boolean disability,
             String occupation, String discount) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -153,7 +153,7 @@ public class Profile {
      * Returns disability
      * @return disability
      */
-    public String getDisability() {
+    public Boolean getDisability() {
         return disability;
     }
 }

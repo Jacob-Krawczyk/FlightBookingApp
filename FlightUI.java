@@ -744,7 +744,9 @@ public class FlightUI {
             System.out.print("Mobile Number: ");
             String mobile = keyboard.nextLine();
             System.out.print("Disability: ");
-            String disability = keyboard.nextLine();
+            String disabilitytextString = keyboard.nextLine();
+            boolean disability = getbool(disabilitytextString);
+
             System.out.print("Visa: ");
             String visa = keyboard.nextLine();
             System.out.print("Occupation: ");
@@ -754,8 +756,7 @@ public class FlightUI {
       
             String password = createPassword();
           // System.out.println(password);
-            RegisteredUser currentUser = new RegisteredUser(newUser, username, password);
-            app.addUser(currentUser);
+            RegisteredUser currentUser = app.addUser(newUser, username, password);
             System.out.println("Account creation successful!");
             printSetPrefQuestion(currentUser);
         } catch (Exception e) {
@@ -1109,4 +1110,8 @@ public class FlightUI {
             System.out.println(e);
         }
     }
+    private static boolean getbool(String data) {
+        return data.equalsIgnoreCase("true");
+    }
 }
+

@@ -59,10 +59,10 @@ public class Friend {
         String zip = null;
         String emailAddress = null;
         String phoneNumber = null;
-        String disability = null;
+        Boolean disability = false;
         String visa = null;
         String occupation = null;
-        return new Profile(firstName, lastName, address, city, state, zip, dateOfBirthday, emailAddress, phoneNumber, disability, visa, occupation, discount);
+        return new Profile(firstName, lastName, address, city, state, zip, dateOfBirthday, emailAddress, phoneNumber, visa, disability, occupation, discount);
     }
 
     /**
