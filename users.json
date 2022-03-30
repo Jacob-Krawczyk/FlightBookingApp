@@ -10,7 +10,7 @@
     "d.o.b": "May 15, 1973",
     "emailAddress":"oaidjo@gmail.com",
     "phoneNumber":"803-234-8764",
-    "disability":"false",
+    "disability":false,
     "visa":"",
     "occupation":"",
     "discount": "veteran discount",
