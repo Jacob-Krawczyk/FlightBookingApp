@@ -56,8 +56,7 @@ public class FlightUI {
             RegisteredUser currentUser = app.login(username, password);
             printActionsPage(currentUser);
         } catch (Exception e) {
-            System.out.println(e + " Try again.");
-            printLogin();
+            System.out.println(e);
         }
     }
 
@@ -89,8 +88,7 @@ public class FlightUI {
                     break;
             }
         } catch (Exception e) {
-            System.out.println(e + "\nTry Again.");
-            printActionsPage(currentUser);
+            System.out.println(e);
         }
     }
 
