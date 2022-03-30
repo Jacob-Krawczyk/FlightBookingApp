@@ -12,6 +12,9 @@ public class FlightsList {
     private ArrayList<Flight> flights = new ArrayList<Flight>();
     private static FlightsList flightList=new FlightsList(); 
 
+    private FlightsList() {
+        flights = flightLoader.getFlight(); //first line of get all flights
+    }
     /**
      * Returns instance of flights list
      * @return flights list
@@ -41,7 +44,6 @@ public class FlightsList {
      * @return all flights
      */
     public ArrayList<Flight> getAllFlights() {
-        flights = flightLoader.getFlight();
         return flights;
     }
 
@@ -57,8 +59,26 @@ public class FlightsList {
         ArrayList<Flight> secondMatch = getSecondMatch(departLocation, destination, airline);
         ArrayList<Flight> thirdMatch = getThirdMatch(departLocation, destination, airline);
         ArrayList<Flight> fourthMatch = getFourthMatch(departLocation, destination, airline);
-        return "Flight 1. " + firstMatch.toString() + "\nFlight 2. " + secondMatch.toString()
-            + "\nFlight 3. " + thirdMatch.toString() + "\nFlight 4. " + fourthMatch.toString();
+
+        String result = "";
+
+        if(firstMatch != null){
+            result += "Flight 1. " + firstMatch.toString();
+        }
+
+        if(secondMatch != null) {
+            result += "\nFlight 2. " + secondMatch.toString();
+        }
+
+        if(thirdMatch != null) {
+            result += "\nFlight 3. " + thirdMatch.toString();
+        }
+
+        if(fourthMatch != null) {
+            result = "\nFlight 4. " + fourthMatch.toString();
+        }
+
+        return result;
     }
 
     /**
@@ -118,6 +138,10 @@ public class FlightsList {
     public ArrayList<Flight> getSecondMatch(String departLocation, String destination, ArrayList<String> airline) {
         ArrayList<ArrayList<Flight>> singleTransfers = new ArrayList<ArrayList<Flight>>();
         getTwoConnectingFlights(singleTransfers, departLocation, destination, airline);
+
+        if(singleTransfers.size() == 0){
+            return null;
+        }
         return singleTransfers.get(0);
     }
 
@@ -131,6 +155,10 @@ public class FlightsList {
     public ArrayList<Flight> getThirdMatch(String departLocation, String destination, ArrayList<String> airline) {
         ArrayList<ArrayList<Flight>> singleTransfers = new ArrayList<ArrayList<Flight>>();
         getTwoConnectingFlights(singleTransfers, departLocation, destination, airline);
+
+        if(singleTransfers.size() <= 1){
+            return null;
+        }
         return singleTransfers.get(1);
     }
 
@@ -144,6 +172,10 @@ public class FlightsList {
     public ArrayList<Flight> getFourthMatch(String departLocation, String destination, ArrayList<String> airline) {
         ArrayList<ArrayList<Flight>> twoTransfers = new ArrayList<ArrayList<Flight>>();
         getThreeConnectingFlights(twoTransfers, departLocation, destination, airline);
+
+        if(twoTransfers.size() == 0){
+            return null;
+        }
         return twoTransfers.get(0);
     }
 

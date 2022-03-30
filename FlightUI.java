@@ -131,7 +131,7 @@ public class FlightUI {
     public static void printFourMatchesNotLoggedIn(String departLocation, String destination, ArrayList<String> airline) {
         try {
             System.out.println("Here are four matches.");
-            app.getFourMatches(departLocation, destination, airline);
+            System.out.println(app.getFourMatches(departLocation, destination, airline));
             System.out.println(
                     "Type the number corresponding with the flight you wish to book or type 99 to return to the actions page.");
             int response = keyboard.nextInt();

@@ -8,7 +8,7 @@ public class Flight {
   private UUID id;
   private String departLocation;
   private String destination;
-  private String departDate;
+  private Date departDate;
   private String departTime;
   private String arrivalTime;
   private ArrayList<Seat> flightSeats;
@@ -25,7 +25,7 @@ public class Flight {
    * @param flightSeats
    * @param airline
    */
-  public Flight(UUID id, String departLocation, String destination, String departDate,
+  public Flight(UUID id, String departLocation, String destination, Date departDate,
       String departTime, String arrivalTime, ArrayList<Seat> flightSeats, String airline) {
     this.id = id;
     this.departLocation = departLocation;
@@ -79,7 +79,7 @@ public class Flight {
    * Returns departure date
    * @return departure date
    */
-  public String getDepartDate() {
+  public Date getDepartDate() {
     return this.departDate;
   }
 

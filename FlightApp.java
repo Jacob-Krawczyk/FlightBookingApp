@@ -5,7 +5,7 @@ import java.util.*;
  * @author JavaFine
  */
 public class FlightApp {
-    private FlightsList flightList =new FlightsList();
+    private FlightsList flightList;
     private HotelsList hotelList;
     private UserList userList =new UserList();
    
