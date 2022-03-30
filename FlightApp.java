@@ -103,7 +103,7 @@ public class FlightApp {
      * @param dob
      * @param discount
      */
-    public void addNonUserFriend(RegisteredUser currentUser, String first, String last, String dob, String discount) {
+    public void addNonUserFriend(RegisteredUser currentUser, String first, String last, Date dob, String discount) {
         try {
             userList.addNonUserFriend(currentUser, first, last, dob, discount);
         } catch (Exception e) {

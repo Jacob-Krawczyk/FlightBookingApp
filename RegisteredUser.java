@@ -164,7 +164,7 @@ public class RegisteredUser extends User {
      * @param discount
      * @return friend
      */
-    public Friend addNonUserFriend(String firstName, String lastName, String dob, String discount) {
+    public Friend addNonUserFriend(String firstName, String lastName, Date dob, String discount) {
         UUID uuid = UUID.randomUUID();
         Friend aFriend = new Friend(uuid, firstName,lastName, dob, discount);
         friendList.add(aFriend);
@@ -181,8 +181,8 @@ public class RegisteredUser extends User {
         UUID uuid = newFriend.getID();
         String first = newFriend.getProfile().getFirst();
         String last = newFriend.getProfile().getLast();
-        String dob = newFriend.getProfile().getDOB();
-        String discount = newFriend.getProfile().getDOB();
+        Date dob = newFriend.getProfile().getDOB();
+        String discount = newFriend.getProfile().getDiscount();
         Friend aFriend = new Friend(uuid, first, last, dob, discount);
         friendList.add(aFriend);
         return aFriend;

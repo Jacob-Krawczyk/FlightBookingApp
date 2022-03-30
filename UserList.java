@@ -11,7 +11,7 @@ public class UserList {
     private ArrayList<RegisteredUser> users = new ArrayList<RegisteredUser>();
     private static UserList userList = new UserList();
 
-    private UserList() {
+    UserList() {
         users = userDatabaseLoader.getUser();
     }
     /**
@@ -126,7 +126,7 @@ public class UserList {
      * @param dob
      * @param discount
      */
-    public void addNonUserFriend(RegisteredUser currentUser, String firstName, String lastName, String dob, String discount) {
+    public void addNonUserFriend(RegisteredUser currentUser, String firstName, String lastName, Date dob, String discount) {
         currentUser.addNonUserFriend(firstName, lastName, dob, discount);
     }
 
