@@ -10,9 +10,10 @@ import javax.swing.text.DateFormatter;
 public class FlightUI {
     private static final Scanner keyboard = new Scanner(System.in);
     private static final FlightApp app = new FlightApp();
-    public static void main(String[] args) {
+ public static void main(String[] args) {
         printWelcomingPage();
     }
+   
 
     /**
      * Welcoming page of applicatin
@@ -71,7 +72,7 @@ public class FlightUI {
     public static void printActionsPage(RegisteredUser currentUser) {
         try {
             System.out.println("Welcome, " + currentUser.getUsername().toString()
-                    + "!\n\n1. Search Flight\n2. Search Hotel\n3. Look at Itinerary\n4. Go to Friend's List\n5. Set Preferences\n\nType the number corresponding to what you wuold like to do: ");
+                    + "!\n\n1. Search Flight\n2. Search Hotel\n3. Look at Itinerary\n4. Go to Friend's List\n5. Set Preferences\n\nType the number corresponding to what you would like to do: ");
             int response = keyboard.nextInt();
             keyboard.nextLine();
             switch (response) {
@@ -233,6 +234,7 @@ public class FlightUI {
             app.getFourMatches(departLocation, destination, airline);
             System.out.println("Type the number corresponding with the flight you wish to book or type 99 to return to the actions page.");
             int response = keyboard.nextInt();
+            
             keyboard.nextLine();
             switch(response) {
                 case 1:
@@ -270,7 +272,7 @@ public class FlightUI {
             FlightBooking flightBooking = app.createFlightBooking(currentUser, flightSearch);
             int numPeople = printAddFriendsToFlightBooking(currentUser, flightBooking);
             System.out.println("Here are all the seats available on the flight.");
-            app.printAvailableSeats(flightBooking.getFlight().get(0));
+            app.printAvailableSeats(flightBooking.getFlight());
             for (int i = 0; i < numPeople; i++) {
                 printAddSeat(flightBooking, 0);
             }

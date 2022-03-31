@@ -1,17 +1,20 @@
-import java.io.*;
+import java.io.FileReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.UUID;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 /**
  * User Database Loader
+ * 
  * @author JavaFine
  */
 public class UserDatabaseLoader {
-  protected static final String User_FILE_NAME = "src/users.json";
+  protected static final String User_FILE_NAME = "users.json";
   protected static final String User_FILE_Id = "id";
   protected static final String User_FILE_User_Id = "user-id";
   protected static final String User_FILE_Password = "password";
@@ -56,29 +59,30 @@ public class UserDatabaseLoader {
         String password = (String) userJSON.get("password");
         String firstName = (String) userJSON.get("firstname");
         String lastName = (String) userJSON.get("lastname");
-	  	  String address =(String) userJSON.get("address");
-		    String city =(String) userJSON.get("city");
-		    String state =(String) userJSON.get("state");
-	    	String zip=(String) userJSON.get("zip");
-        Date dateOfBirthday = parseDate((String)userJSON.get("d.o.b"));
-	    	String emailAddress =(String) userJSON.get("emailAddress");
-	    	String phoneNumber =(String) userJSON.get("phoneNumber");
-	    	Boolean disability =(Boolean) userJSON.get("disability");
-	    	String visa =(String) userJSON.get("visa");
-	    	String occupation =(String) userJSON.get("occupation");
+        String address = (String) userJSON.get("address");
+        String city = (String) userJSON.get("city");
+        String state = (String) userJSON.get("state");
+        String zip = (String) userJSON.get("zip");
+        Date dateOfBirthday = parseDate((String) userJSON.get("d.o.b"));
+        String emailAddress = (String) userJSON.get("emailAddress");
+        String phoneNumber = (String) userJSON.get("phoneNumber");
+        Boolean disability = (Boolean) userJSON.get("disability");
+        String visa = (String) userJSON.get("visa");
+        String occupation = (String) userJSON.get("occupation");
         String discount = (String) userJSON.get("discount");
 
         JSONArray list = (JSONArray) userJSON.get("Friends");
         for (int j = 0; j < list.size(); j++) 
         {
           JSONObject getFriends = (JSONObject) list.get(j);
-          UUID Friend_ID = (UUID) getFriends.get("id");
+          String String_Friend_ID = (String) getFriends.get("id");
+          UUID Friend_ID = UUID.fromString(String_Friend_ID);
           String Friend_FirstName = (String) getFriends.get("firstname");
           String Friend_LastName = (String) getFriends.get("lastname");
-          Date Friend_DateOfBirthday = parseDate((String)userJSON.get("d.o.b"));
+          Date Friend_DateOfBirthday = parseDate((String) userJSON.get("d.o.b"));
           String Friend_Discount = (String) getFriends.get("discount");
 
-          JSONArray list_flight = (JSONArray) userJSON.get("flights");
+          JSONArray list_flight = (JSONArray) getFriends.get("flights");
           for (int k = 0; k < list_flight.size(); k++) {
             JSONObject getFri_flight = (JSONObject) list_flight.get(k);
        
@@ -87,7 +91,7 @@ public class UserDatabaseLoader {
             UUID Flight_ID = UUID.fromString(String_Friend_ID);
             String Flight_Seat = (String) getFri_flight.get("seat");
           }
-          JSONArray list_hotel = (JSONArray) userJSON.get("hotels");
+          JSONArray list_hotel = (JSONArray) getFriends.get("hotels");
           for (int m = 0; m < list_hotel.size(); m++) {
             JSONObject getFri_hotel = (JSONObject) list_hotel.get(m);
             String String_Hotel_ID = (String) getFri_hotel.get("hotelid");
@@ -100,8 +104,10 @@ public class UserDatabaseLoader {
               Friend_DateOfBirthday, Friend_Discount, flights, hotels);
           friends.add(new_friend);
         }
-	      Profile new_User=new Profile(firstName, lastName, address, city, state, zip, dateOfBirthday, emailAddress, phoneNumber, visa, disability.booleanValue(), occupation, discount);
-        RegisteredUser user = new RegisteredUser(id, friends,new_User,userID,password); 
+        Profile new_User =
+            new Profile(firstName, lastName, address, city, state, zip, dateOfBirthday,
+                emailAddress, phoneNumber, visa, disability.booleanValue(), occupation, discount);
+        RegisteredUser user = new RegisteredUser(id, friends, new_User, userID, password);
         users.add(user);
         return users;
       }
@@ -110,12 +116,13 @@ public class UserDatabaseLoader {
     }
     return users;
   }
+
   public static Date parseDate(String date) {
-		try {
-			return new SimpleDateFormat("mm/dd/yyyy").parse(date);
-		} catch (ParseException e) {
-			System.out.println("Sorry " + date + " is not parsable");
-			return null;
-		}
-	}
+    try {
+      return new SimpleDateFormat("mm/dd/yyyy").parse(date);
+    } catch (ParseException e) {
+      System.out.println("Sorry " + date + " is not parsable");
+      return null;
+    }
+  }
 }

@@ -237,7 +237,7 @@ public class FlightApp {
      * Prints available seats on flight
      * @param flight
      */
-    public void printAvailableSeats(Flight flight) {
+    public void printAvailableSeats(ArrayList<Flight> flight) {
         try {
             flightList.getAvailableSeats(flight);
         } catch (Exception e) {
@@ -465,13 +465,12 @@ public class FlightApp {
      * @param airline
      * @return string of four matches 
      */
-    public String getFourMatches(String departLocation, String destination, ArrayList<String> airline) {
+    public void getFourMatches(String departLocation, String destination, ArrayList<String> airline) {
         try {
-            return flightList.getFourMatches(departLocation, destination, airline);
+            flightList.getFourMatches(departLocation, destination, airline);
         } catch (Exception e) {
             System.out.println(e);
         }
-        return null;
     }
 
     /**

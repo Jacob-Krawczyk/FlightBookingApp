@@ -159,6 +159,6 @@ public class Hotel{
         return this.rating;
     }
     public String toString() {
-        return " Name: " + name + " Rating: " + rating + " Check in day: " + checkInDay + " Check out day: " + checkOutDay;
+        return " Name: " + name + "Rating: " + rating + "Check in day: " + checkInDay + "Check out day: " + checkOutDay;
     }
 }

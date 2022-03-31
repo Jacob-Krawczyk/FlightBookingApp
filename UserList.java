@@ -6,8 +6,8 @@ import java.io.*;
  * @author JavaFine
  */
 public class UserList {
-    private UserDatabaseLoader userDatabaseLoader;
-    private UserDatabaseWriter userDatabaseWriter;
+    private static UserDatabaseLoader userDatabaseLoader = new UserDatabaseLoader();
+    private UserDatabaseWriter userDatabaseWriter = new UserDatabaseWriter();
     private ArrayList<RegisteredUser> users = new ArrayList<RegisteredUser>();
     private static UserList userList = new UserList();
 
@@ -17,6 +17,11 @@ public class UserList {
     UserList() {
         users = userDatabaseLoader.getUser();
     }
+    /*public static void main(String[] args) {
+    	
+        ArrayList<RegisteredUser> users = userDatabaseLoader.getUser();
+        System.out.println(users.size());
+      }*/
 
     /**
      * Creates and returns a single instance of UserList
@@ -131,7 +136,10 @@ public class UserList {
      * @param discount
      */
     public void addNonUserFriend(RegisteredUser currentUser, String firstName, String lastName, Date dob, String discount) {
-        currentUser.addNonUserFriend(firstName, lastName, dob, discount);
+    	
+       // currentUser.addFriend(currentUser.addNonUserFriend(firstName, lastName, dob, discount));
+        currentUser.getFriends().add(currentUser.addNonUserFriend(firstName, lastName, dob, discount));
+        System.out.println();
     }
 
     /**

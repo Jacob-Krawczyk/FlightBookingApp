@@ -10,9 +10,9 @@ public class RegisteredUser extends User {
     private String username="";
     private String password="";
     private Preferences pref;
-    private ArrayList<FlightBooking> flightBookings;
-    private ArrayList<HotelBooking> hotelBookings;
-    private ArrayList<Friend> friendList;
+    private ArrayList<FlightBooking> flightBookings = new ArrayList<FlightBooking>();
+    private ArrayList<HotelBooking> hotelBookings = new ArrayList<HotelBooking>();
+    private ArrayList<Friend> friendList = new ArrayList<Friend>();
 
     /**
      * Loads JSON file 
@@ -22,11 +22,11 @@ public class RegisteredUser extends User {
      * @param username
      * @param password
      */
-    public RegisteredUser(UUID id, ArrayList<Friend> friendList, Profile userProfile, String username, String password) {
+    public RegisteredUser(UUID id, ArrayList<Friend> friendList, Profile userpProfile, String username, String password) {
         //System.out.println("uuserpProfile.getLast();
     	this.id = id;
         this.friendList = friendList;
-        this.userProfile = userProfile;
+        this.userProfile = userpProfile;
         this.username = username;
         this.password = password;
      /*   System.out.println(this.userProfile.getLast()+"asdoijsadkjl");
@@ -168,7 +168,11 @@ public class RegisteredUser extends User {
      */
     public Friend addNonUserFriend(String firstName, String lastName, Date dob, String discount) {
         UUID uuid = UUID.randomUUID();
-        Friend aFriend = new Friend(uuid, firstName,lastName, dob, discount);
+        
+        ArrayList<Flight> emptyFlightList = new ArrayList<Flight>();
+        ArrayList<Hotel> emptyHotelList = new ArrayList<Hotel>();
+        Friend aFriend = new Friend(uuid, firstName,lastName, dob, discount, emptyFlightList, emptyHotelList);
+        System.out.println(discount+"123");
         friendList.add(aFriend);
         return aFriend;
     }

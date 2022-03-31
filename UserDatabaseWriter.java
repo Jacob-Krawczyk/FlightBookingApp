@@ -152,4 +152,6 @@ public class UserDatabaseWriter {
 	  jsonoS.put(Friend_Hotel_Check_Out_Day,hotel.getCheckOutDay());
     return jsonoS;
   }
+  
+  
 }

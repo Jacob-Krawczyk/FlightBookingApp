@@ -10,7 +10,7 @@ import java.util.UUID;
 public class FlightsList {
     private FlightDatabaseLoader flightLoader = new FlightDatabaseLoader();
     private ArrayList<Flight> flights = new ArrayList<Flight>();
-    private static FlightsList flightList=new FlightsList();
+    private static FlightsList flightList=new FlightsList(); 
 
     private FlightsList() {
         flights = flightLoader.getFlight(); //first line of get all flights
@@ -44,7 +44,7 @@ public class FlightsList {
      * @return all flights
      */
     public ArrayList<Flight> getAllFlights() {
-        return flightLoader.getFlight();
+        return flights;
     }
 
     /**
@@ -54,31 +54,17 @@ public class FlightsList {
      * @param airline
      * @return string of four flight matches
      */
-    public String getFourMatches(String departLocation, String destination, ArrayList<String> airline) {
+    public void getFourMatches(String departLocation, String destination, ArrayList<String> airline) {
         ArrayList<Flight> firstMatch = getFirstMatch(departLocation, destination, airline);
         ArrayList<Flight> secondMatch = getSecondMatch(departLocation, destination, airline);
         ArrayList<Flight> thirdMatch = getThirdMatch(departLocation, destination, airline);
         ArrayList<Flight> fourthMatch = getFourthMatch(departLocation, destination, airline);
-
-        String result = "";
-
-        if(firstMatch != null){
-            result += "Flight 1. " + firstMatch.toString();
-        }
-
-        if(secondMatch != null) {
-            result += "\nFlight 2. " + secondMatch.toString();
-        }
-
-        if(thirdMatch != null) {
-            result += "\nFlight 3. " + thirdMatch.toString();
-        }
-
-        if(fourthMatch != null) {
-            result = "\nFlight 4. " + fourthMatch.toString();
-        }
-
-        return result;
+        System.out.println("Flight 1. " + firstMatch.toString());
+    	System.out.println("\nFlight 2. " + secondMatch.toString());
+    	System.out.println("\nFlight 3. " + thirdMatch.toString());
+        System.out.println("\nFlight 4. " + fourthMatch.toString());
+    
+           
     }
 
     /**
@@ -136,10 +122,10 @@ public class FlightsList {
      * @return array list of two flights 
      */
     public ArrayList<Flight> getSecondMatch(String departLocation, String destination, ArrayList<String> airline) {
-        ArrayList<ArrayList<Flight>> singleTransfers = new ArrayList<ArrayList<Flight>>();
+    	ArrayList<ArrayList<Flight>> singleTransfers = new ArrayList<ArrayList<Flight>>();
         getTwoConnectingFlights(singleTransfers, departLocation, destination, airline);
 
-        if(singleTransfers.size() == 0){
+        if(singleTransfers.size() <= 1){
             return null;
         }
         return singleTransfers.get(0);
@@ -233,49 +219,31 @@ public class FlightsList {
      * @param airline
      */
     public void getThreeConnectingFlights(ArrayList<ArrayList<Flight>> returnList, String departLocation, String destination, ArrayList<String> airline) {
-        ArrayList<Flight> init = getFlightByDepartLocation(airline, departLocation);
-        ArrayList<Flight> fin = getFlightByDestination(airline, destination);
-        ArrayList<Flight> between = getAllFlights();
-        getFlightByAirline(between, airline);
-        ArrayList<ArrayList<Flight>> firstTwo = new ArrayList<ArrayList<Flight>>();
-        for (Flight in: init) {
-            for (Flight bet: between) {
-                if(in.getDestination().equals(bet.getDepartLocation())) {
-                    ArrayList<Flight> temp = new ArrayList<Flight>();
-                    temp.add(in);
-                    temp.add(bet);
-                    firstTwo.add(temp);
-                }
-            }
-        }
-        for (ArrayList<Flight> bet: firstTwo) {
-            for (Flight f: fin) {
-                if(bet.get(1).getDestination().equals(f.getDepartLocation())) {
-                    ArrayList<Flight> threeFlights = new ArrayList<Flight>();
-                    threeFlights.addAll(bet);
-                    threeFlights.add(f);
-                    returnList.add(threeFlights);
-                }
-            }
-        }
-        /** 
-        for (Flight i : init) {
-            for (Flight bet : between) {
-                if (i.getDestination().equals(bet.getDepartLocation())) {
-                    for (Flight f : fin) {
-                        if (bet.getDestination().equals(f.getDepartLocation())) {
-                            ArrayList<Flight> threeFlights = new ArrayList<Flight>();
-                            threeFlights.add(i);
-                            threeFlights.add(bet);
-                            threeFlights.add(f);
-                            returnList.add(threeFlights);
-                        }
-                    }
-                }
-            }
-        }
-        */
-    }
+    	ArrayList<Flight> init = getFlightByDepartLocation(airline, departLocation);
+    	ArrayList<Flight> fin = getFlightByDestination(airline, destination);
+    	ArrayList<Flight> between = getAllFlights();
+    	getFlightByAirline(between, airline);
+    	ArrayList<ArrayList<Flight>> firstTwo = new ArrayList<ArrayList<Flight>>();
+    	for (Flight in: init) {
+    	for (Flight bet: between) {
+    	if(in.getDestination().equals(bet.getDepartLocation())) {
+    	ArrayList<Flight> temp = new ArrayList<Flight>();
+    	temp.add(in);
+    	temp.add(bet);
+    	firstTwo.add(temp);
+    	}
+    	}
+    	}
+    	for (ArrayList<Flight> bet: firstTwo) {
+    	for (Flight f: fin) {
+    	if(bet.get(1).getDestination().equals(f.getDepartLocation())) {
+    	ArrayList<Flight> threeFlights = new ArrayList<Flight>();
+    	threeFlights.addAll(bet);
+    	threeFlights.add(f);
+    	returnList.add(threeFlights);
+    	}
+    	}
+    	}}
 
     /**
      * Adds one transfer flights to list of flights 
@@ -397,11 +365,13 @@ public class FlightsList {
      * @param flight
      * @return
      */
-    public void getAvailableSeats(Flight flight) {
-        ArrayList<Seat> flightSeats = flights.get(0).getFlightSeats();
-        for (Seat seat : flightSeats) {
-            if (!seat.isOccupied()) {
-                System.out.println(seat.toString());
+    public void getAvailableSeats(ArrayList<Flight> flights) {
+        for(Flight flight: flights) {
+        	ArrayList<Seat> flightSeats = flight.getFlightSeats();
+        	for (Seat seat : flightSeats) {
+                if (!seat.isOccupied()) {
+                    System.out.println(seat.toString());
+                }
             }
         }
     }

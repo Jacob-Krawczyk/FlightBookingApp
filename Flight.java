@@ -96,7 +96,7 @@ public class Flight {
    * @return arrival time
    */
   public String getArrivalTime() {
-    return this.getArrivalTime();
+    return this.arrivalTime;
   }
 
   /**

@@ -41,13 +41,13 @@ public class Friend {
      * @param dob
      * @param discount
      */
-    public Friend(UUID uuid2, String first, String last, Date dob, String discount) {
-        UUID uuid = UUID.randomUUID();
+   /* public void createFriend(UUID uuid2, String first, String last, Date dob, String discount) {
+ 
         ArrayList<Flight> emptyFlightList = new ArrayList<Flight>();
         ArrayList<Hotel> emptyHotelList = new ArrayList<Hotel>();
-        Friend newFriend = new Friend(uuid, first, last, dob, discount, emptyFlightList, emptyHotelList);
+        Friend newFriend = new Friend(uuid2, first, last, dob, discount, emptyFlightList, emptyHotelList);
     }
-
+*/
     /**
      * Returns profile of friend
      * @return profile
