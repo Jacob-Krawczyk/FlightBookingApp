@@ -10,30 +10,35 @@ public class EnumTest {
     @Test
     void testAccessibility_ToString() {
         String accessibility = Accessibility.values().toString();
-        System.out.println(accessibility);
+        String actual = "Service Animal, Hearing Accessibility Kit, Visual Fire Smoke Detector, Grab Bars in Bathroom, Lever Lock System, Alternative Text Placard, Shower Seats";
+        assertEquals(accessibility, actual);
     }
 
     @Test 
     void testAirlineCompany_ToString() {
         String comp = AirlineCompany.values().toString();
-        System.out.println(comp);
+        String actual = "American Airline, Delta, Southwest Airlines, United Airlines";
+        assertEquals(comp, actual);
     }
 
     @Test 
     void testAmenities_ToString() {
         String amenities = Amenities.values().toString();
-        System.out.println(amenities);
+        String actual = "Pool, Gym, Toiletries, Coffee Kit, Wifi, Parking, Smoke, Meals";
+        assertEquals(amenities, actual);
     }
 
     @Test
     void testFlightClass_ToString() {
         String classes = FlightClass.values().toString();
-        System.out.println(classes);
+        String actual = "Economy, Premium Economy, First Class, Business";
+        assertEquals(classes, actual);
     }
 
     @Test
     void testHotelRoomTypes_ToString() {
         String roomType = HotelRoomTypes.values().toString();
-        System.out.println(roomType);
+        String actual = "Suite, Standard, Room Only, Connecting, Minimalist, Deluxe, Studio";
+        assertEquals(roomType, actual);
     }
 }
