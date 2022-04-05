@@ -18,10 +18,10 @@ public class UserList {
         users = userDatabaseLoader.getUser();
     }
     /*public static void main(String[] args) {
-    	
-        ArrayList<RegisteredUser> users = userDatabaseLoader.getUser();
-        System.out.println(users.size());
-      }*/
+
+     ArrayList<RegisteredUser> users = userDatabaseLoader.getUser();
+     System.out.println(users.size());
+     }*/
 
     /**
      * Creates and returns a single instance of UserList
@@ -136,8 +136,8 @@ public class UserList {
      * @param discount
      */
     public void addNonUserFriend(RegisteredUser currentUser, String firstName, String lastName, Date dob, String discount) {
-    	
-       // currentUser.addFriend(currentUser.addNonUserFriend(firstName, lastName, dob, discount));
+
+        // currentUser.addFriend(currentUser.addNonUserFriend(firstName, lastName, dob, discount));
         currentUser.getFriends().add(currentUser.addNonUserFriend(firstName, lastName, dob, discount));
         System.out.println();
     }
@@ -246,7 +246,7 @@ public class UserList {
         RegisteredUser user = new RegisteredUser(userProfile, username, password);
         users.add(user);
         return user;
-    }
+        }
 
     /**
      * Removes user from list and from database file
