@@ -8,31 +8,31 @@ import org.junit.jupiter.api.Test;
 
 public class EnumTest {
     @Test
-    void testAccessibilityToString() {
+    void testAccessibility_ToString() {
         String accessibility = Accessibility.values().toString();
         System.out.println(accessibility);
     }
 
     @Test 
-    void testAirlineCompanyToString() {
+    void testAirlineCompany_ToString() {
         String comp = AirlineCompany.values().toString();
         System.out.println(comp);
     }
 
     @Test 
-    void testAmenitiesToString() {
+    void testAmenities_ToString() {
         String amenities = Amenities.values().toString();
         System.out.println(amenities);
     }
 
     @Test
-    void testFlightClassToString() {
+    void testFlightClass_ToString() {
         String classes = FlightClass.values().toString();
         System.out.println(classes);
     }
 
     @Test
-    void testHotelRoomTypesToString() {
+    void testHotelRoomTypes_ToString() {
         String roomType = HotelRoomTypes.values().toString();
         System.out.println(roomType);
     }
