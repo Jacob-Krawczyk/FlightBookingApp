@@ -21,6 +21,14 @@ public class HotelBooking {
         this.hotel = hotel;
     }
 
+    public ArrayList<Profile> getTraveler() {
+        return this.travelers;
+    }
+
+    public ArrayList<Room> getRooms() {
+        return this.rooms;
+    }
+
     /**
      * Adds friend to hotel booking
      * @param profile
