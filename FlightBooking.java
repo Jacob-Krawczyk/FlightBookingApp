@@ -21,6 +21,10 @@ public class FlightBooking {
         this.flights = flights;
     }
 
+    public ArrayList<Profile> getTraveler() {
+        return this.travelers;
+    }
+
     public ArrayList<Seat> getSeat() {
         return this.seats;
     }
