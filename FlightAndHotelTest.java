@@ -10,7 +10,8 @@ public class FlightAndHotelTest {
         seat.add(new Seat(true, "1A"));
         seat.add(new Seat(false, "2B"));
         seat.add(new Seat(false, "C18"));
-        Flight flight = new Flight(uuid, "Columbia", "Chicago", 10/20/1995, "10:30AM", "12:20PM", seat, "American Airlines");
+        Date flightDay = new Date(1995, 10, 20);
+        Flight flight = new Flight(uuid, "Columbia", "Chicago", flightDay, "10:30AM", "12:20PM", seat, "American Airlines");
         String flightString = flight.toString();
         String actual = "Departure Location: Columbia Destination: Chicago\nDepature Date: 10/20/1995 Departure Time: 10:30AM Arrival Time: 12:20PM";
         assertEquals(flightString, actual);
