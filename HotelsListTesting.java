@@ -585,21 +585,80 @@ public class HotelsListTesting {
 
     @Test
     void getHotelByRoomTypes() {
+        String roomType = "Deluxe";
+        HotelsList.getInstance().populateReturnListForTesting();
+        HotelsList.getInstance().getHotelByRoomType(roomType);
+        assertEquals(HotelsList.getInstance().getReturnList().size(), 2);
+    }
 
+    @Test
+    void getHotelByRoomTypes_InvalidRoomType() {
+        String roomType = "Waterfall";
+        HotelsList.getInstance().populateReturnListForTesting();
+        HotelsList.getInstance().getHotelByRoomType(roomType);
+        assertEquals(HotelsList.getInstance().getReturnList().size(), 0);
+    }
+
+    @Test 
+    void getHotelByRoomTypes_Null() {
+        String roomType = null;
+        HotelsList.getInstance().populateReturnListForTesting();
+        HotelsList.getInstance().getHotelByRoomType(roomType);
+        assertEquals(HotelsList.getInstance().getReturnList().size(), 0);
     }
 
     @Test 
     void getHotelByNumberOfBeds() {
+        int numOfBeds = 2;
+        HotelsList.getInstance().populateReturnListForTesting();
+        HotelsList.getInstance().getHotelByNumberOfBeds(numOfBeds);
+        assertEquals(HotelsList.getInstance().getReturnList().size(), 4);
+    }
 
+    @Test
+    void getHotelByNumberOfBeds_None() {
+        int numOfBeds = 0;
+        HotelsList.getInstance().populateReturnListForTesting();
+        HotelsList.getInstance().getHotelByNumberOfBeds(numOfBeds);
+        assertEquals(HotelsList.getInstance().getReturnList().size(), 0);
+    }
+
+    @Test
+    void getHotelByNumberOfBeds_Negative() {
+        int numOfBeds = 0;
+        HotelsList.getInstance().populateReturnListForTesting();
+        HotelsList.getInstance().getHotelByNumberOfBeds(numOfBeds);
+        assertEquals(HotelsList.getInstance().getReturnList().size(), 0);
     }
 
     @Test
     void printRoomByDateAndTime() {
+        try {
+            UUID huuid = UUID.randomUUID();
+            SimpleDateFormat format = new SimpleDateFormat("mm/dd/yyyy");
+            Date checkin1 = format.parse("11/28/1994");
+            Date checkout1 = format.parse("12/03/1994");
+            Date checkin2 = format.parse("11/28/2009");
+            Date checkout2 = format.parse("12/03/2009");
+            ArrayList<Room> rooms = new ArrayList<Room>();
+            rooms.add(new Room("Deluxe", 3, checkin1, checkout1, "10:30AM", "9:30PM", "$700"));
+            rooms.add(new Room("Connecting", 4, checkin2, checkout2, "9:30AM", "10:30PM", "$100,000"));
+            Hotel hotel = new Hotel(huuid, "Test", "London", rooms);
 
+            Date checkinDate = format.parse("11/28/1994");
+            Date checkoutDate = format.parse("12/03/1994");
+            String checkinTime = "10:30AM";
+            String checkoutTime = "9:30PM";
+            HotelsList.getInstance().printRoomByDateAndTime(hotel, checkinDate, checkinTime, checkoutDate, checkoutTime);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
     void cancelHotel() {
-
+        UUID uuid = new UUID(2ead4186-a210-406d-a130-ba2c51b4ff78);
+        HotelsList.getInstance().cancelHotel(uuid);
+        assertEquals(HotelsList.getInstance().getAllHotels().size(), 3);
     }   
 }
