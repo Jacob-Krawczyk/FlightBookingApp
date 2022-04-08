@@ -23,6 +23,10 @@ public class HotelsList {
         return hotelList;
     }
 
+    public void populateReturnListForTesting() {
+        returnList.addAll(hotels);
+    }
+
     public ArrayList<Hotel> getReturnList() {
         return returnList;
     }
