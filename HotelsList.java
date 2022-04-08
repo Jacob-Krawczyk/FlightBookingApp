@@ -23,6 +23,10 @@ public class HotelsList {
         return hotelList;
     }
 
+    public ArrayList<Hotel> getReturnList() {
+        return returnList;
+    }
+
     /**
      * Clears search array list
      */
