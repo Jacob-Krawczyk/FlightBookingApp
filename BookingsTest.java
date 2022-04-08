@@ -101,7 +101,6 @@ public class BookingsTest {
         ArrayList<Profile> travelers = new ArrayList<Profile>();
         ArrayList<Room> rooms = new ArrayList<Room>();
         UUID uuid = UUID.randomUUID();
-        ArrayList<Room> rooms = new ArrayList<Room>();
         Date checkin1 = new Date(1994);
         Date checkout1 = new Date(1994);
         Date checkin2 = new Date(2009);
@@ -120,7 +119,6 @@ public class BookingsTest {
         ArrayList<Profile> travelers = new ArrayList<Profile>();
         ArrayList<Room> rooms = new ArrayList<Room>();
         UUID uuid = UUID.randomUUID();
-        ArrayList<Room> rooms = new ArrayList<Room>();
         Date checkin1 = new Date(1994);
         Date checkout1 = new Date(1994);
         Date checkin2 = new Date(2009);
