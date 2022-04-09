@@ -36,7 +36,37 @@ public class BookingsTest {
     }
 
     @Test
-    void FlightBooking_AddTraveler_ShouldNotPass() {
+    void FlightBooking_AddTraveler_PartOfInputNull() {
+        try {
+            ArrayList<Profile> travelers = new ArrayList<Profile>();
+            ArrayList<Seat> seats = new ArrayList<Seat>();
+            ArrayList<Flight> flights = new ArrayList<Flight>();
+            FlightBooking flightBooking = new FlightBooking(travelers, seats, flights);
+            String firstName = null;
+            String lastName = "Last";
+            String address = "1234 Random St";
+            String city = null;
+            String state = "NO";
+            String zip = "12345";
+            SimpleDateFormat format = new SimpleDateFormat("mm/dd/yyyy");
+            Date dateOfBirthday = format.parse("11/28/1992");
+            String emailAddress = "randomuser@email.com";
+            String phoneNumber = "123-123-1234";
+            String visa = null;
+            Boolean disability = false;
+            String occupation = "Speech Pathologist";
+            String discount = "none";
+            Profile profile = new Profile(firstName, lastName, address, city, state, zip, dateOfBirthday, emailAddress,
+                    phoneNumber, visa, disability, occupation, discount);
+            flightBooking.addTraveler(profile);
+            assertEquals(flightBooking.getTraveler().size(), 1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    void FlightBooking_AddTraveler_NullInput() {
         ArrayList<Profile> travelers = new ArrayList<Profile>();
         ArrayList<Seat> seatsList = new ArrayList<Seat>();
         ArrayList<Flight> flights = new ArrayList<Flight>();
@@ -47,12 +77,23 @@ public class BookingsTest {
     }
 
     @Test
-    void FlightBooking_AddSeat_ShouldNotPass() {
+    void FlightBooking_AddSeat_SeatCompletelyNull() {
         ArrayList<Profile> travelers = new ArrayList<Profile>();
         ArrayList<Seat> seatsList = new ArrayList<Seat>();
         ArrayList<Flight> flights = new ArrayList<Flight>();
         FlightBooking flightBooking = new FlightBooking(travelers, seatsList, flights);
         Seat seats = null;
+        flightBooking.addSeat(seats);
+        assertEquals(flightBooking.getSeat().size(), 1);
+    }
+
+    @Test
+    void FlightBooking_AddSeat_SeatNumberNull() {
+        ArrayList<Profile> travelers = new ArrayList<Profile>();
+        ArrayList<Seat> seatsList = new ArrayList<Seat>();
+        ArrayList<Flight> flights = new ArrayList<Flight>();
+        FlightBooking flightBooking = new FlightBooking(travelers, seatsList, flights);
+        Seat seats = new Seat(true, null);
         flightBooking.addSeat(seats);
         assertEquals(flightBooking.getSeat().size(), 1);
     }
@@ -109,7 +150,7 @@ public class BookingsTest {
     }
 
     @Test
-    void HotelBooking_AddTraveler_ShouldNotPass() {
+    void HotelBooking_AddTraveler_NullInput() {
         try {
             ArrayList<Profile> travelers = new ArrayList<Profile>();
             ArrayList<Room> rooms = new ArrayList<Room>();
@@ -170,7 +211,46 @@ public class BookingsTest {
     }
 
     @Test
-    void HotelBooking_AddRoom_ShouldNotPass() {
+    void HotelBooking_AddTraveler_PartOfInputNull() {
+        try {
+            ArrayList<Profile> travelers = new ArrayList<Profile>();
+            ArrayList<Room> rooms = new ArrayList<Room>();
+            UUID uuid = UUID.randomUUID();
+            SimpleDateFormat format = new SimpleDateFormat("mm/dd/yyyy");
+            Date checkin1 = format.parse("11/28/1994");
+            Date checkout1 = format.parse("12/03/1994");
+            Date checkin2 = format.parse("11/28/2009");
+            Date checkout2 = format.parse("12/03/2009");
+            rooms.add(new Room("Deluxe", 3, checkin1, checkout1, "10:30AM", "9:30PM", "$700"));
+            rooms.add(new Room("Connecting", 4, checkin2, checkout2, "9:30AM", "10:30PM", "$100,000"));
+            Hotel hotel = new Hotel(uuid, "Test", "London", rooms);
+            HotelBooking hotelBooking = new HotelBooking(travelers, rooms, hotel);
+
+            String firstName = "First";
+            String lastName = "Last";
+            String address = "1234 Random St";
+            String city = null;
+            String state = "NO";
+            String zip = "12345";
+            Date dateOfBirthday = format.parse("11/28/1992");
+            String emailAddress = null;
+            String phoneNumber = "123-123-1234";
+            String visa = null;
+            Boolean disability = false;
+            String occupation = "Speech Pathologist";
+            String discount = "none";
+            Profile profile = new Profile(firstName, lastName, address, city, state, zip, dateOfBirthday, emailAddress,
+                    phoneNumber, visa, disability, occupation, discount);
+
+            hotelBooking.addTraveler(profile);
+            assertEquals(hotelBooking.getTraveler().size(), 1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    void HotelBooking_AddRoom_NullRoom() {
         try {
             ArrayList<Profile> travelers = new ArrayList<Profile>();
             ArrayList<Room> rooms = new ArrayList<Room>();
@@ -185,6 +265,37 @@ public class BookingsTest {
             Hotel hotel = new Hotel(uuid, "Test", "London", rooms);
             HotelBooking hotelBooking = new HotelBooking(travelers, rooms, hotel);
             Room room = null;
+            hotelBooking.addRoom(room);
+            assertEquals(hotelBooking.getRooms().size(), 3);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    void HotelBooking_AddRoom_PartOfRoomNull() {
+        try {
+            ArrayList<Profile> travelers = new ArrayList<Profile>();
+            ArrayList<Room> rooms = new ArrayList<Room>();
+            UUID uuid = UUID.randomUUID();
+            SimpleDateFormat format = new SimpleDateFormat("mm/dd/yyyy");
+            Date checkin1 = format.parse("11/28/1994");
+            Date checkout1 = format.parse("12/03/1994");
+            Date checkin2 = format.parse("11/28/2009");
+            Date checkout2 = format.parse("12/03/2009");
+            rooms.add(new Room("Deluxe", 3, checkin1, checkout1, "10:30AM", "9:30PM", "$700"));
+            rooms.add(new Room("Connecting", 4, checkin2, checkout2, "9:30AM", "10:30PM", "$100,000"));
+            Hotel hotel = new Hotel(uuid, "Test", "London", rooms);
+            HotelBooking hotelBooking = new HotelBooking(travelers, rooms, hotel);
+
+            String roomType = "Standard";
+            int numOfBed = 2;
+            Date checkinDate = format.parse("11/28/2008");
+            Date checkoutDate = format.parse("12/03/2008");
+            String checkinTime = null;
+            String checkoutTime = "10:10AM";
+            String price = null;
+            Room room = new Room(roomType, numOfBed, checkinDate, checkoutDate, checkinTime, checkoutTime, price);
             hotelBooking.addRoom(room);
             assertEquals(hotelBooking.getRooms().size(), 3);
         } catch (Exception e) {

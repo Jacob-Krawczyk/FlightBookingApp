@@ -354,7 +354,7 @@ public class HotelsListTesting {
     }
 
     @Test
-    void addRoom() {
+    void addRoom_ShouldPass() {
         try {
             ArrayList<Profile> travelers = new ArrayList<Profile>();
             ArrayList<Room> rooms = new ArrayList<Room>();
@@ -547,7 +547,7 @@ public class HotelsListTesting {
     }
 
     @Test
-    void getFourMatchesByLocation() {
+    void getFourMatchesByLocation_ShouldPass() {
         String location = "Seattle";
         assertEquals(HotelsList.getInstance().getFourMatchesByLocation(location).size(), 4);
     }
@@ -654,7 +654,7 @@ public class HotelsListTesting {
 
     @Test
     void getHotelByNumberOfBeds_Negative() {
-        int numOfBeds = 0;
+        int numOfBeds = -4;
         HotelsList.getInstance().populateReturnListForTesting();
         HotelsList.getInstance().getHotelByNumberOfBeds(numOfBeds);
         assertEquals(HotelsList.getInstance().getReturnList().size(), 0);
@@ -690,4 +690,11 @@ public class HotelsListTesting {
         HotelsList.getInstance().cancelHotel(uuid);
         assertEquals(HotelsList.getInstance().getAllHotels().size(), 3);
     }   
+
+    @Test
+    void cancelHotel_NoMatches() {
+        UUID uuid = new UUID(2ead4186-a530-446d-a575-ba2c51b4ff78);
+        HotelsList.getInstance().cancelHotel(uuid);
+        assertEquals(HotelsList.getInstance().getAllHotels().size(), 3);
+    }
 }
