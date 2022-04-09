@@ -182,8 +182,8 @@ public class RegisteredUser extends User {
      * @param userName
      * @return 
      */
-    public Friend addUserFriend(String username) {
-        RegisteredUser newFriend = UserList.getInstance().getUserByUsername(username);
+    public Friend addUserFriend(Friend username2) {
+        RegisteredUser newFriend = UserList.getInstance().getUserByUsername(username2);
         UUID uuid = newFriend.getID();
         String first = newFriend.getProfile().getFirst();
         String last = newFriend.getProfile().getLast();
