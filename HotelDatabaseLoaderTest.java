@@ -21,7 +21,7 @@ class HotelDatabaseLoaderTest {
 		Date checkinday = null ;
 		Date checkoutday = null;
 		Room abc = new Room("big bed room",2,checkinday,checkoutday,
-		    "12:00", "3:00","200$");
+		    "12:00", "3:00","300$");
 		ArrayList<Room> room = new ArrayList<Room>();
 		room.add(abc);
 		UUID id = UUID.randomUUID();
@@ -29,65 +29,63 @@ class HotelDatabaseLoaderTest {
 		HotelDatabaseWriter.saveHotels();
 	}
 	
-	@AfterEach
-	void tearDown()
-	{
-		hotels.getInstance().getAllHotels().clear();
-		HotelDatabaseWriter.saveHotels();
-	}
+
 	
 	@Test
 	void testGetHotelsSizeZero()
 	{
-		hotels.getInstance().getAllHotels().clear();
+		HotelsList.getInstance().getAllHotels().clear();
 		HotelDatabaseWriter.saveHotels();
 		assertEquals(0,hotelList.size());
 	}
 	@Test
+	void testGetHotelsSize()
+	{
+		HotelDatabaseWriter.saveHotels();
+		assertEquals(1,hotelList.size());
+	}
+	@Test
 	void testGetHotelName() {
-		hotelList = HotelDatabaseLoader.getHotel();
-		assertEquals("No.1 hotel", hotels.getAllHotels().get(0).getHotelName());
+		
+		assertEquals("No.1 hotel", hotelList.get(0).getHotelName());
 	}
 	@Test
 	void testGetHotelCity()
 	{
-		hotelList = HotelDatabaseLoader.getHotel();
-		assertEquals("Columbia", hotels.getAllHotels().get(0).getLocation());
+		assertEquals("columbia",  hotelList.get(0).getLocation());
 	}
 	@Test
 	void testRoomType()
 	{
-		hotelList = HotelDatabaseLoader.getHotel();
-		assertEquals("big bed room", hotels.getAllHotels().get(0).getHotelRooms().get(0).getRoomType());
+		assertEquals("big bed room",   hotelList.get(0).getHotelRooms().get(0).getRoomType());
 	}
 	@Test
 	void testRoomBedsOfNumber()
 	{
-		hotelList = HotelDatabaseLoader.getHotel();
-		assertEquals(2, hotels.getAllHotels().get(0).getHotelRooms().get(0).getRoomNumberOfBeds());
+		
+		assertEquals(2, hotelList.get(0).getHotelRooms().get(0).getRoomNumberOfBeds());
 	}
 	@Test
 	void testRoomCheckInDay()
 	{
-		hotelList = HotelDatabaseLoader.getHotel();
-		assertEquals(null, hotels.getAllHotels().get(0).getHotelRooms().get(0).getRoomCheckInDate());
+		
+		assertEquals(null, hotelList.get(0).getHotelRooms().get(0).getRoomCheckInDate());
 	}
 	@Test
 	void testRoomCheckOutDay()
 	{
-		hotelList = HotelDatabaseLoader.getHotel();
-		assertEquals(null, hotels.getAllHotels().get(0).getHotelRooms().get(0).getRoomCheckOutDate());
+		
+		assertEquals(null, hotelList.get(0).getHotelRooms().get(0).getRoomCheckOutDate());
 	}
 	@Test
 	void testRoomCheckInTime()
 	{
-		hotelList = HotelDatabaseLoader.getHotel();
-		assertEquals("12:00", hotels.getAllHotels().get(0).getHotelRooms().get(0).getRoomCheckInTime());
+		
+		assertEquals("12:00",hotelList.get(0).getHotelRooms().get(0).getRoomCheckInTime());
 	}
 	@Test
 	void testRoomCheckOutTime()
 	{
-		hotelList = HotelDatabaseLoader.getHotel();
-		assertEquals("3:00", hotels.getAllHotels().get(0).getHotelRooms().get(0).getRoomCheckOutTime());
+		assertEquals("3:00", hotelList.get(0).getHotelRooms().get(0).getRoomCheckOutTime());
 	}
 }
